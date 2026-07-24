@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ULTA",
-    "fetch_date": "2026-07-17T14:52:22.199066",
+    "fetch_date": "2026-07-24T14:59:00.345721",
     "quarterly_revenue": {
       "2024-10-31 00:00:00": NaN,
       "2025-01-31 00:00:00": NaN,
@@ -40,5 +40,5 @@
     "inventory_to_sales_ratio": 0.754,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-17T14:52:22.200583"
+  "fetched_at": "2026-07-24T14:59:00.347557"
 }
