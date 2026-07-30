@@ -338,6 +338,237 @@ class EmailNotifier:
             logger.error(f"Failed to send email: {e}")
             return False
 
+    def send_scan_report(
+        self,
+        buy_signals: List[Dict],
+        sell_signals: List[Dict],
+        spy_analysis: Optional[Dict] = None,
+        breadth: Optional[Dict] = None,
+        top_n: int = 15
+    ) -> bool:
+        """Send the daily optimized full-market scan results via email.
+
+        Unlike send_screening_results (which expects a DataFrame in the older
+        buy_signal/value_score/pe_ratio shape), this matches the dict shape produced
+        by run_optimized_scan.py's score_buy_signal/score_sell_signal — the current
+        Minervini-based scanner. Each ticker links straight to its Robinhood trade page.
+
+        Args:
+            buy_signals: List of buy signal dicts (already sorted, highest score first).
+            sell_signals: List of sell signal dicts (already sorted, highest score first).
+            spy_analysis: Optional SPY trend dict (phase, trend, confidence) for context.
+            breadth: Optional market breadth dict.
+            top_n: Number of top candidates per list to include in the email.
+
+        Returns:
+            True if email sent successfully, False otherwise.
+        """
+        if not self.email_from or not self.email_password or not self.email_to:
+            logger.error("Email configuration incomplete. Check environment variables.")
+            return False
+
+        if not buy_signals and not sell_signals:
+            logger.warning("No buy or sell signals to email")
+            return False
+
+        try:
+            today = datetime.now().strftime('%b %d, %Y')
+            subject = f"[Stock Screener] {len(buy_signals)} Buy / {len(sell_signals)} Sell - {today}"
+
+            msg = MIMEMultipart('alternative')
+            msg['From'] = self.email_from
+            msg['To'] = self.email_to
+            msg['Subject'] = subject
+
+            html_body = self._create_scan_html_email(buy_signals, sell_signals, spy_analysis, breadth, top_n)
+            text_body = self._create_scan_text_fallback(buy_signals, sell_signals, spy_analysis, top_n)
+
+            msg.attach(MIMEText(text_body, 'plain'))
+            msg.attach(MIMEText(html_body, 'html'))
+
+            logger.info(f"Connecting to SMTP server: {self.smtp_server}:{self.smtp_port}")
+            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                server.starttls()
+                server.login(self.email_from, self.email_password)
+
+                recipients = [r.strip() for r in self.email_to.split(',')]
+                server.sendmail(self.email_from, recipients, msg.as_string())
+
+            logger.info(f"✓ Scan report email sent to {self.email_to}")
+            return True
+
+        except smtplib.SMTPAuthenticationError:
+            logger.error("SMTP authentication failed. Check email credentials.")
+            return False
+        except smtplib.SMTPException as e:
+            logger.error(f"SMTP error: {e}")
+            return False
+        except Exception as e:
+            logger.error(f"Failed to send scan report email: {e}")
+            return False
+
+    def _scan_row_html(self, ticker: str, cells: List[str], bg: str) -> str:
+        """Render one <tr> for the scan report table, with the ticker linked to Robinhood."""
+        link = (
+            f'<a href="https://robinhood.com/stocks/{ticker}" '
+            f'style="color:#1a73e8;text-decoration:none;font-weight:bold;">{ticker} ↗</a>'
+        )
+        row = f'    <tr style="background-color: {bg};">\n'
+        row += f'      <td style="padding: 10px; border: 1px solid #ddd;">{link}</td>\n'
+        for cell in cells:
+            row += f'      <td style="padding: 10px; border: 1px solid #ddd;">{cell}</td>\n'
+        row += '    </tr>\n'
+        return row
+
+    def _create_scan_html_email(
+        self,
+        buy_signals: List[Dict],
+        sell_signals: List[Dict],
+        spy_analysis: Optional[Dict],
+        breadth: Optional[Dict],
+        top_n: int
+    ) -> str:
+        """Build the HTML body for a Minervini-scan report email."""
+        today = datetime.now().strftime('%B %d, %Y')
+
+        regime_html = ""
+        if spy_analysis:
+            regime_html = f"""
+    <div class="summary">
+        <h2 style="margin-top: 0;">Market Regime</h2>
+        <p><strong>SPY:</strong> Phase {spy_analysis.get('phase', '?')} ({spy_analysis.get('trend', 'Unknown')})
+           at ${spy_analysis.get('current_price', 0):.2f} · Confidence {spy_analysis.get('confidence', 0)}%</p>
+        {f"<p><strong>Breadth:</strong> {breadth.get('phase2_pct', 0):.1f}% of stocks in Phase 2 (uptrend)</p>" if breadth else ""}
+    </div>"""
+
+        buy_rows = ""
+        for i, s in enumerate(buy_signals[:top_n]):
+            details = s.get('details', {})
+            rs_slope = details.get('rs_slope')
+            buy_rows += self._scan_row_html(
+                s['ticker'],
+                [
+                    f"<strong>{s['score']}</strong>/125",
+                    s.get('entry_quality', '-'),
+                    f"${s['stop_loss']:.2f}" if s.get('stop_loss') else '-',
+                    f"{s['risk_reward_ratio']:.1f}:1" if s.get('risk_reward_ratio') else '-',
+                    f"{rs_slope:.2f}" if rs_slope is not None else '-',
+                    (s.get('reasons') or ['-'])[0],
+                ],
+                '#f9f9f9' if i % 2 == 0 else 'white',
+            )
+        buy_table = f"""
+    <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+      <thead>
+        <tr style="background-color: #27ae60; color: white;">
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Ticker</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Score</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Entry</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Stop Loss</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">R:R</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">RS</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Top Reason</th>
+        </tr>
+      </thead>
+      <tbody>{buy_rows if buy_rows else '<tr><td colspan="7" style="padding:12px;text-align:center;color:#888;">No buy signals today</td></tr>'}</tbody>
+    </table>"""
+
+        sell_rows = ""
+        for i, s in enumerate(sell_signals[:top_n]):
+            sell_rows += self._scan_row_html(
+                s['ticker'],
+                [
+                    f"<strong>{s['score']}</strong>/110",
+                    (s.get('severity', '-') or '-').upper(),
+                    f"${s['breakdown_level']:.2f}" if s.get('breakdown_level') else '-',
+                    (s.get('reasons') or ['-'])[0],
+                ],
+                '#f9f9f9' if i % 2 == 0 else 'white',
+            )
+        sell_table = f"""
+    <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+      <thead>
+        <tr style="background-color: #e74c3c; color: white;">
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Ticker</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Score</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Severity</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Breakdown</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Top Reason</th>
+        </tr>
+      </thead>
+      <tbody>{sell_rows if sell_rows else '<tr><td colspan="5" style="padding:12px;text-align:center;color:#888;">No sell signals today</td></tr>'}</tbody>
+    </table>"""
+
+        return f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; }}
+        .header {{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }}
+        .header h1 {{ margin: 0; font-size: 26px; }}
+        .summary {{ background-color: #f8f9fa; padding: 16px 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea; }}
+        .footer {{ margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; font-size: 12px; color: #666; }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Daily Stock Screener</h1>
+        <p style="margin: 10px 0 0 0; font-size: 15px;">{today}</p>
+    </div>
+    {regime_html}
+    <h2 style="color:#27ae60;">🟢 Buy Signals ({len(buy_signals)})</h2>
+    {buy_table}
+    <h2 style="color:#e74c3c; margin-top:30px;">🔴 Sell Signals ({len(sell_signals)})</h2>
+    {sell_table}
+    <div class="footer">
+        <p><strong>Automated Stock Screener</strong> — tap any ticker to open its Robinhood trade page. You still decide and execute every trade yourself.</p>
+        <p>⚠️ This is not financial advice. Always do your own research before investing.</p>
+    </div>
+</body>
+</html>
+"""
+
+    def _create_scan_text_fallback(
+        self,
+        buy_signals: List[Dict],
+        sell_signals: List[Dict],
+        spy_analysis: Optional[Dict],
+        top_n: int
+    ) -> str:
+        """Plain-text fallback for the scan report email."""
+        today = datetime.now().strftime('%B %d, %Y')
+        text = f"DAILY STOCK SCREENER - {today}\n" + "=" * 60 + "\n\n"
+
+        if spy_analysis:
+            text += f"SPY: Phase {spy_analysis.get('phase', '?')} ({spy_analysis.get('trend', 'Unknown')})\n\n"
+
+        text += f"BUY SIGNALS ({len(buy_signals)}):\n" + "-" * 60 + "\n"
+        if buy_signals:
+            for s in buy_signals[:top_n]:
+                text += (
+                    f"{s['ticker']:<6} score {s['score']}/125  "
+                    f"stop ${s.get('stop_loss', 0):.2f}  "
+                    f"https://robinhood.com/stocks/{s['ticker']}\n"
+                )
+        else:
+            text += "No buy signals today\n"
+
+        text += f"\nSELL SIGNALS ({len(sell_signals)}):\n" + "-" * 60 + "\n"
+        if sell_signals:
+            for s in sell_signals[:top_n]:
+                text += (
+                    f"{s['ticker']:<6} score {s['score']}/110  "
+                    f"severity {s.get('severity', '?')}  "
+                    f"https://robinhood.com/stocks/{s['ticker']}\n"
+                )
+        else:
+            text += "No sell signals today\n"
+
+        text += "\n" + "=" * 60 + "\n⚠️ Not financial advice. Do your own research.\n"
+        return text
+
     def _create_text_fallback(self, results: pd.DataFrame, top_n: int) -> str:
         """Create plain text version of email for clients that don't support HTML.
 

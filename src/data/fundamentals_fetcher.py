@@ -21,6 +21,17 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def _num(quarterly_data: Dict, key: str, default: float = 0) -> float:
+    """Get a numeric field from quarterly_data, treating missing AND explicit None as default.
+
+    dict.get(key, default) only falls back to default when the key is absent — when the
+    fetcher stores the key with value None (common for tickers with incomplete filings),
+    it returns None and breaks numeric comparisons downstream.
+    """
+    value = quarterly_data.get(key)
+    return default if value is None else value
+
+
 def fetch_quarterly_financials(ticker: str) -> Dict[str, any]:
     """Fetch quarterly financial data for a stock.
 
@@ -257,7 +268,7 @@ def create_fundamental_snapshot(ticker: str, quarterly_data: Dict) -> str:
     # Margin analysis
     if 'gross_margin' in quarterly_data:
         margin = quarterly_data['gross_margin']
-        margin_change = quarterly_data.get('margin_change', 0)
+        margin_change = _num(quarterly_data, 'margin_change')
 
         if margin_change > 1:
             snapshot += f"✓ Margins: EXPANDING ({margin:.1f}%, +{margin_change:.1f}pp QoQ)\n"
@@ -298,18 +309,18 @@ def create_fundamental_snapshot(ticker: str, quarterly_data: Dict) -> str:
     supports_breakout = True
     concerns = []
 
-    if quarterly_data.get('revenue_yoy_change', 0) < 0:
+    if _num(quarterly_data, 'revenue_yoy_change') < 0:
         supports_breakout = False
         concerns.append('revenue declining')
 
-    if quarterly_data.get('eps_yoy_change', 0) < 0:
+    if _num(quarterly_data, 'eps_yoy_change') < 0:
         supports_breakout = False
         concerns.append('EPS declining')
 
-    if quarterly_data.get('margin_change', 0) < -2:
+    if _num(quarterly_data, 'margin_change') < -2:
         concerns.append('margins contracting')
 
-    if quarterly_data.get('inventory_qoq_change', 0) > 15:
+    if _num(quarterly_data, 'inventory_qoq_change') > 15:
         concerns.append('inventory building rapidly')
 
     if supports_breakout and len(concerns) == 0:
@@ -340,10 +351,10 @@ def analyze_fundamentals_for_signal(quarterly_data: Dict) -> Dict[str, any]:
             'penalty_points': 10
         }
 
-    revenue_yoy = quarterly_data.get('revenue_yoy_change', 0)
-    revenue_qoq = quarterly_data.get('revenue_qoq_change', 0)
-    eps_yoy = quarterly_data.get('eps_yoy_change', 0)
-    inv_change = quarterly_data.get('inventory_qoq_change', 0)
+    revenue_yoy = _num(quarterly_data, 'revenue_yoy_change')
+    revenue_qoq = quarterly_data.get('revenue_qoq_change')
+    eps_yoy = _num(quarterly_data, 'eps_yoy_change')
+    inv_change = _num(quarterly_data, 'inventory_qoq_change')
 
     # Assess trends
     if revenue_yoy > 10:

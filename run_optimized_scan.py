@@ -415,6 +415,10 @@ def main():
         # Report
         save_report(results, buy_signals, sell_signals, spy_analysis, breadth)
 
+        # Email notification (no-ops with a logged warning if EMAIL_* env vars aren't set)
+        from src.notifications.email_notifier import EmailNotifier
+        EmailNotifier().send_scan_report(buy_signals, sell_signals, spy_analysis, breadth)
+
         # Show FMP usage if enabled
         if args.use_fmp:
             usage = fundamentals_fetcher.get_api_usage()

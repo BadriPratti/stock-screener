@@ -283,6 +283,12 @@ DASHBOARD_HTML = """
   .expand-btn { background: none; border: none; color: var(--blue); cursor: pointer; font-size: 11px; padding: 2px 0; }
   .expand-btn:hover { text-decoration: underline; }
 
+  .trade-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; border: 1px solid transparent; }
+  .trade-link.buy { background: rgba(34,197,94,0.15); color: var(--green); }
+  .trade-link.buy:hover { background: rgba(34,197,94,0.28); }
+  .trade-link.sell { background: rgba(239,68,68,0.15); color: var(--red); }
+  .trade-link.sell:hover { background: rgba(239,68,68,0.28); }
+
   .no-data { text-align: center; padding: 60px 20px; color: var(--muted); }
   .no-data h2 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
 
@@ -342,6 +348,7 @@ DASHBOARD_HTML = """
               <th>R:R</th>
               <th>RS</th>
               <th>Key Reasons</th>
+              <th>Trade</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -361,6 +368,7 @@ DASHBOARD_HTML = """
               <th>Severity</th>
               <th>Breakdown</th>
               <th>Reasons</th>
+              <th>Trade</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -505,7 +513,7 @@ function renderDashboard(d) {
   // Buy signals table
   const buyBody = document.querySelector('#buyTable tbody');
   if (d.buy_signals.length === 0) {
-    buyBody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:30px">No buy signals</td></tr>';
+    buyBody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:30px">No buy signals</td></tr>';
   } else {
     buyBody.innerHTML = d.buy_signals.map(s => {
       const pct = (s.score / (s.max_score || 125)) * 100;
@@ -529,6 +537,7 @@ function renderDashboard(d) {
         <td style="color:${(s.rr_ratio||0) >= 3 ? 'var(--green)' : (s.rr_ratio||0) >= 2 ? 'var(--text)' : 'var(--yellow)'}">${s.rr_ratio ? s.rr_ratio.toFixed(1) + ':1' : '-'}</td>
         <td style="color:${(s.rs||0) > 0.1 ? 'var(--green)' : (s.rs||0) > 0 ? 'var(--text)' : 'var(--red)'}">${s.rs != null ? s.rs.toFixed(3) : '-'}</td>
         <td><ul class="reasons-list">${topReasons}</ul>${extraHTML}</td>
+        <td><a class="trade-link buy" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Buy on RH ↗</a></td>
       </tr>`;
     }).join('');
   }
@@ -536,7 +545,7 @@ function renderDashboard(d) {
   // Sell signals table
   const sellBody = document.querySelector('#sellTable tbody');
   if (d.sell_signals.length === 0) {
-    sellBody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px">No sell signals</td></tr>';
+    sellBody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:30px">No sell signals</td></tr>';
   } else {
     sellBody.innerHTML = d.sell_signals.map(s => {
       const sevClass = (s.severity || 'medium').toLowerCase();
@@ -548,6 +557,7 @@ function renderDashboard(d) {
         <td><span class="badge ${sevClass}">${(s.severity || '?').toUpperCase()}</span></td>
         <td>${s.breakdown_level ? '$' + s.breakdown_level.toFixed(2) : '-'}</td>
         <td><ul class="reasons-list">${reasons}</ul></td>
+        <td><a class="trade-link sell" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Sell on RH ↗</a></td>
       </tr>`;
     }).join('');
   }
