@@ -34,6 +34,7 @@ from src.screening.benchmark import (
 from src.screening.signal_engine import score_buy_signal, score_sell_signal
 from src.data.enhanced_fundamentals import EnhancedFundamentalsFetcher
 from src.data.reddit_sentiment import RedditSentimentFetcher
+from src.data.insider_trading import InsiderTradingFetcher
 from src.screening.top20_ranker import build_top20
 
 logging.basicConfig(
@@ -449,12 +450,26 @@ def main():
                 total_mentions = sum(v['count'] for v in reddit_mentions.values())
                 logger.info(f"Reddit: {total_mentions} mentions found across {len(reddit_mentions)} tickers")
 
-        # Top 20: combined technical + Reddit-buzz ranking of the qualified buy pool,
-        # with "why is this moving" links (Reddit post + news headlines)
+        # Insider buying (SEC Form 4, "P" open-market purchases only) — no credentials
+        # needed, always available, so no gating check like Reddit/FMP.
+        insider_signals = {}
+        buy_tickers = {s['ticker'] for s in buy_signals}
+        if buy_tickers:
+            logger.info(f"Checking insider buying (SEC Form 4) for {len(buy_tickers)} buy signal tickers...")
+            insider_fetcher = InsiderTradingFetcher()
+            for ticker in buy_tickers:
+                signal = insider_fetcher.get_insider_signal(ticker)
+                if signal['purchases_90d'] > 0:
+                    insider_signals[ticker] = signal
+            total_insider_value = sum(v['total_buy_value'] for v in insider_signals.values())
+            logger.info(f"Insider buying: ${total_insider_value:,.0f} across {len(insider_signals)} tickers")
+
+        # Top 20: combined technical + Reddit-buzz + insider-buying ranking of the
+        # qualified buy pool, with "why is this moving" links
         top20 = []
         if buy_signals:
             logger.info("Building Top 20 shortlist...")
-            top20 = build_top20(buy_signals, reddit_mentions)
+            top20 = build_top20(buy_signals, reddit_mentions, insider_signals)
             top20_path = Path("./data/daily_scans/top20_latest.json")
             top20_path.parent.mkdir(parents=True, exist_ok=True)
             with open(top20_path, 'w') as f:
