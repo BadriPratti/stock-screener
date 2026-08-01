@@ -267,6 +267,44 @@ class EmailNotifier:
 """
         return html
 
+    def send_notification(self, subject: str, message: str) -> bool:
+        """Send a short plain-text status notification (e.g. "scan started").
+
+        Lighter-weight than send_scan_report — no HTML, no signal tables, just a
+        quick heads-up. Fails silently (logs + returns False) if unconfigured,
+        same as every other notifier method — never raises into the caller.
+
+        Args:
+            subject: Email subject line.
+            message: Plain-text body.
+
+        Returns:
+            True if sent successfully, False otherwise.
+        """
+        if not self.email_from or not self.email_password or not self.email_to:
+            logger.warning(f"Email not configured - skipping notification: {subject}")
+            return False
+
+        try:
+            msg = MIMEMultipart('alternative')
+            msg['From'] = self.email_from
+            msg['To'] = self.email_to
+            msg['Subject'] = subject
+            msg.attach(MIMEText(message, 'plain'))
+
+            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                server.starttls()
+                server.login(self.email_from, self.email_password)
+                recipients = [r.strip() for r in self.email_to.split(',')]
+                server.sendmail(self.email_from, recipients, msg.as_string())
+
+            logger.info(f"✓ Notification email sent: {subject}")
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed to send notification email: {e}")
+            return False
+
     def send_screening_results(
         self,
         results: pd.DataFrame,
@@ -344,7 +382,8 @@ class EmailNotifier:
         sell_signals: List[Dict],
         spy_analysis: Optional[Dict] = None,
         breadth: Optional[Dict] = None,
-        top_n: int = 15
+        top_n: int = 15,
+        top20: Optional[List[Dict]] = None
     ) -> bool:
         """Send the daily optimized full-market scan results via email.
 
@@ -359,6 +398,8 @@ class EmailNotifier:
             spy_analysis: Optional SPY trend dict (phase, trend, confidence) for context.
             breadth: Optional market breadth dict.
             top_n: Number of top candidates per list to include in the email.
+            top20: Optional pre-ranked shortlist from top20_ranker.build_top20() —
+                combined technical + Reddit-buzz score, with "why it's moving" links.
 
         Returns:
             True if email sent successfully, False otherwise.
@@ -380,8 +421,8 @@ class EmailNotifier:
             msg['To'] = self.email_to
             msg['Subject'] = subject
 
-            html_body = self._create_scan_html_email(buy_signals, sell_signals, spy_analysis, breadth, top_n)
-            text_body = self._create_scan_text_fallback(buy_signals, sell_signals, spy_analysis, top_n)
+            html_body = self._create_scan_html_email(buy_signals, sell_signals, spy_analysis, breadth, top_n, top20)
+            text_body = self._create_scan_text_fallback(buy_signals, sell_signals, spy_analysis, top_n, top20)
 
             msg.attach(MIMEText(text_body, 'plain'))
             msg.attach(MIMEText(html_body, 'html'))
@@ -420,13 +461,72 @@ class EmailNotifier:
         row += '    </tr>\n'
         return row
 
+    def _reddit_cell(self, count: Optional[int]) -> str:
+        """Render a Reddit mention count with hot-ticker styling for the email table."""
+        if count is None:
+            return '-'
+        if count == 0:
+            return '0'
+        if count >= 10:
+            return f'<strong style="color:#e67e22;">🔥 {count}</strong>'
+        return f'💬 {count}'
+
+    def _create_top20_html(self, top20: List[Dict]) -> str:
+        """Render the combined technical + Reddit-buzz Top 20 shortlist with why-links."""
+        if not top20:
+            return ""
+
+        cards = ""
+        for i, s in enumerate(top20, 1):
+            links_html = ""
+            for link in (s.get('why_links') or [])[:3]:
+                title = (link.get('title') or link['label'])[:70]
+                links_html += (
+                    f'<a href="{link["url"]}" style="display:block;font-size:11px;color:#3b82f6;'
+                    f'text-decoration:none;margin-top:3px;" target="_blank">'
+                    f'🔗 {link["label"]}: {title}</a>'
+                )
+            if not links_html:
+                links_html = '<span style="font-size:11px;color:#999;">No linked source yet</span>'
+
+            cards += f"""
+    <tr style="background-color: {'#f9f9f9' if i % 2 == 0 else 'white'};">
+      <td style="padding:10px;border:1px solid #ddd;font-weight:bold;">#{i}</td>
+      <td style="padding:10px;border:1px solid #ddd;">
+        <a href="https://robinhood.com/stocks/{s['ticker']}" style="color:#1a73e8;text-decoration:none;font-weight:bold;" target="_blank">{s['ticker']} ↗</a>
+      </td>
+      <td style="padding:10px;border:1px solid #ddd;">{s.get('combined_score', s.get('score', '-'))}</td>
+      <td style="padding:10px;border:1px solid #ddd;">{self._reddit_cell(s.get('reddit_mentions_24h'))}</td>
+      <td style="padding:10px;border:1px solid #ddd;">{links_html}</td>
+    </tr>"""
+
+        return f"""
+    <h2 style="color:#764ba2;">⭐ Top 20 — Combined Shortlist</h2>
+    <p style="color:#666;font-size:13px;margin-top:-8px;">
+        Technical/fundamental score first, re-ranked by Reddit buzz. Every entry already
+        passed the full screen — Reddit only boosts rank within that qualified pool.
+    </p>
+    <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+      <thead>
+        <tr style="background-color: #764ba2; color: white;">
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">#</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Ticker</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Combined Score</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Reddit</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Why it's moving</th>
+        </tr>
+      </thead>
+      <tbody>{cards}</tbody>
+    </table>"""
+
     def _create_scan_html_email(
         self,
         buy_signals: List[Dict],
         sell_signals: List[Dict],
         spy_analysis: Optional[Dict],
         breadth: Optional[Dict],
-        top_n: int
+        top_n: int,
+        top20: Optional[List[Dict]] = None
     ) -> str:
         """Build the HTML body for a Minervini-scan report email."""
         today = datetime.now().strftime('%B %d, %Y')
@@ -441,6 +541,8 @@ class EmailNotifier:
         {f"<p><strong>Breadth:</strong> {breadth.get('phase2_pct', 0):.1f}% of stocks in Phase 2 (uptrend)</p>" if breadth else ""}
     </div>"""
 
+        top20_html = self._create_top20_html(top20) if top20 else ""
+
         buy_rows = ""
         for i, s in enumerate(buy_signals[:top_n]):
             details = s.get('details', {})
@@ -453,6 +555,7 @@ class EmailNotifier:
                     f"${s['stop_loss']:.2f}" if s.get('stop_loss') else '-',
                     f"{s['risk_reward_ratio']:.1f}:1" if s.get('risk_reward_ratio') else '-',
                     f"{rs_slope:.2f}" if rs_slope is not None else '-',
+                    self._reddit_cell(s.get('reddit_mentions_24h')),
                     (s.get('reasons') or ['-'])[0],
                 ],
                 '#f9f9f9' if i % 2 == 0 else 'white',
@@ -467,10 +570,11 @@ class EmailNotifier:
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Stop Loss</th>
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">R:R</th>
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">RS</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Reddit</th>
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Top Reason</th>
         </tr>
       </thead>
-      <tbody>{buy_rows if buy_rows else '<tr><td colspan="7" style="padding:12px;text-align:center;color:#888;">No buy signals today</td></tr>'}</tbody>
+      <tbody>{buy_rows if buy_rows else '<tr><td colspan="8" style="padding:12px;text-align:center;color:#888;">No buy signals today</td></tr>'}</tbody>
     </table>"""
 
         sell_rows = ""
@@ -481,6 +585,7 @@ class EmailNotifier:
                     f"<strong>{s['score']}</strong>/110",
                     (s.get('severity', '-') or '-').upper(),
                     f"${s['breakdown_level']:.2f}" if s.get('breakdown_level') else '-',
+                    self._reddit_cell(s.get('reddit_mentions_24h')),
                     (s.get('reasons') or ['-'])[0],
                 ],
                 '#f9f9f9' if i % 2 == 0 else 'white',
@@ -493,10 +598,11 @@ class EmailNotifier:
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Score</th>
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Severity</th>
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Breakdown</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Reddit</th>
           <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Top Reason</th>
         </tr>
       </thead>
-      <tbody>{sell_rows if sell_rows else '<tr><td colspan="5" style="padding:12px;text-align:center;color:#888;">No sell signals today</td></tr>'}</tbody>
+      <tbody>{sell_rows if sell_rows else '<tr><td colspan="6" style="padding:12px;text-align:center;color:#888;">No sell signals today</td></tr>'}</tbody>
     </table>"""
 
         return f"""
@@ -518,6 +624,7 @@ class EmailNotifier:
         <p style="margin: 10px 0 0 0; font-size: 15px;">{today}</p>
     </div>
     {regime_html}
+    {top20_html}
     <h2 style="color:#27ae60;">🟢 Buy Signals ({len(buy_signals)})</h2>
     {buy_table}
     <h2 style="color:#e74c3c; margin-top:30px;">🔴 Sell Signals ({len(sell_signals)})</h2>
@@ -535,7 +642,8 @@ class EmailNotifier:
         buy_signals: List[Dict],
         sell_signals: List[Dict],
         spy_analysis: Optional[Dict],
-        top_n: int
+        top_n: int,
+        top20: Optional[List[Dict]] = None
     ) -> str:
         """Plain-text fallback for the scan report email."""
         today = datetime.now().strftime('%B %d, %Y')
@@ -544,12 +652,22 @@ class EmailNotifier:
         if spy_analysis:
             text += f"SPY: Phase {spy_analysis.get('phase', '?')} ({spy_analysis.get('trend', 'Unknown')})\n\n"
 
+        if top20:
+            text += "TOP 20 - COMBINED SHORTLIST:\n" + "-" * 60 + "\n"
+            for i, s in enumerate(top20, 1):
+                text += f"#{i:<3} {s['ticker']:<6} combined {s.get('combined_score', '-')}  reddit {s.get('reddit_mentions_24h', 0)}\n"
+                for link in (s.get('why_links') or [])[:2]:
+                    text += f"      -> {link['label']}: {link['url']}\n"
+            text += "\n"
+
         text += f"BUY SIGNALS ({len(buy_signals)}):\n" + "-" * 60 + "\n"
         if buy_signals:
             for s in buy_signals[:top_n]:
+                reddit = s.get('reddit_mentions_24h')
                 text += (
                     f"{s['ticker']:<6} score {s['score']}/125  "
                     f"stop ${s.get('stop_loss', 0):.2f}  "
+                    f"reddit {reddit if reddit is not None else '-'}  "
                     f"https://robinhood.com/stocks/{s['ticker']}\n"
                 )
         else:

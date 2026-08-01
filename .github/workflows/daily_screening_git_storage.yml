@@ -72,6 +72,8 @@ jobs:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           EMAIL_SMTP_SERVER: ${{ secrets.EMAIL_SMTP_SERVER || 'smtp.gmail.com' }}
           EMAIL_SMTP_PORT: ${{ secrets.EMAIL_SMTP_PORT || '587' }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           FORCE_FULL_REFRESH: ${{ github.event.inputs.force_full_refresh || 'false' }}
           CACHED_STOCKS: ${{ steps.cache-check.outputs.cached_stocks }}
         run: |

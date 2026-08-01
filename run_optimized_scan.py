@@ -17,6 +17,7 @@ Usage:
 """
 
 import argparse
+import json
 import logging
 import sys
 from datetime import datetime
@@ -32,6 +33,8 @@ from src.screening.benchmark import (
 )
 from src.screening.signal_engine import score_buy_signal, score_sell_signal
 from src.data.enhanced_fundamentals import EnhancedFundamentalsFetcher
+from src.data.reddit_sentiment import RedditSentimentFetcher
+from src.screening.top20_ranker import build_top20
 
 logging.basicConfig(
     level=logging.INFO,
@@ -181,6 +184,9 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
                 if vcp_quality >= 50:
                     output.append(f"{vcp_emoji} VCP: {pattern} (quality: {vcp_quality:.0f}/100)")
 
+            if signal.get('reddit_mentions_24h') is not None:
+                output.append(f"💬 Reddit Mentions (24h): {signal['reddit_mentions_24h']}")
+
             output.append("\nKey Reasons:")
             for reason in signal['reasons'][:7]:  # Show 7 instead of 5
                 output.append(f"  • {reason}")
@@ -242,6 +248,8 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
                 else:
                     rs_emoji = "🟢"  # Still positive RS (unusual for sell)
                 output.append(f"{rs_emoji} RS: {rs_slope:.3f}")
+            if signal.get('reddit_mentions_24h') is not None:
+                output.append(f"💬 Reddit Mentions (24h): {signal['reddit_mentions_24h']}")
             output.append("\nSell Reasons:")
             for reason in signal['reasons'][:5]:
                 output.append(f"  • {reason}")
@@ -308,6 +316,20 @@ def main():
 
     effective_tps = args.workers / args.delay
     logger.info(f"Configuration: {args.workers} workers × {1/args.delay:.1f} TPS = ~{effective_tps:.1f} TPS effective")
+
+    # "Hard search activated" notification — fires immediately on scan start, not
+    # at the end, so a manual/scheduled trigger is confirmed without waiting 15-30 min.
+    if not args.test_mode:
+        from src.notifications.email_notifier import EmailNotifier
+        EmailNotifier().send_notification(
+            subject="[Stock Screener] Hard Search Activated 🚀",
+            message=(
+                "Your full market scan (3,800+ stocks) just started.\n\n"
+                f"Workers: {args.workers} | Effective rate: ~{effective_tps:.1f} TPS\n"
+                "Expected runtime: 15-30 minutes.\n\n"
+                "You'll get a second email with the buy/sell signals when it finishes."
+            ),
+        )
 
     # Initialize enhanced fundamentals fetcher
     fundamentals_fetcher = EnhancedFundamentalsFetcher()
@@ -412,12 +434,42 @@ def main():
 
         sell_signals = sorted(sell_signals, key=lambda x: x['score'], reverse=True)
 
+        # Reddit mentions (no-ops if REDDIT_* env vars aren't set)
+        tickers_of_interest = {s['ticker'] for s in buy_signals} | {s['ticker'] for s in sell_signals}
+        reddit_mentions = {}
+        if tickers_of_interest:
+            reddit_fetcher = RedditSentimentFetcher()
+            if reddit_fetcher.available:
+                logger.info(f"Checking Reddit mentions for {len(tickers_of_interest)} signal tickers...")
+                reddit_mentions = reddit_fetcher.fetch_mentions(tickers_of_interest)
+                for signal in buy_signals:
+                    signal['reddit_mentions_24h'] = reddit_mentions.get(signal['ticker'], {}).get('count', 0)
+                for signal in sell_signals:
+                    signal['reddit_mentions_24h'] = reddit_mentions.get(signal['ticker'], {}).get('count', 0)
+                total_mentions = sum(v['count'] for v in reddit_mentions.values())
+                logger.info(f"Reddit: {total_mentions} mentions found across {len(reddit_mentions)} tickers")
+
+        # Top 20: combined technical + Reddit-buzz ranking of the qualified buy pool,
+        # with "why is this moving" links (Reddit post + news headlines)
+        top20 = []
+        if buy_signals:
+            logger.info("Building Top 20 shortlist...")
+            top20 = build_top20(buy_signals, reddit_mentions)
+            top20_path = Path("./data/daily_scans/top20_latest.json")
+            top20_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(top20_path, 'w') as f:
+                json.dump({
+                    'generated': datetime.now().isoformat(),
+                    'top20': top20,
+                }, f, indent=2, default=str)
+            logger.info(f"Top 20 saved: {top20_path}")
+
         # Report
         save_report(results, buy_signals, sell_signals, spy_analysis, breadth)
 
         # Email notification (no-ops with a logged warning if EMAIL_* env vars aren't set)
         from src.notifications.email_notifier import EmailNotifier
-        EmailNotifier().send_scan_report(buy_signals, sell_signals, spy_analysis, breadth)
+        EmailNotifier().send_scan_report(buy_signals, sell_signals, spy_analysis, breadth, top20=top20)
 
         # Show FMP usage if enabled
         if args.use_fmp:

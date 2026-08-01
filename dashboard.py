@@ -149,6 +149,10 @@ def parse_scan_file(filepath):
         if m:
             signal["volume_ratio"] = float(m.group(1))
 
+        m = re.search(r"Reddit Mentions \(24h\):\s*(\d+)", block)
+        if m:
+            signal["reddit_mentions"] = int(m.group(1))
+
         reasons = re.findall(r"[•]\s*(.+)", block)
         signal["reasons"] = [r.strip() for r in reasons[:7]]
 
@@ -182,6 +186,10 @@ def parse_scan_file(filepath):
         m = re.search(r"Breakdown:\s*\$([\d.]+)", block)
         if m:
             signal["breakdown_level"] = float(m.group(1))
+
+        m = re.search(r"Reddit Mentions \(24h\):\s*(\d+)", block)
+        if m:
+            signal["reddit_mentions"] = int(m.group(1))
 
         reasons = re.findall(r"[•]\s*(.+)", block)
         signal["reasons"] = [r.strip() for r in reasons[:5]]
@@ -334,6 +342,28 @@ DASHBOARD_HTML = """
       </div>
     </div>
 
+    <div class="card" style="margin-bottom:16px" id="top20Card">
+      <h2 style="color:#a855f7">⭐ Top 20 — Combined Shortlist</h2>
+      <div style="color:var(--muted);font-size:12px;margin-top:-8px;margin-bottom:12px">
+        Technical/fundamental score first, re-ranked by Reddit buzz. Every entry already passed the full screen.
+      </div>
+      <div style="overflow-x:auto">
+        <table class="signal-table" id="top20Table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Ticker</th>
+              <th>Combined Score</th>
+              <th>Reddit</th>
+              <th>Why it's moving</th>
+              <th>Trade</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="card" style="margin-bottom:16px">
       <h2 style="color:var(--green)">Buy Signals</h2>
       <div style="overflow-x:auto">
@@ -347,6 +377,7 @@ DASHBOARD_HTML = """
               <th>Stop Loss</th>
               <th>R:R</th>
               <th>RS</th>
+              <th>Reddit</th>
               <th>Key Reasons</th>
               <th>Trade</th>
             </tr>
@@ -367,6 +398,7 @@ DASHBOARD_HTML = """
               <th>Score</th>
               <th>Severity</th>
               <th>Breakdown</th>
+              <th>Reddit</th>
               <th>Reasons</th>
               <th>Trade</th>
             </tr>
@@ -411,6 +443,36 @@ async function loadScan(path) {
     return;
   }
   renderDashboard(data);
+  loadTop20();
+}
+
+async function loadTop20() {
+  const res = await fetch('/api/top20');
+  const data = await res.json();
+  renderTop20(data.top20 || []);
+}
+
+function renderTop20(top20) {
+  const card = document.getElementById('top20Card');
+  const body = document.querySelector('#top20Table tbody');
+  if (!top20 || top20.length === 0) {
+    card.style.display = 'none';
+    return;
+  }
+  card.style.display = '';
+  body.innerHTML = top20.map((s, i) => {
+    const links = (s.why_links || []).slice(0, 3).map(l =>
+      `<a href="${l.url}" target="_blank" rel="noopener" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;margin-bottom:3px;">🔗 ${l.label}${l.title ? ': ' + l.title.slice(0, 60) : ''}</a>`
+    ).join('');
+    return `<tr>
+      <td>#${i + 1}</td>
+      <td><span class="ticker">${s.ticker}</span></td>
+      <td><span class="score-num">${s.combined_score ?? s.score ?? '-'}</span></td>
+      <td>${redditCell(s.reddit_mentions_24h)}</td>
+      <td>${links || '<span style="color:var(--muted);font-size:11px">No linked source yet</span>'}</td>
+      <td><a class="trade-link buy" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Buy on RH ↗</a></td>
+    </tr>`;
+  }).join('');
 }
 
 function renderDashboard(d) {
@@ -513,7 +575,7 @@ function renderDashboard(d) {
   // Buy signals table
   const buyBody = document.querySelector('#buyTable tbody');
   if (d.buy_signals.length === 0) {
-    buyBody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:30px">No buy signals</td></tr>';
+    buyBody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:var(--muted);padding:30px">No buy signals</td></tr>';
   } else {
     buyBody.innerHTML = d.buy_signals.map(s => {
       const pct = (s.score / (s.max_score || 125)) * 100;
@@ -536,6 +598,7 @@ function renderDashboard(d) {
         <td>${s.stop_loss ? '$' + s.stop_loss.toFixed(2) : '-'}</td>
         <td style="color:${(s.rr_ratio||0) >= 3 ? 'var(--green)' : (s.rr_ratio||0) >= 2 ? 'var(--text)' : 'var(--yellow)'}">${s.rr_ratio ? s.rr_ratio.toFixed(1) + ':1' : '-'}</td>
         <td style="color:${(s.rs||0) > 0.1 ? 'var(--green)' : (s.rs||0) > 0 ? 'var(--text)' : 'var(--red)'}">${s.rs != null ? s.rs.toFixed(3) : '-'}</td>
+        <td>${redditCell(s.reddit_mentions)}</td>
         <td><ul class="reasons-list">${topReasons}</ul>${extraHTML}</td>
         <td><a class="trade-link buy" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Buy on RH ↗</a></td>
       </tr>`;
@@ -545,7 +608,7 @@ function renderDashboard(d) {
   // Sell signals table
   const sellBody = document.querySelector('#sellTable tbody');
   if (d.sell_signals.length === 0) {
-    sellBody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:30px">No sell signals</td></tr>';
+    sellBody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:30px">No sell signals</td></tr>';
   } else {
     sellBody.innerHTML = d.sell_signals.map(s => {
       const sevClass = (s.severity || 'medium').toLowerCase();
@@ -556,11 +619,19 @@ function renderDashboard(d) {
         <td><span class="score-num">${s.score}</span></td>
         <td><span class="badge ${sevClass}">${(s.severity || '?').toUpperCase()}</span></td>
         <td>${s.breakdown_level ? '$' + s.breakdown_level.toFixed(2) : '-'}</td>
+        <td>${redditCell(s.reddit_mentions)}</td>
         <td><ul class="reasons-list">${reasons}</ul></td>
         <td><a class="trade-link sell" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Sell on RH ↗</a></td>
       </tr>`;
     }).join('');
   }
+}
+
+function redditCell(count) {
+  if (count == null) return '<span style="color:var(--muted)">-</span>';
+  if (count === 0) return '<span style="color:var(--muted)">0</span>';
+  const hot = count >= 10;
+  return `<span style="color:${hot ? 'var(--yellow)' : 'var(--text)'};font-weight:${hot ? 700 : 400}">${hot ? '🔥 ' : '💬 '}${count}</span>`;
 }
 
 function cleanEmoji(text) {
@@ -647,6 +718,17 @@ def api_scan():
         return jsonify({"error": "File not found"})
 
     return jsonify(parse_scan_file(path))
+
+
+@app.route("/api/top20")
+def api_top20():
+    path = SCAN_DIR / "top20_latest.json"
+    if not path.exists():
+        return jsonify({"generated": None, "top20": []})
+    try:
+        return jsonify(json.loads(path.read_text()))
+    except (json.JSONDecodeError, OSError):
+        return jsonify({"generated": None, "top20": []})
 
 
 @app.route("/api/run-scan", methods=["POST"])
