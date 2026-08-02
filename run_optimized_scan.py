@@ -19,6 +19,7 @@ Usage:
 import argparse
 import json
 import logging
+import random
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -352,8 +353,10 @@ def main():
         logger.info(f"Universe: {len(tickers):,} stocks")
 
         if args.test_mode:
-            tickers = tickers[:100]
-            logger.info(f"TEST MODE: {len(tickers)} stocks")
+            # universe_fetcher sorts alphabetically, so tickers[:100] would always be
+            # the same ~100 "A" names every run — random sample instead for real coverage.
+            tickers = random.sample(tickers, min(100, len(tickers)))
+            logger.info(f"TEST MODE: {len(tickers)} random stocks")
 
         # Initialize processor
         processor = OptimizedBatchProcessor(
