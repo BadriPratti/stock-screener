@@ -97,6 +97,15 @@ def build_top20(
         insider_info = entry.pop('_insider_info', {})
         why_links = []
 
+        # Earnings risk is a WARNING, not a bullish reason — shown first, distinct label.
+        earnings_risk = entry.get('earnings_risk')
+        if earnings_risk and earnings_risk.get('has_upcoming_earnings'):
+            why_links.append({
+                'label': '⚠️ Earnings Risk',
+                'title': earnings_risk['note'],
+                'url': f"https://finance.yahoo.com/calendar/earnings?symbol={entry['ticker']}",
+            })
+
         if insider_info.get('top_buy_url'):
             top_buyer = (insider_info.get('buyers') or [{}])[0]
             buyer_desc = top_buyer.get('officer_title') or ('Director' if top_buyer.get('is_director') else 'Insider')

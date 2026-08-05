@@ -106,16 +106,23 @@ def score_buy_signal(
 
     Based on Weinstein/O'Neil/Minervini Stage 2 methodology with gradual scoring.
 
-    Scoring Components (0-125):
-    - Trend structure/Stage quality: 40 points
-    - Fundamentals: 40 points (growth, margins, inventory)
-    - Risk/Reward: 15 points (asymmetric upside - key for growth!)
-    - Relative Strength: 10 points (market-relative performance)
-    - Volume behavior: 10 points (directional context matters!)
-    - Entry quality: 5 points
-    - VCP pattern bonus: +5 points (if valid VCP detected)
+    Scoring Components (0-125), reweighted per component_correlation_analysis.py
+    backtesting (2 independent historical windows, real forward returns, no look-ahead):
+    - Trend structure/Stage quality: 35 points (was 40 — real but modest correlation)
+    - Fundamentals: 35 points (was 40 — untested by the backtest, not disproven; see note below)
+    - Entry quality: 25 points (was 5 — BY FAR the strongest predictor found, +0.40/+0.48
+      correlation across both windows, stronger than the blended total score itself)
+    - Risk/Reward: 10 points (was 15 — weak/inconsistent correlation, +0.04/+0.26)
+    - Relative Strength: 10 points (unchanged — correlation flipped sign between windows,
+      +0.16/-0.21, too inconsistent to confidently reweight either direction)
+    - Volume behavior: 5 points (was 10 — no positive correlation in either window, -0.02/-0.18)
+    - VCP pattern bonus: +5 points (unchanged, not separately tested)
 
-    Threshold: >= 70 for signals
+    Note: Fundamentals couldn't be backtested because point-in-time quarterly data (as it
+    existed on a historical date, without look-ahead) is harder to reconstruct than price
+    history — its weight was trimmed modestly on general principle, not specific evidence.
+
+    Threshold: >= 60 for signals (docstring previously said 70 - corrected to match code)
 
     Args:
         ticker: Stock ticker
@@ -238,8 +245,12 @@ def score_buy_signal(
         trend_score -= 5
         reasons.append(f'Moderately extended above 50 SMA')
 
-    score += min(trend_score, 40)  # 40 points for technical trend
-    details['trend_score'] = min(trend_score, 40)
+    # Reweighted 40->35 pts: component_correlation_analysis.py backtest found trend_score
+    # correlates only weakly with forward returns (+0.10, +0.16 across 2 windows) — real
+    # but modest, so it gives up a little weight to entry_score (see below).
+    trend_score_final = min(trend_score, 40) * (35 / 40)
+    score += trend_score_final
+    details['trend_score'] = round(trend_score_final, 2)
 
     # ========================================================================
     # 2. FUNDAMENTALS (40 points) - EQUAL WEIGHT REVENUE & EPS
@@ -364,14 +375,17 @@ def score_buy_signal(
         # TODO: Add when margin data available
         fundamental_score += 10  # Placeholder - assume neutral
 
-        details['fundamental_score'] = fundamental_score
     else:
         # No fundamentals available - neutral score
         fundamental_score = 20  # Half of 40
         reasons.append('No fundamental data available')
-        details['fundamental_score'] = fundamental_score
 
-    score += fundamental_score
+    # Reweighted 40->35 pts: this backtest couldn't validate fundamental_score at all
+    # (requires real point-in-time quarterly data, harder to get without look-ahead than
+    # truncating price history) — modest reduction reflects "untested," not "disproven."
+    fundamental_score_final = fundamental_score * (35 / 40)
+    details['fundamental_score'] = round(fundamental_score_final, 2)
+    score += fundamental_score_final
 
     # ========================================================================
     # 3. VOLUME BEHAVIOR (10 points) - DIRECTIONAL CONTEXT MATTERS!
@@ -424,12 +438,16 @@ def score_buy_signal(
 
         details['avg_vol_up'] = round(avg_vol_up, 0)
         details['avg_vol_down'] = round(avg_vol_down, 0)
-        details['volume_score'] = volume_score
     else:
         volume_score = 5  # Neutral if no data
-        details['volume_score'] = volume_score
 
-    score += volume_score
+    # Reweighted 10->5 pts: component_correlation_analysis.py backtest found volume_score
+    # showed NO positive correlation with forward returns in either of 2 independent
+    # windows (-0.02, -0.18) — cut in half rather than removed entirely since it's still
+    # only 2 windows of evidence, but this is the weakest-performing component tested.
+    volume_score_final = volume_score * 0.5
+    details['volume_score'] = round(volume_score_final, 2)
+    score += volume_score_final
 
     # ========================================================================
     # 4. RELATIVE STRENGTH (10 points) - Market-relative performance
@@ -534,8 +552,13 @@ def score_buy_signal(
         details['risk_reward_ratio'] = 0
         rr_score = 0
 
-    score += rr_score
-    details['rr_score'] = round(rr_score, 2)
+    # Reweighted 15->10 pts: component_correlation_analysis.py backtest found rr_score's
+    # correlation with forward returns was weak/inconsistent between the 2 windows tested
+    # (+0.04, +0.26) — still risk-management-relevant (why it isn't cut further), just not
+    # a strong predictor on its own.
+    rr_score_final = rr_score * (10 / 15)
+    score += rr_score_final
+    details['rr_score'] = round(rr_score_final, 2)
 
     # ========================================================================
     # 7. ENTRY QUALITY (5 points) - Minervini Pivot Point Methodology
@@ -611,8 +634,14 @@ def score_buy_signal(
         else:
             reasons.append(f'Outside ideal entry zone: {distance_50:.1f}% from 50 SMA')
 
-    score += entry_score
-    details['entry_score'] = round(entry_score, 2)
+    # Reweighted 5->25 pts: component_correlation_analysis.py backtest found entry_score
+    # was BY FAR the strongest predictor of forward returns of any component, consistently
+    # across 2 independent windows (+0.40, +0.48) — stronger than the blended total score
+    # itself (+0.18, +0.08). It was previously only 4% of the total score despite being the
+    # most reliable signal found; this brings its weight in line with that evidence.
+    entry_score_final = entry_score * 5
+    score += entry_score_final
+    details['entry_score'] = round(entry_score_final, 2)
 
     # ========================================================================
     # 8. VCP PATTERN BONUS (5 points) - Minervini's VCP Methodology
@@ -658,7 +687,7 @@ def score_buy_signal(
     score += vcp_bonus
     details['vcp_bonus'] = round(vcp_bonus, 2)
 
-    # Final score (out of 125: 40 technical + 40 fundamental + 15 R/R + 10 RS + 10 volume + 5 entry + 5 VCP)
+    # Final score (out of 125: 35 technical + 35 fundamental + 25 entry + 10 R/R + 10 RS + 5 volume + 5 VCP)
     final_score = max(0, min(score, 125))
 
     # Determine if this is a valid buy signal (>= 60)

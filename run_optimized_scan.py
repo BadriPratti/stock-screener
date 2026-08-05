@@ -36,6 +36,7 @@ from src.screening.signal_engine import score_buy_signal, score_sell_signal
 from src.data.enhanced_fundamentals import EnhancedFundamentalsFetcher
 from src.data.reddit_sentiment import RedditSentimentFetcher
 from src.data.insider_trading import InsiderTradingFetcher
+from src.data.earnings_risk import EarningsRiskFetcher
 from src.screening.top20_ranker import build_top20
 
 logging.basicConfig(
@@ -438,8 +439,26 @@ def main():
 
         sell_signals = sorted(sell_signals, key=lambda x: x['score'], reverse=True)
 
-        # Reddit mentions (no-ops if REDDIT_* env vars aren't set)
+        # Earnings risk warning — NOT a bullish/bearish signal, just a heads-up that a
+        # high-uncertainty event (which trend-following can't predict) is imminent. No
+        # credentials needed, always available, applies to both buy and sell signals.
         tickers_of_interest = {s['ticker'] for s in buy_signals} | {s['ticker'] for s in sell_signals}
+        if tickers_of_interest:
+            logger.info(f"Checking earnings risk for {len(tickers_of_interest)} signal tickers...")
+            earnings_fetcher = EarningsRiskFetcher()
+            flagged = 0
+            for signal in buy_signals + sell_signals:
+                risk = earnings_fetcher.get_earnings_risk(signal['ticker'])
+                if risk['has_upcoming_earnings']:
+                    signal['earnings_risk'] = risk
+                    # Inserted into `reasons` (not a separate field) so it flows through
+                    # the existing text report / email "top reason" / dashboard bullet
+                    # rendering automatically, without needing parallel display code.
+                    signal['reasons'].insert(0, f"⚠️ {risk['note']}")
+                    flagged += 1
+            logger.info(f"Earnings risk: {flagged} tickers have earnings within 14 days")
+
+        # Reddit mentions (no-ops if REDDIT_* env vars aren't set)
         reddit_mentions = {}
         if tickers_of_interest:
             reddit_fetcher = RedditSentimentFetcher()
