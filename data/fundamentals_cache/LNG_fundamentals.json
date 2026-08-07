@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "LNG",
-    "fetch_date": "2026-07-31T03:22:47.670078",
+    "fetch_date": "2026-08-07T13:15:37.683504",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 5444000000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.116,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:22:47.671837"
+  "fetched_at": "2026-08-07T13:15:37.684995"
 }

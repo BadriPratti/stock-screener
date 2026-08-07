@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SFM",
-    "fetch_date": "2026-07-31T03:39:41.786047",
+    "fetch_date": "2026-08-07T13:32:34.044465",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 2220602000.0,
       "2025-09-30 00:00:00": 2200430000.0,
@@ -36,5 +36,5 @@
     "inventory_to_sales_ratio": 0.188,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:39:41.787792"
+  "fetched_at": "2026-08-07T13:32:34.045926"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SPB",
-    "fetch_date": "2026-07-31T03:41:44.977892",
+    "fetch_date": "2026-08-07T13:34:37.508749",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 675700000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.687,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:41:44.979690"
+  "fetched_at": "2026-08-07T13:34:37.510468"
 }

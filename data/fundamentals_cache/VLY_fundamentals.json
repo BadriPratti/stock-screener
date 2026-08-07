@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "VLY",
-    "fetch_date": "2026-07-31T03:48:29.969274",
+    "fetch_date": "2026-08-07T13:41:22.276790",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 478413000.0,
@@ -26,5 +26,5 @@
     "eps_yoy_change": 31.818181818181806,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:48:29.969904"
+  "fetched_at": "2026-08-07T13:41:22.277471"
 }

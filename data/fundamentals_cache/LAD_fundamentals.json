@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "LAD",
-    "fetch_date": "2026-07-31T03:21:27.672264",
+    "fetch_date": "2026-08-07T13:14:17.657732",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 9583000000.0,
@@ -13,15 +13,15 @@
     "revenue_qoq_change": 5.607567357680609,
     "revenue_yoy_change": 2.173640822289471,
     "quarterly_eps": {
-      "2025-03-31 00:00:00": 7.94,
+      "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 9.87,
       "2025-09-30 00:00:00": 8.61,
       "2025-12-31 00:00:00": 5.72,
       "2026-03-31 00:00:00": 4.28,
-      "2026-06-30 00:00:00": NaN
+      "2026-06-30 00:00:00": 11.54
     },
-    "eps_qoq_change": null,
-    "eps_yoy_change": null,
+    "eps_qoq_change": 169.62616822429902,
+    "eps_yoy_change": 16.919959473150964,
     "gross_margin": 15.29,
     "margin_change": -0.04,
     "operating_margin": 4.04,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.666,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:21:27.673994"
+  "fetched_at": "2026-08-07T13:14:17.659237"
 }

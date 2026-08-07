@@ -1,19 +1,17 @@
 {
   "data": {
     "ticker": "MC",
-    "fetch_date": "2026-07-31T03:24:17.744087",
+    "fetch_date": "2026-08-07T13:17:06.472025",
     "quarterly_revenue": {
-      "2025-03-31 00:00:00": 306593000.0,
       "2025-06-30 00:00:00": 365376000.0,
       "2025-09-30 00:00:00": 356892000.0,
       "2025-12-31 00:00:00": 487935000.0,
       "2026-03-31 00:00:00": 319780000.0,
-      "2026-06-30 00:00:00": NaN
+      "2026-06-30 00:00:00": 409387000.0
     },
-    "revenue_qoq_change": null,
-    "revenue_yoy_change": null,
+    "revenue_qoq_change": 28.021452248420793,
+    "revenue_yoy_change": 12.045399807321774,
     "quarterly_eps": {
-      "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 0.53,
       "2025-09-30 00:00:00": 0.67,
       "2025-12-31 00:00:00": 1.1,
@@ -22,10 +20,10 @@
     },
     "eps_qoq_change": 29.166666666666668,
     "eps_yoy_change": 16.98113207547169,
-    "gross_margin": NaN,
-    "margin_change": NaN,
-    "operating_margin": NaN,
+    "gross_margin": 34.2,
+    "margin_change": -0.0,
+    "operating_margin": 17.79,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:24:17.745436"
+  "fetched_at": "2026-08-07T13:17:06.473168"
 }

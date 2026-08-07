@@ -1,18 +1,18 @@
 {
   "data": {
     "ticker": "XPO",
-    "fetch_date": "2026-07-31T03:51:11.944242",
+    "fetch_date": "2026-08-07T13:44:03.339101",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
-      "2025-03-31 00:00:00": 1954000000.0,
+      "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 2080000000.0,
       "2025-09-30 00:00:00": 2111000000.0,
       "2025-12-31 00:00:00": 2011000000.0,
       "2026-03-31 00:00:00": 2096000000.0,
-      "2026-06-30 00:00:00": NaN
+      "2026-06-30 00:00:00": 2355000000.0
     },
-    "revenue_qoq_change": null,
-    "revenue_yoy_change": null,
+    "revenue_qoq_change": 12.356870229007635,
+    "revenue_yoy_change": 13.221153846153847,
     "quarterly_eps": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": NaN,
@@ -24,10 +24,10 @@
     },
     "eps_qoq_change": 60.00000000000002,
     "eps_yoy_change": 52.80898876404495,
-    "gross_margin": NaN,
-    "margin_change": NaN,
-    "operating_margin": NaN,
+    "gross_margin": 14.95,
+    "margin_change": 3.54,
+    "operating_margin": 12.31,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:51:11.945556"
+  "fetched_at": "2026-08-07T13:44:03.340365"
 }

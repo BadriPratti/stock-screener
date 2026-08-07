@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "VNOM",
-    "fetch_date": "2026-07-31T03:48:38.936078",
+    "fetch_date": "2026-08-07T13:41:31.490614",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 245000000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 49.51,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:48:38.937422"
+  "fetched_at": "2026-08-07T13:41:31.492993"
 }

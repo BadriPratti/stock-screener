@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "RL",
-    "fetch_date": "2026-07-31T03:37:16.889674",
+    "fetch_date": "2026-08-07T13:30:09.186864",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 1697300000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.513,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:37:16.891505"
+  "fetched_at": "2026-08-07T13:30:09.189657"
 }

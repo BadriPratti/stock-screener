@@ -1,18 +1,18 @@
 {
   "data": {
     "ticker": "WHD",
-    "fetch_date": "2026-07-31T03:49:57.995991",
+    "fetch_date": "2026-08-07T13:42:49.309213",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
-      "2025-03-31 00:00:00": 280319000.0,
+      "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 273575000.0,
       "2025-09-30 00:00:00": 263954000.0,
       "2025-12-31 00:00:00": 261203000.0,
       "2026-03-31 00:00:00": 388349000.0,
-      "2026-06-30 00:00:00": NaN
+      "2026-06-30 00:00:00": 449528000.0
     },
-    "revenue_qoq_change": null,
-    "revenue_yoy_change": null,
+    "revenue_qoq_change": 15.75361337353772,
+    "revenue_yoy_change": 64.31618386182947,
     "quarterly_eps": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": NaN,
@@ -24,20 +24,20 @@
     },
     "eps_qoq_change": 200.0,
     "eps_yoy_change": 18.644067796610166,
-    "gross_margin": NaN,
-    "margin_change": NaN,
-    "operating_margin": NaN,
+    "gross_margin": 33.31,
+    "margin_change": 4.57,
+    "operating_margin": 18.59,
     "quarterly_inventory": {
       "2024-12-31 00:00:00": NaN,
-      "2025-03-31 00:00:00": 230264000.0,
       "2025-06-30 00:00:00": 246420000.0,
       "2025-09-30 00:00:00": 271278000.0,
       "2025-12-31 00:00:00": 276613000.0,
-      "2026-03-31 00:00:00": 404210000.0
+      "2026-03-31 00:00:00": 404210000.0,
+      "2026-06-30 00:00:00": 387041000.0
     },
-    "inventory_qoq_change": 46.13,
-    "inventory_to_sales_ratio": NaN,
+    "inventory_qoq_change": -4.25,
+    "inventory_to_sales_ratio": 0.861,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:49:57.997774"
+  "fetched_at": "2026-08-07T13:42:49.310738"
 }

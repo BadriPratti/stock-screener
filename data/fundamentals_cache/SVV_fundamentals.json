@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SVV",
-    "fetch_date": "2026-07-31T03:43:11.812558",
+    "fetch_date": "2026-08-07T13:36:05.151065",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 370145000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.111,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:43:11.814393"
+  "fetched_at": "2026-08-07T13:36:05.152606"
 }

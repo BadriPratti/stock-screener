@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "RYZ",
-    "fetch_date": "2026-07-31T03:38:23.789254",
+    "fetch_date": "2026-08-07T13:31:15.830151",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": NaN,
@@ -15,15 +15,15 @@
     "revenue_yoy_change": 71.57273582485247,
     "quarterly_eps": {
       "2024-12-31 00:00:00": NaN,
-      "2025-03-31 00:00:00": -0.18,
+      "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 0.06,
       "2025-09-30 00:00:00": -0.46,
       "2025-12-31 00:00:00": -1.18,
       "2026-03-31 00:00:00": 0.1,
-      "2026-06-30 00:00:00": NaN
+      "2026-06-30 00:00:00": 0.3
     },
-    "eps_qoq_change": null,
-    "eps_yoy_change": null,
+    "eps_qoq_change": 199.99999999999997,
+    "eps_yoy_change": 400.0,
     "gross_margin": 17.71,
     "margin_change": -0.73,
     "operating_margin": 1.74,
@@ -40,5 +40,5 @@
     "inventory_to_sales_ratio": 0.595,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-07-31T03:38:23.791082"
+  "fetched_at": "2026-08-07T13:31:15.831687"
 }
