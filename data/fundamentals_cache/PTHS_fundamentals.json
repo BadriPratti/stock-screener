@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "PTHS",
-    "fetch_date": "2026-08-04T18:26:19.875252",
+    "fetch_date": "2026-08-12T13:32:27.317852",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 0.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 2.147,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-04T18:26:19.877125"
+  "fetched_at": "2026-08-12T13:32:27.319596"
 }
