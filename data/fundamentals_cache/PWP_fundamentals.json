@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "PWP",
-    "fetch_date": "2026-08-05T14:31:37.348881",
+    "fetch_date": "2026-08-13T13:34:22.638551",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 155267000.0,
       "2025-09-30 00:00:00": 164645000.0,
@@ -25,5 +25,5 @@
     "operating_margin": 3.23,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-05T14:31:37.350192"
+  "fetched_at": "2026-08-13T13:34:22.639929"
 }
