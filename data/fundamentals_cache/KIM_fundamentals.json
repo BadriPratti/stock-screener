@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "KIM",
-    "fetch_date": "2026-08-07T13:13:16.777347",
+    "fetch_date": "2026-08-14T13:14:36.814957",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": NaN,
@@ -29,5 +29,5 @@
     "operating_margin": 36.56,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:13:16.778532"
+  "fetched_at": "2026-08-14T13:14:36.816127"
 }

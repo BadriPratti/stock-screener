@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ANF",
-    "fetch_date": "2026-08-06T13:47:21.333290",
+    "fetch_date": "2026-08-14T12:46:50.485834",
     "quarterly_revenue": {
       "2025-04-30 00:00:00": 1097311000.0,
       "2025-07-31 00:00:00": 1208560000.0,
@@ -35,5 +35,5 @@
     "inventory_to_sales_ratio": 0.478,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-06T13:47:21.335010"
+  "fetched_at": "2026-08-14T12:46:50.487404"
 }

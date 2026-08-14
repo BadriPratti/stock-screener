@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MTB",
-    "fetch_date": "2026-08-07T13:19:25.633727",
+    "fetch_date": "2026-08-14T13:20:45.690739",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 2386000000.0,
@@ -24,5 +24,5 @@
     "eps_yoy_change": 25.471698113207548,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:19:25.634383"
+  "fetched_at": "2026-08-14T13:20:45.691419"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MZTI",
-    "fetch_date": "2026-08-06T14:21:50.340621",
+    "fetch_date": "2026-08-14T13:21:21.922285",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": 509301000.0,
       "2025-03-31 00:00:00": 457836000.0,
@@ -36,5 +36,5 @@
     "inventory_to_sales_ratio": 0.387,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-06T14:21:50.342366"
+  "fetched_at": "2026-08-14T13:21:21.923797"
 }

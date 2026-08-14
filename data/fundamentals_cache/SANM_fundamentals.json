@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SANM",
-    "fetch_date": "2026-08-07T13:31:32.006533",
+    "fetch_date": "2026-08-14T13:32:52.357937",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 2041562000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.91,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:31:32.008041"
+  "fetched_at": "2026-08-14T13:32:52.359501"
 }

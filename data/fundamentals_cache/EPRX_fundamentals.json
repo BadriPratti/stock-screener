@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "EPRX",
-    "fetch_date": "2026-08-07T13:01:28.657123",
+    "fetch_date": "2026-08-14T13:02:47.722633",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 0.0,
@@ -25,5 +25,5 @@
     "operating_margin": 0,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:01:28.658016"
+  "fetched_at": "2026-08-14T13:02:47.723517"
 }

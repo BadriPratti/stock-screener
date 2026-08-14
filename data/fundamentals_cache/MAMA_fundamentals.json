@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MAMA",
-    "fetch_date": "2026-08-07T13:16:39.543810",
+    "fetch_date": "2026-08-14T13:17:59.889233",
     "quarterly_revenue": {
       "2025-01-31 00:00:00": NaN,
       "2025-04-30 00:00:00": 35255000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.171,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:16:39.545304"
+  "fetched_at": "2026-08-14T13:17:59.890821"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SHOO",
-    "fetch_date": "2026-08-07T13:32:56.073309",
+    "fetch_date": "2026-08-14T13:34:16.387971",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": NaN,
@@ -40,5 +40,5 @@
     "inventory_to_sales_ratio": 0.566,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:32:56.074810"
+  "fetched_at": "2026-08-14T13:34:16.389493"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ASMB",
-    "fetch_date": "2026-08-07T12:46:52.399558",
+    "fetch_date": "2026-08-14T12:48:09.546795",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 9419000.0,
@@ -25,5 +25,5 @@
     "operating_margin": -138.44,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T12:46:52.400540"
+  "fetched_at": "2026-08-14T12:48:09.547743"
 }

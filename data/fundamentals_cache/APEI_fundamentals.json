@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "APEI",
-    "fetch_date": "2026-08-06T13:47:41.416211",
+    "fetch_date": "2026-08-14T12:47:10.884151",
     "quarterly_revenue": {
       "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": 164551000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 12.47,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-06T13:47:41.417545"
+  "fetched_at": "2026-08-14T12:47:10.885363"
 }

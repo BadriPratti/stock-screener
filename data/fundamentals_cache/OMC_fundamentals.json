@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "OMC",
-    "fetch_date": "2026-08-07T13:23:31.962848",
+    "fetch_date": "2026-08-14T13:24:51.108843",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 4015600000.0,
@@ -38,5 +38,5 @@
     "inventory_to_sales_ratio": 0.558,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-08-07T13:23:31.964361"
+  "fetched_at": "2026-08-14T13:24:51.110427"
 }
