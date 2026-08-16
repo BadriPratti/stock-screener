@@ -7234,5 +7234,13 @@
   "ZUMZ": {
     "last_updated": "2026-08-14T13:46:10.615488",
     "in_earnings_season": true
+  },
+  "IMXI": {
+    "last_updated": "2026-08-16T18:18:57.716314",
+    "in_earnings_season": false
+  },
+  "TLSI": {
+    "last_updated": "2026-08-16T18:45:45.024491",
+    "in_earnings_season": false
   }
 }
