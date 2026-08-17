@@ -7242,5 +7242,17 @@
   "TLSI": {
     "last_updated": "2026-08-16T18:45:45.024491",
     "in_earnings_season": false
+  },
+  "METC": {
+    "last_updated": "2026-08-17T13:00:15.886834",
+    "in_earnings_season": false
+  },
+  "ONCH": {
+    "last_updated": "2026-08-17T13:06:11.916338",
+    "in_earnings_season": false
+  },
+  "RM": {
+    "last_updated": "2026-08-17T13:12:48.880388",
+    "in_earnings_season": false
   }
 }
