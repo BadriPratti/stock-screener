@@ -1,0 +1,200 @@
+{
+  "generated": "2026-08-16T14:17:12.468852",
+  "results": [
+    {
+      "ticker": "MSBI",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "Midland States Bancorp topped Q2 EPS and revenue estimates in late July, triggering a wave of Zacks Strong Buy/value/momentum screen articles that are keeping the stock bid. No insider buying and the headlines are largely recycled Zacks screens, so the underlying catalyst is a modest earnings beat plus estimate-revision momentum."
+      }
+    },
+    {
+      "ticker": "CASS",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_miss",
+        "catalyst_score": -3,
+        "confidence": "high",
+        "summary": "Cass Information Systems missed both earnings and revenue estimates in its Q2 report, and freight volume recovery has been pushed out, undercutting the prior bullish setup. No insider buying to offset the negative print."
+      }
+    },
+    {
+      "ticker": "GIC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "low",
+        "summary": "Global Industrial's Q2 2026 report drew coverage citing strong revenue growth, buybacks, and a modestly undervalued valuation, which appears to be the main driver. The news is a week-plus stale and there is no insider buying, so the catalyst is mild rather than fresh."
+      }
+    },
+    {
+      "ticker": "NMM",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "NMM is being driven by technical momentum after a ~50% rally, with IBD naming it 'Stock Of The Day' near a buy point rather than any fresh fundamental news. The most recent company-specific items (Q1 earnings, $500M shelf) are months stale, and there is no insider buying."
+      }
+    },
+    {
+      "ticker": "ATLC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "Atlanticus reported Q2 2026 results with record profits and revenue that impressed some outlets, though EPS merely met consensus estimates, leaving a modestly positive but somewhat stale earnings catalyst. Follow-up commentary on Mercury card growth and credit performance is sustaining interest, with no insider buying to reinforce the signal."
+      }
+    },
+    {
+      "ticker": "JRSH",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 3,
+        "confidence": "medium",
+        "summary": "Jerash reported its fiscal Q1 2027 results with record revenue and a reported fivefold jump in profitability, following a similarly strong record-revenue Q4, which is driving the move. No insider buying or other corporate catalyst is present."
+      }
+    },
+    {
+      "ticker": "LNC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "other",
+        "catalyst_score": 3,
+        "confidence": "medium",
+        "summary": "Lincoln National restarted share buybacks after a nearly four-year pause, a capital-return signal that suggests improved balance sheet strength and is driving renewed investor attention. Peer life insurer Q2 results are mixed and largely background noise."
+      }
+    },
+    {
+      "ticker": "MASS",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "guidance_raise",
+        "catalyst_score": 3,
+        "confidence": "medium",
+        "summary": "908 Devices reported Q2 revenue above estimates (though still a loss) and, per earnings call coverage, highlighted strong revenue growth with raised full-year guidance, driving the move."
+      }
+    },
+    {
+      "ticker": "ANGO",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "AngioDynamics beat Q4 FY26 estimates with expanding gross margins and guided to MedTech becoming the majority of revenue in FY27, driving a post-earnings drift higher. The catalyst is a few weeks stale and margin/tariff pressures remain, so the move is largely continued momentum off that report."
+      }
+    },
+    {
+      "ticker": "SXC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "SunCoke topped Q2 2026 earnings and revenue estimates with record Industrial Services EBITDA, and follow-on coverage has framed the stock as undervalued. The beat is a couple weeks stale, so the current move is likely residual post-earnings drift rather than fresh news."
+      }
+    },
+    {
+      "ticker": "GCBC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 0,
+        "confidence": "high",
+        "summary": "Only generic screener/listicle content from Simply Wall St. and a stale January earnings snapshot; no insider buying or material news. The move appears to be price/volume momentum without an identifiable catalyst."
+      }
+    },
+    {
+      "ticker": "CFFI",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 3,
+        "confidence": "medium",
+        "summary": "C&F Financial reported Q2 earnings growth year-over-year driven by loan growth and margin expansion, following a strong Q1 with 25% earnings growth. No insider buying, but the fundamental earnings momentum is the primary driver."
+      }
+    },
+    {
+      "ticker": "FRBA",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "First Bank beat Q2 2026 earnings estimates with strong loan and deposit growth, which is the main identifiable driver, though the news is a couple weeks stale and recent headlines are generic dividend-list filler."
+      }
+    },
+    {
+      "ticker": "TRNS",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 3,
+        "confidence": "medium",
+        "summary": "Transcat topped both earnings and revenue estimates in its fiscal Q1 2027 report, with strong service segment growth highlighted on the call. The move appears driven by the earnings beat and follow-through commentary rather than any insider or M&A activity."
+      }
+    },
+    {
+      "ticker": "SMC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "No fresh, substantive catalyst \u2014 the recent coverage is generic Zacks screener content about estimate revisions plus recaps of an already-reported Q2 call, and the Zacks Buy upgrade is stale from June. Move looks driven mainly by momentum/sentiment rather than new company-specific news, with no insider buying to confirm."
+      }
+    }
+  ]
+}

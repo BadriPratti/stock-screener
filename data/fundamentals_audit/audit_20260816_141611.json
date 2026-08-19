@@ -1,0 +1,365 @@
+{
+  "generated": "2026-08-16T14:16:11.133983",
+  "results": [
+    {
+      "ticker": "CFFI",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-10",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/913341/000091334126000043/cffi-20260630x10q.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Q2 earnings heavily influenced by two large non-recurring items (Bearing equity sale gain vs. securities repositioning loss)",
+            "category": "earnings_quality",
+            "severity": "major",
+            "evidence": "'Investment income from other equity interests' jumped to $8,332K in Q2 2026 from $127K in Q2 2025, driven by an $8,282K 'Gain on sale of Bearing equity interest' (cash flow statement), while 'Net losses on sales, maturities and calls of available for sale securities' was $(7,129)K vs. $0 prior year. Excluding both, core pre-tax income is roughly flat-to-modestly-up versus the reported $10,869K vs $9,626K, and the composition of the beat is entirely non-operating."
+          },
+          {
+            "flag": "Securities sold at a ~9.3% discount to book, confirming an underwater AFS portfolio",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "'the Corporation received $69.2 million of proceeds related to sales of securities with a book value of $76.3 million, resulting in a pre-tax loss of $7.1 million.' Remaining gross unrealized losses were still $11,110K across 336 securities ($291.92 million of fair value below amortized cost) at June 30, 2026."
+          },
+          {
+            "flag": "Rising provisioning and elevated consumer finance (subprime auto) charge-offs",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "Provision for credit losses rose to $2,650K in Q2 2026 from $2,100K (+26%) and to $6,250K from $5,100K for six months. Consumer Finance gross charge-offs were $8,493K for 1H26 vs $7,719K in 1H25, with recoveries of $2,497K \u2014 net charge-offs of ~$6.0M annualizing to roughly 2.6% of the $456.6M consumer finance book."
+          },
+          {
+            "flag": "Allowance did not grow despite loan growth and higher charge-offs; consumer finance reserve declined",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "Allowance for credit losses was $39,675K at June 30, 2026 vs $39,677K at December 31, 2025 \u2014 flat \u2014 while gross loans grew from $2,054,576K to $2,112,789K. The Consumer Finance allowance actually fell from $22,259K to $22,063K even as that portfolio produced $8.5M of gross charge-offs, implying a modest decline in coverage ratio."
+          },
+          {
+            "flag": "High early-stage delinquency concentrated in the indirect auto portfolio",
+            "category": "other",
+            "severity": "moderate",
+            "evidence": "Consumer finance - automobiles shows $13,263K 30-59 days past due, $1,983K 60-89 days and $645K 90+ at June 30, 2026 \u2014 $15,891K total past due on a $404,918K portfolio (~3.9%), which is the overwhelming majority of the company's $18,543K total past due loans. 25% of the auto book is originated at 'Fair' or 'Marginal' FICO (<625)."
+          },
+          {
+            "flag": "Heavy and increasing commercial real estate / land development concentration",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Commercial real estate grew to $919,472K from $835,432K (+$84.0M in six months) and land acquisition and development grew to $87,096K from $66,248K (+31%). Combined CRE, construction-CRE, land A&D and builder lines total roughly $1.08 billion against total equity of $278,392K \u2014 well above the 300%-of-capital supervisory monitoring threshold."
+          },
+          {
+            "flag": "Negative operating leverage on a core basis; expenses growing faster than core revenue",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "Total noninterest expenses rose 11.0% to $27,347K from $24,630K (salaries +11.1% to $16,501K; data processing +13.9%; occupancy +14.4%), versus net interest income growth of 9.7% and core noninterest income (excluding the Bearing gain and securities loss) growth of roughly 8-9%."
+          },
+          {
+            "flag": "Funding mix shifting toward higher-cost time deposits; core deposits shrinking",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Savings, money market and interest-bearing demand deposits fell to $884,584K from $905,683K while time deposits rose to $919,614K from $896,367K. Total deposits grew only 0.8% in six months versus 2.9% loan growth, with the gap funded by a $22.8M reduction in interest-bearing deposits at other banks and a $5.0M increase in FHLB advances. Cash and equivalents declined $17.0M."
+          },
+          {
+            "flag": "Sharply higher subordinated note interest cost",
+            "category": "margin",
+            "severity": "minor",
+            "evidence": "Interest expense on subordinated notes rose to $1,110K from $756K in the quarter (+47%) and to $2,212K from $1,353K for six months (+64%), with principal essentially unchanged at $65,510K \u2014 indicating a fixed-to-floating rate reset that is a permanent step-up in funding cost."
+          },
+          {
+            "flag": "No management narrative, guidance, or forward-looking commentary in the provided excerpt",
+            "category": "guidance",
+            "severity": "minor",
+            "evidence": "The excerpt consists of financial statements and notes; the MD&A discussion referenced in the table of contents ('Management's Discussion and Analysis of Financial Condition and Results of Operations 40') is not present, so management's characterization of the securities repositioning, credit trends, and outlook cannot be assessed."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Solid net interest income growth and apparent margin expansion",
+            "category": "margin",
+            "severity": "major",
+            "evidence": "Net interest income rose 9.7% to $29,090K in Q2 2026 from $26,508K, and 10.3% to $56,799K for six months, as total interest income grew $2,944K while total interest expense grew only $362K. Time deposit interest expense actually declined ($7,526K vs $7,547K) despite a larger time deposit balance."
+          },
+          {
+            "flag": "AOCI deficit narrowing materially, boosting tangible book value",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Accumulated other comprehensive loss improved to $(7,487)K from $(11,166)K at year-end 2025 and $(21,301)K a year earlier; gross unrealized securities losses fell from $16,501K to $11,110K. Total equity rose to $278,392K from $262,348K (equity/assets ~9.9% vs 9.5%)."
+          },
+          {
+            "flag": "Nonaccrual loans and OREO declined to negligible levels",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Total nonaccrual loans fell to $1,818K from $2,157K (0.09% of loans); Other real estate owned went to $0 from $1,316K; only $59K of loans rated Substandard and $720K Special Mention across the entire $1.66 billion commercial/consumer book; no payment defaults on modified loans."
+          },
+          {
+            "flag": "Broad-based, diversified fee income growth outside the one-time items",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "For six months: gains on sales of loans $4,981K vs $4,305K (+16%), mortgage banking fee income $1,835K vs $1,458K (+26%), mortgage lender services income $1,789K vs $1,298K (+38%), wealth management $1,655K vs $1,488K (+11%), interchange $3,250K vs $3,096K \u2014 no single fee line dominates core noninterest income."
+          },
+          {
+            "flag": "Operating cash flow swung positive",
+            "category": "cash_flow",
+            "severity": "minor",
+            "evidence": "Net cash provided by operating activities was $17,122K for 1H26 versus $(1,177)K used in 1H25, driven by mortgage warehouse dynamics (proceeds from sales of loans held for sale $412,582K vs originations of $414,688K)."
+          },
+          {
+            "flag": "Capital return increased alongside earnings",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Cash dividends declared rose to $0.48 per share from $0.46 (six-month $0.96 vs $0.92) and the Corporation repurchased $981K of common stock versus $436K in the prior-year period, while retained earnings grew to $280,884K from $268,696K."
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "C&F Financial's headline Q2 EPS growth ($2.63 vs $2.37) is substantially a function of two large non-operating items \u2014 an $8.3 million gain on the sale of its Bearing equity interest largely offset by a $7.1 million realized loss on a securities repositioning \u2014 so the underlying operating trend is milder than the reported numbers suggest. The core bank looks healthy: net interest income up ~10%, a shrinking AOCI deficit, negligible nonaccruals, zero OREO and a rising dividend. The offsetting concerns are credit and mix: subprime-tilted indirect auto lending is producing rising charge-offs and ~3.9% past-due rates while the allowance stayed flat, CRE/land-development concentration is high and growing, expenses are outpacing core revenue, and funding is shifting toward higher-cost time deposits and FHLB advances."
+      }
+    },
+    {
+      "ticker": "TRNS",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-04",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/99302/000162828026052738/trns-20260627.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Operating income and net income fell sharply despite 21.6% revenue growth",
+            "category": "margin",
+            "severity": "major",
+            "evidence": "\"Operating income was $3.7 million, a decrease of $1.6 million, or 30.3% and operating margin decreased from 7.0% in the first quarter of fiscal year 2026 to 4.0% in the first quarter of fiscal year 2027.\" Net income fell 59.2% to $1.3 million; GAAP diluted EPS $0.14 vs $0.35."
+          },
+          {
+            "flag": "Roughly 42% of revenue growth came from acquisitions, not organic operations",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "\"This increase was primarily due to acquisitions... Acquired revenue, which represents revenue generated from acquisitions for twelve months subsequent to the acquisition date, was $6.9 million\" out of a total $16.5 million revenue increase; Service revenue growth of 27.3% drops to 12.8% organic."
+          },
+          {
+            "flag": "Distribution gross margin in sustained multi-quarter decline",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "Distribution gross margin trend: 35.2% (FY26 Q1) \u2192 33.2% \u2192 32.4% \u2192 31.0% \u2192 31.4% (FY27 Q1); \"Distribution segment gross margin was 31.4%... versus 35.2%... a decrease of 3.8%.\" Distribution gross profit actually declined $57K on 11.4% revenue growth, and Distribution segment operating income fell from $2,772 to $1,439."
+          },
+          {
+            "flag": "Very large GAAP-to-non-GAAP gap with adjustments that recur every quarter",
+            "category": "earnings_quality",
+            "severity": "major",
+            "evidence": "Adjusted diluted EPS of $0.51 vs GAAP $0.14 \u2014 a 3.6x gap. Add-backs include $3.6M amortization, $0.7M \"Executive Transition Costs,\" $0.6M \"Transaction Expenses,\" and $0.2M \"Acquisition Stock Expense.\" As a serial acquirer ($12.8M SCM in April 2026, $85.4M Essco in Aug 2025), acquisition and amortization costs are structurally recurring, not one-time."
+          },
+          {
+            "flag": "Interest expense more than tripled and leverage ratio rising on acquisition debt",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Interest Expense $1,518 vs $451; Long-Term Debt $110,385 vs $99,885 at March 28, 2026; \"The Company's leverage ratio, as defined in the Credit Agreement, was 2.21 on June 27, 2026, compared with 2.03 on March 28, 2026\" against a 3.00x covenant."
+          },
+          {
+            "flag": "Goodwill and intangibles now exceed total shareholders' equity",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Goodwill $226,808 + Intangible Assets, net $78,194 = $305.0 million versus Total Shareholders' Equity of $302,899 and Total Assets of $492,628. Risk factors cite \"any impairment of our goodwill or intangible assets.\" SCM purchase price allocation is preliminary with $9.0M of the $12.8M price booked as goodwill."
+          },
+          {
+            "flag": "Disclosed material weaknesses in internal control over financial reporting",
+            "category": "earnings_quality",
+            "severity": "major",
+            "evidence": "Forward-looking statement risk list includes \"the material weaknesses in our internal control over financial reporting.\" The filing also contains drafting errors consistent with control issues \u2014 e.g., options intrinsic value referenced to \"the last trading day of the third quarter of fiscal year 2027\" in a Q1 filing, and an unresolved bracket \"[three years].\""
+          },
+          {
+            "flag": "Effective tax rate jumped over 1,000 bps, amplifying the earnings decline",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "\"Our effective tax rate for the first quarter of fiscal years 2027 and 2026 was 39.1% and 28.6%, respectively... primarily related to discrete tax expenses for stock awards, a decrease in stock compensation-related windfall benefits, and nondeductible expenses.\""
+          },
+          {
+            "flag": "Rising reliance on third-party outsourcing pressures Service margin",
+            "category": "margin",
+            "severity": "minor",
+            "evidence": "Outsourced share of Service revenue rose to 15.0% from 13.2% a year ago \u2014 at the top of the company's own 13%\u201315% target \u2014 and \"Service gross margin... was partially offset by an increase in outsourced services' costs.\" Service gross margin also fell sequentially from 35.5% in FY26 Q4 to 33.9%."
+          },
+          {
+            "flag": "CEO transition underway with associated costs",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "$736 thousand of \"Executive Transition Costs (1) Costs incurred in connection with the CEO transition plan\" added back to Adjusted EBITDA; G&A increase attributed partly to \"executive transition costs, professional fees.\""
+          },
+          {
+            "flag": "G&A expense growth (42.6%) far outpaced revenue growth (21.6%)",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "\"General and Administrative 15,641 vs 10,968, +4,673, +42.6%\"; total operating expenses as a percentage of revenue rose to 29.1% from 26.8%. Stock-based compensation nearly doubled to $2.0 million from $1.1 million."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Strong double-digit organic Service growth with accelerating trailing-twelve-month trend",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "\"Service organic revenue increased 12.8% over the prior year period primarily due to growth in client-based labs and calibration services for biomedical customers.\" Trailing twelve-month Service revenue growth improved to 23.5% from 7.7% a year ago."
+          },
+          {
+            "flag": "Service segment gross margin expanded and higher-margin mix increased",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "\"Service gross margin was 33.9% in the first quarter of fiscal year 2027, an increase of 0.9% compared to 33.0%\"; Service rose to 67.3% of total revenue from 64.3%."
+          },
+          {
+            "flag": "Operating cash flow and free cash flow materially improved",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "\"Net Cash Provided by Operating Activities 8,817\" vs $3,623 prior year; Operating Free Cash Flow of $4,835 versus $(975) in the prior-year quarter, with capex down to $3,982 from $4,598."
+          },
+          {
+            "flag": "Covenant compliance and undrawn credit capacity maintained",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "\"We were in compliance with all loan covenants and requirements of the Credit Agreement\"; $150.0 million facility with $110.4 million outstanding, leverage 2.21x against a 3.00x maximum."
+          },
+          {
+            "flag": "Receivables and inventory did not balloon relative to revenue growth",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Accounts Receivable $66,748 vs $65,170 at March 28, 2026 despite 21.6% revenue growth and an acquisition; inventory was a $407 source of cash versus a $(745) use last year."
+          }
+        ],
+        "overall_assessment": "red_flags_outweigh",
+        "summary": "Transcat's headline 21.6% revenue growth is largely bought \u2014 $6.9M of the $16.5M increase came from the Essco and SCM acquisitions \u2014 while GAAP profitability collapsed, with operating income down 30% and net income down 59% as amortization, stock comp, CEO transition costs, deal fees and tripled interest expense all hit at once. The Distribution segment is the real operational soft spot, with gross margin down 380bps and five straight quarters of erosion, and management's $0.51 adjusted EPS versus $0.14 GAAP leans heavily on add-backs that recur every quarter for a serial acquirer. Genuine positives \u2014 12.8% organic Service growth, Service margin expansion, and a swing to positive free cash flow \u2014 are offset by rising leverage, goodwill and intangibles exceeding book equity, and the disclosed material weaknesses in internal control."
+      }
+    },
+    {
+      "ticker": "SMC",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-10",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/2024218/000202421826000087/smc-20260630.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Headline revenue growth driven by low-margin commodity pass-through, while fee-based revenue declines",
+            "category": "revenue_quality",
+            "severity": "major",
+            "evidence": "Q2 total revenues +$14.8M consisted of a $17.8M increase in natural gas, NGLs and condensate sales against a $1.5M decrease in gathering services and related fees and a $1.5M decrease in other revenue; cost of natural gas and NGLs simultaneously rose $13.2M. For the six months, gathering services fees fell $6.1M ($122.3M vs $128.3M) while commodity sales rose $32.1M with costs up $17.1M."
+          },
+          {
+            "flag": "Core fee-based (fixed-fee) revenue stream \u2014 management's stated source of cash flow stability \u2014 is shrinking",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "'A majority of the volumes that we gather... have a fixed-fee rate structure which enhances the stability of our cash flows'; yet gathering services and related fees declined in Rockies (-$2.0M 6M) and Piceance (-$5.1M 6M), with only Mid-Con up $1.0M."
+          },
+          {
+            "flag": "Consolidated throughput volumes declining across gas and liquids",
+            "category": "other",
+            "severity": "moderate",
+            "evidence": "Aggregate average daily natural gas throughput 899 MMcf/d vs 912 (Q2) and 886 vs 899 (6M); liquids 68 Mbbl/d vs 78 (-13%). Piceance -19% in Q2 with producer shut-ins reducing volumes ~12 MMcf/d."
+          },
+          {
+            "flag": "Two of four segments posted double-digit adjusted EBITDA declines",
+            "category": "margin",
+            "severity": "major",
+            "evidence": "Mid-Con segment adjusted EBITDA -14% for both Q2 ($21.4M vs $24.9M) and 6M ($40.7M vs $47.4M); Piceance -17% Q2 and -18% 6M ($18.2M vs $22.3M)."
+          },
+          {
+            "flag": "Net income improvement flattered by non-recurring cost absences and lower D&A rather than operating improvement",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "Q2 net income swing to $4.6M from $(4.2)M was aided by D&A down $3.2M 'due to certain Piceance segment assets that were disposed of', transaction costs down to $19K from $1.1M, integration costs down to $0.6M from $4.2M, and absence of $2.1M of 2025 severance. Six-month net income was only $1.4M vs $0.4M."
+          },
+          {
+            "flag": "Rockies growth is partly inorganic (Moonrise Acquisition) and not clean organic expansion",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "'$35.9 million increase in the Rockies, primarily reflecting new well connections and additional throughput in connection with the Moonrise Acquisition, partially offset by natural production declines'; O&M rose $5.3M 6M 'primarily as a result of the Moonrise Acquisition which closed in March 2025.'"
+          },
+          {
+            "flag": "Interest expense rising sharply and consuming nearly all operating profit; new debt priced at SOFR+400bp",
+            "category": "balance_sheet",
+            "severity": "major",
+            "evidence": "Interest expense $27.4M in Q2 (+15%) and $52.4M 6M (+13%) versus income before taxes of only $5.6M/$1.5M. New Permian Transmission Facility bears 'interest at SOFR plus 4.00% per annum'; $825.0M fixed-rate debt plus $79.0M ABL and $350.0M term loan outstanding, with only $100.0M of interest rate exposure hedged."
+          },
+          {
+            "flag": "Operating cash flow declined despite $21.2M higher revenue; working capital drag widened",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "Net cash provided by operating activities of $50.8M for 6M 2026 vs $53.2M in 2025, with a '$19.9 million outflow due to changes in working capital accounts' vs $15.5M prior year."
+          },
+          {
+            "flag": "Large one-time cash outflows funded with new borrowings \u2014 preferred redemption and long-deferred dividend arrears",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "$143.2M redemption of Subsidiary Series A Preferred Units, $51.3M of Series A Preferred Stock distributions including '$46.3 million for accrued and unpaid dividends owed from March 15, 2020 to December 14, 2024', and $21.3M Tall Oak earn-out settlement, funded by $350.0M of New Permian Transmission Facility borrowings and an $41.5M related-party equity sale."
+          },
+          {
+            "flag": "Interest coverage covenant cushion is thin",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "'the First Lien Net Leverage Ratio... and the Interest Coverage Ratio were 0.29:1.00 and 2.73:1.00' against a covenant requiring Interest Coverage not less than 2.00:1.00 \u2014 a modest cushion given interest expense is rising 13-15% year over year."
+          },
+          {
+            "flag": "Softened forward language on producer activity relative to prior expectations",
+            "category": "guidance",
+            "severity": "moderate",
+            "evidence": "'we expect our producer customers to maintain moderate completion and production activities across many of our systems relative to our previous expectations as a result of the commodity price environment and a continuation of the general trend of producers constraining drilling and completion activity.'"
+          },
+          {
+            "flag": "Management pre-signals potential below-book asset divestitures",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'To attain our overall corporate strategic objectives, we may conduct an asset divestiture, or divestitures, at a transaction valuation that is less than the net book value of the divested asset.'"
+          },
+          {
+            "flag": "Related-party equity issuance at NYSE 'Minimum Price' and buyback launched simultaneously with heavy leverage",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "Issued 1,351,351 shares to Tall Oak Parent at $31.08, 'which represented the \"Minimum Price\" in accordance with NYSE regulations,' while in June 2026 authorizing a $35.0M share repurchase program (only $1.0M executed) despite ~$1.25B of outstanding debt."
+          },
+          {
+            "flag": "Unexplained 'Other' add-backs inflate segment adjusted EBITDA",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "Rockies segment adjusted EBITDA reconciliation includes an 'Other' add-back of $1,905K for the six months ended June 30, 2026 (vs $834K prior year) with no explanation provided."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Double E (Permian) commercial momentum with substantial new firm contracts",
+            "category": "revenue_quality",
+            "severity": "major",
+            "evidence": "'Double E executed three long-term firm transportation agreements totaling 250 MMcf/d... firm option agreement for an additional 200 MMcf/d... total contracted firm capacity has increased to approximately 1.9 Bcf/d'; expansion would raise capacity ~50% to 2.4 Bcf/d with targeted 2028 in-service."
+          },
+          {
+            "flag": "Permian/Double E volumes and equity earnings growing strongly",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "Double E average daily throughput 859 MMcf/d vs 682 (+26%) in Q2; income from equity method investees $5.8M vs $4.8M; Permian segment adjusted EBITDA +13% Q2."
+          },
+          {
+            "flag": "Rockies segment adjusted EBITDA growth",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "Rockies segment adjusted EBITDA $30.4M vs $25.2M (+20%) in Q2 and $56.7M vs $50.1M (+13%) 6M, 'primarily attributable to increased natural gas throughput and a favorable margin mix.'"
+          },
+          {
+            "flag": "Capital structure simplification: preferred fully redeemed and legacy facility refinanced with 2031 maturity",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "'we redeemed in full all outstanding Subsidiary Series A Preferred Units for $143.2 million'; $440.0M refinancing 'having a maturity in March 2031'; ABL available borrowing capacity of $418.3M and covenant compliance across all facilities."
+          },
+          {
+            "flag": "Overhead discipline and lower transaction/integration spend",
+            "category": "margin",
+            "severity": "minor",
+            "evidence": "G&A $13.7M vs $15.5M in Q2; Corporate G&A -10% Q2 and -9% 6M on 'lower professional and legal expenses'; transaction costs down 98% and acquisition integration costs down 89% for 6M."
+          },
+          {
+            "flag": "Contracted MVC backlog provides downside revenue protection",
+            "category": "revenue_quality",
+            "severity": "minor",
+            "evidence": "Total MVC quantities of 1,227,383 Dth/day in 2026 rising to 1,839,794 Dth/day by 2029 across active contracts and executed precedent agreements; 'the associated MVCs, if any, ensure that we will earn a minimum amount of revenue.'"
+          }
+        ],
+        "overall_assessment": "red_flags_outweigh",
+        "summary": "SMC's headline 10.6% revenue growth is largely an accounting illusion: virtually all of it came from low-margin commodity pass-through sales (up $17.8M against $13.2M of matching cost), while the higher-quality fixed-fee gathering revenue actually declined and consolidated throughput fell in both gas and liquids. Two of four segments (Mid-Con -14%, Piceance -17%) posted double-digit EBITDA declines, the swing to positive net income was helped by lower D&A from disposed assets and the absence of prior-year severance and deal costs, and operating cash flow fell year over year despite higher revenue while interest expense climbed 15% on SOFR+400bp debt. The genuine bright spot is Double E \u2014 26% volume growth, 250 MMcf/d of new firm contracts and a 50% capacity expansion in the works \u2014 plus a cleaner capital structure after the preferred redemption, but those are 2028-vintage payoffs against a base business that is currently shrinking and more levered."
+      }
+    }
+  ]
+}

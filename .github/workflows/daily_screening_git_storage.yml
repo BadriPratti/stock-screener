@@ -74,6 +74,7 @@ jobs:
           EMAIL_SMTP_PORT: ${{ secrets.EMAIL_SMTP_PORT || '587' }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           FORCE_FULL_REFRESH: ${{ github.event.inputs.force_full_refresh || 'false' }}
           CACHED_STOCKS: ${{ steps.cache-check.outputs.cached_stocks }}
         run: |
@@ -89,7 +90,12 @@ jobs:
 
           # Conservative mode to avoid rate limits
           # --git-storage flag enables Git-based fundamental storage
-          python run_optimized_scan.py --conservative --git-storage
+          # --enable-llm-agents runs Fundamentals Auditor + Catalyst Sentiment
+          # (Claude API calls) and the free Congress Trades lookup on the Top 20
+          # pool, then filters/ranks that pool down to a Top 5 shortlist in the
+          # email. Fundamentals Auditor/Catalyst Sentiment no-op with a logged
+          # warning if ANTHROPIC_API_KEY isn't set as a repo secret.
+          python run_optimized_scan.py --conservative --git-storage --enable-llm-agents
 
       - name: Show fundamental refresh stats
         if: always()
@@ -128,8 +134,14 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Add fundamental cache directory
+          # Add fundamental cache directory, plus the LLM agents' logged output
+          # (data/fundamentals_audit/, data/catalyst_sentiment/, data/congress_trades/)
+          # — these need to persist past this ephemeral runner so they can accumulate
+          # into a real point-in-time history for the walk-forward backtest to eventually use.
           git add data/fundamentals_cache/
+          git add data/fundamentals_audit/ 2>/dev/null || true
+          git add data/catalyst_sentiment/ 2>/dev/null || true
+          git add data/congress_trades/ 2>/dev/null || true
 
           # Check if there are changes
           if git diff --staged --quiet; then

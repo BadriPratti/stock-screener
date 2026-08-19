@@ -2,11 +2,17 @@
 
 ## Overview
 
-There are now two ways to use position management:
+This used to support two modes — manual (interactive Robinhood login) and
+automated (GitHub Actions with stored Robinhood credentials). Since migrating
+to Fidelity, only manual mode is available: **Fidelity has no supported
+unofficial API**, so there's no credential-based automation path to build a
+CI equivalent around. `automated_position_report.py` still exists but is now
+just a stub that explains this and exits — it's not wired into any workflow.
 
-### 1. **Manual Mode** (On Your Local Machine)
+### Manual Mode (On Your Local Machine)
+
 ```bash
-python manage_positions.py
+python manage_positions.py --csv ~/Downloads/Portfolio_Positions.csv
 ```
 
 **When to use:**
@@ -15,96 +21,20 @@ python manage_positions.py
 - For full control and review before taking action
 
 **What happens:**
-- Prompts for password (hidden input)
-- Robinhood sends SMS to your phone
-- You enter the SMS code
-- Gets your positions from Robinhood
+- Reads positions from a CSV you export yourself from Fidelity's website
+  (Accounts & Trade → Positions → Download) — no login, no credentials
+  touched by this tool at all
 - Analyzes using cached market data (no extra API calls)
 - Shows recommendations in terminal
 - Optional: Export to file
 
 **Security:**
-- Password never stored
-- Interactive only (can't be automated)
-- SMS MFA required
-
-### 2. **Automated Mode** (In GitHub Actions)
-```bash
-python automated_position_report.py
-```
-
-**When to use:**
-- As part of your daily GitHub Actions workflow
-- To automatically generate reports after each market scan
-- For hands-off monitoring
-
-**What happens:**
-- Checks for ROBINHOOD_USERNAME and ROBINHOOD_PASSWORD in environment
-- If NOT set: Skips gracefully, doesn't block your scan
-- If SET: Fetches positions and analyzes them
-- Analyzes using cached market data (from daily scan - no extra API calls)
-- Saves report to `./data/position_reports/position_management_*.txt`
-
-**Security:**
-- Username and password stored in GitHub Secrets (encrypted)
-- Never committed to Git
-- Only accessible to GitHub Actions
+- No credentials of any kind are involved
+- The CSV itself contains real account data — don't commit it to Git
 
 ---
 
-## Setup for Automation
-
-### Step 1: Set GitHub Secrets
-
-In your GitHub repository:
-1. Go to **Settings** → **Secrets and variables** → **Actions**
-2. Create new secrets:
-   - `ROBINHOOD_USERNAME` = your email
-   - `ROBINHOOD_PASSWORD` = your password
-
-### Step 2: Update Your Workflow
-
-In `.github/workflows/daily_scan.yml` (or your workflow file):
-
-```yaml
-- name: Run stock screener
-  run: python run_optimized_scan.py
-
-# Optional: Generate position management report
-- name: Generate position report
-  if: always()  # Run even if scan fails
-  run: python automated_position_report.py
-  env:
-    ROBINHOOD_USERNAME: ${{ secrets.ROBINHOOD_USERNAME }}
-    ROBINHOOD_PASSWORD: ${{ secrets.ROBINHOOD_PASSWORD }}
-```
-
-### Step 3: Check Reports
-
-After each run, the report will be saved to:
-```
-data/position_reports/position_management_YYYYMMDD_HHMMSS.txt
-```
-
-You can view it in your GitHub Actions logs or commit it to the repo for history.
-
----
-
-## Key Design Decisions
-
-### Why Two Scripts?
-
-1. **Manual (`manage_positions.py`)** for you:
-   - Interactive with human in the loop
-   - SMS MFA for security
-   - No password storage
-
-2. **Automated (`automated_position_report.py`)** for CI/CD:
-   - Fully automated, no prompts
-   - Stored credentials (GitHub Secrets)
-   - Graceful skip if credentials not provided
-
-### Why Cache Data?
+## Why Cache Data?
 
 The position manager uses cached market data from your daily scan:
 - ✓ No additional API calls to yfinance
@@ -120,101 +50,51 @@ Daily Scan (run_optimized_scan.py)
 ├─ Caches all price data (1 year × 3800 = ~14MB)
 └─ Caches fundamentals in Git
 
-Position Analysis (automated_position_report.py)
-├─ Reads Robinhood positions
+Position Analysis (manage_positions.py --csv <file>)
+├─ Reads positions from your Fidelity CSV export
 ├─ Looks up cached price data for each position
 ├─ Calculates Phase, SMA, swing lows
 └─ Generates recommendations
 ```
 
-No extra yfinance calls! Everything is cached from the daily scan.
-
----
-
-## Example Workflow Integration
-
-Complete `.github/workflows/daily_scan.yml`:
-
-```yaml
-name: Daily Stock Screening
-
-on:
-  schedule:
-    - cron: '0 13 * * 1-5'  # 1 PM UTC, weekdays only
-  workflow_dispatch:
-
-jobs:
-  screening:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.13'
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install robin-stocks
-
-      - name: Run stock screener
-        run: python run_optimized_scan.py
-
-      - name: Generate position report
-        if: always()
-        run: python automated_position_report.py
-        env:
-          ROBINHOOD_USERNAME: ${{ secrets.ROBINHOOD_USERNAME }}
-          ROBINHOOD_PASSWORD: ${{ secrets.ROBINHOOD_PASSWORD }}
-
-      - name: Commit results
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add -A
-          git commit -m "Daily scan and position report" || true
-          git push
-```
+No extra yfinance calls! Everything is cached from the daily scan — only
+your positions (quantity + entry price) come from the CSV.
 
 ---
 
 ## Troubleshooting
 
-### "ROBINHOOD credentials not set - skipping position analysis"
+### "Couldn't find a Symbol column"
 
-This is **expected and normal**! It means:
-- `ROBINHOOD_USERNAME` or `ROBINHOOD_PASSWORD` not in GitHub Secrets
-- Position report will be skipped (gracefully)
-- Your scan continues normally
-
-To enable it: Set both secrets in GitHub repository settings.
-
-### "Failed to login to Robinhood"
-
-Check:
-1. Username and password are correct
-2. You can login to Robinhood web/app manually
-3. If you have 2FA, make sure `by_sms=True` (it is by default)
+You either downloaded a different Fidelity report than the Positions CSV, or
+Fidelity changed their export format. Open the CSV and check the header row —
+see `docs/FIDELITY_SETUP.md` for how to fix column matching if needed.
 
 ### "Insufficient price data for analysis"
 
-Position was added after the daily scan ran. It will be analyzed in tomorrow's run.
+Position was added after the daily scan ran. It will be analyzed once the
+next scan's cache includes it.
 
 ### "Invalid entry price (zero or negative)"
 
-A position has a corrupted entry price in Robinhood. This is a Robinhood data issue, not your tool.
+A row in the CSV has a corrupted or missing average-cost-basis value —
+the loader skips it and logs a warning rather than passing bad data through.
 
 ---
 
-## Performance
+## If Automated Reporting Becomes Worth Building Later
 
-- **Manual mode**: ~5 seconds per position (all cached)
-- **Automated mode**: ~30 seconds for 5 positions
-- **Total impact on daily scan**: Negligible (cached data only)
+There's no clean way to auto-fetch a fresh Fidelity CSV in a headless GitHub
+Actions run today. If this becomes worth solving, the realistic options are:
 
-No rate limit concerns - no extra API calls!
+1. You manually download+commit a fresh CSV to a private location the
+   workflow can read (still a manual step, just decoupled from running
+   `manage_positions.py` yourself).
+2. A future Fidelity-supported API (Fidelity has talked about broader
+   developer API access at times — worth rechecking periodically).
+
+Neither is implemented here — this is a note for future reference, not a
+current feature.
 
 ---
 
@@ -222,16 +102,9 @@ No rate limit concerns - no extra API calls!
 
 ### What's Stored?
 
-**GitHub Secrets (encrypted):**
-- Your Robinhood username
-- Your Robinhood password
-
-**Local `.env` (NOT committed):**
-- Your Robinhood username (for manual mode)
-
-**Cached data (in Git):**
-- Fundamentals (no credentials)
-- Price history (no credentials)
+**Nothing.** No credentials, no tokens, no login state. The only sensitive
+artifact is the CSV file itself, which you control entirely — it never
+leaves your machine unless you choose to move it somewhere.
 
 ### What's NOT Stored?
 
@@ -239,26 +112,22 @@ No rate limit concerns - no extra API calls!
 - ✗ Cash available
 - ✗ Portfolio value
 - ✗ Order history
-- ✗ Personal info
+- ✗ Any login credentials
 
-The integration is **READ-ONLY** for positions only.
+The integration is **READ-ONLY**, offline, and CSV-based.
 
 ---
 
 ## Next Steps
 
-1. **Try manual mode first:**
-   ```bash
-   python manage_positions.py
-   ```
+1. **Export your positions from Fidelity's website** (Accounts & Trade → Positions → Download)
 
-2. **If you like it, add to GitHub Actions:**
-   - Set ROBINHOOD_USERNAME and ROBINHOOD_PASSWORD in GitHub Secrets
-   - Add `python automated_position_report.py` to your workflow
+2. **Run manual mode:**
+   ```bash
+   python manage_positions.py --csv ~/Downloads/Portfolio_Positions.csv
+   ```
 
 3. **Review reports:**
    - Check `data/position_reports/` for generated reports
    - Verify recommendations make sense
-   - Manually adjust stops on Robinhood app
-
-That's it! You now have fully automated position management.
+   - Manually adjust stops on Fidelity

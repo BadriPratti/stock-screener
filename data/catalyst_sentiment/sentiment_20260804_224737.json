@@ -1,0 +1,31 @@
+{
+  "generated": "2026-08-04T22:47:37.640720",
+  "results": [
+    {
+      "ticker": "AAPL",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "other",
+        "catalyst_score": 0,
+        "confidence": "medium",
+        "summary": "Mixed news flow: CEO Tim Cook stepping down has pressured shares (the \"dip\"), partly offset by record India sales topping $10B, while an ongoing trade-secret spat with OpenAI adds noise. No single clean catalyst dominates, and there is no insider buying signal."
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "product_news",
+        "catalyst_score": 3,
+        "confidence": "medium",
+        "summary": "Elon Musk publicly endorsed Nvidia's Vera Rubin platform as 'the best AI computer' and SpaceX is reportedly switching to Nvidia over AMD, a notable competitive win that is driving bullish sentiment. No insider buying or earnings event underpins the move."
+      }
+    }
+  ]
+}

@@ -10,5 +10,5 @@ IMPORTANT: always pass `--repo BadriPratti/stock-screener` explicitly on every `
 1. Run `gh workflow run daily_screening_git_storage.yml --repo BadriPratti/stock-screener`.
 2. Get the run: `gh run list --repo BadriPratti/stock-screener --workflow daily_screening_git_storage.yml --limit 1` to confirm it queued and grab the run ID/URL.
 3. Report the run URL to the user.
-4. Tell them: this is the full 3,800+ stock scan, takes 15-30 minutes, and they'll get an email with buy/sell signals and Robinhood trade links when it finishes.
+4. Tell them: this is the full 3,800+ stock scan, takes 15-30 minutes, and they'll get an email with buy/sell signals and Fidelity trade links when it finishes.
 5. Do not poll repeatedly or sleep-loop waiting for it. If the user asks for status later, check with `gh run view <run-id> --repo BadriPratti/stock-screener`.

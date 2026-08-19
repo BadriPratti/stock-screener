@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Position management tool - integrates Robinhood positions with stop loss recommendations.
+"""Position management tool - integrates Fidelity positions with stop loss recommendations.
 
-Fetches your current Robinhood positions and analyzes each one to recommend:
+Reads your current Fidelity positions from a CSV you export yourself and
+analyzes each one to recommend:
 - When to trail stops up
 - Exact new stop loss levels
 - When to take partial profits
@@ -9,9 +10,12 @@ Fetches your current Robinhood positions and analyzes each one to recommend:
 
 ONLY analyzes SHORT-TERM positions (held <1 year) to avoid disrupting long-term tax treatment.
 
+How to get the CSV: Fidelity website -> Accounts & Trade -> Positions ->
+click the download/export icon near the top of the positions table.
+
 Usage:
-    python manage_positions.py
-    python manage_positions.py --export  # Save report to file
+    python manage_positions.py --csv ~/Downloads/Portfolio_Positions.csv
+    python manage_positions.py --csv positions.csv --export  # Save report to file
 """
 
 import sys
@@ -20,7 +24,7 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 
-from src.data.robinhood_positions import RobinhoodPositionFetcher, ROBINHOOD_AVAILABLE
+from src.data.fidelity_positions import load_positions
 from src.analysis.position_manager import PositionManager
 
 logging.basicConfig(
@@ -32,24 +36,17 @@ logger = logging.getLogger(__name__)
 
 def main():
     parser = argparse.ArgumentParser(description='Position Management with Stop Loss Recommendations')
+    parser.add_argument('--csv', type=str, required=True,
+                         help='Path to a Fidelity Positions CSV export (Accounts & Trade -> Positions -> Download)')
     parser.add_argument('--export', action='store_true', help='Export report to file')
     parser.add_argument('--entry-dates', type=str, help='JSON file with entry dates (optional)')
     args = parser.parse_args()
-
-    if not ROBINHOOD_AVAILABLE:
-        print("\n" + "="*80)
-        print("ERROR: robin_stocks library not installed")
-        print("="*80)
-        print("\nInstall with:")
-        print("  pip install robin-stocks")
-        print("="*80)
-        sys.exit(1)
 
     print("\n" + "="*80)
     print("POSITION MANAGEMENT - STOP LOSS RECOMMENDATIONS")
     print("="*80)
     print("\nThis tool will:")
-    print("  ✓ Fetch your current Robinhood positions")
+    print("  ✓ Read your current Fidelity positions from the CSV you exported")
     print("  ✓ Analyze each position's technical structure")
     print("  ✓ Recommend stop loss adjustments for SHORT-TERM holdings")
     print("  ✓ Identify when to take partial profits")
@@ -57,81 +54,59 @@ def main():
     print("      (to preserve favorable capital gains tax treatment)")
     print("\n" + "="*80 + "\n")
 
-    # Initialize Robinhood fetcher
     try:
-        fetcher = RobinhoodPositionFetcher()
-    except ValueError as e:
-        print(f"\nERROR: {e}\n")
-        print("Set environment variable:")
-        print("  export ROBINHOOD_USERNAME='your_email@example.com'")
-        print("\nPassword and SMS MFA will be prompted (never stored)")
-        sys.exit(1)
-    except ImportError as e:
+        print(f"Reading positions from {args.csv}...")
+        positions = load_positions(args.csv)
+    except (FileNotFoundError, ValueError) as e:
         print(f"\nERROR: {e}\n")
         sys.exit(1)
 
-    # Login to Robinhood (will prompt for password and SMS MFA)
-    print("Logging in to Robinhood...")
-    if not fetcher.login():
-        print("\n✗ Login failed. Check credentials.")
-        sys.exit(1)
+    if not positions:
+        print("="*80)
+        print("No open positions found in the CSV")
+        print("="*80)
+        return
 
-    try:
-        # Fetch positions
-        print("Fetching positions...\n")
-        positions = fetcher.fetch_positions()
+    print(f"✓ Found {len(positions)} positions\n")
 
-        if not positions:
-            print("="*80)
-            print("No open positions found")
-            print("="*80)
-            return
+    # Load entry dates if provided
+    entry_dates = None
+    if args.entry_dates:
+        import json
+        try:
+            with open(args.entry_dates, 'r') as f:
+                dates_data = json.load(f)
+                from datetime import datetime as dt
+                entry_dates = {
+                    ticker: dt.fromisoformat(date_str)
+                    for ticker, date_str in dates_data.items()
+                }
+            print(f"✓ Loaded entry dates for {len(entry_dates)} tickers\n")
+        except Exception as e:
+            print(f"⚠️  Could not load entry dates: {e}")
+            print("Proceeding without entry date data (will not filter by tax treatment)\n")
 
-        print(f"✓ Found {len(positions)} positions\n")
+    # Analyze positions
+    print("Analyzing positions and calculating stop recommendations...\n")
+    manager = PositionManager()
+    analysis = manager.analyze_portfolio(positions, entry_dates)
 
-        # Load entry dates if provided
-        entry_dates = None
-        if args.entry_dates:
-            import json
-            try:
-                with open(args.entry_dates, 'r') as f:
-                    dates_data = json.load(f)
-                    # Convert string dates to datetime
-                    from datetime import datetime as dt
-                    entry_dates = {
-                        ticker: dt.fromisoformat(date_str)
-                        for ticker, date_str in dates_data.items()
-                    }
-                print(f"✓ Loaded entry dates for {len(entry_dates)} tickers\n")
-            except Exception as e:
-                print(f"⚠️  Could not load entry dates: {e}")
-                print("Proceeding without entry date data (will not filter by tax treatment)\n")
+    # Generate report
+    report = manager.format_portfolio_report(analysis)
+    print(report)
 
-        # Analyze positions
-        print("Analyzing positions and calculating stop recommendations...\n")
-        manager = PositionManager()
-        analysis = manager.analyze_portfolio(positions, entry_dates)
+    # Export if requested
+    if args.export:
+        output_dir = Path("./data/position_reports")
+        output_dir.mkdir(parents=True, exist_ok=True)
 
-        # Generate report
-        report = manager.format_portfolio_report(analysis)
-        print(report)
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = output_dir / f"position_management_{timestamp}.txt"
 
-        # Export if requested
-        if args.export:
-            output_dir = Path("./data/position_reports")
-            output_dir.mkdir(parents=True, exist_ok=True)
+        with open(filename, 'w') as f:
+            f.write(report)
 
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            filename = output_dir / f"position_management_{timestamp}.txt"
-
-            with open(filename, 'w') as f:
-                f.write(report)
-
-            print(f"\n✓ Report exported to: {filename}")
-
-    finally:
-        fetcher.logout()
-        print("\n✓ Logged out from Robinhood\n")
+        print(f"\n✓ Report exported to: {filename}")
 
 
 if __name__ == '__main__':

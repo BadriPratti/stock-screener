@@ -11,3 +11,4 @@ pyyaml>=6.0
 numpy>=1.24.0
 robin-stocks>=3.0.0  # Read-only position tracking (optional)
 praw>=7.7.0  # Read-only Reddit ticker-mention tracking (optional)
+anthropic>=0.120.0  # Fundamentals Auditor + News/Catalyst Sentiment agents (optional, needs ANTHROPIC_API_KEY)

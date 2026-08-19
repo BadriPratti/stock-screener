@@ -1,0 +1,117 @@
+{
+  "generated": "2026-08-04T22:46:47.434367",
+  "results": [
+    {
+      "ticker": "AAPL",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-07-31",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Products gross margin expansion partly driven by non-recurring tariff refunds",
+            "category": "earnings_quality",
+            "severity": "major",
+            "evidence": "\"Products gross margin and gross margin percentage increased during the third quarter and first nine months of 2026 compared to the same periods in 2025 primarily due to a different mix of products and tariff refunds, partially offset by higher costs, including memory.\" Refunds arose from the Feb 20, 2026 Supreme Court ruling striking IEEPA tariffs and were \"recognized... as a reduction of products cost of sales\" \u2014 a one-time credit inside the 34.5% \u2192 40.1% products margin jump."
+          },
+          {
+            "flag": "Management explicitly warns component/memory cost pressure will 'intensify'",
+            "category": "margin",
+            "severity": "major",
+            "evidence": "\"The Company is experiencing a period of supply constraints and increasing costs for components driven by factors such as industry supply-demand imbalances for components, including advanced semiconductors, storage (NAND) and memory (DRAM). The Company expects these trends to intensify, which may materially negatively impact the Company's revenue, costs, gross margin...\""
+          },
+          {
+            "flag": "Softened forward margin language: gross margins subject to 'volatility and downward pressure'",
+            "category": "guidance",
+            "severity": "moderate",
+            "evidence": "\"As a result, the Company believes, in general, gross margins will be subject to volatility and downward pressure.\" Combined with the admission that mitigating price increases \"may not effectively mitigate these negative impacts, and may also reduce demand for the Company's products.\""
+          },
+          {
+            "flag": "Operating expense growth (23%) outpacing revenue growth (16%); R&D up 32% on AI infrastructure",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "R&D $11,729M vs $8,866M (+32%), rising to 11% of sales from 9%; total operating expenses +23% vs net sales +16%. Driver: \"higher infrastructure-related costs, including investments in artificial intelligence, and headcount-related expenses.\""
+          },
+          {
+            "flag": "Revenue growth flattered by foreign currency tailwinds in three of five segments",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "\"The strength in foreign currencies relative to the U.S. dollar had a net favorable year-over-year impact on Europe net sales\"; \"The strength in the renminbi... had a favorable year-over-year impact on Greater China net sales during the third quarter and first nine months of 2026\"; similar favorable FX cited for Rest of Asia Pacific."
+          },
+          {
+            "flag": "High-margin Google search licensing revenue at structural risk from antitrust remedies",
+            "category": "customer_concentration",
+            "severity": "major",
+            "evidence": "\"the Company earns revenue from licensing arrangements with Google LLC... A reversal of the order on appeal could result in imposition of certain remedies initially proposed by the DOJ, such as those prohibiting Google from offering the Company commercial terms for search distribution. If implemented, these remedies could materially adversely affect the Company's ability to earn revenue from such licensing arrangements.\" This sits inside the fastest-growing, 75%+ margin Services line."
+          },
+          {
+            "flag": "App Store commission structure under active injunction and DMA exposure of up to 10% of worldwide net sales",
+            "category": "revenue_quality",
+            "severity": "major",
+            "evidence": "\"The Company is also currently subject to a court order in the U.S. preventing it from imposing any commission or fee on certain purchases\"; \"If the Commission makes a final determination in the Article 6(4) Investigation that there has been a violation... may impose fines up to 10% of the Company's annual worldwide net sales.\""
+          },
+          {
+            "flag": "Effective tax rate stepping up, a growing drag on EPS conversion",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "Effective tax rate 17.9% vs 16.4% in Q3 2025, and 17.6% vs 15.4% for nine months, \"primarily due to a higher effective tax rate on foreign earnings.\""
+          },
+          {
+            "flag": "Near-term manufacturing purchase obligations spiked and are almost entirely due within 12 months",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "\"The Company's contractual cash requirements have not changed materially since the 2025 Form 10-K, except for manufacturing purchase obligations, other purchase obligations, and deemed repatriation tax payable... manufacturing purchase obligations of $57.0 billion, with $56.2 billion payable within 12 months\" \u2014 consistent with locking in scarce/expensive components."
+          },
+          {
+            "flag": "iPad revenue declining; Wearables barely growing \u2014 growth concentrated in iPhone",
+            "category": "revenue_quality",
+            "severity": "minor",
+            "evidence": "iPad net sales $6,191M vs $6,581M, (6)%, \"primarily due to lower net sales of iPad mini and iPad Air\"; Wearables, Home and Accessories +2% for the nine months. iPhone alone (+22%, $9.7B incremental) accounts for the majority of the consolidated quarterly increase."
+          },
+          {
+            "flag": "Large cash outflows for capital return and repatriation tax reduce financial flexibility cushion",
+            "category": "cash_flow",
+            "severity": "minor",
+            "evidence": "\"During the third quarter of 2026, the Company repurchased $25.8 billion of its common stock and paid dividends and dividend equivalents of $4.0 billion\"; plus \"the Company paid the remaining $8.8 billion balance of the deemed repatriation tax payable.\" A $10.0B ASR was also entered in May 2026 with settlement pending in Q4 2026."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Broad-based revenue acceleration across every geographic segment",
+            "category": "revenue_quality",
+            "severity": "major",
+            "evidence": "Total net sales +16% to $109,417M; Americas +11%, Europe +22%, Greater China +22%, Japan +13%, Rest of Asia Pacific +16% \u2014 no segment declining, including a strong reversal in Greater China (+30% for nine months)."
+          },
+          {
+            "flag": "Genuine mix-driven margin expansion beyond the tariff refund, with Services margin holding at 75.6%",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "Total gross margin percentage 50.1% vs 46.5% (49.1% vs 46.8% nine months); Services gross margin percentage flat at 75.6% in the quarter and up to 76.3% for nine months \"primarily due to a different mix of services.\""
+          },
+          {
+            "flag": "Services growth diversifying away from device sales, led by advertising and cloud",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "\"Services net sales increased... primarily due to higher net sales from advertising and cloud services\" \u2014 $30,739M, +12% YoY, +14% for nine months."
+          },
+          {
+            "flag": "Clean accounting and controls; no changes to critical estimates",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "\"There have been no material changes to the Company's critical accounting estimates since the 2025 Form 10-K\"; disclosure controls \"were effective as of June 27, 2026\" and \"There were no changes in the Company's internal control over financial reporting.\" Settled legal matters \"did not individually or in the aggregate have a material impact.\""
+          },
+          {
+            "flag": "Reaffirmed liquidity sufficiency and expanded buyback authorization",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "\"The Company believes its balances of cash, cash equivalents and marketable securities... will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond\"; new $100 billion repurchase authorization announced April 30, 2026 on top of $38.0 billion remaining."
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "Headline results look excellent \u2014 16% revenue growth across all five geographies and a 360bp jump in gross margin \u2014 but the quality of that margin beat is questionable: management attributes the products margin gain partly to one-time tariff refunds booked as a reduction of cost of sales, and FX tailwinds flatter reported sales in three segments. More importantly, the filing carries an unusually explicit forward warning that NAND/DRAM and semiconductor cost inflation will 'intensify' and that gross margins face 'volatility and downward pressure,' while opex (R&D +32% on AI infrastructure) and the tax rate are both climbing faster than revenue. Layered on top are material structural revenue risks \u2014 the Google search licensing arrangement, the Epic/App Store commission injunction, and DMA Article 6(4) exposure of up to 10% of worldwide sales \u2014 all of which sit in the highest-margin Services line."
+      }
+    }
+  ]
+}

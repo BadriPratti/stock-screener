@@ -1,27 +1,26 @@
 #!/usr/bin/env python3
-"""Quick script to check your current Robinhood positions.
+"""Quick script to check your current Fidelity positions from a CSV export.
 
 Usage:
-    python check_positions.py
+    python scripts/check_positions.py --csv path/to/your_export.csv
 
 This script:
-- ✓ Fetches your current stock positions (tickers + entry prices)
-- ✗ Does NOT read account balances
-- ✗ Does NOT execute any trades
-- ✗ Does NOT modify positions
+- Reads tickers, quantities, entry prices from a Fidelity Positions CSV
+- Does NOT read account balances
+- Does NOT execute any trades
+- Does NOT touch your Fidelity login at all — no credentials involved
 
-Requires:
-    pip install robin-stocks
-
-Environment variables:
-    ROBINHOOD_USERNAME=your_email@example.com
-    ROBINHOOD_PASSWORD=your_password
-    ROBINHOOD_MFA_CODE=123456  # Optional if 2FA enabled
+How to get the CSV: Fidelity website -> Accounts & Trade -> Positions ->
+click the download/export icon near the top of the positions table.
 """
 
-import sys
+import argparse
 import logging
-from src.data.robinhood_positions import RobinhoodPositionFetcher, ROBINHOOD_AVAILABLE
+import sys
+from datetime import datetime
+
+sys.path.insert(0, '.')
+from src.data.fidelity_positions import load_positions, format_positions_report
 
 logging.basicConfig(
     level=logging.INFO,
@@ -31,72 +30,41 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    if not ROBINHOOD_AVAILABLE:
-        print("\n" + "="*60)
-        print("ERROR: robin_stocks library not installed")
-        print("="*60)
-        print("\nInstall with:")
-        print("  pip install robin-stocks")
-        print("\nThis library provides READ-ONLY access to your positions.")
-        print("="*60)
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description='Fidelity position checker (read-only, CSV-based)')
+    parser.add_argument('--csv', type=str, required=True,
+                         help='Path to a Fidelity Positions CSV export')
+    args = parser.parse_args()
 
     print("\n" + "="*60)
-    print("ROBINHOOD POSITION CHECKER (Read-Only)")
+    print("FIDELITY POSITION CHECKER (Read-Only, from CSV)")
     print("="*60)
     print("\nThis will:")
-    print("  ✓ Fetch tickers and entry prices of your current positions")
+    print("  ✓ Read tickers, quantities and entry prices from the CSV")
     print("  ✗ NOT read account balance or portfolio value")
     print("  ✗ NOT execute any trades or modifications")
     print("\n" + "="*60 + "\n")
 
-    # Initialize fetcher
     try:
-        fetcher = RobinhoodPositionFetcher()
-    except ValueError as e:
-        print(f"\nERROR: {e}\n")
-        print("Set environment variable:")
-        print("  export ROBINHOOD_USERNAME='your_email@example.com'")
-        print("\nPassword and SMS MFA will be prompted (never stored)")
-        sys.exit(1)
-    except ImportError as e:
+        positions = load_positions(args.csv)
+    except (FileNotFoundError, ValueError) as e:
         print(f"\nERROR: {e}\n")
         sys.exit(1)
 
-    # Login (will prompt for password and SMS MFA)
-    print("Logging in to Robinhood...")
-    if not fetcher.login():
-        print("\n✗ Login failed. Check your credentials.")
-        sys.exit(1)
+    if not positions:
+        print("="*60)
+        print("No open positions found in the CSV")
+        print("="*60)
+        return
 
-    try:
-        # Fetch positions
-        print("\nFetching positions...\n")
-        positions = fetcher.fetch_positions()
+    report = format_positions_report(positions)
+    print(report)
 
-        if not positions:
-            print("="*60)
-            print("No open positions found")
-            print("="*60)
-            return
-
-        # Display formatted report
-        print(fetcher.format_positions_report())
-
-        # Export option
-        export = input("\nExport to file? (y/n): ").strip().lower()
-        if export == 'y':
-            from datetime import datetime
-            filename = f"robinhood_positions_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-
-            with open(filename, 'w') as f:
-                f.write(fetcher.format_positions_report())
-
-            print(f"\n✓ Exported to: {filename}")
-
-    finally:
-        fetcher.logout()
-        print("\n✓ Logged out\n")
+    export = input("\nExport to file? (y/n): ").strip().lower()
+    if export == 'y':
+        filename = f"fidelity_positions_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        with open(filename, 'w') as f:
+            f.write(report)
+        print(f"\n✓ Exported to: {filename}")
 
 
 if __name__ == '__main__':

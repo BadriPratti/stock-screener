@@ -24,6 +24,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+FIDELITY_TRADE_URL = "https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol={ticker}"
+
 
 class EmailNotifier:
     """Send screening results via email with HTML formatting.
@@ -383,14 +385,18 @@ class EmailNotifier:
         spy_analysis: Optional[Dict] = None,
         breadth: Optional[Dict] = None,
         top_n: int = 15,
-        top20: Optional[List[Dict]] = None
+        top20: Optional[List[Dict]] = None,
+        fundamentals_audits: Optional[Dict[str, Dict]] = None,
+        catalyst_sentiments: Optional[Dict[str, Dict]] = None,
+        congress_signals: Optional[Dict[str, Dict]] = None,
+        shortlist: Optional[List[Dict]] = None,
     ) -> bool:
         """Send the daily optimized full-market scan results via email.
 
         Unlike send_screening_results (which expects a DataFrame in the older
         buy_signal/value_score/pe_ratio shape), this matches the dict shape produced
         by run_optimized_scan.py's score_buy_signal/score_sell_signal — the current
-        Minervini-based scanner. Each ticker links straight to its Robinhood trade page.
+        Minervini-based scanner. Each ticker links straight to its Fidelity trade page.
 
         Args:
             buy_signals: List of buy signal dicts (already sorted, highest score first).
@@ -398,8 +404,17 @@ class EmailNotifier:
             spy_analysis: Optional SPY trend dict (phase, trend, confidence) for context.
             breadth: Optional market breadth dict.
             top_n: Number of top candidates per list to include in the email.
-            top20: Optional pre-ranked shortlist from top20_ranker.build_top20() —
+            top20: Optional pre-ranked pool from top20_ranker.build_top20() —
                 combined technical + Reddit-buzz score, with "why it's moving" links.
+            fundamentals_audits: Optional {ticker: audit-dict} from
+                src.agents.fundamentals_auditor.audit_candidates() — Top 20 only.
+            catalyst_sentiments: Optional {ticker: classification-dict} from
+                src.agents.catalyst_sentiment.analyze_candidates() — Top 20 only.
+            congress_signals: Optional {ticker: signal-dict} from
+                src.agents.congress_trades.get_signals_for_candidates() — Top 20 only.
+            shortlist: Optional Top 5 from src.agents.shortlist.build_shortlist() —
+                the Top 20 pool actually filtered/ranked by the three agents above.
+                Rendered as the primary section; top20 is shown below it for reference.
 
         Returns:
             True if email sent successfully, False otherwise.
@@ -421,8 +436,13 @@ class EmailNotifier:
             msg['To'] = self.email_to
             msg['Subject'] = subject
 
-            html_body = self._create_scan_html_email(buy_signals, sell_signals, spy_analysis, breadth, top_n, top20)
-            text_body = self._create_scan_text_fallback(buy_signals, sell_signals, spy_analysis, top_n, top20)
+            html_body = self._create_scan_html_email(
+                buy_signals, sell_signals, spy_analysis, breadth, top_n, top20,
+                fundamentals_audits, catalyst_sentiments, congress_signals, shortlist,
+            )
+            text_body = self._create_scan_text_fallback(
+                buy_signals, sell_signals, spy_analysis, top_n, top20, shortlist,
+            )
 
             msg.attach(MIMEText(text_body, 'plain'))
             msg.attach(MIMEText(html_body, 'html'))
@@ -449,9 +469,9 @@ class EmailNotifier:
             return False
 
     def _scan_row_html(self, ticker: str, cells: List[str], bg: str) -> str:
-        """Render one <tr> for the scan report table, with the ticker linked to Robinhood."""
+        """Render one <tr> for the scan report table, with the ticker linked to Fidelity."""
         link = (
-            f'<a href="https://robinhood.com/stocks/{ticker}" '
+            f'<a href="{FIDELITY_TRADE_URL.format(ticker=ticker)}" '
             f'style="color:#1a73e8;text-decoration:none;font-weight:bold;">{ticker} ↗</a>'
         )
         row = f'    <tr style="background-color: {bg};">\n'
@@ -471,10 +491,153 @@ class EmailNotifier:
             return f'<strong style="color:#e67e22;">🔥 {count}</strong>'
         return f'💬 {count}'
 
-    def _create_top20_html(self, top20: List[Dict]) -> str:
-        """Render the combined technical + Reddit-buzz Top 20 shortlist with why-links."""
+    def _catalyst_badge_html(self, classification: Optional[Dict]) -> str:
+        """Render the Catalyst Sentiment agent's -5..+5 score as a compact colored badge."""
+        if not classification:
+            return ""
+        score = classification.get('catalyst_score', 0)
+        ctype = (classification.get('catalyst_type') or 'other').replace('_', ' ')
+        if score > 0:
+            color, bg = '#155724', '#d4edda'
+        elif score < 0:
+            color, bg = '#721c24', '#f8d7da'
+        else:
+            color, bg = '#555', '#eee'
+        summary = classification.get('summary', '')
+        return (
+            f'<div style="margin-top:6px;">'
+            f'<span style="background:{bg};color:{color};padding:2px 6px;border-radius:4px;'
+            f'font-size:11px;font-weight:bold;">🎯 Catalyst {score:+d}: {ctype}</span>'
+            f'<div style="font-size:11px;color:#666;margin-top:2px;">{summary}</div>'
+            f'</div>'
+        )
+
+    def _congress_badge_html(self, signal: Optional[Dict]) -> str:
+        """Render the Congress Trades agent's net buy/sell signal as a compact colored badge.
+
+        House disclosures only (see src/agents/congress_trades.py for why).
+        """
+        if not signal or not signal.get('has_data'):
+            return ""
+        score = signal.get('score', 0)
+        if score > 0:
+            color, bg = '#155724', '#d4edda'
+        elif score < 0:
+            color, bg = '#721c24', '#f8d7da'
+        else:
+            color, bg = '#555', '#eee'
+        summary = signal.get('summary', '')
+        return (
+            f'<div style="margin-top:6px;">'
+            f'<span style="background:{bg};color:{color};padding:2px 6px;border-radius:4px;'
+            f'font-size:11px;font-weight:bold;">🏛️ Congress {score:+.1f}</span>'
+            f'<div style="font-size:11px;color:#666;margin-top:2px;">{summary}</div>'
+            f'</div>'
+        )
+
+    def _fundamentals_flags_html(self, audit: Optional[Dict]) -> str:
+        """Render the Fundamentals Auditor agent's top red/green flags, compact."""
+        if not audit:
+            return ""
+        red = audit.get('red_flags') or []
+        green = audit.get('green_flags') or []
+        parts = []
+        if red:
+            more = f' (+{len(red) - 1} more)' if len(red) > 1 else ''
+            parts.append(
+                f'<div style="font-size:11px;color:#c0392b;margin-top:3px;">🔴 {red[0]["flag"]}{more}</div>'
+            )
+        if green:
+            more = f' (+{len(green) - 1} more)' if len(green) > 1 else ''
+            parts.append(
+                f'<div style="font-size:11px;color:#27ae60;margin-top:2px;">🟢 {green[0]["flag"]}{more}</div>'
+            )
+        return "".join(parts)
+
+    def _create_shortlist_html(
+        self,
+        shortlist: List[Dict],
+        fundamentals_audits: Optional[Dict[str, Dict]] = None,
+        catalyst_sentiments: Optional[Dict[str, Dict]] = None,
+        congress_signals: Optional[Dict[str, Dict]] = None,
+    ) -> str:
+        """Render the Top 5 shortlist — the Top 20 pool actually filtered/ranked by the
+        three agents (src/agents/shortlist.py), not just labeled. This is the primary,
+        prominent section; the full Top 20 pool is shown below it for reference.
+        """
+        if not shortlist:
+            return ""
+
+        fundamentals_audits = fundamentals_audits or {}
+        catalyst_sentiments = catalyst_sentiments or {}
+        congress_signals = congress_signals or {}
+
+        cards = ""
+        for i, s in enumerate(shortlist, 1):
+            ticker = s['ticker']
+            badges = self._catalyst_badge_html(catalyst_sentiments.get(ticker))
+            badges += self._congress_badge_html(congress_signals.get(ticker))
+            badges += self._fundamentals_flags_html(fundamentals_audits.get(ticker))
+            if not s.get('passed_filters', True):
+                reasons = '; '.join(s.get('drop_reasons') or []) or 'below filter bar'
+                badges += (
+                    f'<div style="font-size:11px;color:#8a6d3b;margin-top:4px;">'
+                    f"⚠️ Backfilled — didn't clear filters: {reasons}</div>"
+                )
+            if not badges:
+                badges = '<span style="font-size:11px;color:#999;">No agent data</span>'
+
+            cards += f"""
+    <tr style="background-color: {'#f9f9f9' if i % 2 == 0 else 'white'};">
+      <td style="padding:10px;border:1px solid #ddd;font-weight:bold;">#{i}</td>
+      <td style="padding:10px;border:1px solid #ddd;">
+        <a href="{FIDELITY_TRADE_URL.format(ticker=ticker)}" style="color:#1a73e8;text-decoration:none;font-weight:bold;" target="_blank">{ticker} ↗</a>
+      </td>
+      <td style="padding:10px;border:1px solid #ddd;">{s.get('composite_score', '-')}</td>
+      <td style="padding:10px;border:1px solid #ddd;">{s.get('combined_score', s.get('score', '-'))}</td>
+      <td style="padding:10px;border:1px solid #ddd;">{badges}</td>
+    </tr>"""
+
+        return f"""
+    <h2 style="color:#764ba2;">🎯 Top 5 — Filtered Shortlist</h2>
+    <p style="color:#666;font-size:13px;margin-top:-8px;">
+        Ranked from the Top 20 pool below by composite score = base score + Catalyst
+        Sentiment×2 + Congress Trades×3. Candidates where fundamentals red flags outweigh
+        green, or Catalyst Sentiment reads a clear negative catalyst (≤ -2), are dropped —
+        only backfilled (⚠️ flagged) if fewer than 5 survive.
+    </p>
+    <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+      <thead>
+        <tr style="background-color: #764ba2; color: white;">
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">#</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Ticker</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Composite</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Base Score</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Agent Signals</th>
+        </tr>
+      </thead>
+      <tbody>{cards}</tbody>
+    </table>"""
+
+    def _create_top20_html(
+        self,
+        top20: List[Dict],
+        fundamentals_audits: Optional[Dict[str, Dict]] = None,
+        catalyst_sentiments: Optional[Dict[str, Dict]] = None,
+        congress_signals: Optional[Dict[str, Dict]] = None,
+    ) -> str:
+        """Render the full Top 20 candidate pool the Top 5 shortlist above was drawn from.
+
+        fundamentals_audits / catalyst_sentiments / congress_signals are optional
+        {ticker: agent-result-dict} maps from src/agents/ — shown here for reference;
+        they only actually change ranking in the Top 5 shortlist above, not this pool.
+        """
         if not top20:
             return ""
+
+        fundamentals_audits = fundamentals_audits or {}
+        catalyst_sentiments = catalyst_sentiments or {}
+        congress_signals = congress_signals or {}
 
         cards = ""
         for i, s in enumerate(top20, 1):
@@ -489,11 +652,15 @@ class EmailNotifier:
             if not links_html:
                 links_html = '<span style="font-size:11px;color:#999;">No linked source yet</span>'
 
+            links_html += self._catalyst_badge_html(catalyst_sentiments.get(s['ticker']))
+            links_html += self._congress_badge_html(congress_signals.get(s['ticker']))
+            links_html += self._fundamentals_flags_html(fundamentals_audits.get(s['ticker']))
+
             cards += f"""
     <tr style="background-color: {'#f9f9f9' if i % 2 == 0 else 'white'};">
       <td style="padding:10px;border:1px solid #ddd;font-weight:bold;">#{i}</td>
       <td style="padding:10px;border:1px solid #ddd;">
-        <a href="https://robinhood.com/stocks/{s['ticker']}" style="color:#1a73e8;text-decoration:none;font-weight:bold;" target="_blank">{s['ticker']} ↗</a>
+        <a href="{FIDELITY_TRADE_URL.format(ticker=s['ticker'])}" style="color:#1a73e8;text-decoration:none;font-weight:bold;" target="_blank">{s['ticker']} ↗</a>
       </td>
       <td style="padding:10px;border:1px solid #ddd;">{s.get('combined_score', s.get('score', '-'))}</td>
       <td style="padding:10px;border:1px solid #ddd;">{self._reddit_cell(s.get('reddit_mentions_24h'))}</td>
@@ -501,10 +668,11 @@ class EmailNotifier:
     </tr>"""
 
         return f"""
-    <h2 style="color:#764ba2;">⭐ Top 20 — Combined Shortlist</h2>
+    <h2 style="color:#999;font-size:18px;">Full Candidate Pool (Top 20)</h2>
     <p style="color:#666;font-size:13px;margin-top:-8px;">
-        Technical/fundamental score first, re-ranked by Reddit buzz. Every entry already
-        passed the full screen — Reddit only boosts rank within that qualified pool.
+        Technical/fundamental score first, re-ranked by Reddit buzz — the Top 5 shortlist
+        above was filtered and ranked from this pool. Shown for reference; badges here
+        don't re-rank this list, only the Top 5 above.
     </p>
     <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
       <thead>
@@ -526,7 +694,11 @@ class EmailNotifier:
         spy_analysis: Optional[Dict],
         breadth: Optional[Dict],
         top_n: int,
-        top20: Optional[List[Dict]] = None
+        top20: Optional[List[Dict]] = None,
+        fundamentals_audits: Optional[Dict[str, Dict]] = None,
+        catalyst_sentiments: Optional[Dict[str, Dict]] = None,
+        congress_signals: Optional[Dict[str, Dict]] = None,
+        shortlist: Optional[List[Dict]] = None,
     ) -> str:
         """Build the HTML body for a Minervini-scan report email."""
         today = datetime.now().strftime('%B %d, %Y')
@@ -541,7 +713,12 @@ class EmailNotifier:
         {f"<p><strong>Breadth:</strong> {breadth.get('phase2_pct', 0):.1f}% of stocks in Phase 2 (uptrend)</p>" if breadth else ""}
     </div>"""
 
-        top20_html = self._create_top20_html(top20) if top20 else ""
+        shortlist_html = self._create_shortlist_html(
+            shortlist, fundamentals_audits, catalyst_sentiments, congress_signals
+        ) if shortlist else ""
+        top20_html = self._create_top20_html(
+            top20, fundamentals_audits, catalyst_sentiments, congress_signals
+        ) if top20 else ""
 
         buy_rows = ""
         for i, s in enumerate(buy_signals[:top_n]):
@@ -624,13 +801,14 @@ class EmailNotifier:
         <p style="margin: 10px 0 0 0; font-size: 15px;">{today}</p>
     </div>
     {regime_html}
+    {shortlist_html}
     {top20_html}
     <h2 style="color:#27ae60;">🟢 Buy Signals ({len(buy_signals)})</h2>
     {buy_table}
     <h2 style="color:#e74c3c; margin-top:30px;">🔴 Sell Signals ({len(sell_signals)})</h2>
     {sell_table}
     <div class="footer">
-        <p><strong>Automated Stock Screener</strong> — tap any ticker to open its Robinhood trade page. You still decide and execute every trade yourself.</p>
+        <p><strong>Automated Stock Screener</strong> — tap any ticker to open its Fidelity trade page. You still decide and execute every trade yourself.</p>
         <p>⚠️ This is not financial advice. Always do your own research before investing.</p>
     </div>
 </body>
@@ -643,7 +821,8 @@ class EmailNotifier:
         sell_signals: List[Dict],
         spy_analysis: Optional[Dict],
         top_n: int,
-        top20: Optional[List[Dict]] = None
+        top20: Optional[List[Dict]] = None,
+        shortlist: Optional[List[Dict]] = None,
     ) -> str:
         """Plain-text fallback for the scan report email."""
         today = datetime.now().strftime('%B %d, %Y')
@@ -652,8 +831,18 @@ class EmailNotifier:
         if spy_analysis:
             text += f"SPY: Phase {spy_analysis.get('phase', '?')} ({spy_analysis.get('trend', 'Unknown')})\n\n"
 
+        if shortlist:
+            text += "TOP 5 - FILTERED SHORTLIST:\n" + "-" * 60 + "\n"
+            for i, s in enumerate(shortlist, 1):
+                flag = "" if s.get('passed_filters', True) else "  [BACKFILLED - didn't clear filters]"
+                text += (
+                    f"#{i:<3} {s['ticker']:<6} composite {s.get('composite_score', '-')}  "
+                    f"base {s.get('combined_score', s.get('score', '-'))}{flag}\n"
+                )
+            text += "\n"
+
         if top20:
-            text += "TOP 20 - COMBINED SHORTLIST:\n" + "-" * 60 + "\n"
+            text += "FULL CANDIDATE POOL (TOP 20):\n" + "-" * 60 + "\n"
             for i, s in enumerate(top20, 1):
                 text += f"#{i:<3} {s['ticker']:<6} combined {s.get('combined_score', '-')}  reddit {s.get('reddit_mentions_24h', 0)}\n"
                 for link in (s.get('why_links') or [])[:2]:
@@ -668,7 +857,7 @@ class EmailNotifier:
                     f"{s['ticker']:<6} score {s['score']}/125  "
                     f"stop ${s.get('stop_loss', 0):.2f}  "
                     f"reddit {reddit if reddit is not None else '-'}  "
-                    f"https://robinhood.com/stocks/{s['ticker']}\n"
+                    f"{FIDELITY_TRADE_URL.format(ticker=s['ticker'])}\n"
                 )
         else:
             text += "No buy signals today\n"
@@ -679,7 +868,7 @@ class EmailNotifier:
                 text += (
                     f"{s['ticker']:<6} score {s['score']}/110  "
                     f"severity {s.get('severity', '?')}  "
-                    f"https://robinhood.com/stocks/{s['ticker']}\n"
+                    f"{FIDELITY_TRADE_URL.format(ticker=s['ticker'])}\n"
                 )
         else:
             text += "No sell signals today\n"

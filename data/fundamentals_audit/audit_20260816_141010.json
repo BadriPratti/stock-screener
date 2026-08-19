@@ -1,0 +1,693 @@
+{
+  "generated": "2026-08-16T14:10:10.946880",
+  "results": [
+    {
+      "ticker": "MSBI",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-07-30",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1466026/000146602626000078/msbi-20260630.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "CFO transition mid-year (new CFO hired May 2026)",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "Exhibit 10.1 'Employment Offer Letter, dated as of May 8, 2026, between Midland States Bank and Claire A. Stack' and the 10-Q is signed by Claire A. Stack as Chief Financial Officer (Principal Financial Officer and Principal Accounting Officer). A finance-leadership change at a bank working through credit issues warrants monitoring, though no control deficiencies were reported."
+          },
+          {
+            "flag": "CEO adopted a 10b5-1 plan to sell option shares",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "On June 15, 2026, Jeffrey G. Ludwig ... adopted a Rule 10b5-1 trading arrangement ... provides for the sale of up to 8,383 shares of Company common stock that are subject to stock options held by Mr. Ludwig. Size is small relative to typical insider holdings, so signal value is limited."
+          },
+          {
+            "flag": "Excerpt contains no MD&A discussion of net interest margin, credit provisioning, or deposit trends",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "The provided text jumps from a reference to 'Management's Discussion and Analysis ... Quantitative and Qualitative Disclosures about Market Risk' straight into Item 4 Controls and Part II; no substantive discussion of margin, loan growth, charge-offs or funding costs is available to audit."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Buyback authorization increased 80% and extended, signaling excess capital and management's view that shares are cheap",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "on May 5, 2026, the board ... approved an amendment to the stock repurchase program that increased the amount of its common stock authorized for repurchase from $25.0 million to $45.0 million and extended the expiration date of the program to December 31, 2026."
+          },
+          {
+            "flag": "Active, price-disciplined execution of repurchases",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "As of June 30, 2026, 935,937 shares ... repurchased under the program for an aggregate purchase price of $20.2 million; Q2 purchases of 115,981 shares at an average $24.13, with the heaviest buying (101,108 shares) in April at $23.63 versus $27.64 in June."
+          },
+          {
+            "flag": "Clean controls, no material litigation, and no risk factor changes",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "disclosure controls and procedures were effective ... There have not been any changes in the Company's internal control over financial reporting ... There are no material pending legal proceedings ... There have been no material changes from the risk factors previously disclosed."
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "The excerpt provided is almost entirely Part II boilerplate, so there is no MD&A detail on net interest margin, credit quality, or deposit costs to interrogate. What is visible is modestly constructive: effective disclosure controls, no material litigation, no risk-factor changes, and an 80% increase in the buyback authorization (to $45 million, extended to year-end 2026) with $20.2 million already executed at disciplined average prices. The main watch items are a mid-year CFO transition and a small CEO 10b5-1 option-sale plan, neither of which is alarming on its own but both of which deserve follow-up against the full financial statements."
+      }
+    },
+    {
+      "ticker": "CASS",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-05",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/708781/000070878126000031/cass-20260630.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Management asks investors to disregard current-period interest rate sensitivity disclosure in favor of stale year-end figures",
+            "category": "guidance",
+            "severity": "moderate",
+            "evidence": "\"the simulated changes in projected net interest income from a static balance sheet are not indicative of what would occur in the next 12 months... The Company believes that the interest rate shock results shown for December 31, 2025 are more indicative of what would happen in the various interest rate scenarios.\""
+          },
+          {
+            "flag": "New reliance on $80.0 million of short-term borrowings distorts the balance sheet at quarter-end",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "\"Primarily as a result of $80.0 million in short-term borrowings at June 30, 2026... the Company is not forecasting a significant balance in average short-term borrowings for the remainder of 2026.\" Average interest-bearing liabilities were $652.9 million in Q2 2026, so the borrowings are a meaningful, presumably temporary funding source."
+          },
+          {
+            "flag": "Sharp decline in modeled upside from rising rates (asset sensitivity compressed)",
+            "category": "other",
+            "severity": "moderate",
+            "evidence": "+300bp NII sensitivity fell from 10.7% at 12/31/2025 to 3.5% at 6/30/2026; +100bp fell from 3.7% to 1.2%, indicating materially less NII upside (albeit partly attributable to the short-term borrowings)."
+          },
+          {
+            "flag": "Bank subsidiary capital ratios declined and subsidiary capital was drawn down",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Cass Commercial Bank total capital fell from $217,409k (19.61%) at 12/31/2025 to $210,792k (18.40%) at 6/30/2026; CET1 fell from 18.40% to 17.16%. Consolidated total capital ratio also slipped from 15.95% to 15.52% as risk-weighted assets grew faster than capital."
+          },
+          {
+            "flag": "Thin qualitative disclosure; boilerplate assurance on critical estimates",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "\"These estimates have been generally accurate in the past, have been consistent and have not required any material changes.\" \u2014 allowance for credit losses is the sole critical estimate and no quantitative detail on credit trends appears in the excerpt provided."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Capital levels comfortably above regulatory minimums and growing in absolute dollars",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "\"The Company and the Bank continue to exceed all regulatory capital requirements\"; consolidated total capital rose to $270,537k from $262,792k and Tier 1 leverage improved to 10.13% from 9.91%."
+          },
+          {
+            "flag": "Ongoing shareholder returns via buyback with ample remaining authorization",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "65,557 shares repurchased in Q2 2026 at an average $47.15 under the November 6, 2025 authorization of up to 1,000,000 shares, with 744,611 shares still available."
+          },
+          {
+            "flag": "Clean controls and no material legal or risk factor changes",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "Disclosure controls \"were effective\"; \"There were no changes in the second quarter of 2026 in the Company's internal control over financial reporting\"; \"There are no material changes to the Risk Factors.\" New accounting standards expected to have no material impact."
+          },
+          {
+            "flag": "Reduced downside exposure to falling rates",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "-100bp scenario improved from (2.5)% at 12/31/2025 to +0.4% at 6/30/2026 and -200bp from (6.1)% to (0.8)%, indicating less NII vulnerability if the Fed cuts."
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "The excerpt is mostly regulatory capital, rate-risk and housekeeping disclosure, with no income-statement discussion, so the qualitative read is limited. The most notable item is management effectively telling investors to ignore the current interest rate sensitivity table and rely on six-month-old year-end figures, driven by $80 million of quarter-end short-term borrowings \u2014 a hedged framing worth scrutinizing alongside modestly lower capital ratios at the bank subsidiary. Offsetting positives include capital well above all requirements, rising absolute capital and Tier 1 leverage, continued buybacks, effective controls and no new risk factors."
+      }
+    },
+    {
+      "ticker": "GIC",
+      "audited": false,
+      "reason": "no recent 10-Q/10-K found",
+      "filing_type": null,
+      "filing_date": null,
+      "audit": null
+    },
+    {
+      "ticker": "NMM",
+      "audited": false,
+      "reason": "no recent 10-Q/10-K found",
+      "filing_type": null,
+      "filing_date": null,
+      "audit": null
+    },
+    {
+      "ticker": "ATLC",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-06",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1464343/000143774926026279/atlc20260630_10q.htm",
+      "audit": {
+        "red_flags": [],
+        "green_flags": [],
+        "overall_assessment": "no_notable_flags",
+        "summary": "The provided excerpt contains only the tail end of the 10-Q (Items 3-6, exhibit index, and signature page) and no substantive MD&A, financial statement, or risk factor content. The only disclosures present are boilerplate: no defaults on senior securities, no mine safety matters, and no Rule 10b5-1 trading arrangements adopted or terminated by directors or officers during the quarter. There is insufficient text to identify any genuine red or green flags for Atlanticus."
+      }
+    },
+    {
+      "ticker": "JRSH",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-12",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1696558/000121390026088344/ea0299282-10q_jerash.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Extreme customer concentration \u2014 one buyer is 57% of revenue, top three are 88%",
+            "category": "customer_concentration",
+            "severity": "major",
+            "evidence": "VF Corporation $28,672 (57%), New Balance $7,823 (16%), Suzhou Unitex $7,577 (15%) of $50,230 total revenue; 'A large portion of our products are sold under The North Face, Timberland, and Vans brands owned by VF Corporation.'"
+          },
+          {
+            "flag": "'Diversification' narrative undercut by shrinking long-tail customer base",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "Management cites 'our effort in diversification of client base,' yet 'Others' fell from $5,896 (15% of sales) to $3,998 (8%), and 'Others' geographies fell 85% from $994 to $146. Growth came from two existing major U.S. buyers plus two named new accounts, not broader diversification."
+          },
+          {
+            "flag": "Net income growth (+421%) heavily flattered by tax-rate normalization, not just operations",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "'The effective tax rate decreased to 19.4% for the three months ended June 30, 2026, as compared to 50.4% for the same period in fiscal 2026.' Pre-tax income rose 220% vs. net income up 421%; the Jordan corporate rate concession from 20% to 10% effective October 1, 2025 is a structural but non-operating tailwind."
+          },
+          {
+            "flag": "Unresolved and volatile tariff exposure on Jordan-manufactured goods",
+            "category": "other",
+            "severity": "major",
+            "evidence": "Extended narrative of 10% baseline tariff (April 2025), 15% modification (July 2025), Supreme Court voiding 'reciprocal' tariffs (Feb 2026), Section 122 across-the-board 10% expiring July 2026, and a new Section 301 10% tariff on Jordan products where only 'Most of the garment categories that Jerash manufactures fall within the HTSUS codes in the exceptions' \u2014 protection is partial and policy-dependent."
+          },
+          {
+            "flag": "Growing cost of supply-chain financing is a hidden drag below the gross margin line",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "Other expenses, net rose 78% to $546,000 'primarily due to higher revenue from two major customers participating in supply chain financing programs that allow us to receive early payments and increases in interest expense in letter of credit financing for raw material purchases of a new buyer.'"
+          },
+          {
+            "flag": "Operating cash flow quality: driven by inventory liquidation and customer-financed receivables, offset by a large payables paydown",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "OCF of $2.5M included 'a decrease in inventory of $3.4 million,' accounts receivable up only $0.2M 'resulting from more advances received from the two major customers through their supply chain financing programs,' and 'a decrease in accounts payable of $4.0 million' \u2014 versus net income of only $1.7M."
+          },
+          {
+            "flag": "Working capital terms tightening with new suppliers",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "'The primary driver in the decrease in current liabilities was a decrease of $4.0 million in accounts payable due to introduction of new suppliers catering for new businesses that typically started with stricter payment terms.'"
+          },
+          {
+            "flag": "New supplier concentration emerged this quarter",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'For the three months ended June 30, 2026, we purchased 18% and 13% of our total purchase in garments and raw materials from two major suppliers... For the three months ended June 30, 2025, we did not purchase more than 10% ... from any supplier.'"
+          },
+          {
+            "flag": "Rising capex plans with hedged funding language, including potential equity raise",
+            "category": "guidance",
+            "severity": "moderate",
+            "evidence": "'We expect that our capital expenditures will increase in the following two fiscal years... we may also obtain further bank financing and raise funds from the capital market to meet our capital expenditure plan... As of the date of this report, no material commitment has been made for the capital expenditure projections above.'"
+          },
+          {
+            "flag": "Primary revolving facility fully drawn; new 8% secured term debt added",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "'As of June 30, 2026 and March 31, 2026, we had $5.0 million and $4.9 million outstanding under this DBSHK facility' against a $5.0 million limit; Housing Bank property loan of JOD 2 million 'bears interest at a rate of 8% per annum' and is 'secured by a first-priority mortgage on Property No. 1326.'"
+          },
+          {
+            "flag": "Structurally thin margins leave little cushion",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "Gross margin of 16% and net margin of 3%; cost of goods sold is 84% of sales, so modest input-cost or tariff shocks could erase profitability."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Broad-based revenue growth of 27% with genuine operating leverage",
+            "category": "revenue_quality",
+            "severity": "major",
+            "evidence": "Revenue $50,230 vs $39,629 (+27%); SG&A grew only 10% and fell from 12% to 11% of sales; pre-tax income up 220% to $2,086."
+          },
+          {
+            "flag": "Gross margin expansion attributed to structural efficiency, not one-time items",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "'The increase in gross profit margin was primarily driven by increase in shipments to our U.S. customers that typically generated higher margin and an overall improvement in efficiency through automation' \u2014 cost of goods sold fell from 85% to 84% of revenue."
+          },
+          {
+            "flag": "Major swing to positive operating cash flow year over year",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "'Net cash provided by operating activities was approximately $2.5 million... compared to net cash used in operating activities of approximately $6.5 million for the same period in fiscal 2026.'"
+          },
+          {
+            "flag": "Strengthening liquidity and balance sheet",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Current ratio improved to 3.1:1 from 2.7:1; cash rose to $12.4M from $10.8M; working capital $38.1M vs $36.7M; total equity $66.2M vs $64.9M; restricted net assets only 0.63% of consolidated net assets."
+          },
+          {
+            "flag": "New customer wins and non-U.S. growth beginning to broaden the base",
+            "category": "revenue_quality",
+            "severity": "minor",
+            "evidence": "'introduction of a new customer in Korea' (Hansoll $2,160), Suzhou Unitex doubled to $7,577, and 'aggregate sales to China and Hong Kong, Korea, Jordan, and other locations increased by 50% from $7.6 million to $11.3 million.'"
+          },
+          {
+            "flag": "Durable Jordanian tax rate concession",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "'tax concession to decrease corporation income tax rate from 20% to 10% in Jordan effective from October 1, 2025.'"
+          },
+          {
+            "flag": "Ample undrawn credit capacity and continued dividend",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "$nil outstanding under both the $6.0M Bank al Etihad and $7.5M Capital Bank facilities and only $0.4M of a $14.0M Housing Bank facility drawn; $635,000 of dividends paid, unchanged year over year."
+          },
+          {
+            "flag": "Clean controls and no litigation",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "Management 'concluded that our internal control over financial reporting was effective,' no changes in ICFR, and 'We are not currently involved in any material legal proceedings.'"
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "Jerash posted a genuinely strong quarter \u2014 27% revenue growth, a real 1-point gross margin gain attributed to automation and scale, SG&A leverage, and a $9M swing to positive operating cash flow \u2014 with a stronger current ratio and mostly undrawn credit lines. The caveats are structural rather than accounting-driven: VF alone is 57% of sales and the top three buyers are 88%, the 'Others' bucket actually shrank, and the 421% net income jump is exaggerated by an effective tax rate falling from 50.4% to 19.4%. Layer on unsettled Jordan tariff policy (currently exempt only by HTSUS code carve-outs), a fully drawn DBS facility, rising supply-chain-financing costs in other expenses, and hedged language about funding a capex ramp possibly via the capital markets, and the picture is solid execution on a fragile, concentrated base."
+      }
+    },
+    {
+      "ticker": "LNC",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-07-30",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/59558/000005955826000060/lnc-20260630.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Zero share repurchases in the quarter despite $714 million remaining authorization",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "Repurchase table shows '\u2013' shares purchased in each of 4/1/26\u20134/30/26, 5/1/26\u20135/31/26 and 6/1/26\u20136/30/26, with remaining authorization unchanged at $714 million; company notes buybacks depend on 'key capital ratios, rating agency expectations, the generation of free cash flow.'"
+          },
+          {
+            "flag": "New high-cost subordinated debt issued at 6.800% with a 30-year maturity",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Exhibit 4.2: 'Form of 6.800% Fixed-to-Fixed Reset Rate Subordinated Note due 2056 (included in the Third Supplemental Subordinated Indenture, dated as of June 29, 2026).'"
+          },
+          {
+            "flag": "Capital deployment prioritized toward debt issuance rather than shareholder returns, suggesting capital/ratings pressure",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Third Supplemental Subordinated Indenture dated June 29, 2026 issuing hybrid-style reset notes, coinciding with a quarter of no buybacks and language tying repurchases to 'key capital ratios, rating agency expectations.'"
+          },
+          {
+            "flag": "Boilerplate-heavy risk language with no updated quantitative discussion in the excerpt",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'Additional risks and uncertainties not presently known to us or that we currently deem immaterial may also impair our business operations... the value of our securities could decline substantially.'"
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Full repurchase authorization preserved, retaining capital flexibility",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "'As of June 30, 2026, our remaining security repurchase authorization was $714 million. The security repurchase authorization does not have an expiration date.'"
+          },
+          {
+            "flag": "Demonstrated access to long-dated capital markets funding",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Successful issuance of Fixed-to-Fixed Reset Rate Subordinated Notes due 2056 under a Third Supplemental Subordinated Indenture dated June 29, 2026."
+          },
+          {
+            "flag": "No insider trading-plan activity by directors or officers during the quarter",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'During the three months ended June 30, 2026, none of our directors or officers... adopted or terminated a Rule 10b5-1 trading arrangement.'"
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "The provided excerpt is largely back-matter (Part II items, exhibit index, signatures) and contains almost no substantive MD&A discussion of revenue, margins, or guidance, so a full fundamentals read is not possible. What is observable is capital-allocation caution: no shares were repurchased in any month of the June 2026 quarter despite $714 million of authorization remaining, while the company simultaneously issued 6.800% fixed-to-fixed reset subordinated notes due 2056 \u2014 an expensive, ratings-friendly hybrid that suggests capital and rating agency considerations are taking precedence over shareholder returns. Nothing here is alarming on its own, but the combination of paused buybacks plus costly long-dated subordinated funding warrants a look at statutory capital and leverage in the full filing."
+      }
+    },
+    {
+      "ticker": "MASS",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-08-11",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1555279/000110465926093731/mass-20260630x10q.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Excerpt contains no actual MD&A financial discussion \u2014 audit is severely limited",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "The provided text jumps from a boilerplate reference to 'Management's Discussion and Analysis of Financial Condition and Results of Operations' directly into Items 2-6 (Unregistered Sales, Defaults, Mine Safety, Other Information, Exhibits) and signatures, with no revenue, margin, cash flow or guidance discussion."
+          },
+          {
+            "flag": "Two insiders adopted 10b5-1 sale plans during the quarter, including the CFO",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'On May 26, 2026, Joseph H. Griffith IV, the Company's Chief Financial Officer, adopted a trading plan... for the potential sale of up to 16,459 shares' and 'On June 12, 2026, John Kenneweg... SVP of Sales & Product Marketing adopted a trading plan... up to 44,251 shares.'"
+          },
+          {
+            "flag": "Recent acquisition (NIRLAB SA) may make forward revenue growth partly inorganic and harder to compare",
+            "category": "revenue_quality",
+            "severity": "minor",
+            "evidence": "Exhibit 2.1: 'Share Purchase Agreement, dated as of May 4, 2026, among 908 Devices Inc., Florentin Coppey, Pierre Esseiva, Matteo Delbr\u00fcck, Parkview Invest AG, Matthieu Girod and NIRLAB SA'"
+          },
+          {
+            "flag": "Strong cautionary framing that past results are not indicative of future performance",
+            "category": "guidance",
+            "severity": "minor",
+            "evidence": "'Because of such risk factors... past financial performance should not be considered to be a reliable indicator of future performance, and investors should not use historical trends to anticipate results or trends in future periods.'"
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "No defaults on senior securities and no unregistered equity sales in the period",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "'Item 2. Unregistered Sales of Equity Securities and Use of Proceeds. None.' and 'Item 3. Defaults Upon Senior Securities. None.'"
+          },
+          {
+            "flag": "Standard SOX 302/906 certifications from both CEO and CFO filed without noted qualification",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "Exhibits 31.1, 31.2, 32.1, 32.2 certifications signed by Kevin J. Knopp (CEO) and Joseph H. Griffith IV (CFO), dated August 11, 2026."
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "The excerpt provided is essentially the back-matter of the 10-Q (Items 2-6, exhibit index, signatures) and contains no substantive MD&A discussion of revenue, margins, cash flow, or guidance, so no meaningful fundamental judgment can be drawn from it. The only substantive items are two newly adopted insider 10b5-1 sale plans (CFO and SVP Sales) and a May 2026 share purchase agreement for NIRLAB SA, which suggests some future revenue growth may be acquisition-driven. Nothing here is alarming on its own, but the filing text supplied is too thin to confirm or rule out earnings-quality or margin issues."
+      }
+    },
+    {
+      "ticker": "ANGO",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-K",
+      "filing_date": "2026-07-14",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1275187/000162828026048138/ango-20260531.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "'Acquisition, restructuring and other items' has become a permanent annual expense line",
+            "category": "earnings_quality",
+            "severity": "major",
+            "evidence": "Acquisition, restructuring and other items, net of $17,598K in FY2026 vs $15,620K in FY2025 and $53,182K in FY2024 \u2014 charges labeled non-recurring have now run for three consecutive years and actually increased year over year, representing ~5.5% of net sales."
+          },
+          {
+            "flag": "Operating and net losses persist despite revenue growth; no operating leverage",
+            "category": "margin",
+            "severity": "major",
+            "evidence": "Net sales grew 9.5% to $320,174K yet operating loss was essentially unchanged at $(39,927)K vs $(39,954)K, and net loss widened to $(36,742)K from $(33,993)K. Sales & marketing rose 10.0% to $113,401K and R&D rose 12.3% to $29,447K, absorbing the entire $17.2M gross profit gain."
+          },
+          {
+            "flag": "Positive operating cash flow is largely a working-capital (inventory liquidation) effect",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "Net cash provided by operating activities of $3,089K includes a $10,047K release from inventories (inventory fell from $62,006K to $52,436K, raw materials from $27,497K to $19,307K); excluding that draw-down the business would again have consumed cash, and total cash still declined $2,029K to $53,864K."
+          },
+          {
+            "flag": "Capital spending nearly halved, including placement/evaluation units that drive future disposable sales",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "Additions to property, plant and equipment fell to $2,581K from $4,464K and additions to placement and evaluation units fell to $3,368K from $5,714K; PP&E net declined from $32,300K to $27,097K, flattering free cash flow but potentially starving the razor/razor-blade installed base."
+          },
+          {
+            "flag": "Stock-based compensation up 43% while the company is loss-making, diluting shareholders",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "Stock based compensation of $13,960K in FY2026 vs $9,772K in FY2025 and $10,529K in FY2024; shares outstanding rose to 41,700,419 from 40,994,030 and no buybacks occurred in FY2026 (vs $1,670K in FY2025)."
+          },
+          {
+            "flag": "Rising inventory reserve and inventory obsolescence flagged as the sole critical audit matter",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "'The total inventory reserve at May 31, 2026 and 2025 was $5.7 million and $4.4 million, respectively' and Deloitte identified 'Inventories \u2013 Excess Quantities and Obsolescence' as a critical audit matter requiring 'a high degree of auditor judgment', including a retrospective review 'to identify potential bias in the inventory reserve.'"
+          },
+          {
+            "flag": "Growth concentrated in one segment; legacy Med Device essentially stagnant",
+            "category": "revenue_quality",
+            "severity": "moderate",
+            "evidence": "Med Tech sales grew to $149,954K from $126,653K (+18.4%) while Med Device grew only to $170,220K from $165,845K (+2.6%), and Med Device remains far below FY2024's $197,511K. International Med Device is $25,127K vs $36,386K in FY2024."
+          },
+          {
+            "flag": "Receivables growing faster than sales; non-operating items propping up the bottom line",
+            "category": "revenue_quality",
+            "severity": "minor",
+            "evidence": "Accounts receivable rose 12.7% to $48,325K vs 9.5% sales growth (a $5,750K operating cash use), and 'Other income (expense), net' of $3,926K \u2014 largely non-operating/FX-driven, alongside a $9,698K FX translation gain \u2014 offsets ~10% of the operating loss."
+          },
+          {
+            "flag": "Equity base eroding and residual milestone/earn-out income streams now exhausted",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Total Stockholders' Equity fell to $170,825K from $182,970K and accumulated deficit grew to $(465,939)K; the Spectrum divestiture earn-out ($5.5M received in FY2025) and the manufacturing transfer milestone are now complete ('The final transfer of manufacturing was achieved as of May 31, 2026'), removing a prior income/cash tailwind."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Genuine gross margin expansion",
+            "category": "margin",
+            "severity": "moderate",
+            "evidence": "Gross margin of $174,892K on $320,174K of sales (54.6%) vs $157,705K on $292,498K (53.9%) in FY2025 and 50.9% in FY2024 \u2014 cost of sales grew 7.8% versus 9.5% sales growth, indicating mix shift toward higher-margin Med Tech."
+          },
+          {
+            "flag": "Debt-free balance sheet with undrawn revolver",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "'As of May 31, 2026, the Company does not have any outstanding debt'; only $426K of interest paid, an undrawn Revolving Facility with a 0.2% commitment fee, and $53,864K of cash against $74,717K of current liabilities with $163,394K of current assets (2.2x current ratio)."
+          },
+          {
+            "flag": "Return to positive operating cash flow after two years of cash burn",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "Net cash provided by operating activities of $3,089K vs $(10,128)K in FY2025 and $(28,158)K in FY2024."
+          },
+          {
+            "flag": "No customer concentration and limited FX exposure",
+            "category": "customer_concentration",
+            "severity": "minor",
+            "evidence": "'No single customer represents more than 10% of total sales' and 'Approximately 3.8% of our sales in fiscal year 2026 were denominated in foreign currencies.'"
+          },
+          {
+            "flag": "Clean audit and effective internal controls",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "Deloitte & Touche issued unqualified opinions on both the FY2026 financial statements and internal control over financial reporting; 'no change in our internal control over financial reporting... that has materially affected' controls; Item 9 Changes in and Disagreements with Accountants: 'None.'"
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "AngioDynamics delivered real top-line reacceleration (+9.5%, driven by 18% Med Tech growth), 70bps of gross margin expansion, and its first positive operating cash flow in years, all on a debt-free balance sheet with no customer concentration \u2014 a legitimately improving profile. But the company remains deeply unprofitable ($39.9M operating loss, unchanged year over year), every dollar of gross profit gain was consumed by higher S&M and R&D, and 'acquisition, restructuring and other items' of $17.6M has now recurred for a third straight year and is growing, making it a de facto ordinary operating cost rather than a one-timer. The cash flow improvement is flattered by a $10M inventory drawdown and a near-halving of capex (including placement units that drive future disposable pull-through), while stock comp jumped 43% and equity continues to erode."
+      }
+    },
+    {
+      "ticker": "SXC",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-07-30",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1514705/000151470526000034/sxc-20260630.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Acquired Phoenix Global not yet integrated into internal control over financial reporting",
+            "category": "earnings_quality",
+            "severity": "moderate",
+            "evidence": "\"We are currently in the process of assessing and integrating Phoenix Global's internal control over financial reporting with our existing internal control over financial reporting.\" \u2014 an acquired business remains outside the assessed control environment, raising reporting-reliability risk and signaling that recent revenue growth is at least partly acquisition-driven rather than organic."
+          },
+          {
+            "flag": "Buyback authorization dormant for over six years despite ample remaining capacity",
+            "category": "cash_flow",
+            "severity": "minor",
+            "evidence": "\"There have been no share repurchases since the first quarter of 2020. As of June 30, 2026, $96.3 million remains available under the authorized repurchase program.\" \u2014 capital is being directed elsewhere (M&A/legacy obligations) rather than to shareholder returns via buyback."
+          },
+          {
+            "flag": "Ongoing legacy coal mine reclamation and MSHA-regulated liabilities",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "\"the Company remains responsible for reclamation of certain legacy coal mining locations that are subject to Mine Safety and Health Administration ('MSHA') regulatory purview\" \u2014 persistent off-operations environmental/reclamation obligations from assets divested in 2016."
+          },
+          {
+            "flag": "Acknowledged possibility of unfavorable legal outcomes",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "\"it is reasonably possible that some of them could be resolved unfavorably to us\" \u2014 though management asserts any resulting liabilities would not likely be material."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Disclosure controls concluded effective",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "\"the Company's Chief Executive Officer and Chief Financial Officer concluded that the Company's disclosure controls and procedures were effective at a reasonable assurance level as of the end of the period covered by this report.\""
+          },
+          {
+            "flag": "No material changes to risk factors or market risk exposure",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "\"There have been no material changes to our risk factors previously disclosed in our Annual Report on Form 10-K for the year ended December 31, 2025\" and no material changes to market risk exposure \u2014 suggests a stable operating and financial risk profile quarter over quarter."
+          },
+          {
+            "flag": "No defaults on senior securities",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "\"Item 3. Defaults Upon Senior Securities \u2014 None.\""
+          }
+        ],
+        "overall_assessment": "mixed",
+        "summary": "The excerpt provided is almost entirely Part II boilerplate and contains no substantive MD&A discussion of revenue, margins, guidance, or cash flow, so a full qualitative read is not possible. The one genuinely notable item is that Phoenix Global's internal controls are still being integrated, which both flags a control-environment gap and implies recent growth carries an acquisition component that should be separated from organic performance. Offsetting positives are effective disclosure controls, unchanged risk factors, and no debt defaults; the dormant buyback and legacy MSHA reclamation obligations are minor watch items."
+      }
+    },
+    {
+      "ticker": "GCBC",
+      "audited": true,
+      "reason": null,
+      "filing_type": "10-Q",
+      "filing_date": "2026-05-08",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1070524/000114036126019837/ef20070503_10q.htm",
+      "audit": {
+        "red_flags": [
+          {
+            "flag": "Heavy and rising commercial real estate concentration, overwhelmingly non-owner occupied",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Commercial real estate is 65.9% of gross loans ($1.15B, up from 64.8%), of which 85.4% is non-owner occupied, including $86.0M office, $86.6M construction and $67.6M motel/hotel exposure. Nine-month loan growth was driven by $96.8M of CRE."
+          },
+          {
+            "flag": "Funding base dominated by municipal and NOW deposits with seasonal swings",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Municipal deposits are 46.5% of total deposits ($1.29B, up from 44.9%) and NOW deposits are 75.5% of the deposit book; the filing notes 'There is a seasonal component to municipal deposits levels associated with annual tax collections and fiscal spending patterns.' Noninterest-bearing deposits fell 1.0% to just 4.0% of deposits."
+          },
+          {
+            "flag": "Liquidity coverage of uninsured deposits deteriorated",
+            "category": "cash_flow",
+            "severity": "moderate",
+            "evidence": "Uninsured deposits coverage fell to 107.2% at March 31, 2026 from 128.4% at June 30, 2025; immediately available liquidity declined to $371.6M from $422.4M, and cash and equivalents fell $43.6M, or 23.8%, to $139.5M. FRB discount window capacity is only $15.9M."
+          },
+          {
+            "flag": "Reported net interest margin is materially flattered by non-GAAP tax-equivalent adjustment",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "GAAP NIM of 2.73% (Q3) and 2.59% (9M) versus non-GAAP fully taxable-equivalent NIM of 3.03% and 2.88%; the tax-equivalent adjustment of $2.2M/quarter is large relative to $20.2M of GAAP net interest income, reflecting 58.7% of the securities portfolio in state and political subdivision bonds."
+          },
+          {
+            "flag": "Allowance release on unfunded commitments and favorable economic forecast aided provision",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "Allowance for credit losses on unfunded commitments decreased $519,000, or 29.3%, to $1.3 million; the loan ACL increase was 'primarily attributable to an increase in loan volume offset by improvements in the economic forecasts used in the Current Expected Credit Loss model,' leaving ACL/loans essentially flat at 1.25% vs 1.24%."
+          },
+          {
+            "flag": "Non-accrual disclosure includes loans not currently 90+ days past due but with recent delinquency history",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "'Included in non-accrual loans were $1.7 million of loans which were less than 90 days past due at March 31, 2026, but have a recent history of delinquency greater than 90 days past due' \u2014 up from $1.2 million at June 30, 2025."
+          },
+          {
+            "flag": "Dividend payout distorted by MHC waivers; capital return optics not comparable",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'The MHC waived its right to receive dividends declared during the three months ended March 31, 2025, June 30, 2025, September 30, 2025, and December 31, 2025.' Actual dividends paid to net income was only 11.01% vs 17.30% prior year, with the MHC owning 54.1% of shares."
+          },
+          {
+            "flag": "One-time pension plan termination settlement in the quarter",
+            "category": "earnings_quality",
+            "severity": "minor",
+            "evidence": "'During the quarter ended March 31, 2026, the Company completed the termination of its defined benefit pension plan, with all remaining obligations settled using plan assets for approximately $3.5 million.' Income statement effect is not quantified in the excerpt."
+          }
+        ],
+        "green_flags": [
+          {
+            "flag": "Substantial, broad-based net interest margin expansion driven by falling deposit costs",
+            "category": "margin",
+            "severity": "major",
+            "evidence": "Net interest margin rose to 2.73% from 2.32% (Q3) and 2.59% from 2.14% (9M); net interest rate spread widened to 2.55% from 2.12%. Rate/volume analysis shows $2,985K of the $3,975K quarterly NII increase came from rate, with NOW deposit costs down 35bps and CD costs down 50bps."
+          },
+          {
+            "flag": "Strong earnings growth and returns",
+            "category": "revenue_quality",
+            "severity": "major",
+            "evidence": "Net income of $10.5M for the quarter vs $8.1M, and $29.7M for nine months vs $21.8M; ROA improved to 1.37%/1.31% from 1.12%/1.04% and ROE to 16.02%/15.65% from 14.41%/13.40%."
+          },
+          {
+            "flag": "Capital strengthening and deleveraging of subordinated debt",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Shareholders' equity rose to $267.6M from $238.8M; equity/assets improved to 8.41% from 7.85% and book value per share to $15.72 from $14.03. The Company redeemed the entire $20.0M of 4.75% fixed-to-floating subordinated notes (floating at 8.99%) with cash on hand on October 1, 2025."
+          },
+          {
+            "flag": "Clean and improving credit metrics",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Non-accrual loans flat at $3.1M (0.18% of loans), no loans 90+ days past due and accruing, no doubtful or loss classifications, ACL coverage of non-performing loans at 708.69% vs 658.37%. Nine-month net charge-offs of $273,000 vs $305,000. Criticized commercial/CRE loans declined $4.5M to $34.9M."
+          },
+          {
+            "flag": "Conservative CRE loan-to-value profile",
+            "category": "balance_sheet",
+            "severity": "moderate",
+            "evidence": "Weighted average LTV of approximately 57.8% for non-owner occupied CRE, 49.5% owner occupied, 58.0% for multi-family and 58.5% for the office segment; office loans are 'primarily low-rise, non-metropolitan buildings.'"
+          },
+          {
+            "flag": "Reduced reliance on wholesale/brokered funding",
+            "category": "balance_sheet",
+            "severity": "minor",
+            "evidence": "Brokered deposits declined to $31.6M (1.1% of deposits) from $51.6M (2.0%); deposits grew $132.7M to $2.8 billion."
+          },
+          {
+            "flag": "New share repurchase authorization signals capital confidence",
+            "category": "other",
+            "severity": "minor",
+            "evidence": "'As previously announced on April 15, 2026, the Board of Directors of the Company adopted a stock repurchase program... may repurchase up to 400,000 shares.'"
+          }
+        ],
+        "overall_assessment": "green_flags_outweigh",
+        "summary": "Greene County Bancorp posted a genuinely strong quarter: NIM expanded 41bps year-over-year on falling NOW and CD costs rather than accounting adjustments, net income rose 30%, capital ratios improved, and the company retired $20M of expensive floating-rate sub debt while credit metrics stayed pristine (0.18% non-accruals, minimal charge-offs). The main concerns are structural rather than deteriorating: 66% of loans are CRE with 85% non-owner occupied, funding is 46.5% municipal and highly NOW-weighted with acknowledged seasonality, and uninsured deposit coverage slipped from 128% to 107% as cash fell 24%. Reported profitability also leans on a large tax-exempt municipal securities book, so the widely quoted fully taxable-equivalent NIM of 3.03% overstates the GAAP figure of 2.73%."
+      }
+    },
+    {
+      "ticker": "CFFI",
+      "audited": false,
+      "reason": "LLM call failed: 1 validation error for FundamentalsAudit\n  Invalid JSON: EOF while parsing a string at line 1 column 7226 [type=json_invalid, input_value='{\"red_flags\":[{\"flag\":\"Q...% EPS growth is largely', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid",
+      "filing_type": null,
+      "filing_date": null,
+      "audit": null
+    },
+    {
+      "ticker": "FRBA",
+      "audited": false,
+      "reason": "ticker not found in SEC CIK map",
+      "filing_type": null,
+      "filing_date": null,
+      "audit": null
+    },
+    {
+      "ticker": "TRNS",
+      "audited": false,
+      "reason": "LLM call failed: 1 validation error for FundamentalsAudit\n  Invalid JSON: EOF while parsing a string at line 1 column 7161 [type=json_invalid, input_value='{\"red_flags\":[{\"flag\":\"O...mer concentration discl', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid",
+      "filing_type": null,
+      "filing_date": null,
+      "audit": null
+    },
+    {
+      "ticker": "SMC",
+      "audited": false,
+      "reason": "LLM call failed: 1 validation error for FundamentalsAudit\n  Invalid JSON: EOF while parsing a string at line 1 column 6065 [type=json_invalid, input_value='{\"red_flags\":[{\"flag\":\"R...ted three long-term fir', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid",
+      "filing_type": null,
+      "filing_date": null,
+      "audit": null
+    }
+  ]
+}

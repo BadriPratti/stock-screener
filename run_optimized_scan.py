@@ -38,6 +38,10 @@ from src.data.reddit_sentiment import RedditSentimentFetcher
 from src.data.insider_trading import InsiderTradingFetcher
 from src.data.earnings_risk import EarningsRiskFetcher
 from src.screening.top20_ranker import build_top20
+from src.agents.fundamentals_auditor import audit_candidates
+from src.agents.catalyst_sentiment import analyze_candidates
+from src.agents.congress_trades import get_signals_for_candidates as get_congress_signals
+from src.agents.shortlist import build_shortlist
 
 logging.basicConfig(
     level=logging.INFO,
@@ -304,6 +308,9 @@ def main():
     parser.add_argument('--min-volume', type=int, default=100000, help='Min volume')
     parser.add_argument('--use-fmp', action='store_true', help='Use FMP for enhanced fundamentals on buy signals')
     parser.add_argument('--git-storage', action='store_true', help='Use Git-based storage for fundamentals (recommended)')
+    parser.add_argument('--enable-llm-agents', action='store_true',
+                         help='Run the Fundamentals Auditor + Catalyst Sentiment agents (Claude API calls) '
+                              'on the Top 20 shortlist. Needs ANTHROPIC_API_KEY set; no-ops with a warning otherwise.')
 
     args = parser.parse_args()
 
@@ -501,12 +508,48 @@ def main():
                 }, f, indent=2, default=str)
             logger.info(f"Top 20 saved: {top20_path}")
 
+        # LLM agents (Fundamentals Auditor, Catalyst Sentiment) + free Congress Trades
+        # lookup — opt-in since the first two are real Claude API calls per ticker.
+        # Only run on the Top 20 shortlist, not the full buy_signals pool, to keep
+        # cost bounded. None of these ever modify src/screening/signal_engine.py;
+        # results are logged under data/fundamentals_audit/, data/catalyst_sentiment/,
+        # data/congress_trades/. Their output actually filters/ranks the final Top 5
+        # (see src/agents/shortlist.py) — it's not just informational anymore.
+        fundamentals_audits = {}
+        catalyst_sentiments = {}
+        congress_signals = {}
+        shortlist = []
+        if args.enable_llm_agents and top20:
+            top20_tickers = [s['ticker'] for s in top20]
+            logger.info(f"Running Fundamentals Auditor on {len(top20_tickers)} Top 20 tickers...")
+            audit_results = audit_candidates(top20_tickers)
+            fundamentals_audits = {r['ticker']: r['audit'] for r in audit_results if r['audited']}
+            logger.info(f"Running Catalyst Sentiment on {len(top20_tickers)} Top 20 tickers...")
+            sentiment_results = analyze_candidates(top20_tickers)
+            catalyst_sentiments = {r['ticker']: r['classification'] for r in sentiment_results if r['analyzed']}
+            logger.info(f"Running Congress Trades lookup on {len(top20_tickers)} Top 20 tickers...")
+            congress_signals = get_congress_signals(top20_tickers)
+            shortlist = build_shortlist(
+                top20, fundamentals_audits, catalyst_sentiments, congress_signals, size=5,
+            )
+            logger.info(
+                f"Top 5 shortlist: {[s['ticker'] for s in shortlist]} "
+                f"({sum(1 for s in shortlist if s['passed_filters'])} passed filters, "
+                f"{sum(1 for s in shortlist if not s['passed_filters'])} backfilled)"
+            )
+        elif args.enable_llm_agents:
+            logger.info("LLM agents skipped: no Top 20 shortlist was built this run.")
+
         # Report
         save_report(results, buy_signals, sell_signals, spy_analysis, breadth)
 
         # Email notification (no-ops with a logged warning if EMAIL_* env vars aren't set)
         from src.notifications.email_notifier import EmailNotifier
-        EmailNotifier().send_scan_report(buy_signals, sell_signals, spy_analysis, breadth, top20=top20)
+        EmailNotifier().send_scan_report(
+            buy_signals, sell_signals, spy_analysis, breadth, top20=top20,
+            fundamentals_audits=fundamentals_audits, catalyst_sentiments=catalyst_sentiments,
+            congress_signals=congress_signals, shortlist=shortlist,
+        )
 
         # Show FMP usage if enabled
         if args.use_fmp:

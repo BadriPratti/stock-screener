@@ -470,7 +470,7 @@ function renderTop20(top20) {
       <td><span class="score-num">${s.combined_score ?? s.score ?? '-'}</span></td>
       <td>${redditCell(s.reddit_mentions_24h)}</td>
       <td>${links || '<span style="color:var(--muted);font-size:11px">No linked source yet</span>'}</td>
-      <td><a class="trade-link buy" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Buy on RH ↗</a></td>
+      <td><a class="trade-link buy" href="https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol=${s.ticker}" target="_blank" rel="noopener">Buy on Fidelity ↗</a></td>
     </tr>`;
   }).join('');
 }
@@ -600,7 +600,7 @@ function renderDashboard(d) {
         <td style="color:${(s.rs||0) > 0.1 ? 'var(--green)' : (s.rs||0) > 0 ? 'var(--text)' : 'var(--red)'}">${s.rs != null ? s.rs.toFixed(3) : '-'}</td>
         <td>${redditCell(s.reddit_mentions)}</td>
         <td><ul class="reasons-list">${topReasons}</ul>${extraHTML}</td>
-        <td><a class="trade-link buy" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Buy on RH ↗</a></td>
+        <td><a class="trade-link buy" href="https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol=${s.ticker}" target="_blank" rel="noopener">Buy on Fidelity ↗</a></td>
       </tr>`;
     }).join('');
   }
@@ -621,7 +621,7 @@ function renderDashboard(d) {
         <td>${s.breakdown_level ? '$' + s.breakdown_level.toFixed(2) : '-'}</td>
         <td>${redditCell(s.reddit_mentions)}</td>
         <td><ul class="reasons-list">${reasons}</ul></td>
-        <td><a class="trade-link sell" href="https://robinhood.com/stocks/${s.ticker}" target="_blank" rel="noopener">Sell on RH ↗</a></td>
+        <td><a class="trade-link sell" href="https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol=${s.ticker}" target="_blank" rel="noopener">Sell on Fidelity ↗</a></td>
       </tr>`;
     }).join('');
   }

@@ -5,7 +5,7 @@ Extended reference documentation for the Intelligent Stock Screener.
 ## Setup Guides
 
 - [GitHub Actions Setup](GITHUB_ACTIONS_SETUP.md) — Automate daily scans via GitHub Actions
-- [Robinhood Setup](ROBINHOOD_SETUP.md) — Configure read-only position management
+- [Fidelity Setup](FIDELITY_SETUP.md) — Configure read-only, CSV-based position management
 - [FMP Integration](SETUP_FMP.md) — Optional Financial Modeling Prep API integration
 
 ## Architecture & Design

@@ -156,7 +156,7 @@ graph TB
     end
 
     subgraph "Position Management"
-        O[Robinhood API<br/>Read-Only] --> P[Position Fetcher]
+        O[Fidelity CSV Export<br/>Manual, No Login] --> P[Position Loader]
         D --> P
         P --> Q[Stop Adjuster<br/>Linear Trailing]
         Q --> R[Position Report<br/>Manual Review]
@@ -184,7 +184,7 @@ graph TB
    - Ranks results and generates formatted report
 
 3. **Position Management** (Manual):
-   - Fetches current positions from Robinhood (read-only)
+   - Reads current positions from a CSV you export from Fidelity's website
    - Loads cached price/fundamental data (zero extra API calls)
    - Analyzes each position's phase, SMA levels, momentum
    - Recommends stop loss adjustments using linear scaling formulas
@@ -306,10 +306,10 @@ Every buy signal includes:
 **Rationale:** Executing trades programmatically is risky and requires extensive safeguards. But **analyzing positions** and **recommending adjustments** can be automated safely.
 
 **Solution:**
-- Robinhood integration is **read-only** (only fetches positions)
-- Never calls trading functions (no `order_buy_*`, `order_sell_*`)
+- Fidelity position data comes from a CSV you export yourself — no login, no credentials handled by this tool at all
+- Never calls trading functions — there's no execution path in this codebase, period
 - Position manager recommends stop adjustments
-- Human executes trades manually on Robinhood app
+- Human executes trades manually on Fidelity
 - Best of both worlds: automation + human oversight
 
 ---
@@ -320,7 +320,7 @@ Every buy signal includes:
 
 - Python 3.13+
 - GitHub account (for automation)
-- Robinhood account (optional, for position management)
+- Fidelity account (optional, for position management — just for exporting a positions CSV, no login integration)
 
 ### Installation
 
@@ -335,9 +335,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-
-# (Optional) Install robin-stocks for position management
-pip install robin-stocks
 ```
 
 ### Configuration
@@ -345,10 +342,9 @@ pip install robin-stocks
 ```bash
 # Copy environment template
 cp .env.example .env
-
-# Edit .env (only needed for manual position management)
-# Add: ROBINHOOD_USERNAME=your_email@example.com
 ```
+
+Position management needs no credentials — export a Positions CSV from Fidelity's website when you want to run `manage_positions.py` (see [Fidelity Setup](docs/FIDELITY_SETUP.md)).
 
 ### Run Your First Scan
 
@@ -420,45 +416,29 @@ python run_optimized_scan.py --clear-progress
 
 **⚠️ Note:** Position management requires manual execution. This is intentional for safety.
 
-### Step 1: Ensure Robinhood Username is Set
+### Step 1: Export Your Positions From Fidelity
 
-In your `.env` file:
+On Fidelity's website: **Accounts & Trade → Positions →** click the download/export icon near the top of the positions table. Saves a CSV (e.g. `Portfolio_Positions_Aug-18-2026.csv`) to your Downloads folder.
 
-```bash
-ROBINHOOD_USERNAME=your_email@example.com
-```
-
-**Important:** Password is NEVER stored. You will be prompted interactively.
+**Note:** No credentials are ever entered into this tool — Fidelity has no supported unofficial API, so this is a manual export/import step, not a login integration.
 
 ### Step 2: Run Position Manager
 
 ```bash
-# Basic analysis (prompts for password + SMS MFA)
-python manage_positions.py
+# Basic analysis
+python manage_positions.py --csv ~/Downloads/Portfolio_Positions_Aug-18-2026.csv
 
 # With entry dates for tax-aware recommendations
-python manage_positions.py --entry-dates entry_dates.json
+python manage_positions.py --csv ~/Downloads/Portfolio_Positions_Aug-18-2026.csv --entry-dates entry_dates.json
 
 # Export report to file
-python manage_positions.py --export
+python manage_positions.py --csv ~/Downloads/Portfolio_Positions_Aug-18-2026.csv --export
 ```
 
-### Step 3: Interactive Authentication
-
-```
-Logging in to Robinhood...
-Robinhood password for you@example.com: ********
-
-MFA required - check your phone for SMS code from Robinhood
-Enter SMS code from Robinhood: 123456
-
-✓ Robinhood login successful with SMS MFA
-```
-
-### Step 4: Review Recommendations
+### Step 3: Review Recommendations
 
 The tool will:
-- Fetch your current positions from Robinhood
+- Read your current positions from the CSV
 - Analyze each using **cached market data** (zero extra API calls)
 - Calculate phase, SMA levels, recent swing lows
 - Recommend stop loss adjustments using linear formulas
@@ -599,7 +579,8 @@ stock-screener/
 │   │   ├── git_storage_fetcher.py      # Smart cache (74% API reduction)
 │   │   ├── enhanced_fundamentals.py    # FMP integration (optional)
 │   │   ├── universe_fetcher.py         # NASDAQ/NYSE stock universe
-│   │   └── robinhood_positions.py      # Robinhood read-only API
+│   │   ├── fidelity_positions.py       # Fidelity CSV position loader
+│   │   └── robinhood_positions.py      # unused — old Robinhood read-only API
 │   ├── screening/
 │   │   ├── phase_indicators.py         # 4-phase classification
 │   │   ├── signal_engine.py            # Buy/sell signal scoring

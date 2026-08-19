@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Position management and stop loss recommendations.
 
-Analyzes current Robinhood positions and recommends:
+Analyzes current Fidelity positions and recommends:
 - When to move stop loss up (trail stops)
 - New stop loss levels with rationale
 - When to take partial profits
@@ -301,7 +301,7 @@ class PositionManager:
         """Analyze all positions and generate comprehensive report.
 
         Args:
-            positions: List of position dicts from RobinhoodPositionFetcher
+            positions: List of position dicts from src.data.fidelity_positions.load_positions()
             entry_dates: Optional dict of {ticker: entry_date} for tax treatment
 
         Returns:
