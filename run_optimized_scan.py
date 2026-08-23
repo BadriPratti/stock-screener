@@ -35,6 +35,7 @@ from src.screening.benchmark import (
 from src.screening.signal_engine import score_buy_signal, score_sell_signal
 from src.data.enhanced_fundamentals import EnhancedFundamentalsFetcher
 from src.data.reddit_sentiment import RedditSentimentFetcher
+from src.data.apewisdom_sentiment import ApeWisdomSentimentFetcher
 from src.data.insider_trading import InsiderTradingFetcher
 from src.data.earnings_risk import EarningsRiskFetcher
 from src.screening.top20_ranker import build_top20
@@ -465,13 +466,21 @@ def main():
                     flagged += 1
             logger.info(f"Earnings risk: {flagged} tickers have earnings within 14 days")
 
-        # Reddit mentions (no-ops if REDDIT_* env vars aren't set)
+        # Reddit mentions. Prefers the official PRAW-based fetcher if
+        # REDDIT_CLIENT_ID/SECRET are set (configurable subreddit list, real-time);
+        # otherwise falls back to ApeWisdom's free public API (no credentials,
+        # no setup, but their subreddit/timeframe choices aren't configurable).
         reddit_mentions = {}
         if tickers_of_interest:
             reddit_fetcher = RedditSentimentFetcher()
             if reddit_fetcher.available:
-                logger.info(f"Checking Reddit mentions for {len(tickers_of_interest)} signal tickers...")
+                logger.info(f"Checking Reddit mentions for {len(tickers_of_interest)} signal tickers (PRAW)...")
                 reddit_mentions = reddit_fetcher.fetch_mentions(tickers_of_interest)
+            else:
+                logger.info(f"Checking Reddit mentions for {len(tickers_of_interest)} signal tickers (ApeWisdom, no credentials)...")
+                reddit_mentions = ApeWisdomSentimentFetcher().fetch_mentions(tickers_of_interest)
+
+            if reddit_mentions:
                 for signal in buy_signals:
                     signal['reddit_mentions_24h'] = reddit_mentions.get(signal['ticker'], {}).get('count', 0)
                 for signal in sell_signals:
