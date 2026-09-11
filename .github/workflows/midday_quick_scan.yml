@@ -54,6 +54,9 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
           git add data/fundamentals_cache/
+          # Also commit the day's Top 20 pool + scan report so the local GUI
+          # dashboard (dashboard.py) can show it after a `git pull`.
+          git add data/daily_scans/ 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No fundamental cache changes to commit"

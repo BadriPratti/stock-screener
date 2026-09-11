@@ -143,6 +143,12 @@ jobs:
           git add data/catalyst_sentiment/ 2>/dev/null || true
           git add data/congress_trades/ 2>/dev/null || true
 
+          # Also commit the day's Top 20 pool + Top 5 shortlist (top20_latest.json,
+          # shortlist_latest.json) and scan report — this is what actually reaches
+          # the local GUI dashboard (dashboard.py) after a `git pull`, so the same
+          # picks that went out by email are also visible there.
+          git add data/daily_scans/ 2>/dev/null || true
+
           # Check if there are changes
           if git diff --staged --quiet; then
             echo "No fundamental cache changes to commit"
