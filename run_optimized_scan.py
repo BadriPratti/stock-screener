@@ -43,6 +43,7 @@ from src.agents.fundamentals_auditor import audit_candidates
 from src.agents.catalyst_sentiment import analyze_candidates
 from src.agents.congress_trades import get_signals_for_candidates as get_congress_signals
 from src.agents.shortlist import build_shortlist
+from src.utils.json_safe import sanitize_nan
 
 logging.basicConfig(
     level=logging.INFO,
@@ -511,10 +512,13 @@ def main():
             top20_path = Path("./data/daily_scans/top20_latest.json")
             top20_path.parent.mkdir(parents=True, exist_ok=True)
             with open(top20_path, 'w') as f:
-                json.dump({
+                # sanitize_nan: this feeds the dashboard's Market/Shortlist views
+                # directly — a stray NaN in a technical score would otherwise
+                # serialize as an invalid JSON token the browser can't parse.
+                json.dump(sanitize_nan({
                     'generated': datetime.now().isoformat(),
                     'top20': top20,
-                }, f, indent=2, default=str)
+                }), f, indent=2, default=str)
             logger.info(f"Top 20 saved: {top20_path}")
 
         # LLM agents (Fundamentals Auditor, Catalyst Sentiment) + free Congress Trades
@@ -546,6 +550,21 @@ def main():
                 f"({sum(1 for s in shortlist if s['passed_filters'])} passed filters, "
                 f"{sum(1 for s in shortlist if not s['passed_filters'])} backfilled)"
             )
+
+            # Persist alongside top20_latest.json so the local GUI dashboard can
+            # show the actual filtered Top 5 (today this only reaches the user
+            # via email otherwise).
+            shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
+            shortlist_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(shortlist_path, 'w') as f:
+                json.dump(sanitize_nan({
+                    'generated': datetime.now().isoformat(),
+                    'shortlist': shortlist,
+                    'fundamentals_audits': fundamentals_audits,
+                    'catalyst_sentiments': catalyst_sentiments,
+                    'congress_signals': congress_signals,
+                }), f, indent=2, default=str)
+            logger.info(f"Shortlist saved: {shortlist_path}")
         elif args.enable_llm_agents:
             logger.info("LLM agents skipped: no Top 20 shortlist was built this run.")
 
