@@ -12,25 +12,83 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import threading
+import time
+import uuid
 import webbrowser
-from datetime import datetime
 from pathlib import Path
 from threading import Timer
 
-from flask import Flask, jsonify, render_template_string, request
+from flask import Flask, jsonify, render_template, request
 
-app = Flask(__name__)
+# When bundled as a standalone .app (py2app sets sys.frozen), this file lives
+# inside the bundle's Resources folder, not the real project checkout — but
+# the dashboard always needs to read/write the real repo (git pull/push via
+# /api/sync, data/ files, and it shells out to the project's own venv to run
+# scripts). So PROJECT_ROOT deliberately does NOT follow __file__ when frozen;
+# it points at the real checkout instead, overridable via STOCK_SCREENER_ROOT
+# for anyone whose folder lives somewhere other than the default.
+if getattr(sys, "frozen", False):
+    PROJECT_ROOT = Path(os.environ.get("STOCK_SCREENER_ROOT", str(Path.home() / "Desktop" / "stock-screener"))).resolve()
+else:
+    PROJECT_ROOT = Path(__file__).parent.resolve()
 
-PROJECT_ROOT = Path(__file__).parent.resolve()
+# py2app's own bootstrap chdir's the frozen process into the .app bundle's
+# Resources folder before this module even runs — wrong for us either way, we
+# always want PROJECT_ROOT. Setting it here (rather than passing cwd= on each
+# subprocess call below) is what keeps those calls eligible for macOS's safe
+# posix_spawn() path instead of fork()+exec() — see the comment in
+# _launch_job() for why that distinction matters for the packaged .app.
+os.chdir(str(PROJECT_ROOT))
+
+app = Flask(__name__, template_folder=str(PROJECT_ROOT / "templates"), static_folder=str(PROJECT_ROOT / "static"))
+
 SCAN_DIR = PROJECT_ROOT / "data" / "daily_scans"
+BACKTEST_DIR = PROJECT_ROOT / "data" / "backtest_history"
+ADHOC_DIR = PROJECT_ROOT / "data" / "adhoc_simulations"
+POSITIONS_CSV = PROJECT_ROOT / "data" / "positions_latest.csv"
 VENV_PYTHON = PROJECT_ROOT / "venv" / "bin" / "python"
+
+
+def _venv_python():
+    return str(VENV_PYTHON) if VENV_PYTHON.exists() else sys.executable
+
+
+# The plain "git" on PATH (/usr/bin/git) is actually a stub that shells out to
+# `xcodebuild -find git` to locate the real binary — on a machine with a
+# broken/corrupted Xcode.app (as opposed to just the separate, lighter-weight
+# Command Line Tools), that stub fails with an unrelated-looking dlopen error
+# and git (and the Sync button) stops working entirely, even though a real,
+# working git binary is usually still sitting right here. Preferring it
+# sidesteps the broken xcodebuild lookup rather than depending on it.
+_CLT_GIT = Path("/Library/Developer/CommandLineTools/usr/bin/git")
+
+
+def _git_binary():
+    if _CLT_GIT.exists():
+        return str(_CLT_GIT)
+    return shutil.which("git") or "/usr/bin/git"
+
+
+def _read_json(path, default):
+    """Load a JSON file, falling back to `default` if it's missing/unreadable
+    — every read-only route uses this so "no data yet" is always a normal 200
+    response, never a bare error."""
+    path = Path(path)
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError, UnicodeDecodeError):
+        return default
 
 
 def parse_scan_file(filepath):
     """Parse a scan .txt file into structured data."""
-    text = Path(filepath).read_text()
+    text = Path(filepath).read_text(encoding="utf-8")
 
     data = {
         "scan_date": "",
@@ -207,496 +265,411 @@ def get_scan_files():
     return [{"name": f.stem, "path": str(f), "date": f.stem.replace("optimized_scan_", "")} for f in files]
 
 
-DASHBOARD_HTML = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stock Screener Dashboard</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<style>
-  :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --border: #2a2d3a;
-    --text: #e4e6eb;
-    --muted: #8b8fa3;
-    --green: #22c55e;
-    --red: #ef4444;
-    --yellow: #eab308;
-    --blue: #3b82f6;
-    --purple: #a855f7;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
+def get_backtest_files():
+    """Get list of walk-forward backtest history files, newest first."""
+    if not BACKTEST_DIR.exists():
+        return []
+    files = sorted(BACKTEST_DIR.glob("walk_forward_*.json"), reverse=True)
+    out = []
+    for f in files:
+        data = _read_json(f, {})
+        out.append({"name": f.stem, "path": str(f), "generated": data.get("generated")})
+    return out
 
-  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
-  .header h1 { font-size: 20px; font-weight: 600; }
-  .header .meta { color: var(--muted); font-size: 13px; }
-  .header .actions { display: flex; gap: 10px; }
 
-  .btn { padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 13px; transition: all 0.15s; }
-  .btn:hover { border-color: var(--blue); }
-  .btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
-  .btn.primary:hover { opacity: 0.9; }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+# ---------------------------------------------------------------------------
+# Background job runner — generalized version of control_panel.py's
+# STATE-dict + subprocess.Popen + polling pattern, keyed by a generated job_id
+# (instead of a fixed command id) so multiple differently-configured
+# simulations can run/be polled independently in one session.
+# ---------------------------------------------------------------------------
 
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+JOBS = {}
+JOBS_LOCK = threading.Lock()
 
-  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-  .stat-card .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-  .stat-card .value { font-size: 28px; font-weight: 700; }
-  .stat-card .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
-  .stat-card.green .value { color: var(--green); }
-  .stat-card.red .value { color: var(--red); }
-  .stat-card.blue .value { color: var(--blue); }
-  .stat-card.yellow .value { color: var(--yellow); }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+def _clean_subprocess_env():
+    """A copy of the current environment with PYTHONHOME/PYTHONPATH stripped —
+    see the comment in _launch_job() for why those two specifically break a
+    venv/bin/python subprocess when this process is the packaged .app. Also
+    forces unbuffered child stdout: Python fully block-buffers stdout when
+    it's a pipe (not a terminal), so without this every print() in the child
+    script sits in a buffer until the process exits and flushes everything at
+    once — the live output panel would show nothing the whole run, then the
+    entire report appears all at once right as the job finishes, which reads
+    exactly like it's stuck rather than actually working."""
+    env = os.environ.copy()
+    env.pop("PYTHONHOME", None)
+    env.pop("PYTHONPATH", None)
+    env["PYTHONUNBUFFERED"] = "1"
+    return env
 
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-  .card h2 { font-size: 15px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 
-  .regime-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-  .regime-badge.risk-on { background: rgba(34,197,94,0.15); color: var(--green); }
-  .regime-badge.risk-off { background: rgba(239,68,68,0.15); color: var(--red); }
-  .regime-badge.transitional { background: rgba(234,179,8,0.15); color: var(--yellow); }
+# How long a job is allowed to run before the dashboard force-kills it. Needed
+# because a hung network call somewhere deep in a third-party library (a scan
+# hit this: yfinance/urllib3 claims a 10s timeout on price history, but a real
+# run still blocked forever in an SSL socket read to a Yahoo Finance host that
+# had already dropped the connection — the retry/timeout logic just never
+# kicked in) can otherwise sit forever, holding the job "running" and, via the
+# close_fds=False tradeoff above, an inherited copy of the Flask listening
+# socket — which is what took the whole dashboard offline last time this
+# happened, not just the one job.
+JOB_TIMEOUT_SECONDS = {"scan": 45 * 60}
+DEFAULT_JOB_TIMEOUT_SECONDS = 10 * 60
 
-  .chart-wrap { position: relative; height: 250px; }
 
-  .signal-table { width: 100%; border-collapse: collapse; }
-  .signal-table th { text-align: left; padding: 10px 12px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
-  .signal-table td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: top; }
-  .signal-table tr:hover { background: rgba(59,130,246,0.04); }
+def _kill_hung_job(job_id, proc):
+    if proc.poll() is not None:
+        return  # already finished naturally, nothing to do
+    proc.kill()
+    with JOBS_LOCK:
+        job = JOBS.get(job_id)
+        if job:
+            job["output"].append(
+                "[dashboard] job exceeded its time limit and was terminated — "
+                "likely a hung network call to a third-party data source that "
+                "stopped responding without raising an error."
+            )
+            job["status"] = "error"
 
-  .ticker { font-weight: 700; font-size: 14px; color: var(--blue); }
-  .score-bar { height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; width: 80px; display: inline-block; vertical-align: middle; margin-left: 6px; }
-  .score-bar .fill { height: 100%; border-radius: 3px; }
-  .score-num { font-weight: 600; font-size: 13px; }
 
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-  .badge.good { background: rgba(34,197,94,0.15); color: var(--green); }
-  .badge.extended { background: rgba(234,179,8,0.15); color: var(--yellow); }
-  .badge.poor { background: rgba(239,68,68,0.15); color: var(--red); }
-  .badge.critical { background: rgba(239,68,68,0.25); color: var(--red); }
-  .badge.high { background: rgba(239,68,68,0.15); color: var(--red); }
-  .badge.medium { background: rgba(234,179,8,0.15); color: var(--yellow); }
+def _launch_job(job_id, cmd, result_path):
+    with JOBS_LOCK:
+        JOBS[job_id]["status"] = "running"
+        kind = JOBS[job_id]["kind"]
 
-  .reasons-list { list-style: none; padding: 0; margin-top: 4px; }
-  .reasons-list li { font-size: 11px; color: var(--muted); padding: 1px 0; }
+    try:
+        # No cwd= here on purpose — CPython's subprocess module only takes the
+        # safe posix_spawn() path on macOS when cwd is None; passing cwd forces
+        # the traditional fork()+exec() path instead, which is unsafe from a
+        # process that has Cocoa/WebKit loaded (true when running inside the
+        # packaged .app, via pywebview) and can cause bizarre, hard-to-reproduce
+        # subprocess failures. main()/dashboard.py's own process cwd is set to
+        # PROJECT_ROOT at startup instead (see chdir near the top of this file
+        # and in mac_app/main.py), and every cmd argument is an absolute path,
+        # so dropping cwd= here doesn't change what actually runs.
+        #
+        # close_fds=False for the same reason: this system's Python lacks
+        # posix_spawn_closefrom, so posix_spawn eligibility requires close_fds
+        # to be explicitly False (its default is True). The child inheriting
+        # the parent's other open fds (e.g. the Flask listening socket) is an
+        # acceptable tradeoff here — a local single-user tool, not a server
+        # handling untrusted subprocess args — versus the alternative of
+        # falling back to the unsafe fork() path.
+        #
+        # env=_clean_subprocess_env() because the packaged .app's own launcher
+        # sets PYTHONHOME and PYTHONPATH to point at the *bundle's* Resources
+        # folder — every subprocess call here runs venv/bin/python instead
+        # (a real, separate Python 3.13), but it still inherits those two
+        # variables by default, which override its own interpreter's normal
+        # stdlib/site-packages resolution and point it at the bundle's instead.
+        # That's what was actually causing `ModuleNotFoundError: No module
+        # named 'zoneinfo'` deep inside pandas — venv/bin/python was loading
+        # its standard library from the app bundle, not from itself.
+        # encoding='utf-8' explicitly — a GUI-launched .app has no LANG/LC_ALL
+        # set (a Terminal shell normally sets these), so text=True's default
+        # locale-based decoding falls back to ASCII and crashes on any non-
+        # ASCII character in the child's output (e.g. the em-dashes/bullets in
+        # position_manager.py's rationale text).
+        proc = subprocess.Popen(
+            cmd, env=_clean_subprocess_env(),
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            encoding="utf-8", errors="replace", bufsize=1, close_fds=False,
+        )
+        with JOBS_LOCK:
+            JOBS[job_id]["proc"] = proc
 
-  .expand-btn { background: none; border: none; color: var(--blue); cursor: pointer; font-size: 11px; padding: 2px 0; }
-  .expand-btn:hover { text-decoration: underline; }
+        timeout_seconds = JOB_TIMEOUT_SECONDS.get(kind, DEFAULT_JOB_TIMEOUT_SECONDS)
+        watchdog = threading.Timer(timeout_seconds, _kill_hung_job, args=(job_id, proc))
+        watchdog.daemon = True
+        watchdog.start()
+        try:
+            for line in proc.stdout:
+                with JOBS_LOCK:
+                    JOBS[job_id]["output"].append(line.rstrip("\n"))
+            proc.wait()
+        finally:
+            watchdog.cancel()
 
-  .trade-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; border: 1px solid transparent; }
-  .trade-link.buy { background: rgba(34,197,94,0.15); color: var(--green); }
-  .trade-link.buy:hover { background: rgba(34,197,94,0.28); }
-  .trade-link.sell { background: rgba(239,68,68,0.15); color: var(--red); }
-  .trade-link.sell:hover { background: rgba(239,68,68,0.28); }
+        with JOBS_LOCK:
+            JOBS[job_id]["returncode"] = proc.returncode
+            JOBS[job_id]["status"] = "success" if proc.returncode == 0 else "error"
+            JOBS[job_id]["proc"] = None
+            JOBS[job_id]["result_path"] = result_path
+    except Exception as exc:
+        with JOBS_LOCK:
+            JOBS[job_id]["output"].append(f"[dashboard] failed to launch: {exc}")
+            JOBS[job_id]["status"] = "error"
+            JOBS[job_id]["proc"] = None
 
-  .no-data { text-align: center; padding: 60px 20px; color: var(--muted); }
-  .no-data h2 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
 
-  .scan-select { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 6px; font-size: 13px; }
+def _build_job(kind, body):
+    """Build (cmd, result_path) for a job kind from a request body, using each
+    underlying script's own argparse defaults when a param is omitted."""
+    python = _venv_python()
+    job_id = uuid.uuid4().hex[:12]
 
-  .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+    if kind == "scan":
+        cmd = [python, str(PROJECT_ROOT / "run_optimized_scan.py")]
+        if not body.get("full"):
+            cmd.append("--test-mode")
+        if body.get("enable_llm_agents"):
+            cmd.append("--enable-llm-agents")
+        result_path = str(SCAN_DIR / "shortlist_latest.json")
 
-  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 20px; font-size: 13px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 100; transition: opacity 0.3s; }
-</style>
-</head>
-<body>
+    elif kind == "backtest-top3":
+        result_path = str(ADHOC_DIR / f"backtest_top3_{job_id}.json")
+        cmd = [
+            python, str(PROJECT_ROOT / "scripts" / "backtest_top3.py"),
+            "--days", str(body.get("days", 7)),
+            "--sample", str(body.get("sample", 150)),
+            "--investment", str(body.get("investment", 1000)),
+            "--json-out", result_path,
+        ]
 
-<div class="header">
-  <div>
-    <h1>Stock Screener</h1>
-    <div class="meta" id="headerMeta">Loading...</div>
-  </div>
-  <div class="actions">
-    <select class="scan-select" id="scanSelect" onchange="loadScan(this.value)"></select>
-    <button class="btn" onclick="runScan(false)" id="testBtn">Test Scan (100)</button>
-    <button class="btn primary" onclick="runScan(true)" id="fullBtn">Full Scan</button>
-  </div>
-</div>
+    elif kind == "backtest-monte-carlo":
+        result_path = str(ADHOC_DIR / f"monte_carlo_{job_id}.json")
+        cmd = [
+            python, str(PROJECT_ROOT / "scripts" / "backtest_top3_monte_carlo.py"),
+            "--days", str(body.get("days", 7)),
+            "--pool", str(body.get("pool", 300)),
+            "--sample", str(body.get("sample", 150)),
+            "--iterations", str(body.get("iterations", 100)),
+            "--investment", str(body.get("investment", 1000)),
+            "--json-out", result_path,
+        ]
 
-<div class="container" id="content">
-  <div class="no-data" id="noData" style="display:none">
-    <h2>No scan data yet</h2>
-    <p>Run a test scan to get started</p>
-  </div>
-  <div id="dashboard" style="display:none">
+    elif kind == "walk-forward":
+        result_path = str(BACKTEST_DIR / "latest.json")
+        cmd = [
+            python, str(PROJECT_ROOT / "scripts" / "walk_forward_backtest.py"),
+            "--universe-size", str(body.get("universe_size", 250)),
+            "--lookback-months", str(body.get("lookback_months", 9)),
+            "--step-days", str(body.get("step_days", 14)),
+            "--top-n", str(body.get("top_n", 10)),
+            "--max-hold-days", str(body.get("max_hold_days", 60)),
+            "--investment-per-trade", str(body.get("investment_per_trade", 1000)),
+            "--seed", str(body.get("seed", 42)),
+        ]
 
-    <div class="stats-row" id="statsRow"></div>
+    elif kind == "positions":
+        if not POSITIONS_CSV.exists():
+            return None, None, None
+        result_path = str(ADHOC_DIR / "positions_latest.json")
+        cmd = [python, str(PROJECT_ROOT / "manage_positions.py"), "--csv", str(POSITIONS_CSV), "--json-out", result_path]
 
-    <div class="grid-2">
-      <div class="card">
-        <h2>Market Breadth</h2>
-        <div class="chart-wrap"><canvas id="breadthChart"></canvas></div>
-      </div>
-      <div class="card">
-        <h2>SPY Regime</h2>
-        <div id="spyInfo"></div>
-      </div>
-    </div>
+    elif kind == "news":
+        tickers = body.get("tickers") or []
+        group = body.get("group", "misc")
+        if not tickers:
+            return None, None, None
+        result_path = str(ADHOC_DIR / f"news_{group}.json")
+        cmd = [
+            python, str(PROJECT_ROOT / "scripts" / "fetch_news.py"),
+            "--tickers", ",".join(tickers),
+            "--json-out", result_path,
+        ]
 
-    <div class="card" style="margin-bottom:16px" id="top20Card">
-      <h2 style="color:#a855f7">⭐ Top 20 — Combined Shortlist</h2>
-      <div style="color:var(--muted);font-size:12px;margin-top:-8px;margin-bottom:12px">
-        Technical/fundamental score first, re-ranked by Reddit buzz. Every entry already passed the full screen.
-      </div>
-      <div style="overflow-x:auto">
-        <table class="signal-table" id="top20Table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Ticker</th>
-              <th>Combined Score</th>
-              <th>Reddit</th>
-              <th>Why it's moving</th>
-              <th>Trade</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
+    elif kind == "price-history":
+        tickers = body.get("tickers") or []
+        group = body.get("group", "misc")
+        if not tickers:
+            return None, None, None
+        result_path = str(ADHOC_DIR / f"price_history_{group}.json")
+        cmd = [
+            python, str(PROJECT_ROOT / "scripts" / "fetch_price_history.py"),
+            "--tickers", ",".join(tickers),
+            "--json-out", result_path,
+        ]
 
-    <div class="card" style="margin-bottom:16px">
-      <h2 style="color:var(--green)">Buy Signals</h2>
-      <div style="overflow-x:auto">
-        <table class="signal-table" id="buyTable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Ticker</th>
-              <th>Score</th>
-              <th>Entry</th>
-              <th>Stop Loss</th>
-              <th>R:R</th>
-              <th>RS</th>
-              <th>Reddit</th>
-              <th>Key Reasons</th>
-              <th>Trade</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
+    elif kind == "momentum-status":
+        tickers = body.get("tickers") or []
+        group = body.get("group", "misc")
+        if not tickers:
+            return None, None, None
+        result_path = str(ADHOC_DIR / f"momentum_status_{group}.json")
+        cmd = [
+            python, str(PROJECT_ROOT / "scripts" / "fetch_momentum_status.py"),
+            "--tickers", ",".join(tickers),
+            "--group", group,
+            "--json-out", result_path,
+        ]
 
-    <div class="card">
-      <h2 style="color:var(--red)">Sell Signals</h2>
-      <div style="overflow-x:auto">
-        <table class="signal-table" id="sellTable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Ticker</th>
-              <th>Score</th>
-              <th>Severity</th>
-              <th>Breakdown</th>
-              <th>Reddit</th>
-              <th>Reasons</th>
-              <th>Trade</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
+    else:
+        return None, None, None
 
-  </div>
-</div>
+    return job_id, cmd, result_path
 
-<script>
-let breadthChartInstance = null;
 
-async function loadScanList() {
-  const res = await fetch('/api/scans');
-  const scans = await res.json();
-  const sel = document.getElementById('scanSelect');
-  sel.innerHTML = '';
-  if (scans.length === 0) {
-    sel.innerHTML = '<option>No scans</option>';
-    document.getElementById('noData').style.display = '';
-    document.getElementById('dashboard').style.display = 'none';
-    return;
-  }
-  scans.forEach((s, i) => {
-    const opt = document.createElement('option');
-    opt.value = s.path;
-    opt.textContent = s.date.replace('_', ' ');
-    sel.appendChild(opt);
-  });
-  loadScan(scans[0].path);
-}
+JOB_RETENTION_SECONDS = 15 * 60  # how long a finished job stays pollable after completion
 
-async function loadScan(path) {
-  const res = await fetch('/api/scan?path=' + encodeURIComponent(path));
-  const data = await res.json();
-  if (data.error) {
-    document.getElementById('noData').style.display = '';
-    document.getElementById('dashboard').style.display = 'none';
-    return;
-  }
-  renderDashboard(data);
-  loadTop20();
-}
 
-async function loadTop20() {
-  const res = await fetch('/api/top20');
-  const data = await res.json();
-  renderTop20(data.top20 || []);
-}
+def _prune_old_jobs():
+    """Drop finished jobs older than JOB_RETENTION_SECONDS. Without this, JOBS
+    grows without bound — the dashboard's own "Live" auto-refresh (every 90s,
+    across positions/news/price-history) now starts a job on every tick for as
+    long as the app stays open, so an all-day session could otherwise pile up
+    thousands of entries (each holding its full output line list) in memory.
+    Called opportunistically on every new job start rather than on a timer."""
+    now = time.time()
+    with JOBS_LOCK:
+        stale = [
+            jid for jid, job in JOBS.items()
+            if job["status"] not in ("queued", "running") and (now - job["started"]) > JOB_RETENTION_SECONDS
+        ]
+        for jid in stale:
+            del JOBS[jid]
 
-function renderTop20(top20) {
-  const card = document.getElementById('top20Card');
-  const body = document.querySelector('#top20Table tbody');
-  if (!top20 || top20.length === 0) {
-    card.style.display = 'none';
-    return;
-  }
-  card.style.display = '';
-  body.innerHTML = top20.map((s, i) => {
-    const links = (s.why_links || []).slice(0, 3).map(l =>
-      `<a href="${l.url}" target="_blank" rel="noopener" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;margin-bottom:3px;">🔗 ${l.label}${l.title ? ': ' + l.title.slice(0, 60) : ''}</a>`
-    ).join('');
-    return `<tr>
-      <td>#${i + 1}</td>
-      <td><span class="ticker">${s.ticker}</span></td>
-      <td><span class="score-num">${s.combined_score ?? s.score ?? '-'}</span></td>
-      <td>${redditCell(s.reddit_mentions_24h)}</td>
-      <td>${links || '<span style="color:var(--muted);font-size:11px">No linked source yet</span>'}</td>
-      <td><a class="trade-link buy" href="https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol=${s.ticker}" target="_blank" rel="noopener">Buy on Fidelity ↗</a></td>
-    </tr>`;
-  }).join('');
-}
 
-function renderDashboard(d) {
-  document.getElementById('noData').style.display = 'none';
-  document.getElementById('dashboard').style.display = '';
-  document.getElementById('headerMeta').textContent =
-    `Scan: ${d.scan_date} | ${d.stats.analyzed || '?'} stocks analyzed | ${d.regime}`;
+@app.route("/api/jobs/<kind>", methods=["POST"])
+def api_start_job(kind):
+    if kind == "positions" and not POSITIONS_CSV.exists():
+        return jsonify({"error": "no positions CSV uploaded yet"}), 400
 
-  // Stats cards
-  const buyCount = d.stats.buy_count || d.buy_signals.length;
-  const sellCount = d.stats.sell_count || d.sell_signals.length;
-  const topScore = d.buy_signals.length > 0 ? d.buy_signals[0].score : '-';
+    body = request.json or {}
+    job_id, cmd, result_path = _build_job(kind, body)
+    if job_id is None:
+        return jsonify({"error": f"unknown job kind: {kind}"}), 404
 
-  document.getElementById('statsRow').innerHTML = `
-    <div class="stat-card green">
-      <div class="label">Buy Signals</div>
-      <div class="value">${buyCount}</div>
-      <div class="sub">Phase 2 confirmed uptrends</div>
-    </div>
-    <div class="stat-card red">
-      <div class="label">Sell Signals</div>
-      <div class="value">${sellCount}</div>
-      <div class="sub">Phase 3/4 breakdowns</div>
-    </div>
-    <div class="stat-card blue">
-      <div class="label">Top Score</div>
-      <div class="value">${topScore}<span style="font-size:14px;color:var(--muted)">/125</span></div>
-      <div class="sub">${d.buy_signals.length > 0 ? d.buy_signals[0].ticker : '-'}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Universe</div>
-      <div class="value">${(d.stats.analyzed || 0).toLocaleString()}</div>
-      <div class="sub">of ${(d.stats.total_universe || 0).toLocaleString()} | ${d.stats.processing_minutes || '?'} min</div>
-    </div>
-    <div class="stat-card ${d.spy && d.spy.phase === 2 ? 'green' : d.spy && d.spy.phase === 4 ? 'red' : 'yellow'}">
-      <div class="label">SPY Phase</div>
-      <div class="value">${d.spy.phase || '?'}</div>
-      <div class="sub">${d.spy.trend || ''} @ $${(d.spy.price || 0).toFixed(2)}</div>
-    </div>
-  `;
+    _prune_old_jobs()
+    ADHOC_DIR.mkdir(parents=True, exist_ok=True)
+    with JOBS_LOCK:
+        JOBS[job_id] = {
+            "kind": kind, "status": "queued", "output": [], "returncode": None,
+            "started": time.time(), "proc": None, "result_path": None,
+        }
+    threading.Thread(target=_launch_job, args=(job_id, cmd, result_path), daemon=True).start()
+    return jsonify({"job_id": job_id})
 
-  // Breadth chart
-  const b = d.breadth;
-  if (breadthChartInstance) breadthChartInstance.destroy();
-  const ctx = document.getElementById('breadthChart').getContext('2d');
-  breadthChartInstance = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Phase 1 (Base)', 'Phase 2 (Uptrend)', 'Phase 3 (Distribution)', 'Phase 4 (Downtrend)'],
-      datasets: [{
-        data: [b.phase_1_pct || 0, b.phase_2_pct || 0, b.phase_3_pct || 0, b.phase_4_pct || 0],
-        backgroundColor: ['#eab308', '#22c55e', '#f97316', '#ef4444'],
-        borderColor: '#1a1d27',
-        borderWidth: 3
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'right', labels: { color: '#8b8fa3', font: { size: 11 }, padding: 12 } },
-        tooltip: { callbacks: { label: (c) => `${c.label}: ${c.parsed}% (${b[`phase_${c.dataIndex+1}_count`] || 0} stocks)` } }
-      }
-    }
-  });
 
-  // SPY info
-  const regimeClass = d.regime.includes('RISK-ON') ? 'risk-on' : d.regime.includes('RISK-OFF') ? 'risk-off' : 'transitional';
-  document.getElementById('spyInfo').innerHTML = `
-    <div style="margin-bottom:16px">
-      <span class="regime-badge ${regimeClass}">${d.regime}</span>
-    </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-      <div>
-        <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Phase</div>
-        <div style="font-size:20px;font-weight:700">${d.spy.phase} - ${d.spy.phase_name || ''}</div>
-      </div>
-      <div>
-        <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Confidence</div>
-        <div style="font-size:20px;font-weight:700">${d.spy.confidence || '?'}%</div>
-      </div>
-      <div>
-        <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Price</div>
-        <div style="font-size:20px;font-weight:700">$${(d.spy.price || 0).toFixed(2)}</div>
-      </div>
-      <div>
-        <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Trend</div>
-        <div style="font-size:20px;font-weight:700;color:${d.spy.trend === 'Bullish' ? 'var(--green)' : d.spy.trend === 'Bearish' ? 'var(--red)' : 'var(--yellow)'}">${d.spy.trend || '?'}</div>
-      </div>
-    </div>
-    <div style="margin-top:20px;padding:12px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--muted)">
-      ${d.regime.includes('RISK-ON')
-        ? 'Favorable environment for breakout trades. Focus on Phase 2 breakouts with strong RS.'
-        : d.regime.includes('RISK-OFF')
-        ? 'Defensive environment — raise cash, tighten stops. Avoid new breakouts.'
-        : 'Mixed/transitional market — be selective. Focus on highest quality setups only.'}
-    </div>
-  `;
+@app.route("/api/jobs/<job_id>")
+def api_job_status(job_id):
+    with JOBS_LOCK:
+        job = JOBS.get(job_id)
+        if not job:
+            return jsonify({"error": "unknown job"}), 404
+        elapsed = (time.time() - job["started"]) if job["status"] == "running" else None
+        return jsonify({
+            "status": job["status"], "output": job["output"],
+            "returncode": job["returncode"], "elapsed": elapsed,
+            "result_path": job["result_path"],
+        })
 
-  // Buy signals table
-  const buyBody = document.querySelector('#buyTable tbody');
-  if (d.buy_signals.length === 0) {
-    buyBody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:var(--muted);padding:30px">No buy signals</td></tr>';
-  } else {
-    buyBody.innerHTML = d.buy_signals.map(s => {
-      const pct = (s.score / (s.max_score || 125)) * 100;
-      const barColor = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--blue)' : 'var(--yellow)';
-      const entryClass = (s.entry_quality || '').toLowerCase();
-      const topReasons = (s.reasons || []).slice(0, 3).map(r => `<li>${cleanEmoji(r)}</li>`).join('');
-      const extraReasons = (s.reasons || []).slice(3);
-      const extraHTML = extraReasons.length > 0
-        ? `<div class="extra-reasons" style="display:none">${extraReasons.map(r => `<li>${cleanEmoji(r)}</li>`).join('')}</div><button class="expand-btn" onclick="toggleReasons(this)">+${extraReasons.length} more</button>`
-        : '';
 
-      return `<tr>
-        <td>${s.rank}</td>
-        <td><span class="ticker">${s.ticker}</span></td>
-        <td>
-          <span class="score-num">${s.score}</span>
-          <div class="score-bar"><div class="fill" style="width:${pct}%;background:${barColor}"></div></div>
-        </td>
-        <td><span class="badge ${entryClass}">${s.entry_quality || '-'}</span></td>
-        <td>${s.stop_loss ? '$' + s.stop_loss.toFixed(2) : '-'}</td>
-        <td style="color:${(s.rr_ratio||0) >= 3 ? 'var(--green)' : (s.rr_ratio||0) >= 2 ? 'var(--text)' : 'var(--yellow)'}">${s.rr_ratio ? s.rr_ratio.toFixed(1) + ':1' : '-'}</td>
-        <td style="color:${(s.rs||0) > 0.1 ? 'var(--green)' : (s.rs||0) > 0 ? 'var(--text)' : 'var(--red)'}">${s.rs != null ? s.rs.toFixed(3) : '-'}</td>
-        <td>${redditCell(s.reddit_mentions)}</td>
-        <td><ul class="reasons-list">${topReasons}</ul>${extraHTML}</td>
-        <td><a class="trade-link buy" href="https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol=${s.ticker}" target="_blank" rel="noopener">Buy on Fidelity ↗</a></td>
-      </tr>`;
-    }).join('');
-  }
+@app.route("/api/jobs/<job_id>/stop", methods=["POST"])
+def api_job_stop(job_id):
+    with JOBS_LOCK:
+        job = JOBS.get(job_id)
+        if not job:
+            return jsonify({"error": "unknown job"}), 404
+        proc = job["proc"]
+    if proc and proc.poll() is None:
+        proc.terminate()
+        with JOBS_LOCK:
+            job["status"] = "stopped"
+        return jsonify({"ok": True})
+    return jsonify({"error": "not running"}), 409
 
-  // Sell signals table
-  const sellBody = document.querySelector('#sellTable tbody');
-  if (d.sell_signals.length === 0) {
-    sellBody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:30px">No sell signals</td></tr>';
-  } else {
-    sellBody.innerHTML = d.sell_signals.map(s => {
-      const sevClass = (s.severity || 'medium').toLowerCase();
-      const reasons = (s.reasons || []).map(r => `<li>${cleanEmoji(r)}</li>`).join('');
-      return `<tr>
-        <td>${s.rank}</td>
-        <td><span class="ticker">${s.ticker}</span></td>
-        <td><span class="score-num">${s.score}</span></td>
-        <td><span class="badge ${sevClass}">${(s.severity || '?').toUpperCase()}</span></td>
-        <td>${s.breakdown_level ? '$' + s.breakdown_level.toFixed(2) : '-'}</td>
-        <td>${redditCell(s.reddit_mentions)}</td>
-        <td><ul class="reasons-list">${reasons}</ul></td>
-        <td><a class="trade-link sell" href="https://digital.fidelity.com/ftgw/digital/trade-equity/index/orderEntry?symbol=${s.ticker}" target="_blank" rel="noopener">Sell on Fidelity ↗</a></td>
-      </tr>`;
-    }).join('');
-  }
-}
 
-function redditCell(count) {
-  if (count == null) return '<span style="color:var(--muted)">-</span>';
-  if (count === 0) return '<span style="color:var(--muted)">0</span>';
-  const hot = count >= 10;
-  return `<span style="color:${hot ? 'var(--yellow)' : 'var(--text)'};font-weight:${hot ? 700 : 400}">${hot ? '🔥 ' : '💬 '}${count}</span>`;
-}
+def _git_pull():
+    return subprocess.run(
+        [_git_binary(), "pull", "--ff-only"],
+        capture_output=True, encoding="utf-8", errors="replace", timeout=60, close_fds=False,
+    )
 
-function cleanEmoji(text) {
-  return text.replace(/[🟢🔴🟡⭐⚠✓🚨]/g, '').trim();
-}
 
-function toggleReasons(btn) {
-  const extra = btn.previousElementSibling;
-  if (extra.style.display === 'none') {
-    extra.style.display = '';
-    btn.textContent = 'less';
-  } else {
-    extra.style.display = 'none';
-    btn.textContent = btn.textContent;
-  }
-}
+@app.route("/api/sync", methods=["POST"])
+def api_sync():
+    """git pull the repo so today's committed scan/shortlist/backtest data
+    (from the scheduled GitHub Actions runs that send the email) shows up
+    here too, without the user having to leave the dashboard to do it."""
+    try:
+        # Absolute git path (not the bare "git", which posix_spawn eligibility
+        # requires — see the comment in _launch_job()) and no cwd= (process cwd
+        # is already PROJECT_ROOT, set once at startup).
+        result = _git_pull()
 
-async function runScan(full) {
-  const btn = full ? document.getElementById('fullBtn') : document.getElementById('testBtn');
-  const origText = btn.textContent;
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>' + (full ? 'Scanning...' : 'Testing...');
+        # A local job run (Full Scan / Positions / etc., all launched from
+        # this same dashboard) writes into the same data/ paths the automated
+        # workflow commits to — if you've run anything locally since the last
+        # sync, those two can diverge and block a fast-forward pull. Since
+        # data/ is always regenerable output (never something hand-authored),
+        # the automated commit is the one that actually matters here: discard
+        # the local modifications and retry once rather than surfacing a git
+        # merge error for what's really just stale scan output.
+        if result.returncode != 0 and "overwritten by merge" in (result.stdout + result.stderr):
+            subprocess.run(
+                [_git_binary(), "checkout", "--", "data/"],
+                capture_output=True, encoding="utf-8", errors="replace", timeout=30, close_fds=False,
+            )
+            result = _git_pull()
 
-  showToast(full ? 'Full scan started — this takes 15-30 min...' : 'Test scan started (~1 min)...');
+        return jsonify({
+            "success": result.returncode == 0,
+            "output": (result.stdout + result.stderr).strip(),
+        })
+    except Exception as e:
+        return jsonify({"success": False, "output": str(e)})
 
-  try {
-    const res = await fetch('/api/run-scan', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({full: full})
-    });
-    const result = await res.json();
-    if (result.success) {
-      showToast('Scan complete! Loading results...');
-      await loadScanList();
-    } else {
-      showToast('Scan failed: ' + (result.error || 'unknown error'));
-    }
-  } catch (e) {
-    showToast('Error: ' + e.message);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = origText;
-  }
-}
 
-function showToast(msg) {
-  let t = document.getElementById('toast');
-  if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; document.body.appendChild(t); }
-  t.textContent = msg;
-  t.style.opacity = '1';
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => { t.style.opacity = '0'; }, 5000);
-}
+@app.route("/api/positions/upload", methods=["POST"])
+def api_positions_upload():
+    """Save a Fidelity Positions CSV export uploaded from the browser. Never
+    leaves this machine — no credentials, no login, just the file you already
+    downloaded yourself. Overwrites the previous upload (single "current
+    portfolio" file, not a history)."""
+    f = request.files.get("csv")
+    if not f or not f.filename:
+        return jsonify({"success": False, "error": "no file uploaded"}), 400
+    POSITIONS_CSV.parent.mkdir(parents=True, exist_ok=True)
+    f.save(str(POSITIONS_CSV))
+    return jsonify({"success": True})
 
-loadScanList();
-</script>
-</body>
-</html>
-"""
 
+@app.route("/api/positions")
+def api_positions():
+    """Last computed position analysis, if any. Empty/`reason` shape (not an
+    error) when nothing's been uploaded or analyzed yet, matching the other
+    read-only routes."""
+    has_csv = POSITIONS_CSV.exists()
+    data = _read_json(ADHOC_DIR / "positions_latest.json", None)
+    if data is None:
+        return jsonify({
+            "has_csv": has_csv,
+            "position_analyses": [], "summary": {"total_positions": 0}, "urgent_actions": [],
+        })
+    data["has_csv"] = has_csv
+    return jsonify(data)
+
+
+@app.route("/api/news/<group>")
+def api_news(group):
+    """Last fetched news batch for a group ("positions" or "buy"). Empty shape
+    (not an error) when nothing's been fetched yet."""
+    return jsonify(_read_json(ADHOC_DIR / f"news_{group}.json", {"generated": None, "tickers": [], "news": {}}))
+
+
+@app.route("/api/price-history/<group>")
+def api_price_history(group):
+    """Last fetched price-history batch for a group (e.g. "shortlist"). Empty
+    shape (not an error) when nothing's been fetched yet."""
+    return jsonify(_read_json(ADHOC_DIR / f"price_history_{group}.json", {"generated": None, "tickers": [], "prices": {}}))
+
+
+@app.route("/api/momentum-status/<group>")
+def api_momentum_status(group):
+    """Last computed hot/stable/basing/avoid classification (+ day-streak) for
+    a group. Empty shape (not an error) when nothing's been fetched yet."""
+    return jsonify(_read_json(ADHOC_DIR / f"momentum_status_{group}.json", {"generated": None, "tickers": [], "status": {}}))
+
+
+# ---------------------------------------------------------------------------
+# Read-only data routes
+# ---------------------------------------------------------------------------
 
 @app.route("/")
 def index():
-    return render_template_string(DASHBOARD_HTML)
+    return render_template("dashboard.html")
 
 
 @app.route("/api/scans")
@@ -722,41 +695,60 @@ def api_scan():
 
 @app.route("/api/top20")
 def api_top20():
-    path = SCAN_DIR / "top20_latest.json"
-    if not path.exists():
-        return jsonify({"generated": None, "top20": []})
-    try:
-        return jsonify(json.loads(path.read_text()))
-    except (json.JSONDecodeError, OSError):
-        return jsonify({"generated": None, "top20": []})
+    return jsonify(_read_json(SCAN_DIR / "top20_latest.json", {"generated": None, "top20": []}))
 
 
-@app.route("/api/run-scan", methods=["POST"])
-def api_run_scan():
-    body = request.json or {}
-    full = body.get("full", False)
+@app.route("/api/shortlist")
+def api_shortlist():
+    return jsonify(_read_json(SCAN_DIR / "shortlist_latest.json", {
+        "generated": None, "shortlist": [],
+        "fundamentals_audits": {}, "catalyst_sentiments": {}, "congress_signals": {},
+    }))
 
-    python = str(VENV_PYTHON) if VENV_PYTHON.exists() else sys.executable
-    cmd = [python, "run_optimized_scan.py"]
-    if not full:
-        cmd.append("--test-mode")
 
-    try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=2400,
-            cwd=str(Path(__file__).parent),
-        )
-        if result.returncode == 0:
-            return jsonify({"success": True})
-        else:
-            return jsonify({"success": False, "error": result.stderr[-500:] if result.stderr else "Unknown error"})
-    except subprocess.TimeoutExpired:
-        return jsonify({"success": False, "error": "Scan timed out (40 min limit)"})
-    except Exception as e:
-        return jsonify({"success": False, "error": str(e)})
+@app.route("/api/backtest/latest")
+def api_backtest_latest():
+    data = _read_json(BACKTEST_DIR / "latest.json", None)
+    if data is None:
+        return jsonify({"generated": None, "params": {}, "summary": {}, "component_correlations": {}, "trade_count": 0})
+    return jsonify({
+        "generated": data.get("generated"),
+        "params": data.get("params", {}),
+        "summary": data.get("summary", {}),
+        "component_correlations": data.get("component_correlations", {}),
+        "trade_count": len(data.get("trades", [])),
+    })
+
+
+@app.route("/api/backtest/trades")
+def api_backtest_trades():
+    path = request.args.get("path")
+    data = _read_json(path if path else (BACKTEST_DIR / "latest.json"), {"trades": []})
+    trades = data.get("trades", [])
+
+    # Cumulative P&L ordered by exit date — realized-P&L equity curve.
+    dated = [t for t in trades if t.get("exit_date")]
+    dated.sort(key=lambda t: t["exit_date"])
+    equity_curve = []
+    running = 0.0
+    for t in dated:
+        running += t.get("dollar_pnl", 0) or 0
+        equity_curve.append({"date": t["exit_date"], "cumulative_pnl": round(running, 2)})
+
+    return jsonify({"trades": trades, "equity_curve": equity_curve})
+
+
+@app.route("/api/backtest/history")
+def api_backtest_history():
+    return jsonify(get_backtest_files())
+
+
+@app.route("/api/backtest/run")
+def api_backtest_run():
+    path = request.args.get("path", "")
+    if not path or not Path(path).exists():
+        return jsonify({"error": "File not found"}), 404
+    return jsonify(_read_json(path, {}))
 
 
 def open_browser(port):
@@ -773,14 +765,20 @@ if __name__ == "__main__":
 
     if args.scan:
         print("Running scan before dashboard launch...")
-        python = str(VENV_PYTHON) if VENV_PYTHON.exists() else sys.executable
-        cmd = [python, "run_optimized_scan.py"]
+        cmd = [_venv_python(), str(PROJECT_ROOT / "run_optimized_scan.py")]
         if not args.full:
             cmd.append("--test-mode")
-        subprocess.run(cmd, cwd=str(Path(__file__).parent))
+        subprocess.run(cmd)
 
     if not args.no_browser:
         Timer(1.5, open_browser, [args.port]).start()
 
     print(f"\n  Dashboard running at http://localhost:{args.port}\n")
-    app.run(host="0.0.0.0", port=args.port, debug=False)
+    # 127.0.0.1, not 0.0.0.0: this app has zero authentication — every route
+    # (including git pull, running scans/backtests, and reading arbitrary
+    # local JSON files via the backtest ?path= params) is reachable by anyone
+    # who can open the URL. 0.0.0.0 would expose all of that to the whole
+    # LAN/WiFi, not just this machine. Matches mac_app/main.py, which already
+    # binds 127.0.0.1 for the packaged .app that most people actually run.
+    # threaded=True — see the matching comment in mac_app/main.py.
+    app.run(host="127.0.0.1", port=args.port, debug=False, threaded=True)

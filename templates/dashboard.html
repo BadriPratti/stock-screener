@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Screener</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+<div class="app">
+  <nav class="sidebar">
+    <div class="brand">Stock Screener</div>
+    <a href="#/positions" class="nav-item" data-view="positions">
+      <span class="nav-item-title">Positions</span>
+      <span class="nav-item-sub">Your portfolio</span>
+    </a>
+    <a href="#/shortlist" class="nav-item" data-view="shortlist">
+      <span class="nav-item-title">Shortlist</span>
+      <span class="nav-item-sub">Today's email picks</span>
+    </a>
+    <a href="#/market" class="nav-item" data-view="market">
+      <span class="nav-item-title">Market</span>
+      <span class="nav-item-sub">Full scan, all signals</span>
+    </a>
+    <a href="#/backtests" class="nav-item" data-view="backtests">
+      <span class="nav-item-title">Backtests</span>
+      <span class="nav-item-sub">Past performance, not email</span>
+    </a>
+    <a href="#/run" class="nav-item" data-view="run">
+      <span class="nav-item-title">Run Simulation</span>
+      <span class="nav-item-sub">Test a strategy</span>
+    </a>
+    <a href="#/scan" class="nav-item" data-view="scan">
+      <span class="nav-item-title">Full Scan</span>
+      <span class="nav-item-sub">Trigger a new scan</span>
+    </a>
+    <div class="sidebar-footer">Not financial advice.</div>
+  </nav>
+
+  <main class="main">
+    <header class="topbar">
+      <h1 id="pageTitle">Positions</h1>
+      <div id="pageMeta" class="page-meta"></div>
+      <button class="btn" id="syncBtn" style="margin-left:auto" title="git pull to fetch today's emailed picks">Sync latest</button>
+    </header>
+    <div class="content" id="content"></div>
+  </main>
+</div>
+
+<div class="toast" id="toast" style="opacity:0"></div>
+
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
