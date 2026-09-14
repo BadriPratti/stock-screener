@@ -695,13 +695,13 @@ def api_scan():
 
 @app.route("/api/top20")
 def api_top20():
-    return jsonify(_read_json(SCAN_DIR / "top20_latest.json", {"generated": None, "top20": []}))
+    return jsonify(_read_json(SCAN_DIR / "top20_latest.json", {"generated": None, "result": None, "top20": []}))
 
 
 @app.route("/api/shortlist")
 def api_shortlist():
     return jsonify(_read_json(SCAN_DIR / "shortlist_latest.json", {
-        "generated": None, "shortlist": [],
+        "generated": None, "result": None, "shortlist": [],
         "fundamentals_audits": {}, "catalyst_sentiments": {}, "congress_signals": {},
     }))
 

@@ -2,7 +2,11 @@ name: Daily Stock Screening (Git-Based Storage)
 
 on:
   schedule:
-    # Run at 7am EST (12:00 UTC) on weekdays
+    # Scheduled for 12:00 UTC on weekdays, but GitHub Actions has consistently
+    # delayed the actual start by ~4-5 hours (observed 16:11-17:39 UTC across
+    # every run since 2026-08-31) — a documented platform limitation for
+    # scheduled workflows, not something this repo controls. Don't rely on
+    # "7am EST" as when today's picks actually land.
     - cron: '0 12 * * 1-5'
 
   # Allow manual triggering
@@ -20,8 +24,12 @@ jobs:
     # A hung network call (e.g. a stalled SSL read to a data provider that
     # never times out on its own — this has happened for real, locally) would
     # otherwise run until GitHub's own multi-hour default limit, blocking the
-    # day's email, commit, and dashboard data the whole time.
-    timeout-minutes: 60
+    # day's email, commit, and dashboard data the whole time. 120 min gives
+    # ~2x headroom over the observed real runtime (every run since
+    # 2026-08-31 has taken 63-64 min, consistently — a 60 min timeout was
+    # killing every run a few minutes before it reached the commit/push
+    # step, which is why the dashboard's daily_scans data stopped updating).
+    timeout-minutes: 120
 
     permissions:
       contents: write  # Required to commit fundamental cache

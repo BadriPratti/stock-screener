@@ -19,6 +19,7 @@ Usage:
 import argparse
 import json
 import logging
+import os
 import random
 import sys
 from datetime import datetime
@@ -50,6 +51,16 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+
+def _atomic_write_json(path, data):
+    path = Path(path)
+    tmp_path = path.with_suffix(path.suffix + '.tmp')
+    with open(tmp_path, 'w') as f:
+        json.dump(sanitize_nan(data), f, indent=2, default=str)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp_path, path)
 
 
 def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, output_dir="./data/daily_scans"):
@@ -516,14 +527,14 @@ def main():
         # place with no indication it's stale (the dashboard's Market/
         # Shortlist views read this file directly and would show yesterday's
         # picks as if they were fresh).
-        with open(top20_path, 'w') as f:
-            # sanitize_nan: this feeds the dashboard's Market/Shortlist views
-            # directly — a stray NaN in a technical score would otherwise
-            # serialize as an invalid JSON token the browser can't parse.
-            json.dump(sanitize_nan({
-                'generated': datetime.now().isoformat(),
-                'top20': top20,
-            }), f, indent=2, default=str)
+        # sanitize_nan: this feeds the dashboard's Market/Shortlist views
+        # directly — a stray NaN in a technical score would otherwise
+        # serialize as an invalid JSON token the browser can't parse.
+        _atomic_write_json(top20_path, {
+            'generated': datetime.now().isoformat(),
+            'result': 'success' if top20 else 'no_candidates',
+            'top20': top20,
+        })
         logger.info(f"Top 20 saved: {top20_path} ({len(top20)} tickers)")
 
         # LLM agents (Fundamentals Auditor, Catalyst Sentiment) + free Congress Trades
@@ -561,14 +572,14 @@ def main():
             # via email otherwise).
             shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
             shortlist_path.parent.mkdir(parents=True, exist_ok=True)
-            with open(shortlist_path, 'w') as f:
-                json.dump(sanitize_nan({
-                    'generated': datetime.now().isoformat(),
-                    'shortlist': shortlist,
-                    'fundamentals_audits': fundamentals_audits,
-                    'catalyst_sentiments': catalyst_sentiments,
-                    'congress_signals': congress_signals,
-                }), f, indent=2, default=str)
+            _atomic_write_json(shortlist_path, {
+                'generated': datetime.now().isoformat(),
+                'result': 'success',
+                'shortlist': shortlist,
+                'fundamentals_audits': fundamentals_audits,
+                'catalyst_sentiments': catalyst_sentiments,
+                'congress_signals': congress_signals,
+            })
             logger.info(f"Shortlist saved: {shortlist_path}")
         elif args.enable_llm_agents:
             # Same staleness issue as top20_latest.json above: a daily run
@@ -580,14 +591,14 @@ def main():
             logger.info("LLM agents skipped: no Top 20 shortlist was built this run.")
             shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
             shortlist_path.parent.mkdir(parents=True, exist_ok=True)
-            with open(shortlist_path, 'w') as f:
-                json.dump(sanitize_nan({
-                    'generated': datetime.now().isoformat(),
-                    'shortlist': [],
-                    'fundamentals_audits': {},
-                    'catalyst_sentiments': {},
-                    'congress_signals': {},
-                }), f, indent=2, default=str)
+            _atomic_write_json(shortlist_path, {
+                'generated': datetime.now().isoformat(),
+                'result': 'no_candidates',
+                'shortlist': [],
+                'fundamentals_audits': {},
+                'catalyst_sentiments': {},
+                'congress_signals': {},
+            })
             logger.info(f"Shortlist cleared (no candidates today): {shortlist_path}")
 
         # Report

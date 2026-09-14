@@ -1,8 +1,5 @@
-FIX-001 | Claude | COMPLETE
-FIX-002 | Claude | COMPLETE
-FIX-003 | Claude | COMPLETE
-FIX-004 | Codex  | COMPLETE (verified by Claude)
-FIX-005 | Claude | COMPLETE
-FIX-006 | Claude | COMPLETE
-FIX-007 | Claude | COMPLETE
-FIX-008 | Claude | COMPLETE
+TASK-001 | Claude | PENDING
+TASK-002 | Codex  | PENDING
+TASK-003 | Claude | PENDING (blocked by 002)
+TASK-004 | Claude | PENDING (blocked by 003)
+TASK-005 | Claude | PENDING (blocked by 001,002,003,004)
