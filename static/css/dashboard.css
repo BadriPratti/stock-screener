@@ -10,10 +10,71 @@
   --yellow: #eab308;
   --blue: #3b82f6;
   --purple: #a855f7;
+
+  --color-surface-base: var(--bg);
+  --color-surface-raised: var(--surface);
+  --color-surface-elevated: var(--surface-2);
+  --color-surface-inset: #0a0b10;
+  --color-border-subtle: rgba(255,255,255,0.06);
+  --color-border-default: var(--border);
+  --color-border-strong: #3a3e4d;
+  --color-text-primary: var(--text);
+  --color-text-secondary: var(--muted);
+  --color-text-disabled: rgba(139,143,163,0.5);
+  --color-success: var(--green);
+  --color-danger: var(--red);
+  --color-warning: var(--yellow);
+  --color-accent: var(--blue);
+  --color-accent-secondary: var(--purple);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-15: 60px;
+
+  --font-size-display: 28px;
+  --font-size-heading-lg: 19px;
+  --font-size-heading: 15px;
+  --font-size-body: 13px;
+  --font-size-body-sm: 12px;
+  --font-size-caption: 11px;
+  --font-size-mono: 11px;
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-mono: 'SF Mono', Menlo, monospace;
+
+  --control-height-sm: 28px;
+  --control-height-md: 34px;
+  --control-height-lg: 40px;
+  --input-height: var(--control-height-sm);
+  --button-height: var(--control-height-md);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+  --focus-ring: 0 0 0 3px rgba(59,130,246,0.3);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
 a { color: inherit; }
+
+/* Only shows for keyboard focus (:focus-visible), not mouse clicks, so it
+   doesn't introduce visual noise for the primary mouse-driven flow. Box-shadow
+   follows each element's own border-radius, so this doesn't need to set one. */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+[tabindex]:focus-visible {
+  outline: none; box-shadow: var(--focus-ring);
+}
 
 /* --- App shell: sidebar + main --- */
 .app { display: flex; min-height: 100vh; }
@@ -24,6 +85,11 @@ a { color: inherit; }
   display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;
 }
 .brand { font-size: 15px; font-weight: 700; padding: 0 20px 20px; }
+.nav-group + .nav-group { margin-top: var(--space-4); }
+.nav-group-label {
+  padding: 0 20px 6px; font-size: var(--font-size-caption); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.6px; color: var(--color-text-disabled);
+}
 .nav-item {
   display: block; padding: 8px 20px;
   color: var(--muted); text-decoration: none;
@@ -43,6 +109,28 @@ a { color: inherit; }
 .topbar h1 { font-size: 19px; font-weight: 700; }
 .page-meta { color: var(--muted); font-size: 13px; }
 .content { max-width: 1300px; margin: 0 auto; padding: 24px 32px 60px; }
+
+/* This is a native-window desktop app (mac_app/ opens at 900x600 minimum),
+   so this breakpoint is a defensive minimum against an unusually narrow
+   window, not a primary mobile target — sidebar stacks above content rather
+   than a full off-canvas/hamburger pattern, to keep the change low-risk. */
+@media (max-width: 760px) {
+  .app { flex-direction: column; }
+  .sidebar {
+    width: 100%; height: auto; position: static;
+    flex-direction: row; flex-wrap: wrap; align-items: center;
+    padding: 12px 16px; gap: 4px 12px;
+  }
+  .brand { padding: 0 8px 0 0; width: auto; }
+  .nav-group { display: contents; }
+  .nav-group-label { display: none; }
+  .nav-item { padding: 6px 10px; border-left: none; border-radius: var(--radius-md); }
+  .nav-item.active { border-left: none; }
+  .nav-item-sub { display: none; }
+  .sidebar-footer { display: none; }
+  .topbar { padding: 14px 16px; flex-wrap: wrap; }
+  .content { padding: 16px 16px 40px; }
+}
 
 /* --- Buttons --- */
 .btn { padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 13px; transition: all 0.15s; }
