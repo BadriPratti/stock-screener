@@ -37,7 +37,8 @@ htmlcov/
 .pytest_cache/
 
 # Data (keep cache and scan archives)
-position/  # real Fidelity portfolio exports (account numbers, holdings) — never commit
+# real Fidelity portfolio exports (account numbers, holdings) — never commit
+position/
 
 data/*
 !data/fundamentals_cache/
