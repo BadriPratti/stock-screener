@@ -488,8 +488,8 @@ class EmailNotifier:
         if count == 0:
             return '0'
         if count >= 10:
-            return f'<strong style="color:#e67e22;">🔥 {count}</strong>'
-        return f'💬 {count}'
+            return f'<strong style="color:#e67e22;">{count}</strong>'
+        return str(count)
 
     def _catalyst_badge_html(self, classification: Optional[Dict]) -> str:
         """Render the Catalyst Sentiment agent's -5..+5 score as a compact colored badge."""
@@ -507,7 +507,7 @@ class EmailNotifier:
         return (
             f'<div style="margin-top:6px;">'
             f'<span style="background:{bg};color:{color};padding:2px 6px;border-radius:4px;'
-            f'font-size:11px;font-weight:bold;">🎯 Catalyst {score:+d}: {ctype}</span>'
+            f'font-size:11px;font-weight:bold;">Catalyst {score:+d} — {ctype}</span>'
             f'<div style="font-size:11px;color:#666;margin-top:2px;">{summary}</div>'
             f'</div>'
         )
@@ -530,7 +530,7 @@ class EmailNotifier:
         return (
             f'<div style="margin-top:6px;">'
             f'<span style="background:{bg};color:{color};padding:2px 6px;border-radius:4px;'
-            f'font-size:11px;font-weight:bold;">🏛️ Congress {score:+.1f}</span>'
+            f'font-size:11px;font-weight:bold;">Congress {score:+.1f}</span>'
             f'<div style="font-size:11px;color:#666;margin-top:2px;">{summary}</div>'
             f'</div>'
         )
@@ -545,12 +545,12 @@ class EmailNotifier:
         if red:
             more = f' (+{len(red) - 1} more)' if len(red) > 1 else ''
             parts.append(
-                f'<div style="font-size:11px;color:#c0392b;margin-top:3px;">🔴 {red[0]["flag"]}{more}</div>'
+                f'<div style="font-size:11px;color:#c0392b;margin-top:3px;">Red flag: {red[0]["flag"]}{more}</div>'
             )
         if green:
             more = f' (+{len(green) - 1} more)' if len(green) > 1 else ''
             parts.append(
-                f'<div style="font-size:11px;color:#27ae60;margin-top:2px;">🟢 {green[0]["flag"]}{more}</div>'
+                f'<div style="font-size:11px;color:#27ae60;margin-top:2px;">Green flag: {green[0]["flag"]}{more}</div>'
             )
         return "".join(parts)
 
@@ -582,7 +582,7 @@ class EmailNotifier:
                 reasons = '; '.join(s.get('drop_reasons') or []) or 'below filter bar'
                 badges += (
                     f'<div style="font-size:11px;color:#8a6d3b;margin-top:4px;">'
-                    f"⚠️ Backfilled — didn't clear filters: {reasons}</div>"
+                    f"Backfilled — didn't clear filters: {reasons}</div>"
                 )
             if not badges:
                 badges = '<span style="font-size:11px;color:#999;">No agent data</span>'
@@ -599,12 +599,12 @@ class EmailNotifier:
     </tr>"""
 
         return f"""
-    <h2 style="color:#764ba2;">🎯 Top 5 — Filtered Shortlist</h2>
+    <h2 style="color:#764ba2;">Top 5 — Filtered Shortlist</h2>
     <p style="color:#666;font-size:13px;margin-top:-8px;">
         Ranked from the Top 20 pool below by composite score = base score + Catalyst
         Sentiment×2 + Congress Trades×3. Candidates where fundamentals red flags outweigh
         green, or Catalyst Sentiment reads a clear negative catalyst (≤ -2), are dropped —
-        only backfilled (⚠️ flagged) if fewer than 5 survive.
+        only backfilled (flagged) if fewer than 5 survive.
     </p>
     <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
       <thead>
@@ -647,7 +647,7 @@ class EmailNotifier:
                 links_html += (
                     f'<a href="{link["url"]}" style="display:block;font-size:11px;color:#3b82f6;'
                     f'text-decoration:none;margin-top:3px;" target="_blank">'
-                    f'🔗 {link["label"]}: {title}</a>'
+                    f'{link["label"]}: {title}</a>'
                 )
             if not links_html:
                 links_html = '<span style="font-size:11px;color:#999;">No linked source yet</span>'
@@ -797,19 +797,19 @@ class EmailNotifier:
 </head>
 <body>
     <div class="header">
-        <h1>📊 Daily Stock Screener</h1>
+        <h1>Daily Stock Screener</h1>
         <p style="margin: 10px 0 0 0; font-size: 15px;">{today}</p>
     </div>
     {regime_html}
     {shortlist_html}
     {top20_html}
-    <h2 style="color:#27ae60;">🟢 Buy Signals ({len(buy_signals)})</h2>
+    <h2 style="color:#27ae60;">Buy Signals ({len(buy_signals)})</h2>
     {buy_table}
-    <h2 style="color:#e74c3c; margin-top:30px;">🔴 Sell Signals ({len(sell_signals)})</h2>
+    <h2 style="color:#e74c3c; margin-top:30px;">Sell Signals ({len(sell_signals)})</h2>
     {sell_table}
     <div class="footer">
         <p><strong>Automated Stock Screener</strong> — tap any ticker to open its Fidelity trade page. You still decide and execute every trade yourself.</p>
-        <p>⚠️ This is not financial advice. Always do your own research before investing.</p>
+        <p>This is not financial advice. Always do your own research before investing.</p>
     </div>
 </body>
 </html>
@@ -873,7 +873,7 @@ class EmailNotifier:
         else:
             text += "No sell signals today\n"
 
-        text += "\n" + "=" * 60 + "\n⚠️ Not financial advice. Do your own research.\n"
+        text += "\n" + "=" * 60 + "\nNot financial advice. Do your own research.\n"
         return text
 
     def _create_text_fallback(self, results: pd.DataFrame, top_n: int) -> str:

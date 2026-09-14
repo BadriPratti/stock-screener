@@ -506,20 +506,25 @@ def main():
         # Top 20: combined technical + Reddit-buzz + insider-buying ranking of the
         # qualified buy pool, with "why is this moving" links
         top20 = []
+        top20_path = Path("./data/daily_scans/top20_latest.json")
+        top20_path.parent.mkdir(parents=True, exist_ok=True)
         if buy_signals:
             logger.info("Building Top 20 shortlist...")
             top20 = build_top20(buy_signals, reddit_mentions, insider_signals)
-            top20_path = Path("./data/daily_scans/top20_latest.json")
-            top20_path.parent.mkdir(parents=True, exist_ok=True)
-            with open(top20_path, 'w') as f:
-                # sanitize_nan: this feeds the dashboard's Market/Shortlist views
-                # directly — a stray NaN in a technical score would otherwise
-                # serialize as an invalid JSON token the browser can't parse.
-                json.dump(sanitize_nan({
-                    'generated': datetime.now().isoformat(),
-                    'top20': top20,
-                }), f, indent=2, default=str)
-            logger.info(f"Top 20 saved: {top20_path}")
+        # Always write top20_latest.json, even when empty — otherwise a scan
+        # that finds zero buy signals leaves a stale prior day's Top 20 in
+        # place with no indication it's stale (the dashboard's Market/
+        # Shortlist views read this file directly and would show yesterday's
+        # picks as if they were fresh).
+        with open(top20_path, 'w') as f:
+            # sanitize_nan: this feeds the dashboard's Market/Shortlist views
+            # directly — a stray NaN in a technical score would otherwise
+            # serialize as an invalid JSON token the browser can't parse.
+            json.dump(sanitize_nan({
+                'generated': datetime.now().isoformat(),
+                'top20': top20,
+            }), f, indent=2, default=str)
+        logger.info(f"Top 20 saved: {top20_path} ({len(top20)} tickers)")
 
         # LLM agents (Fundamentals Auditor, Catalyst Sentiment) + free Congress Trades
         # lookup — opt-in since the first two are real Claude API calls per ticker.
@@ -566,7 +571,24 @@ def main():
                 }), f, indent=2, default=str)
             logger.info(f"Shortlist saved: {shortlist_path}")
         elif args.enable_llm_agents:
+            # Same staleness issue as top20_latest.json above: a daily run
+            # that explicitly asked for a shortlist but found zero buy
+            # signals must not leave yesterday's real shortlist looking
+            # current. Only reached when agents were requested — a run
+            # without --enable-llm-agents (e.g. the midday scan) correctly
+            # leaves the once-a-day shortlist file untouched.
             logger.info("LLM agents skipped: no Top 20 shortlist was built this run.")
+            shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
+            shortlist_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(shortlist_path, 'w') as f:
+                json.dump(sanitize_nan({
+                    'generated': datetime.now().isoformat(),
+                    'shortlist': [],
+                    'fundamentals_audits': {},
+                    'catalyst_sentiments': {},
+                    'congress_signals': {},
+                }), f, indent=2, default=str)
+            logger.info(f"Shortlist cleared (no candidates today): {shortlist_path}")
 
         # Report
         save_report(results, buy_signals, sell_signals, spy_analysis, breadth)

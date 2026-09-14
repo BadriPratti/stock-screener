@@ -17,6 +17,7 @@ Usage:
 """
 
 import argparse
+import json
 import logging
 import random
 import sys
@@ -31,6 +32,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.data.universe_fetcher import USStockUniverseFetcher
 from src.screening.phase_indicators import classify_phase, calculate_relative_strength
 from src.screening.signal_engine import score_buy_signal
+from src.utils.json_safe import sanitize_nan
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
@@ -43,6 +45,8 @@ def main():
     parser.add_argument('--sample', type=int, default=150, help='Tickers drawn per iteration')
     parser.add_argument('--iterations', type=int, default=100)
     parser.add_argument('--investment', type=float, default=1000.0)
+    parser.add_argument('--json-out', type=str, default=None,
+                         help='Optional path to also write structured JSON results (stdout output unchanged)')
     args = parser.parse_args()
 
     as_of = (datetime.now() - timedelta(days=args.days)).date()
@@ -92,6 +96,7 @@ def main():
     print(f"\nPool scored: {len(qualifiers)} qualifying buy signals out of {len(pool_tickers)} tickers.\n")
 
     # Does the score actually predict forward return? Pearson correlation.
+    corr = None
     if len(qualifiers) >= 5:
         scores = [s['score'] for s in qualifiers]
         returns = [s['return_pct'] for s in qualifiers]
@@ -106,6 +111,8 @@ def main():
 
     if len(qualifiers) < 3:
         print("Not enough qualifiers in this pool to run iterations — try a bigger --pool.")
+        if args.json_out:
+            _write_json_out(args, as_of, len(qualifiers), corr, [])
         return
 
     qualifier_tickers = {s['ticker'] for s in qualifiers}
@@ -136,6 +143,8 @@ def main():
 
     if not results:
         print("No iteration drew any qualifying tickers — try a bigger --sample or --pool.")
+        if args.json_out:
+            _write_json_out(args, as_of, len(qualifiers), corr, [])
         return
 
     profits = [r['profit'] for r in results]
@@ -161,6 +170,31 @@ def main():
     print(f"{'='*70}")
     print("\nNote: iterations draw from a shared fixed pool (not fully independent),")
     print("and this is a statistical illustration, not investment advice.")
+
+    if args.json_out:
+        _write_json_out(
+            args, as_of, len(qualifiers), corr, results,
+            win_rate=wins / len(results) * 100, avg_profit=avg_profit, avg_pct=avg_pct,
+            median_pct=median_pct, best=best, worst=worst,
+        )
+
+
+def _write_json_out(args, as_of, qualifiers_found, corr, results, **stats):
+    """Optional structured JSON alongside the printed report — used by the GUI
+    dashboard's job runner. Never affects stdout output or the CLI usage."""
+    out = {
+        'generated': datetime.now().isoformat(),
+        'as_of_date': str(as_of),
+        'days': args.days, 'pool': args.pool, 'sample': args.sample,
+        'iterations': args.iterations, 'investment': args.investment,
+        'qualifiers_found': qualifiers_found,
+        'score_return_correlation': corr,
+        'iterations_run': len(results),
+        **stats,
+    }
+    out_path = Path(args.json_out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(sanitize_nan(out), indent=2, default=str))
 
 
 if __name__ == '__main__':

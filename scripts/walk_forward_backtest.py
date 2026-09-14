@@ -50,6 +50,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.data.universe_fetcher import USStockUniverseFetcher
 from src.screening.phase_indicators import classify_phase, calculate_relative_strength
 from src.screening.signal_engine import score_buy_signal
+from src.utils.json_safe import sanitize_nan
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
@@ -338,6 +339,11 @@ def print_report(result: dict):
 
 
 def save_result(result: dict) -> Path:
+    # sanitize_nan: this feeds the dashboard's Backtests view directly — a
+    # stray NaN anywhere in here (e.g. a correlation computed over too few
+    # points) would otherwise serialize as an invalid `NaN` JSON token that
+    # silently breaks JSON.parse() in the browser.
+    result = sanitize_nan(result)
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     path = HISTORY_DIR / f"walk_forward_{timestamp}.json"

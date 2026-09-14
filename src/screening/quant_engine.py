@@ -187,7 +187,7 @@ class QuantAnalysisEngine:
                     current_price=analysis['current_price'],
                     phase_info=analysis['phase_info'],
                     rs_series=analysis['rs_series'],
-                    fundamentals=analysis['fundamental_analysis']
+                    fundamentals=analysis['quarterly_data']
                 )
 
                 if buy_signal['is_buy']:

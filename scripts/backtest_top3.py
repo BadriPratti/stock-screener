@@ -14,6 +14,7 @@ Usage:
 """
 
 import argparse
+import json
 import logging
 import random
 import sys
@@ -28,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.data.universe_fetcher import USStockUniverseFetcher
 from src.screening.phase_indicators import classify_phase, calculate_relative_strength
 from src.screening.signal_engine import score_buy_signal
+from src.utils.json_safe import sanitize_nan
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
@@ -38,6 +40,8 @@ def main():
     parser.add_argument('--days', type=int, default=7, help='Lookback days for the as-of date')
     parser.add_argument('--sample', type=int, default=150, help='Random ticker sample size')
     parser.add_argument('--investment', type=float, default=1000.0, help='Total $ invested, split evenly')
+    parser.add_argument('--json-out', type=str, default=None,
+                         help='Optional path to also write structured JSON results (stdout output unchanged)')
     args = parser.parse_args()
 
     as_of = (datetime.now() - timedelta(days=args.days)).date()
@@ -95,6 +99,8 @@ def main():
 
     if not top3:
         print("No qualifying buy signals found in this sample — try a larger --sample size.")
+        if args.json_out:
+            _write_json_out(args, as_of, scanned, len(candidates), [], 0.0, 0.0)
         return
 
     print(f"{'='*70}\nTOP 3 (as they would have been recommended on {as_of})\n{'='*70}\n")
@@ -119,6 +125,33 @@ def main():
     print(f"{'='*70}")
     print("\nNote: small random sample of the universe, not the full ~3,800-stock scan —")
     print("results will vary between runs. Not financial advice.")
+
+    if args.json_out:
+        _write_json_out(args, as_of, scanned, len(candidates), top3, total_value, total_profit)
+
+
+def _write_json_out(args, as_of, scanned, candidates_found, top3, total_value, total_profit):
+    """Optional structured JSON alongside the printed report — used by the GUI
+    dashboard's job runner. Never affects stdout output or the CLI/skill usage."""
+    out = {
+        'generated': datetime.now().isoformat(),
+        'as_of_date': str(as_of),
+        'days': args.days, 'sample': args.sample, 'investment': args.investment,
+        'scanned': scanned, 'candidates_found': candidates_found,
+        'picks': [
+            {
+                'ticker': s['ticker'], 'score': s['score'],
+                'entry_price': s['entry_price_asof'], 'exit_price': s['current_price_today'],
+                'return_pct': s['return_pct'],
+            } for s in top3
+        ],
+        'total_invested': args.investment, 'total_value_today': total_value,
+        'total_profit': total_profit,
+        'total_return_pct': (total_profit / args.investment * 100) if args.investment else 0.0,
+    }
+    out_path = Path(args.json_out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(sanitize_nan(out), indent=2, default=str))
 
 
 if __name__ == '__main__':

@@ -209,7 +209,15 @@ class OptimizedBatchProcessor:
             if self.use_git_storage and self.git_fetcher:
                 # Git fetcher only does 1y, fetch 5y for drawdown check first
                 import yfinance as yf
-                long_hist = yf.Ticker(ticker).history(period='5y', interval='1d')
+                # Explicit timeout, not relying on yfinance's own default: a
+                # real scan hung indefinitely on a stalled SSL read to this
+                # same data provider despite yfinance's history() claiming a
+                # default timeout — the outer job/workflow deadlines (see
+                # dashboard.py's job watchdog and the GH Actions
+                # timeout-minutes) are the real backstop, but a per-call
+                # timeout still lets a full scan fail fast on ONE bad ticker
+                # instead of eventually being killed with nothing scanned.
+                long_hist = yf.Ticker(ticker).history(period='5y', interval='1d', timeout=15)
 
                 if not long_hist.empty:
                     # Use last 1 year for technical analysis

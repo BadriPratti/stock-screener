@@ -71,8 +71,9 @@ def _fetch_headlines(ticker: str, limit: int = MAX_HEADLINES) -> List[Dict]:
         title = content.get("title")
         publisher = (content.get("provider") or {}).get("displayName")
         pub_date = content.get("pubDate")
+        url = (content.get("canonicalUrl") or {}).get("url")
         if title:
-            headlines.append({"title": title, "publisher": publisher, "pub_date": pub_date})
+            headlines.append({"title": title, "publisher": publisher, "pub_date": pub_date, "url": url})
     return headlines
 
 

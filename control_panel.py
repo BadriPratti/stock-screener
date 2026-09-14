@@ -61,6 +61,23 @@ STATE = {
 LOCK = threading.Lock()
 
 
+COMMAND_TIMEOUT_SECONDS = 45 * 60  # full_scan can legitimately take 15-30 min
+
+
+def _kill_hung_command(cid, proc):
+    if proc.poll() is not None:
+        return
+    proc.kill()
+    with LOCK:
+        st = STATE.get(cid)
+        if st:
+            st["output"].append(
+                "[control-panel] command exceeded its time limit and was terminated "
+                "— likely a hung network call to a third-party data source."
+            )
+            st["status"] = "error"
+
+
 def _run_command(cid):
     entry = COMMANDS[cid]
     st = STATE[cid]
@@ -82,11 +99,17 @@ def _run_command(cid):
         with LOCK:
             st["proc"] = proc
 
-        for line in proc.stdout:
-            with LOCK:
-                st["output"].append(line.rstrip("\n"))
+        watchdog = threading.Timer(COMMAND_TIMEOUT_SECONDS, _kill_hung_command, args=(cid, proc))
+        watchdog.daemon = True
+        watchdog.start()
+        try:
+            for line in proc.stdout:
+                with LOCK:
+                    st["output"].append(line.rstrip("\n"))
+            proc.wait()
+        finally:
+            watchdog.cancel()
 
-        proc.wait()
         with LOCK:
             st["returncode"] = proc.returncode
             st["status"] = "success" if proc.returncode == 0 else "error"
@@ -102,8 +125,16 @@ def _run_command(cid):
 def api_run(cid):
     if cid not in COMMANDS:
         return jsonify({"error": "unknown command"}), 404
-    if STATE[cid]["status"] == "running":
-        return jsonify({"error": "already running"}), 409
+    # Check-and-set must happen under the same lock acquisition — checking
+    # status and starting the thread as two separate steps left a window
+    # where two near-simultaneous requests could both see "not running" and
+    # both launch a command (e.g. two full scans writing the same output
+    # files at once). "running" is set here, synchronously, before the
+    # thread (which re-sets it, harmlessly) even starts.
+    with LOCK:
+        if STATE[cid]["status"] == "running":
+            return jsonify({"error": "already running"}), 409
+        STATE[cid]["status"] = "running"
     threading.Thread(target=_run_command, args=(cid,), daemon=True).start()
     return jsonify({"ok": True})
 
@@ -301,4 +332,7 @@ if __name__ == "__main__":
     url = f"http://localhost:{args.port}"
     Timer(1.0, lambda: webbrowser.open(url)).start()
     print(f"Control panel running at {url}")
-    app.run(host="0.0.0.0", port=args.port, debug=False, threaded=True)
+    # 127.0.0.1, not 0.0.0.0: this runs arbitrary project commands (including
+    # full scans and environment setup) with zero authentication — see the
+    # matching comment in dashboard.py.
+    app.run(host="127.0.0.1", port=args.port, debug=False, threaded=True)

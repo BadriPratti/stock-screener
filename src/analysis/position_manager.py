@@ -182,6 +182,33 @@ class PositionManager:
             result['sma_50'] = round(sma_50, 2)
             result['recent_low'] = round(recent_low, 2)
 
+            # Compact price history for the dashboard's per-position chart —
+            # computed here (not a separate fetch on click) since price_data
+            # is already in memory. ~8 months of daily closes is enough to see
+            # the trend/pullback context without bloating the JSON response.
+            history = price_data['Close'].iloc[-180:]
+            result['price_history'] = [
+                {'date': str(idx.date()) if hasattr(idx, 'date') else str(idx), 'close': round(float(c), 2)}
+                for idx, c in history.items() if pd.notna(c)
+            ]
+
+            # ADD-ON (SCALE IN) SIGNAL — independent of the exit-side logic below.
+            # Flags a position as a good "buy more" point: still in a confirmed
+            # Phase 2 uptrend, pulled back to (not through) the rising 50 SMA —
+            # a classic continuation entry — and not yet a big enough winner that
+            # the exit logic below would already be recommending a trim (that
+            # starts at gain_pct >= 15, so this is capped just under it to never
+            # overlap with a trim recommendation on the same position).
+            result['add_on_signal'] = False
+            result['add_on_rationale'] = ''
+            if phase == 2 and sma_50 > 0 and sma_50 <= current_price <= sma_50 * 1.03 and gain_pct < 15:
+                result['add_on_signal'] = True
+                result['add_on_rationale'] = (
+                    f"Pulled back to the rising 50 SMA (${sma_50:.2f}) without breaking it, still in a "
+                    f"confirmed Phase 2 uptrend, and not yet an extended winner ({gain_pct:+.1f}%) — "
+                    f"a classic continuation add point if you want to size up."
+                )
+
             # STOP LOSS ADJUSTMENT LOGIC - LINEAR FORMULAS (NO BUCKETS)
             # Based on continuous gain percentage scaling
 
@@ -270,7 +297,7 @@ class PositionManager:
 
                 # Add Phase 3 warning for big winners
                 if phase == 3 and gain_pct >= 20:
-                    rationale_lines.append(f"  ⚠️ WARNING: Stock in Phase 3 (distribution). Consider tighter exit.")
+                    rationale_lines.append(f"  WARNING: Stock in Phase 3 (distribution). Consider tighter exit.")
 
                 result['rationale'] = "\n".join(rationale_lines)
                 result['partial_exit_pct'] = round(partial_exit_pct, 1)
@@ -279,12 +306,12 @@ class PositionManager:
             # Additional checks
             if phase == 3 or phase == 4:
                 result['warnings'].append(
-                    f'⚠️ Stock in Phase {phase} (distribution/decline). Consider tighter stops or exit.'
+                    f'Stock in Phase {phase} (distribution/decline). Consider tighter stops or exit.'
                 )
 
             if current_price < sma_50 and sma_50 > 0:
                 result['warnings'].append(
-                    f'⚠️ Price broke below 50 SMA (${sma_50:.2f}). Trend weakening - review position.'
+                    f'Price broke below 50 SMA (${sma_50:.2f}). Trend weakening - review position.'
                 )
 
         except Exception as e:
@@ -348,9 +375,12 @@ class PositionManager:
 
         avg_gain = sum(a['current_gain_pct'] for a in analyses) / total_positions if total_positions > 0 else 0
 
+        add_on_candidates = sum(1 for a in analyses if a.get('add_on_signal'))
+
         summary = {
             'total_positions': total_positions,
             'positions_need_adjustment': positions_to_adjust,
+            'add_on_candidates': add_on_candidates,
             'short_term_positions': short_term_positions,
             'long_term_positions': long_term_positions,
             'average_gain_pct': round(avg_gain, 2)
@@ -365,7 +395,7 @@ class PositionManager:
                     'reason': analysis['warnings'],
                     'current_gain': analysis['current_gain_pct']
                 })
-            elif analysis.get('action') in ['take_partial_and_trail', 'take_partial_and_trail_tight']:
+            elif analysis.get('action') in ['take_partial_and_trail', 'take_major_partial_and_trail_tight']:
                 urgent.append({
                     'ticker': analysis['ticker'],
                     'reason': 'Big winner - consider taking partial profits',
@@ -407,7 +437,7 @@ class PositionManager:
 
         # Urgent actions
         if analysis_result['urgent_actions']:
-            lines.append("⚠️  URGENT ACTIONS NEEDED")
+            lines.append("URGENT ACTIONS NEEDED")
             lines.append("-"*80)
             for urgent in analysis_result['urgent_actions']:
                 lines.append(f"\n{urgent['ticker']} ({urgent['current_gain']:+.1f}%)")
@@ -439,7 +469,7 @@ class PositionManager:
             lines.append("")
 
             if analysis['should_adjust_stop']:
-                lines.append(f"✓ RECOMMENDED STOP LOSS: ${analysis['recommended_stop']:.2f}")
+                lines.append(f"RECOMMENDED STOP LOSS: ${analysis['recommended_stop']:.2f}")
                 lines.append("")
 
             lines.append("RATIONALE:")
@@ -455,6 +485,10 @@ class PositionManager:
                 lines.append("\nWARNINGS:")
                 for warning in analysis['warnings']:
                     lines.append(f"  {warning}")
+
+            if analysis.get('add_on_signal'):
+                lines.append("\nADD-ON CANDIDATE:")
+                lines.append(f"  {analysis['add_on_rationale']}")
 
             lines.append("")
 

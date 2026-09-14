@@ -17,6 +17,11 @@ on:
 jobs:
   screen-stocks:
     runs-on: ubuntu-latest
+    # A hung network call (e.g. a stalled SSL read to a data provider that
+    # never times out on its own — this has happened for real, locally) would
+    # otherwise run until GitHub's own multi-hour default limit, blocking the
+    # day's email, commit, and dashboard data the whole time.
+    timeout-minutes: 60
 
     permissions:
       contents: write  # Required to commit fundamental cache
