@@ -1,0 +1,156 @@
+{
+  "generated": "2026-09-09T17:28:15.804010",
+  "source": "house-stock-watcher-data (House only, no free Senate source available)",
+  "signals": {
+    "OXY": {
+      "ticker": "OXY",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "KRO": {
+      "ticker": "KRO",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "GKOS": {
+      "ticker": "GKOS",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "CAKE": {
+      "ticker": "CAKE",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "MUFG": {
+      "ticker": "MUFG",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "CGEM": {
+      "ticker": "CGEM",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "BSM": {
+      "ticker": "BSM",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "LQDT": {
+      "ticker": "LQDT",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "SEIC": {
+      "ticker": "SEIC",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "MBIN": {
+      "ticker": "MBIN",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "DBRG": {
+      "ticker": "DBRG",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "FSUN": {
+      "ticker": "FSUN",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "QCRH": {
+      "ticker": "QCRH",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "AOUT": {
+      "ticker": "AOUT",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "PCTY": {
+      "ticker": "PCTY",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    }
+  }
+}

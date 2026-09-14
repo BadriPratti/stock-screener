@@ -1,0 +1,200 @@
+{
+  "generated": "2026-09-09T17:28:15.097003",
+  "results": [
+    {
+      "ticker": "OXY",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 1,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "No firm-specific catalyst: headlines are generic listicles and commentary, with only a broad energy-sector move noted. A modest ~$250K open-market insider purchase provides a slight positive tilt."
+      }
+    },
+    {
+      "ticker": "KRO",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "Recent coverage is mostly Zacks momentum/screen commentary ('Up 7.32% in One Week', 52-week high) rather than fresh news; the underlying Q2 earnings beat on volume growth and lower costs is now several weeks stale, and there is no insider buying. Some lingering bullish tailwind, but the current move looks like price momentum with concerns about weaker TiO2 pricing."
+      }
+    },
+    {
+      "ticker": "GKOS",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "No fresh, substantive news driver \u2014 coverage is stale Zacks recap content noting the stock is up 8% since its Q2 report and 67% year to date. The move appears to be continued momentum off earlier strong earnings rather than a new catalyst."
+      }
+    },
+    {
+      "ticker": "CAKE",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 1,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "CAKE is extending a large multi-month rally (up ~70% in three months) that was initially sparked by a Q2 earnings beat with margin upside in late August, but current coverage is generic momentum/valuation commentary rather than fresh news. A token ~$25K insider purchase is too small to be a meaningful signal."
+      }
+    },
+    {
+      "ticker": "MUFG",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "No company-specific catalyst; headlines are mostly generic momentum pieces and MUFG strategists' currency commentary. The modest tailwind is rising global bond yields, which generally benefit bank margins."
+      }
+    },
+    {
+      "ticker": "CGEM",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "product_news",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "Cullinan is moving on clinical pipeline news \u2014 new lung cancer data (zipalertinib vs. Taiho competition) plus FDA-backed advancement of CLN-049 and earlier strong autoimmune T-cell engager data that already sparked a 27% pop. The driver is drug development progress, though the competitive read-through in the latest lung cancer data tempers the bullishness."
+      }
+    },
+    {
+      "ticker": "BSM",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 0,
+        "confidence": "medium",
+        "summary": "No substantive news driving the move \\u2014 headlines are generic StockStory listicles and stale Q2 earnings recaps, with no insider buying. Any movement appears to be price/volume momentum rather than a fundamental catalyst."
+      }
+    },
+    {
+      "ticker": "LQDT",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 1,
+        "confidence": "medium",
+        "summary": "Headlines are mostly Zacks momentum/screen pieces and valuation commentary referencing a prior 138% run, with no fresh fundamental news; the only substantive item is a reiterated $2B GMV growth target. The move looks driven by momentum and trend-following rather than a discrete catalyst."
+      }
+    },
+    {
+      "ticker": "SEIC",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 2,
+        "confidence": "medium",
+        "summary": "SEI Investments posted a record Q2 that beat expectations, and the stock has continued to grind higher (up ~11% since the report) to a new 52-week high. The move is largely follow-through momentum from that earnings beat rather than fresh news."
+      }
+    },
+    {
+      "ticker": "MBIN",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 0,
+        "confidence": "medium",
+        "summary": "The move looks driven by continuation of a multi-week rally rather than fresh news \u2014 the only recent item questions how much credit/multifamily risk investors will overlook. The underlying Q2 earnings beat and rising estimates are now over a month stale, and there is no insider buying."
+      }
+    },
+    {
+      "ticker": "DBRG",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 0,
+        "confidence": "medium",
+        "summary": "No fresh company-specific catalyst \u2014 the newest item is a general AI/data-center bubble warning commentary, while the substantive items (Malaysia asset review, ArcLight acquisition, leadership hires) are months old. Move appears driven by data-center/AI sector sentiment and price momentum rather than new news, with no insider buying to confirm."
+      }
+    },
+    {
+      "ticker": "FSUN",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 0,
+        "confidence": "medium",
+        "summary": "No fresh, material news is driving FSUN \u2014 the headlines are stale Q2 earnings recaps and generic screener articles, with only a small director sale and no open-market insider buying. The move appears to be price/volume momentum rather than a specific catalyst."
+      }
+    },
+    {
+      "ticker": "QCRH",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "pure_momentum_no_catalyst",
+        "catalyst_score": 0,
+        "confidence": "medium",
+        "summary": "No substantive company-specific news \u2014 coverage is generic Zacks/StockStory screen content (momentum picks, 52-week high, dividend lists) plus a stale late-July rating upgrade, and there are no insider purchases. The move appears driven by price/volume momentum in regional banks rather than a fresh catalyst."
+      }
+    },
+    {
+      "ticker": "AOUT",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "earnings_beat",
+        "catalyst_score": 4,
+        "confidence": "high",
+        "summary": "American Outdoor Brands surged ~24% after fiscal Q1 results beat expectations, swinging to profitability on new product momentum and margin improvements. The move is clearly driven by the earnings report rather than momentum alone."
+      }
+    },
+    {
+      "ticker": "PCTY",
+      "analyzed": true,
+      "reason": null,
+      "headlines_used": 8,
+      "insider_purchases_90d": 0,
+      "classification": {
+        "catalyst_type": "insider_selling",
+        "catalyst_score": -1,
+        "confidence": "medium",
+        "summary": "No fresh fundamental catalyst \u2014 the stock drifted higher post-earnings on software sector strength, while the CEO and a director disclosed routine open-market share sales. Headlines are mostly technical/momentum commentary rather than substantive news."
+      }
+    }
+  ]
+}
