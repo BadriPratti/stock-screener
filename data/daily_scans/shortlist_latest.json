@@ -1,43 +1,43 @@
 {
-  "generated": "2026-09-16T17:26:10.610096",
+  "generated": "2026-09-17T17:35:05.525757",
   "result": "success",
   "shortlist": [
     {
       "ticker": "LILA",
       "is_buy": "True",
-      "score": 100.7,
+      "score": 99.6,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 8.46,
-      "risk_reward_ratio": 7.02,
+      "stop_loss": 8.45,
+      "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 7.4% above 50 SMA",
-        "SMAs rising strongly (50:0.599, 200:0.259)",
+        "Good Stage 2: 5.6% above 50 SMA",
+        "SMAs rising strongly (50:0.558, 200:0.258)",
         "\ud83d\udd34 Revenue: 3Q avg -0.2% QoQ (4.2% \u2192 -6.6% \u2192 1.8%)",
         "\ud83d\udfe2 EPS: +94% YoY (strong earnings)",
-        "\u2713 Volume heavier on up days (0.3M vs 0.1M, ratio 2.03)",
-        "\u2713 Strong RS: 0.358 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 7.0:1 ($2.65 upside, $0.38 risk)",
-        "\ud83d\udfe2 At 52W high: 1.3% from high (pivot zone)"
+        "\u2713 Volume heavier on up days (0.3M vs 0.2M, ratio 1.40)",
+        "\u2713 Strong RS: 0.318 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($2.61 upside, $0.26 risk)",
+        "\ud83d\udfe2 At 52W high: 2.7% from high (pivot zone)"
       ],
       "details": {
-        "trend_score": 26.25,
+        "trend_score": 25.24,
         "fundamental_score": 26.25,
-        "avg_vol_up": 279500.0,
-        "avg_vol_down": 137575.0,
-        "volume_score": 5.0,
-        "rs_slope": 0.358,
+        "avg_vol_up": 273167.0,
+        "avg_vol_down": 194697.0,
+        "volume_score": 4.52,
+        "rs_slope": 0.318,
         "rs_score": 10,
-        "stop_loss": 8.4575,
-        "risk_reward_ratio": 7.02,
-        "risk_amount": 0.38,
-        "reward_amount": 2.65,
-        "reward_target": 11.49,
+        "stop_loss": 8.448700037002563,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 0.26,
+        "reward_amount": 2.61,
+        "reward_target": 11.32,
         "rr_score": 10.0,
-        "entry_score": 23.16,
+        "entry_score": 23.61,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -51,9 +51,9 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 92.9,
+            "distance_from_52w_low_pct": 90.2,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 1.3,
+            "distance_from_52w_high_pct": 2.7,
             "confirmed_stage_2": true
           }
         }
@@ -61,7 +61,7 @@
       "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LILA\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.5%, QoQ: +1.8%)\n  QoQ Trend (last 4Q): +2.4% \u2192 +4.2% \u2192 -6.6% \u2192 +1.8%\n\u2713 EPS: STRONG growth (YoY: +93.9%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): +100.9% \u2192 N/A \u2192 N/A \u2192 -18.2%\n\u2022 Margins: Stable/slightly up (68.4%, +1.0pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
       "reddit_mentions_24h": 0,
       "insider_buy_value_90d": 14766042.485499999,
-      "combined_score": 129.5,
+      "combined_score": 128.4,
       "why_links": [
         {
           "label": "Insider Buy ($14,766,042/90d)",
@@ -83,53 +83,44 @@
       "passed_filters": true,
       "catalyst_score": 0,
       "congress_score": 0.0,
-      "composite_score": 129.5
+      "composite_score": 128.4
     },
     {
-      "ticker": "NVDA",
+      "ticker": "LILAK",
       "is_buy": "True",
-      "score": 100.0,
+      "score": 99.2,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
-      "breakout_price": 213.4,
-      "stop_loss": 209.39,
-      "risk_reward_ratio": 10.0,
+      "breakout_price": null,
+      "stop_loss": 8.3,
+      "risk_reward_ratio": 6.45,
       "entry_quality": "Good",
       "reasons": [
-        "Weak Stage 2: 1.2% above 50 SMA",
-        "SMAs rising strongly (50:0.176, 200:0.080)",
-        "\ud83d\udfe1 50 SMA Breakout (low volume)",
-        "\ud83d\udfe2 Revenue: 3Q avg 20.4% QoQ (22.0% \u2192 19.5% \u2192 19.8%)",
-        "\ud83d\udfe2 EPS: +214% YoY (strong earnings)",
-        "\u26a0 Inventory building rapidly (20.5% QoQ - demand concern)",
-        "\u26a0 Volume heavier on down days (ratio 0.58 - distribution)",
-        "\u2713 Strong RS: 0.125 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($64.76 upside, $6.48 risk)",
-        "\ud83d\udfe2 Near 52W high: 8.5% from high"
+        "Good Stage 2: 6.4% above 50 SMA",
+        "SMAs rising strongly (50:0.557, 200:0.246)",
+        "\ud83d\udd34 Revenue: 3Q avg -0.2% QoQ (4.2% \u2192 -6.6% \u2192 1.8%)",
+        "\ud83d\udfe2 EPS: +94% YoY (strong earnings)",
+        "Volume slightly heavier on up days (ratio 1.29)",
+        "\u2713 Strong RS: 0.340 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 6.5:1 ($2.61 upside, $0.40 risk)",
+        "\ud83d\udfe2 At 52W high: 2.3% from high (pivot zone)"
       ],
       "details": {
-        "breakout": {
-          "is_breakout": true,
-          "breakout_level": 213.4,
-          "breakout_type": "50 SMA Breakout",
-          "volume_confirmed": "False",
-          "volume_ratio": 0.3
-        },
-        "trend_score": 24.57,
-        "fundamental_score": 35.0,
-        "avg_vol_up": 63624597.0,
-        "avg_vol_down": 109031767.0,
-        "volume_score": 0.42,
-        "rs_slope": 0.125,
-        "rs_score": 7.08,
-        "stop_loss": 209.39389526367188,
-        "risk_reward_ratio": 10.0,
-        "risk_amount": 6.48,
-        "reward_amount": 64.76,
-        "reward_target": 280.63,
+        "trend_score": 25.58,
+        "fundamental_score": 26.25,
+        "avg_vol_up": 1025600.0,
+        "avg_vol_down": 795365.0,
+        "volume_score": 3.95,
+        "rs_slope": 0.34,
+        "rs_score": 10,
+        "stop_loss": 8.300290007591247,
+        "risk_reward_ratio": 6.45,
+        "risk_amount": 0.4,
+        "reward_amount": 2.61,
+        "reward_target": 11.32,
         "rr_score": 10.0,
-        "entry_score": 22.95,
+        "entry_score": 23.39,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -143,76 +134,76 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 31.7,
+            "distance_from_52w_low_pct": 88.8,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 8.5,
+            "distance_from_52w_high_pct": 2.3,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - NVDA\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +85.2%, QoQ: +19.8%)\n  QoQ Trend (last 4Q): +6.1% \u2192 +22.0% \u2192 +19.5% \u2192 +19.8%\n\u2713 EPS: STRONG growth (YoY: +214.5%, QoQ: +35.8%)\n  QoQ Trend (last 4Q): +42.1% \u2192 +20.4% \u2192 +35.4% \u2192 +35.8%\n\u2022 Margins: Flat (74.9%, -0.1pp QoQ)\n\u26a0 Inventory: BUILDING (+20.5% QoQ, ratio: 0.32)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: inventory building rapidly\n",
-      "reddit_mentions_24h": 60,
-      "insider_buy_value_90d": 0,
-      "combined_score": 120.55,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LILAK\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.5%, QoQ: +1.8%)\n  QoQ Trend (last 4Q): +2.4% \u2192 +4.2% \u2192 -6.6% \u2192 +1.8%\n\u2713 EPS: STRONG growth (YoY: +93.9%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): +100.9% \u2192 N/A \u2192 N/A \u2192 -18.2%\n\u2022 Margins: Stable/slightly up (68.4%, +1.0pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 0,
+      "insider_buy_value_90d": 14766042.485499999,
+      "combined_score": 128.0,
       "why_links": [
         {
-          "label": "Reddit (60 mentions/24h)",
-          "title": null,
-          "url": "https://apewisdom.io/stocks/NVDA/"
+          "label": "Insider Buy ($14,766,042/90d)",
+          "title": "DE ANGOITIA ALFONSO (Insider) bought 313104 shares @ $20.95",
+          "url": "https://www.sec.gov/Archives/edgar/data/1712184/000172451926000010/0001724519-26-000010-index.htm"
         },
         {
           "label": "News",
-          "title": "Frontier AI developers must be 'liable for the things their products do': Autodesk CEO",
-          "url": "https://finance.yahoo.com/video/frontier-ai-developers-must-liable-150955074.html"
+          "title": "Liberty Latin America Director De Angoitia Buys $10 Million Shares. What Does This Large Purchase Mean for Investors?",
+          "url": "https://www.fool.com/coverage/filings/2026/09/08/liberty-latin-america-director-de-angoitia-buys-usd10-million-shares-what-does-this-large-purchase-mean-for-investors/"
         },
         {
           "label": "News",
-          "title": "Salesforce Falls 1.4% as AIforce Faces a $46 Billion Conversion Test",
-          "url": "https://finance.yahoo.com/technology/ai/articles/salesforce-falls-1-4-aiforce-171549004.html"
+          "title": "Billionaire Media Titan John Malone Buys 121,000 Liberty Latin America Shares. Should Investors Be Buyers Too?",
+          "url": "https://www.fool.com/coverage/filings/2026/09/03/billionaire-media-titan-john-malone-buys-121-000-liberty-latin-america-shares-should-investors-be-buyers-too/"
         }
       ],
       "drop_reasons": [],
       "passed_filters": true,
       "catalyst_score": 0,
-      "congress_score": 1.32,
-      "composite_score": 124.51
+      "congress_score": 0.0,
+      "composite_score": 128.0
     },
     {
       "ticker": "LTC",
       "is_buy": "True",
-      "score": 108.2,
+      "score": 106.2,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
       "stop_loss": 40.62,
-      "risk_reward_ratio": 4.79,
+      "risk_reward_ratio": 4.96,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 6.7% above 50 SMA",
-        "SMAs rising strongly (50:0.217, 200:0.098)",
+        "Good Stage 2: 6.3% above 50 SMA",
+        "SMAs rising strongly (50:0.216, 200:0.099)",
         "\ud83d\udfe2 Revenue: 3Q avg 12.8% QoQ (21.7% \u2192 13.2% \u2192 3.6%)",
         "\ud83d\udfe2 EPS: +75% YoY (strong earnings)",
-        "\u2713 Volume heavier on up days (0.8M vs 0.4M, ratio 2.27)",
-        "\u2713 Strong RS: 0.452 (outperforming SPY)",
-        "\ud83d\udfe2 Excellent R/R: 4.8:1 ($13.00 upside, $2.71 risk)",
-        "\ud83d\udfe2 At 52W high: 0.6% from high (pivot zone)"
+        "Volume slightly heavier on up days (ratio 1.14)",
+        "\u2713 Strong RS: 0.462 (outperforming SPY)",
+        "\ud83d\udfe2 Excellent R/R: 5.0:1 ($12.97 upside, $2.61 risk)",
+        "\ud83d\udfe2 At 52W high: 0.8% from high (pivot zone)"
       ],
       "details": {
-        "trend_score": 20.5,
+        "trend_score": 20.14,
         "fundamental_score": 39.38,
-        "avg_vol_up": 832300.0,
-        "avg_vol_down": 366726.0,
-        "volume_score": 5.0,
-        "rs_slope": 0.452,
+        "avg_vol_up": 612018.0,
+        "avg_vol_down": 536500.0,
+        "volume_score": 3.2,
+        "rs_slope": 0.462,
         "rs_score": 10,
         "stop_loss": 40.6158996963501,
-        "risk_reward_ratio": 4.79,
-        "risk_amount": 2.71,
-        "reward_amount": 13.0,
-        "reward_target": 56.33,
+        "risk_reward_ratio": 4.96,
+        "risk_amount": 2.61,
+        "reward_amount": 12.97,
+        "reward_target": 56.2,
         "rr_score": 10.0,
-        "entry_score": 23.32,
+        "entry_score": 23.44,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -226,9 +217,9 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 35.7,
+            "distance_from_52w_low_pct": 35.3,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 0.6,
+            "distance_from_52w_high_pct": 0.8,
             "confirmed_stage_2": true
           }
         }
@@ -236,7 +227,7 @@
       "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LTC\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +64.1%, QoQ: +3.6%)\n  QoQ Trend (last 4Q): +15.0% \u2192 +21.7% \u2192 +13.2% \u2192 +3.6%\n\u2713 EPS: STRONG growth (YoY: +75.0%, QoQ: +16.7%)\n  QoQ Trend (last 4Q): -237.5% \u2192 +579.5% \u2192 -77.3% \u2192 +16.7%\n\u2717 Margins: CONTRACTING (55.2%, -3.6pp QoQ)\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
       "reddit_mentions_24h": 0,
       "insider_buy_value_90d": 153200.0,
-      "combined_score": 123.31,
+      "combined_score": 121.31,
       "why_links": [
         {
           "label": "Insider Buy ($153,200/90d)",
@@ -258,45 +249,51 @@
       "passed_filters": true,
       "catalyst_score": 0,
       "congress_score": 0.0,
-      "composite_score": 123.31
+      "composite_score": 121.31
     },
     {
-      "ticker": "DVN",
+      "ticker": "BP",
       "is_buy": "True",
-      "score": 102.8,
+      "score": 109.2,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 46.91,
-      "risk_reward_ratio": 6.81,
+      "stop_loss": 42.73,
+      "risk_reward_ratio": 5.24,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 7.4% above 50 SMA",
-        "SMAs rising strongly (50:0.267, 200:0.169)",
-        "\ud83d\udfe2 Revenue: 3Q avg 27.5% QoQ (-4.8% \u2192 -7.6% \u2192 94.8%)",
-        "\ud83d\udfe2 EPS: +44% YoY",
-        "\u26a0 Inventory building (11.6% QoQ)",
-        "Volume slightly heavier on up days (ratio 1.23)",
-        "\u2713 Strong RS: 0.299 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 6.8:1 ($14.72 upside, $2.16 risk)",
-        "\ud83d\udfe2 Near 52W high: 5.6% from high"
+        "Good Stage 2: 5.5% above 50 SMA",
+        "SMAs rising strongly (50:0.284, 200:0.119)",
+        "\ud83d\udfe2 Revenue: 3Q avg 13.5% QoQ (-2.1% \u2192 10.3% \u2192 32.2%)",
+        "\ud83d\udfe2 EPS: +139% YoY (strong earnings)",
+        "\u2713 Inventory drawing (-15.3% QoQ - strong demand)",
+        "Volume pattern neutral (ratio 1.07)",
+        "\u2713 Strong RS: 0.404 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 5.2:1 ($13.60 upside, $2.59 risk)",
+        "\ud83d\udfe2 At 52W high: 3.9% from high (pivot zone)",
+        "\ud83d\udfe1 Partial pattern: Only 1 contraction(s) detected (need 2+)"
       ],
       "details": {
-        "trend_score": 20.26,
-        "fundamental_score": 36.05,
-        "avg_vol_up": 12857433.0,
-        "avg_vol_down": 10446048.0,
-        "volume_score": 3.65,
-        "rs_slope": 0.299,
-        "rs_score": 9.98,
-        "stop_loss": 46.90894890531438,
-        "risk_reward_ratio": 6.81,
-        "risk_amount": 2.16,
-        "reward_amount": 14.72,
-        "reward_target": 63.79,
+        "trend_score": 19.02,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 8999150.0,
+        "avg_vol_down": 8424799.0,
+        "volume_score": 2.84,
+        "rs_slope": 0.404,
+        "rs_score": 10,
+        "stop_loss": 42.72529863357544,
+        "risk_reward_ratio": 5.24,
+        "risk_amount": 2.59,
+        "reward_amount": 13.6,
+        "reward_target": 58.92,
         "rr_score": 10.0,
-        "entry_score": 22.84,
+        "entry_score": 23.63,
+        "vcp_data": {
+          "quality": 26.9,
+          "contractions": 1,
+          "pattern": "Only 1 contraction(s) detected (need 2+)"
+        },
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -310,9 +307,93 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 59.9,
+            "distance_from_52w_low_pct": 45.6,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 5.6,
+            "distance_from_52w_high_pct": 3.9,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - BP\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +48.2%, QoQ: +32.2%)\n  QoQ Trend (last 4Q): +3.8% \u2192 -2.1% \u2192 +10.3% \u2192 +32.2%\n\u2713 EPS: STRONG growth (YoY: +138.9%, QoQ: +0.0%)\n  QoQ Trend (last 4Q): -28.1% \u2192 -400.9% \u2192 +210.4% \u2192 +0.0%\n\u2717 Margins: CONTRACTING (20.6%, -3.6pp QoQ)\n\u2713 Inventory: DRAWING (-15.3% QoQ, ratio: 0.45)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
+      "reddit_mentions_24h": 6,
+      "insider_buy_value_90d": 0,
+      "combined_score": 118.93,
+      "why_links": [
+        {
+          "label": "Reddit (6 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/BP/"
+        },
+        {
+          "label": "News",
+          "title": "European Equities Traded in the US as American Depositary Receipts Rise Sharply in Thursday Trading",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/european-equities-traded-us-american-150918927.html"
+        },
+        {
+          "label": "News",
+          "title": "Revolut eyes stock market listings in London and New York",
+          "url": "https://www.telegraph.co.uk/business/2026/09/17/revolut-eyes-stock-market-listings-in-london-and-new-york/"
+        }
+      ],
+      "drop_reasons": [],
+      "passed_filters": true,
+      "catalyst_score": 0,
+      "congress_score": 0.0,
+      "composite_score": 118.93
+    },
+    {
+      "ticker": "DVN",
+      "is_buy": "True",
+      "score": 99.2,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 46.83,
+      "risk_reward_ratio": 10.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 5.4% above 50 SMA",
+        "SMAs rising strongly (50:0.279, 200:0.167)",
+        "\ud83d\udfe2 Revenue: 3Q avg 27.5% QoQ (-4.8% \u2192 -7.6% \u2192 94.8%)",
+        "\ud83d\udfe2 EPS: +44% YoY",
+        "\u26a0 Inventory building (11.6% QoQ)",
+        "Volume pattern neutral (ratio 0.99)",
+        "\u2713 Strong RS: 0.268 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($14.48 upside, $1.45 risk)",
+        "\ud83d\udfe2 Near 52W high: 7.2% from high"
+      ],
+      "details": {
+        "trend_score": 18.7,
+        "fundamental_score": 36.05,
+        "avg_vol_up": 10956100.0,
+        "avg_vol_down": 11116390.0,
+        "volume_score": 2.43,
+        "rs_slope": 0.268,
+        "rs_score": 9.46,
+        "stop_loss": 46.831598815917964,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 1.45,
+        "reward_amount": 14.48,
+        "reward_target": 62.76,
+        "rr_score": 10.0,
+        "entry_score": 22.57,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 57.3,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 7.2,
             "confirmed_stage_2": true
           }
         }
@@ -320,7 +401,7 @@
       "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - DVN\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +73.1%, QoQ: +94.8%)\n  QoQ Trend (last 4Q): +1.1% \u2192 -4.8% \u2192 -7.6% \u2192 +94.8%\n\u2713 EPS: STRONG growth (YoY: +44.0%, QoQ: +968.4%)\n  QoQ Trend (last 4Q): -22.7% \u2192 -17.4% \u2192 -78.9% \u2192 +968.4%\n\u2713 Margins: EXPANDING (36.9%, +24.7pp QoQ)\n\u26a0 Inventory: BUILDING (+11.6% QoQ, ratio: 0.05)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
       "reddit_mentions_24h": 1,
       "insider_buy_value_90d": 199876.03999999998,
-      "combined_score": 122.17,
+      "combined_score": 118.57,
       "why_links": [
         {
           "label": "Insider Buy ($199,876/90d)",
@@ -334,119 +415,20 @@
         },
         {
           "label": "News",
+          "title": "Devon Energy (DVN) Declines More Than Market: Some Information for Investors",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/devon-energy-dvn-declines-more-215003296.html"
+        },
+        {
+          "label": "News",
           "title": "Sunoco Stock Breaks Out; Oil Prices Rise With No Clear End To Hormuz Closure",
           "url": "https://www.investors.com/news/sunoco-oil-prices-stocks-iran-war-hormuz/?src=A00220&yptr=yahoo"
-        },
-        {
-          "label": "News",
-          "title": "Devon Energy Corporation (DVN) is Attracting Investor Attention: Here is What You Should Know",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/devon-energy-corporation-dvn-attracting-130005047.html"
         }
       ],
       "drop_reasons": [],
       "passed_filters": true,
       "catalyst_score": 0,
       "congress_score": 0.0,
-      "composite_score": 122.17
-    },
-    {
-      "ticker": "ET",
-      "is_buy": "True",
-      "score": 112.1,
-      "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
-      "breakout_price": null,
-      "stop_loss": 20.64,
-      "risk_reward_ratio": 10.0,
-      "entry_quality": "Good",
-      "reasons": [
-        "Good Stage 2: 3.2% above 50 SMA",
-        "SMAs rising strongly (50:0.271, 200:0.154)",
-        "\ud83d\udfe2 Revenue: 3Q avg 20.1% QoQ (26.9% \u2192 9.7% \u2192 23.6%)",
-        "\ud83d\udfe2 EPS: +84% YoY (strong earnings)",
-        "\u2713 Inventory drawing (-5.6% QoQ - strong demand)",
-        "Volume slightly heavier on up days (ratio 1.24)",
-        "\u2713 Strong RS: 0.136 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($6.38 upside, $0.64 risk)",
-        "\ud83d\udfe2 At 52W high: 2.6% from high (pivot zone)",
-        "\u2b50 VCP pattern: 2 contractions: 3.4% \u2192 3.1% (quality: 85/100)"
-      ],
-      "details": {
-        "trend_score": 18.17,
-        "fundamental_score": 43.75,
-        "avg_vol_up": 8040900.0,
-        "avg_vol_down": 6483152.0,
-        "volume_score": 3.7,
-        "rs_slope": 0.136,
-        "rs_score": 7.26,
-        "stop_loss": 20.64160066604614,
-        "risk_reward_ratio": 10.0,
-        "risk_amount": 0.64,
-        "reward_amount": 6.38,
-        "reward_target": 27.66,
-        "rr_score": 10.0,
-        "entry_score": 24.21,
-        "vcp_data": {
-          "quality": 84.6,
-          "contractions": 2,
-          "pattern": "2 contractions: 3.4% \u2192 3.1%",
-          "base_length_weeks": 7.9,
-          "volume_ratio": 0.38,
-          "quality_factors": [
-            "2 contractions (7 pts)",
-            "100% tightening (30 pts)",
-            "100% volume drying (20 pts)",
-            "8w base (10 pts)",
-            "2.6% from 52W high (18 pts)"
-          ]
-        },
-        "vcp_bonus": 5,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 8,
-          "criteria_total": 8,
-          "template_score": 100,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 40.9,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 2.6,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - ET\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +78.4%, QoQ: +23.6%)\n  QoQ Trend (last 4Q): +3.7% \u2192 +26.9% \u2192 +9.7% \u2192 +23.6%\n\u2713 EPS: STRONG growth (YoY: +84.4%, QoQ: +68.6%)\n  QoQ Trend (last 4Q): -12.5% \u2192 -10.7% \u2192 +40.0% \u2192 +68.6%\n\u2717 Margins: CONTRACTING (17.0%, -1.2pp QoQ)\n\u2713 Inventory: DRAWING (-5.6% QoQ, ratio: 0.13)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 5,
-      "insider_buy_value_90d": 0,
-      "combined_score": 121.06,
-      "why_links": [
-        {
-          "label": "Reddit (5 mentions/24h)",
-          "title": null,
-          "url": "https://apewisdom.io/stocks/ET/"
-        },
-        {
-          "label": "News",
-          "title": "Energy Transfer\u2019s (ET) Strong 2026 Run Gets a Fresh Vote from Stifel",
-          "url": "https://finance.yahoo.com/energy/articles/energy-transfer-et-strong-2026-040237602.html"
-        },
-        {
-          "label": "News",
-          "title": "1 \u2018Strong Buy\u2019 Dividend Stock Offering a 6.3% Yield Right Now",
-          "url": "https://www.barchart.com/story/news/4599342/1-strong-buy-dividend-stock-offering-a-6-3-yield-right-now"
-        }
-      ],
-      "drop_reasons": [],
-      "passed_filters": true,
-      "catalyst_score": 0,
-      "congress_score": 0.0,
-      "composite_score": 121.06
+      "composite_score": 118.57
     }
   ],
   "fundamentals_audits": {},
@@ -454,6 +436,16 @@
   "congress_signals": {
     "LILA": {
       "ticker": "LILA",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "LILAK": {
+      "ticker": "LILAK",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -472,59 +464,6 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "DVN": {
-      "ticker": "DVN",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "ET": {
-      "ticker": "ET",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "KRNY": {
-      "ticker": "KRNY",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "NVDA": {
-      "ticker": "NVDA",
-      "has_data": true,
-      "num_purchases": 2,
-      "num_sales": 0,
-      "net_amount_mid": 16000,
-      "politicians": [
-        "Gilbert Cisneros",
-        "John J Mr McGuire"
-      ],
-      "score": 1.32,
-      "summary": "2 House disclosure(s) in last 45d (net buying): Gilbert Cisneros, John J Mr McGuire"
-    },
-    "TALO": {
-      "ticker": "TALO",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
     "BP": {
       "ticker": "BP",
       "has_data": false,
@@ -535,8 +474,28 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "COP": {
-      "ticker": "COP",
+    "DVN": {
+      "ticker": "DVN",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "NGL": {
+      "ticker": "NGL",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "OXY": {
+      "ticker": "OXY",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -557,26 +516,6 @@
       "score": -1.16,
       "summary": "1 House disclosure(s) in last 45d (net selling): Michael Patrick Guest"
     },
-    "PSX": {
-      "ticker": "PSX",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "SUN": {
-      "ticker": "SUN",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
     "CRWD": {
       "ticker": "CRWD",
       "has_data": true,
@@ -589,28 +528,21 @@
       "score": 1.16,
       "summary": "1 House disclosure(s) in last 45d (net buying): Gilbert Cisneros"
     },
-    "PAA": {
-      "ticker": "PAA",
-      "has_data": false,
-      "num_purchases": 0,
+    "NVDA": {
+      "ticker": "NVDA",
+      "has_data": true,
+      "num_purchases": 2,
       "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
+      "net_amount_mid": 16000,
+      "politicians": [
+        "Gilbert Cisneros",
+        "John J Mr McGuire"
+      ],
+      "score": 1.32,
+      "summary": "2 House disclosure(s) in last 45d (net buying): Gilbert Cisneros, John J Mr McGuire"
     },
-    "MFG": {
-      "ticker": "MFG",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "CF": {
-      "ticker": "CF",
+    "SM": {
+      "ticker": "SM",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -629,37 +561,87 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "XOM": {
-      "ticker": "XOM",
+    "SUN": {
+      "ticker": "SUN",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "PSX": {
+      "ticker": "PSX",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "SLDE": {
+      "ticker": "SLDE",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "TALO": {
+      "ticker": "TALO",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "RS": {
+      "ticker": "RS",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "SATA": {
+      "ticker": "SATA",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "CVE": {
+      "ticker": "CVE",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "MPC": {
+      "ticker": "MPC",
       "has_data": true,
       "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
+      "num_sales": 1,
+      "net_amount_mid": -8000,
       "politicians": [
-        "Michael Patrick Guest"
+        "David J. Taylor"
       ],
-      "score": 0.0,
-      "summary": "1 House disclosure(s) in last 45d (mixed, net-flat): Michael Patrick Guest"
-    },
-    "SHIP": {
-      "ticker": "SHIP",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "CNQ": {
-      "ticker": "CNQ",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
+      "score": -1.16,
+      "summary": "1 House disclosure(s) in last 45d (net selling): David J. Taylor"
     }
   }
 }
