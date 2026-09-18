@@ -1,50 +1,43 @@
 {
-  "generated": "2026-09-17T20:00:21.975072",
+  "generated": "2026-09-18T17:07:46.332217",
   "result": "success",
   "top20": [
     {
-      "ticker": "SUN",
+      "ticker": "LILAK",
       "is_buy": "True",
-      "score": 112.7,
+      "score": 94.8,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 73.9,
-      "risk_reward_ratio": 5.18,
+      "stop_loss": 8.18,
+      "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 5.1% above 50 SMA",
-        "SMAs rising strongly (50:0.330, 200:0.205)",
-        "\ud83d\udfe2 Revenue: 3Q avg 33.4% QoQ (42.6% \u2192 24.3% \u2192 33.4%)",
-        "\ud83d\udfe2 EPS: +185% YoY (strong earnings)",
-        "Inventory neutral (1.8% QoQ)",
-        "\u2713 Volume heavier on up days (0.6M vs 0.3M, ratio 1.83)",
-        "\u2713 Strong RS: 0.329 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 5.2:1 ($23.53 upside, $4.55 risk)",
-        "\ud83d\udfe2 At 52W high: 2.2% from high (pivot zone)",
-        "\ud83d\udfe1 Partial pattern: Only 1 contraction(s) detected (need 2+)"
+        "Weak Stage 2: 2.8% above 50 SMA",
+        "SMAs rising strongly (50:0.517, 200:0.244)",
+        "\ud83d\udd34 Revenue: 3Q avg -0.2% QoQ (4.2% \u2192 -6.6% \u2192 1.8%)",
+        "\ud83d\udfe2 EPS: +94% YoY (strong earnings)",
+        "Volume pattern neutral (ratio 1.09)",
+        "\u2713 Strong RS: 0.242 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($2.53 upside, $0.25 risk)",
+        "\ud83d\udfe2 Near 52W high: 5.4% from high"
       ],
       "details": {
-        "trend_score": 21.02,
-        "fundamental_score": 42.95,
-        "avg_vol_up": 640000.0,
-        "avg_vol_down": 349506.0,
-        "volume_score": 5.0,
-        "rs_slope": 0.329,
-        "rs_score": 10,
-        "stop_loss": 73.90350000000001,
-        "risk_reward_ratio": 5.18,
-        "risk_amount": 4.55,
-        "reward_amount": 23.53,
-        "reward_target": 101.98,
+        "trend_score": 22.44,
+        "fundamental_score": 26.25,
+        "avg_vol_up": 1013100.0,
+        "avg_vol_down": 926489.0,
+        "volume_score": 2.97,
+        "rs_slope": 0.242,
+        "rs_score": 9.03,
+        "stop_loss": 8.177100296020507,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 0.25,
+        "reward_amount": 2.53,
+        "reward_target": 10.96,
         "rr_score": 10.0,
-        "entry_score": 23.73,
-        "vcp_data": {
-          "quality": 28.2,
-          "contractions": 1,
-          "pattern": "Only 1 contraction(s) detected (need 2+)"
-        },
+        "entry_score": 24.1,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -58,144 +51,149 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 73.9,
+            "distance_from_52w_low_pct": 82.9,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 5.4,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LILAK\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.5%, QoQ: +1.8%)\n  QoQ Trend (last 4Q): +2.4% \u2192 +4.2% \u2192 -6.6% \u2192 +1.8%\n\u2713 EPS: STRONG growth (YoY: +93.9%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): +100.9% \u2192 N/A \u2192 N/A \u2192 -18.2%\n\u2022 Margins: Stable/slightly up (68.4%, +1.0pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 0,
+      "insider_buy_value_90d": 14766042.485499999,
+      "combined_score": 123.6,
+      "why_links": [
+        {
+          "label": "Insider Buy ($14,766,042/90d)",
+          "title": "DE ANGOITIA ALFONSO (Insider) bought 313104 shares @ $20.95",
+          "url": "https://www.sec.gov/Archives/edgar/data/1712184/000172451926000010/0001724519-26-000010-index.htm"
+        },
+        {
+          "label": "News",
+          "title": "Liberty Latin America Director De Angoitia Buys $10 Million Shares. What Does This Large Purchase Mean for Investors?",
+          "url": "https://www.fool.com/coverage/filings/2026/09/08/liberty-latin-america-director-de-angoitia-buys-usd10-million-shares-what-does-this-large-purchase-mean-for-investors/"
+        },
+        {
+          "label": "News",
+          "title": "Billionaire Media Titan John Malone Buys 121,000 Liberty Latin America Shares. Should Investors Be Buyers Too?",
+          "url": "https://www.fool.com/coverage/filings/2026/09/03/billionaire-media-titan-john-malone-buys-121-000-liberty-latin-america-shares-should-investors-be-buyers-too/"
+        }
+      ]
+    },
+    {
+      "ticker": "LTC",
+      "is_buy": "True",
+      "score": 107.0,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 40.62,
+      "risk_reward_ratio": 6.26,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 4.6% above 50 SMA",
+        "SMAs rising strongly (50:0.216, 200:0.101)",
+        "\ud83d\udfe2 Revenue: 3Q avg 12.8% QoQ (21.7% \u2192 13.2% \u2192 3.6%)",
+        "\ud83d\udfe2 EPS: +75% YoY (strong earnings)",
+        "\u2713 Volume heavier on up days (0.7M vs 0.4M, ratio 1.93)",
+        "\u2713 Strong RS: 0.478 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 6.3:1 ($12.80 upside, $2.04 risk)",
+        "\ud83d\udfe2 At 52W high: 2.2% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 18.83,
+        "fundamental_score": 39.38,
+        "avg_vol_up": 742967.0,
+        "avg_vol_down": 383964.0,
+        "volume_score": 5.0,
+        "rs_slope": 0.478,
+        "rs_score": 10,
+        "stop_loss": 40.6158996963501,
+        "risk_reward_ratio": 6.26,
+        "risk_amount": 2.04,
+        "reward_amount": 12.8,
+        "reward_target": 55.46,
+        "rr_score": 10.0,
+        "entry_score": 23.84,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 33.6,
             "price_near_52w_high": "True",
             "distance_from_52w_high_pct": 2.2,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - SUN\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +164.5%, QoQ: +33.4%)\n  QoQ Trend (last 4Q): +11.9% \u2192 +42.6% \u2192 +24.3% \u2192 +33.4%\n\u2713 EPS: STRONG growth (YoY: +184.8%, QoQ: -67.0%)\n  QoQ Trend (last 4Q): +93.9% \u2192 -85.9% \u2192 +3066.7% \u2192 -67.0%\n\u2717 Margins: CONTRACTING (8.3%, -4.8pp QoQ)\n\u2022 Inventory: Slight increase (+1.8% QoQ, ratio: 0.17)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LTC\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +64.1%, QoQ: +3.6%)\n  QoQ Trend (last 4Q): +15.0% \u2192 +21.7% \u2192 +13.2% \u2192 +3.6%\n\u2713 EPS: STRONG growth (YoY: +75.0%, QoQ: +16.7%)\n  QoQ Trend (last 4Q): -237.5% \u2192 +579.5% \u2192 -77.3% \u2192 +16.7%\n\u2717 Margins: CONTRACTING (55.2%, -3.6pp QoQ)\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
       "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 0,
-      "combined_score": 112.7,
+      "insider_buy_value_90d": 153200.0,
+      "combined_score": 122.11,
       "why_links": [
         {
-          "label": "News",
-          "title": "Boomers Are Piling Into These 5 High-Yield Dividend Stocks, and None Are Yield Traps",
-          "url": "https://247wallst.com/investing/2026/09/17/boomers-are-piling-into-these-5-high-yield-dividend-stocks-and-none-are-yield-traps/"
+          "label": "Insider Buy ($153,200/90d)",
+          "title": "Gruber David L (Director) bought 3500 shares @ $38.30",
+          "url": "https://www.sec.gov/Archives/edgar/data/887905/000198705826000003/0001987058-26-000003-index.htm"
         },
         {
           "label": "News",
-          "title": "September Syndrome in Full Swing: 3 Picks to Safeguard Your Portfolio",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/september-syndrome-full-swing-3-115900248.html"
+          "title": "5 Top Monthly-Pay REITs for Lifetime, Inflation-Resistant Income",
+          "url": "https://247wallst.com/investing/2026/09/14/5-top-monthly-pay-reits-for-lifetime-inflation-resistant-income/"
+        },
+        {
+          "label": "News",
+          "title": "LTC (LTC) Completed a $200M Senior-Housing Acquisition. Can Higher Operating Exposure Beat the Income It Divested?",
+          "url": "https://finance.yahoo.com/real-estate/articles/ltc-ltc-completed-200m-senior-025003671.html"
         }
       ]
     },
     {
-      "ticker": "SHIP",
+      "ticker": "LILA",
       "is_buy": "True",
-      "score": 107.2,
+      "score": 93.0,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 17.66,
-      "risk_reward_ratio": 4.79,
-      "entry_quality": "Good",
-      "reasons": [
-        "Strong Stage 2: 11.6% above 50 SMA",
-        "SMAs rising strongly (50:0.456, 200:0.354)",
-        "\ud83d\udfe2 Revenue: 3Q avg 7.3% QoQ (5.2% \u2192 -13.3% \u2192 29.9%)",
-        "\ud83d\udfe2 EPS: +764% YoY (strong earnings)",
-        "Volume slightly heavier on up days (ratio 1.12)",
-        "\u2713 Strong RS: 0.433 (outperforming SPY)",
-        "\ud83d\udfe2 Excellent R/R: 4.8:1 ($5.65 upside, $1.18 risk)",
-        "\ud83d\udfe2 At 52W high: 2.0% from high (pivot zone)"
-      ],
-      "details": {
-        "trend_score": 26.25,
-        "fundamental_score": 35.8,
-        "avg_vol_up": 442205.0,
-        "avg_vol_down": 395550.0,
-        "volume_score": 3.09,
-        "rs_slope": 0.433,
-        "rs_score": 10,
-        "stop_loss": 17.66125,
-        "risk_reward_ratio": 4.79,
-        "risk_amount": 1.18,
-        "reward_amount": 5.65,
-        "reward_target": 24.49,
-        "rr_score": 10.0,
-        "entry_score": 22.1,
-        "vcp_bonus": 0,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 8,
-          "criteria_total": 8,
-          "template_score": 100,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 157.0,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 2.0,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - SHIP\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +48.6%, QoQ: +29.9%)\n  QoQ Trend (last 4Q): +25.4% \u2192 +5.2% \u2192 -13.3% \u2192 +29.9%\n\u2713 EPS: STRONG growth (YoY: +764.3%, QoQ: +168.9%)\n  QoQ Trend (last 4Q): +335.7% \u2192 -3.3% \u2192 -23.7% \u2192 +168.9%\n\u2713 Margins: EXPANDING (59.3%, +14.3pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 1,
-      "insider_buy_value_90d": 0,
-      "combined_score": 110.67,
-      "why_links": [
-        {
-          "label": "Reddit (1 mentions/24h)",
-          "title": null,
-          "url": "https://apewisdom.io/stocks/SHIP/"
-        },
-        {
-          "label": "News",
-          "title": "6 Dividend Stocks With Huge Yields and Even Bigger Warning Signs",
-          "url": "https://247wallst.com/investing/2026/09/16/6-dividend-stocks-with-huge-yields-and-even-bigger-warning-signs/"
-        },
-        {
-          "label": "News",
-          "title": "Are Investors Undervaluing Seanergy Maritime Holdings (SHIP) Right Now?",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/investors-undervaluing-seanergy-maritime-holdings-134005140.html"
-        }
-      ]
-    },
-    {
-      "ticker": "EXPD",
-      "is_buy": "True",
-      "score": 98.1,
-      "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
-      "breakout_price": null,
-      "stop_loss": 183.25,
+      "stop_loss": 8.22,
       "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 3.6% above 50 SMA",
-        "SMAs rising strongly (50:0.295, 200:0.161)",
-        "\ud83d\udfe2 Revenue: 3Q avg 7.3% QoQ (-1.3% \u2192 -2.6% \u2192 25.8%)",
-        "\ud83d\udfe2 EPS: +51% YoY (strong earnings)",
-        "Volume slightly heavier on up days (ratio 1.15)",
-        "\u2713 Strong RS: 0.130 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($56.67 upside, $5.67 risk)",
-        "\ud83d\udfe2 At 52W high: 2.9% from high (pivot zone)"
+        "Weak Stage 2: 2.4% above 50 SMA",
+        "SMAs rising strongly (50:0.516, 200:0.256)",
+        "\ud83d\udd34 Revenue: 3Q avg -0.2% QoQ (4.2% \u2192 -6.6% \u2192 1.8%)",
+        "\ud83d\udfe2 EPS: +94% YoY (strong earnings)",
+        "\u26a0 Volume heavier on down days (ratio 0.87 - distribution)",
+        "\u2713 Strong RS: 0.193 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($2.54 upside, $0.25 risk)",
+        "\ud83d\udfe2 Near 52W high: 5.4% from high"
       ],
       "details": {
-        "trend_score": 19.14,
-        "fundamental_score": 34.46,
-        "avg_vol_up": 926867.0,
-        "avg_vol_down": 804205.0,
-        "volume_score": 3.26,
-        "rs_slope": 0.13,
-        "rs_score": 7.17,
-        "stop_loss": 183.24754348754882,
+        "trend_score": 22.49,
+        "fundamental_score": 26.25,
+        "avg_vol_up": 248250.0,
+        "avg_vol_down": 284030.0,
+        "volume_score": 1.87,
+        "rs_slope": 0.193,
+        "rs_score": 8.22,
+        "stop_loss": 8.215900259017944,
         "risk_reward_ratio": 10.0,
-        "risk_amount": 5.67,
-        "reward_amount": 56.67,
-        "reward_target": 245.59,
+        "risk_amount": 0.25,
+        "reward_amount": 2.54,
+        "reward_target": 11.01,
         "rr_score": 10.0,
-        "entry_score": 24.11,
+        "entry_score": 24.21,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -209,228 +207,75 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 69.0,
+            "distance_from_52w_low_pct": 84.9,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 2.9,
+            "distance_from_52w_high_pct": 5.4,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - EXPD\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +32.1%, QoQ: +25.8%)\n  QoQ Trend (last 4Q): +9.2% \u2192 -1.3% \u2192 -2.6% \u2192 +25.8%\n\u2713 EPS: STRONG growth (YoY: +51.5%, QoQ: +18.7%)\n  QoQ Trend (last 4Q): +22.4% \u2192 -9.1% \u2192 +14.8% \u2192 +18.7%\n\u2717 Margins: CONTRACTING (12.3%, -1.7pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LILA\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.5%, QoQ: +1.8%)\n  QoQ Trend (last 4Q): +2.4% \u2192 +4.2% \u2192 -6.6% \u2192 +1.8%\n\u2713 EPS: STRONG growth (YoY: +93.9%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): +100.9% \u2192 N/A \u2192 N/A \u2192 -18.2%\n\u2022 Margins: Stable/slightly up (68.4%, +1.0pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
       "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 0,
-      "combined_score": 98.1,
+      "insider_buy_value_90d": 14766042.485499999,
+      "combined_score": 121.8,
       "why_links": [
         {
-          "label": "News",
-          "title": "CNI, Amtrak Ink 8-Year Deal to Boost Rail Safety, Reliability",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/cni-amtrak-ink-8-deal-163900422.html"
+          "label": "Insider Buy ($14,766,042/90d)",
+          "title": "DE ANGOITIA ALFONSO (Insider) bought 313104 shares @ $20.95",
+          "url": "https://www.sec.gov/Archives/edgar/data/1712184/000172451926000010/0001724519-26-000010-index.htm"
         },
         {
           "label": "News",
-          "title": "ZTO Express Cayman (ZTO) Down 6% Since Last Earnings Report: Can It Rebound?",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/zto-express-cayman-zto-down-153003205.html"
+          "title": "Liberty Latin America Director De Angoitia Buys $10 Million Shares. What Does This Large Purchase Mean for Investors?",
+          "url": "https://www.fool.com/coverage/filings/2026/09/08/liberty-latin-america-director-de-angoitia-buys-usd10-million-shares-what-does-this-large-purchase-mean-for-investors/"
+        },
+        {
+          "label": "News",
+          "title": "Billionaire Media Titan John Malone Buys 121,000 Liberty Latin America Shares. Should Investors Be Buyers Too?",
+          "url": "https://www.fool.com/coverage/filings/2026/09/03/billionaire-media-titan-john-malone-buys-121-000-liberty-latin-america-shares-should-investors-be-buyers-too/"
         }
       ]
     },
     {
-      "ticker": "ETON",
+      "ticker": "CVX",
       "is_buy": "True",
-      "score": 97.4,
+      "score": 111.0,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 53.86,
-      "risk_reward_ratio": 5.36,
-      "entry_quality": "Good",
-      "reasons": [
-        "Strong Stage 2: 11.8% above 50 SMA",
-        "SMAs rising strongly (50:1.085, 200:0.763)",
-        "\ud83d\udfe2 Revenue: 3Q avg 9.1% QoQ (18.7% \u2192 -5.2% \u2192 14.0%)",
-        "\ud83d\udfe2 EPS: +183% YoY (strong earnings)",
-        "\u2713 Inventory drawing (-6.2% QoQ - strong demand)",
-        "\u26a0 Volume heavier on down days (ratio 0.71 - distribution)",
-        "\u26a0 Declining RS: -0.596 (underperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 5.4:1 ($17.11 upside, $3.19 risk)",
-        "\ud83d\udfe2 Near 52W high: 14.0% from high"
-      ],
-      "details": {
-        "trend_score": 26.25,
-        "fundamental_score": 42.63,
-        "avg_vol_up": 305851.0,
-        "avg_vol_down": 433650.0,
-        "volume_score": 1.03,
-        "rs_slope": -0.596,
-        "rs_score": 0,
-        "stop_loss": 53.85935106277466,
-        "risk_reward_ratio": 5.36,
-        "risk_amount": 3.19,
-        "reward_amount": 17.11,
-        "reward_target": 74.16,
-        "rr_score": 10.0,
-        "entry_score": 17.53,
-        "vcp_bonus": 0,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 8,
-          "criteria_total": 8,
-          "template_score": 100,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 299.8,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 14.0,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - ETON\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +40.4%, QoQ: +14.0%)\n  QoQ Trend (last 4Q): +9.5% \u2192 +18.7% \u2192 -5.2% \u2192 +14.0%\n\u2713 EPS: STRONG growth (YoY: +183.3%, QoQ: +0.0%)\n  QoQ Trend (last 4Q): -66.7% \u2192 +30.0% \u2192 +171.4% \u2192 +0.0%\n\u2022 Margins: Flat (60.7%, -0.8pp QoQ)\n\u2713 Inventory: DRAWING (-6.2% QoQ, ratio: 0.60)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 0,
-      "combined_score": 97.4,
-      "why_links": [
-        {
-          "label": "News",
-          "title": "Jim Cramer Explains Mad Money Caller How to Handle Eton Pharmaceuticals (ETON)",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-explains-mad-money-183953048.html"
-        },
-        {
-          "label": "News",
-          "title": "TGTX Stock Outperforms 95% of Stocks. Here's Why.",
-          "url": "https://www.investors.com/research/multiple-sclerosis-tgtx-stock-biotech-tg-therapeutics/?src=A00220&yptr=yahoo"
-        }
-      ]
-    },
-    {
-      "ticker": "ARLP",
-      "is_buy": "True",
-      "score": 83.9,
-      "phase": 2,
-      "minervini_template_score": 87,
-      "minervini_criteria_passed": 7,
-      "breakout_price": null,
-      "stop_loss": 25.36,
+      "stop_loss": 204.46,
       "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Weak Stage 2: 3.0% above 50 SMA",
-        "SMAs rising strongly (50:0.222, 200:0.079)",
-        "\ud83d\udd34 Revenue: 3Q avg -1.0% QoQ (-6.3% \u2192 -3.6% \u2192 6.9%)",
-        "\ud83d\udfe2 EPS: +33% YoY",
-        "\u2713 Inventory drawing (-12.8% QoQ - strong demand)",
-        "Volume pattern neutral (ratio 0.96)",
-        "Positive RS: 0.047",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($7.84 upside, $0.78 risk)",
-        "\ud83d\udfe2 Near 52W high: 6.9% from high",
-        "\ud83d\udfe1 Partial pattern: 7 contractions (last 4): 3.8% \u2192 10.8% \u2192 3.6% \u2192 6.5%"
-      ],
-      "details": {
-        "trend_score": 16.38,
-        "fundamental_score": 26.13,
-        "avg_vol_up": 224274.0,
-        "avg_vol_down": 233225.0,
-        "volume_score": 2.31,
-        "rs_slope": 0.047,
-        "rs_score": 5.79,
-        "stop_loss": 25.355799407958983,
-        "risk_reward_ratio": 10.0,
-        "risk_amount": 0.78,
-        "reward_amount": 7.84,
-        "reward_target": 33.98,
-        "rr_score": 10.0,
-        "entry_score": 23.31,
-        "vcp_data": {
-          "quality": 50.9,
-          "contractions": 7,
-          "pattern": "7 contractions (last 4): 3.8% \u2192 10.8% \u2192 3.6% \u2192 6.5%"
-        },
-        "vcp_bonus": 0,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 7,
-          "criteria_total": 8,
-          "template_score": 87,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "False",
-            "distance_from_52w_low_pct": 25.2,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 6.9,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - ARLP\n============================================================\n\u2022 Revenue: Modest growth (YoY: +0.7%, QoQ: +6.9%)\n  QoQ Trend (last 4Q): +4.4% \u2192 -6.3% \u2192 -3.6% \u2192 +6.9%\n\u2713 EPS: STRONG growth (YoY: +32.6%, QoQ: +771.4%)\n  QoQ Trend (last 4Q): +58.7% \u2192 -12.3% \u2192 -89.1% \u2192 +771.4%\n\u2713 Margins: EXPANDING (22.0%, +5.8pp QoQ)\n\u2713 Inventory: DRAWING (-12.8% QoQ, ratio: 0.23)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 80144.9894,
-      "combined_score": 97.09,
-      "why_links": [
-        {
-          "label": "Insider Buy ($80,145/90d)",
-          "title": "McDaniel Ronna R. (Director) bought 3000 shares @ $26.11",
-          "url": "https://www.sec.gov/Archives/edgar/data/1086600/000204731926000001/0002047319-26-000001-index.htm"
-        },
-        {
-          "label": "News",
-          "title": "3 Coal Industry Stocks to Watch as Global Coal Demand Gains Strength",
-          "url": "https://finance.yahoo.com/energy/articles/3-coal-industry-stocks-watch-161800975.html"
-        },
-        {
-          "label": "News",
-          "title": "Should Value Investors Buy Alliance Resource Partners (ARLP) Stock?",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/value-investors-buy-alliance-partners-134002419.html"
-        }
-      ]
-    },
-    {
-      "ticker": "OVV",
-      "is_buy": "True",
-      "score": 94.7,
-      "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
-      "breakout_price": null,
-      "stop_loss": 61.16,
-      "risk_reward_ratio": 10.0,
-      "entry_quality": "Good",
-      "reasons": [
-        "Weak Stage 2: 1.7% above 50 SMA",
-        "SMAs rising strongly (50:0.378, 200:0.259)",
-        "\ud83d\udfe2 Revenue: 3Q avg 13.6% QoQ (3.9% \u2192 17.9% \u2192 19.0%)",
-        "\ud83d\udfe2 EPS: +37% YoY",
-        "Volume slightly heavier on up days (ratio 1.24)",
-        "\u26a0 Declining RS: -0.101 (underperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($18.92 upside, $1.89 risk)",
-        "\ud83d\udfe2 Near 52W high: 6.5% from high",
+        "Good Stage 2: 6.5% above 50 SMA",
+        "SMAs rising strongly (50:0.401, 200:0.173)",
+        "\ud83d\udfe2 Revenue: 3Q avg 13.4% QoQ (-4.9% \u2192 3.9% \u2192 41.3%)",
+        "\ud83d\udfe2 EPS: +321% YoY (strong earnings)",
+        "Inventory neutral (-0.3% QoQ)",
+        "Volume slightly heavier on up days (ratio 1.18)",
+        "\u2713 Strong RS: 0.405 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($63.23 upside, $6.32 risk)",
+        "\ud83d\udfe2 At 52W high: 3.2% from high (pivot zone)",
         "\ud83d\udfe1 Partial pattern: Only 1 contraction(s) detected (need 2+)"
       ],
       "details": {
-        "trend_score": 18.19,
-        "fundamental_score": 35.65,
-        "avg_vol_up": 3644350.0,
-        "avg_vol_down": 2928700.0,
-        "volume_score": 3.72,
-        "rs_slope": -0.101,
-        "rs_score": 3.32,
-        "stop_loss": 61.1633502960205,
+        "trend_score": 20.51,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 8472450.0,
+        "avg_vol_down": 7156016.0,
+        "volume_score": 3.42,
+        "rs_slope": 0.405,
+        "rs_score": 10,
+        "stop_loss": 204.45659881591797,
         "risk_reward_ratio": 10.0,
-        "risk_amount": 1.89,
-        "reward_amount": 18.92,
-        "reward_target": 81.97,
+        "risk_amount": 6.32,
+        "reward_amount": 63.23,
+        "reward_target": 274.01,
         "rr_score": 10.0,
-        "entry_score": 23.84,
+        "entry_score": 23.37,
         "vcp_data": {
-          "quality": 24.8,
+          "quality": 27.4,
           "contractions": 1,
           "pattern": "Only 1 contraction(s) detected (need 2+)"
         },
@@ -447,67 +292,72 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 81.9,
+            "distance_from_52w_low_pct": 47.9,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 6.5,
+            "distance_from_52w_high_pct": 3.2,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - OVV\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +30.0%, QoQ: +19.0%)\n  QoQ Trend (last 4Q): -10.9% \u2192 +3.9% \u2192 +17.9% \u2192 +19.0%\n\u2713 EPS: STRONG growth (YoY: +37.3%, QoQ: +168.9%)\n  QoQ Trend (last 4Q): -51.7% \u2192 N/A \u2192 N/A \u2192 +168.9%\n\u2022 Margins: Stable/slightly up (61.4%, +0.3pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 0,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - CVX\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +51.4%, QoQ: +41.3%)\n  QoQ Trend (last 4Q): +8.5% \u2192 -4.9% \u2192 +3.9% \u2192 +41.3%\n\u2713 EPS: STRONG growth (YoY: +321.4%, QoQ: +450.5%)\n  QoQ Trend (last 4Q): +25.5% \u2192 -23.6% \u2192 -20.1% \u2192 +450.5%\n\u2713 Margins: EXPANDING (36.5%, +8.1pp QoQ)\n\u2022 Inventory: Slight draw (-0.3% QoQ, ratio: 0.16)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 2,
       "insider_buy_value_90d": 0,
-      "combined_score": 94.7,
+      "combined_score": 116.49,
       "why_links": [
         {
-          "label": "News",
-          "title": "3 U.S. Energy Stocks With Oil Linked Cash Flow Potential",
-          "url": "https://finance.yahoo.com/energy/articles/3-u-energy-stocks-oil-051704386.html"
+          "label": "Reddit (2 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/CVX/"
         },
         {
           "label": "News",
-          "title": "Ovintiv Inc's Dividend Analysis",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/ovintiv-incs-dividend-analysis-110925880.html"
+          "title": "Chevron vs. Exxon: Which Dividend Survives the Downturn",
+          "url": "https://247wallst.com/investing/2026/09/18/chevron-vs-exxon-which-dividend-survives-the-downturn/"
+        },
+        {
+          "label": "News",
+          "title": "Chevron (CVX) Secures Venezuela Expansion, Is The Stock Still A Bargain?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/chevron-cvx-secures-venezuela-expansion-141210362.html"
         }
       ]
     },
     {
-      "ticker": "INVX",
+      "ticker": "OXY",
       "is_buy": "True",
-      "score": 90.6,
+      "score": 96.1,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 28.33,
+      "stop_loss": 57.27,
       "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Weak Stage 2: 2.2% above 50 SMA",
-        "SMAs rising strongly (50:0.305, 200:0.167)",
-        "\ud83d\udfe1 Revenue: 3Q avg 3.9% QoQ (22.0% \u2192 -12.6% \u2192 2.5%)",
-        "\ud83d\udfe2 EPS: +71% YoY (strong earnings)",
-        "Inventory neutral (4.7% QoQ)",
-        "Volume pattern neutral (ratio 0.97)",
-        "\u2713 Strong RS: 0.148 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($8.76 upside, $0.88 risk)",
-        "\ud83d\udfe2 Near 52W high: 13.3% from high"
+        "Weak Stage 2: 2.1% above 50 SMA",
+        "SMAs rising strongly (50:0.337, 200:0.188)",
+        "\ud83d\udfe2 Revenue: 3Q avg 59.7% QoQ (-73.6% \u2192 198.5% \u2192 54.2%)",
+        "\ud83d\udfe2 EPS: +958% YoY (strong earnings)",
+        "\u26a0 Inventory building rapidly (17.4% QoQ - demand concern)",
+        "Volume slightly heavier on up days (ratio 1.22)",
+        "\u2713 Strong RS: 0.192 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($17.71 upside, $1.77 risk)",
+        "\ud83d\udfe2 Near 52W high: 11.6% from high"
       ],
       "details": {
-        "trend_score": 16.8,
-        "fundamental_score": 33.76,
-        "avg_vol_up": 670450.0,
-        "avg_vol_down": 691824.0,
-        "volume_score": 2.35,
-        "rs_slope": 0.148,
-        "rs_score": 7.46,
-        "stop_loss": 28.333699111938476,
+        "trend_score": 16.94,
+        "fundamental_score": 36.16,
+        "avg_vol_up": 9724250.0,
+        "avg_vol_down": 7943261.0,
+        "volume_score": 3.62,
+        "rs_slope": 0.192,
+        "rs_score": 8.19,
+        "stop_loss": 57.273648223876954,
         "risk_reward_ratio": 10.0,
-        "risk_amount": 0.88,
-        "reward_amount": 8.76,
-        "reward_target": 37.97,
+        "risk_amount": 1.77,
+        "reward_amount": 17.71,
+        "reward_target": 76.76,
         "rr_score": 10.0,
-        "entry_score": 20.28,
+        "entry_score": 21.15,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
@@ -521,80 +371,90 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 75.1,
+            "distance_from_52w_low_pct": 54.3,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 13.3,
+            "distance_from_52w_high_pct": 11.6,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - INVX\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.9%, QoQ: +2.5%)\n  QoQ Trend (last 4Q): -6.7% \u2192 +22.0% \u2192 -12.6% \u2192 +2.5%\n\u2713 EPS: STRONG growth (YoY: +71.4%, QoQ: +250.0%)\n  QoQ Trend (last 4Q): +4.8% \u2192 -9.1% \u2192 -220.0% \u2192 +250.0%\n\u2717 Margins: CONTRACTING (34.2%, -1.2pp QoQ)\n\u2022 Inventory: Slight increase (+4.7% QoQ, ratio: 1.08)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 0,
-      "combined_score": 90.6,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - OXY\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +53.4%, QoQ: +54.2%)\n  QoQ Trend (last 4Q): +26.0% \u2192 -73.6% \u2192 +198.5% \u2192 +54.2%\n\u2713 EPS: STRONG growth (YoY: +957.7%, QoQ: -12.1%)\n  QoQ Trend (last 4Q): +150.0% \u2192 -110.8% \u2192 +4571.4% \u2192 -12.1%\n\u2713 Margins: EXPANDING (57.5%, +21.2pp QoQ)\n\u26a0 Inventory: BUILDING (+17.4% QoQ, ratio: 0.27)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: inventory building rapidly\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 249852.6,
+      "combined_score": 116.14,
       "why_links": [
         {
-          "label": "News",
-          "title": "How Earnings Beat, TCO Deal and Share Offering Will Impact Innovex International (INVX) Investors",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/earnings-beat-tco-deal-share-091043324.html"
+          "label": "Insider Buy ($249,853/90d)",
+          "title": "Jackson Richard A. (President and CEO) bought 4770 shares @ $52.38",
+          "url": "https://www.sec.gov/Archives/edgar/data/797468/000162828026045313/0001628280-26-045313-index.htm"
+        },
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/OXY/"
         },
         {
           "label": "News",
-          "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Strong Tech Results",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131928036.html"
+          "title": "Using A Limit Order To Buy Occidental Petroleum At A Discount",
+          "url": "https://www.investors.com/research/options/occidental-petroleum-stock-oxy-limit-order-options/?src=A00220&yptr=yahoo"
+        },
+        {
+          "label": "News",
+          "title": "XOM Keeps Climbing. Should You Climb On?",
+          "url": "https://www.trefis.com/articles/615505/xom-keeps-climbing-should-you-climb-on/2026-09-16"
         }
       ]
     },
     {
-      "ticker": "JNJ",
+      "ticker": "ET",
       "is_buy": "True",
-      "score": 84.5,
+      "score": 105.0,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 259.62,
-      "risk_reward_ratio": 7.39,
+      "stop_loss": 20.53,
+      "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 3.2% above 50 SMA",
-        "SMAs rising strongly (50:0.202, 200:0.166)",
-        "\ud83d\udfe1 Revenue: 3Q avg 1.8% QoQ (2.4% \u2192 -2.0% \u2192 5.2%)",
-        "\ud83d\udd34 EPS: -1% YoY",
-        "Inventory neutral (3.9% QoQ)",
-        "Volume pattern neutral (ratio 1.00)",
-        "Neutral RS: 0.017",
-        "\ud83d\udfe2 Outstanding R/R: 7.4:1 ($81.18 upside, $10.99 risk)",
-        "\ud83d\udfe2 At 52W high: 3.7% from high (pivot zone)",
-        "\ud83d\udfe2 VCP pattern: 2 contractions: 8.9% \u2192 4.1% (quality: 74/100)"
+        "Weak Stage 2: 2.3% above 50 SMA",
+        "SMAs rising strongly (50:0.263, 200:0.153)",
+        "\ud83d\udfe2 Revenue: 3Q avg 20.1% QoQ (26.9% \u2192 9.7% \u2192 23.6%)",
+        "\ud83d\udfe2 EPS: +84% YoY (strong earnings)",
+        "\u2713 Inventory drawing (-5.6% QoQ - strong demand)",
+        "\u26a0 Volume heavier on down days (ratio 0.40 - distribution)",
+        "Positive RS: 0.081",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($6.35 upside, $0.64 risk)",
+        "\ud83d\udfe2 At 52W high: 3.1% from high (pivot zone)",
+        "\ud83d\udfe2 VCP pattern: 2 contractions: 3.4% \u2192 3.1% (quality: 64/100)"
       ],
       "details": {
-        "trend_score": 18.18,
-        "fundamental_score": 21.37,
-        "avg_vol_up": 4710948.0,
-        "avg_vol_down": 4701200.0,
-        "volume_score": 2.51,
-        "rs_slope": 0.017,
-        "rs_score": 5.29,
-        "stop_loss": 259.6176,
-        "risk_reward_ratio": 7.39,
-        "risk_amount": 10.99,
-        "reward_amount": 81.18,
-        "reward_target": 351.79,
+        "trend_score": 17.49,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 2855978.0,
+        "avg_vol_down": 7141900.0,
+        "volume_score": 0.0,
+        "rs_slope": 0.081,
+        "rs_score": 6.36,
+        "stop_loss": 20.534900074005126,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 0.64,
+        "reward_amount": 6.35,
+        "reward_target": 27.52,
         "rr_score": 10.0,
-        "entry_score": 24.2,
+        "entry_score": 24.42,
         "vcp_data": {
-          "quality": 73.7,
+          "quality": 64.2,
           "contractions": 2,
-          "pattern": "2 contractions: 8.9% \u2192 4.1%",
-          "base_length_weeks": 7.3,
-          "volume_ratio": 0.65,
+          "pattern": "2 contractions: 3.4% \u2192 3.1%",
+          "base_length_weeks": 8.1,
+          "volume_ratio": 0.39,
           "quality_factors": [
             "2 contractions (7 pts)",
             "100% tightening (30 pts)",
-            "50% volume drying (10 pts)",
-            "7w base (10 pts)",
-            "3.7% from 52W high (17 pts)"
+            "0% volume drying (0 pts)",
+            "8w base (10 pts)",
+            "3.1% from 52W high (18 pts)"
           ]
         },
         "vcp_bonus": 3,
@@ -610,184 +470,1154 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 59.6,
+            "distance_from_52w_low_pct": 40.2,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 3.7,
+            "distance_from_52w_high_pct": 3.1,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - JNJ\n============================================================\n\u2022 Revenue: Modest growth (YoY: +6.6%, QoQ: +5.2%)\n  QoQ Trend (last 4Q): +1.1% \u2192 +2.4% \u2192 -2.0% \u2192 +5.2%\n\u2717 EPS: DECLINING (YoY: -0.9%, QoQ: +6.1%)\n  QoQ Trend (last 4Q): -7.4% \u2192 -0.9% \u2192 +1.9% \u2192 +6.1%\n\u2713 Margins: EXPANDING (68.2%, +1.9pp QoQ)\n\u2022 Inventory: Slight increase (+3.9% QoQ, ratio: 0.60)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: EPS declining\n\u2717 Fundamentals CONTRADICT technical breakout\n",
-      "reddit_mentions_24h": 1,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - ET\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +78.4%, QoQ: +23.6%)\n  QoQ Trend (last 4Q): +3.7% \u2192 +26.9% \u2192 +9.7% \u2192 +23.6%\n\u2713 EPS: STRONG growth (YoY: +84.4%, QoQ: +68.6%)\n  QoQ Trend (last 4Q): -12.5% \u2192 -10.7% \u2192 +40.0% \u2192 +68.6%\n\u2717 Margins: CONTRACTING (17.0%, -1.2pp QoQ)\n\u2713 Inventory: DRAWING (-5.6% QoQ, ratio: 0.13)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 6,
       "insider_buy_value_90d": 0,
-      "combined_score": 87.97,
+      "combined_score": 114.73,
       "why_links": [
         {
-          "label": "Reddit (1 mentions/24h)",
+          "label": "Reddit (6 mentions/24h)",
           "title": null,
-          "url": "https://apewisdom.io/stocks/JNJ/"
+          "url": "https://apewisdom.io/stocks/ET/"
         },
         {
           "label": "News",
-          "title": "Can Volume Keep Covering Eli Lilly's Price Cuts?",
-          "url": "https://www.trefis.com/articles/615683/can-volume-keep-covering-eli-lillys-price-cuts/2026-09-17"
+          "title": "Energy Transfer vs. Williams Companies: Which Natural Gas Giant Wins the AI Power Buildout?",
+          "url": "https://www.fool.com/investing/2026/09/18/energy-transfer-vs-williams-companies-which-natura/"
         },
         {
           "label": "News",
-          "title": "Is ISRG Stock Really As Expensive As It Looks?",
-          "url": "https://www.trefis.com/articles/615691/is-isrg-stock-really-as-expensive-as-it-looks/2026-09-17"
+          "title": "ET Stock Outperforms Industry in the Past 6 Months:  How to Play?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/et-stock-outperforms-industry-past-150200769.html"
         }
       ]
     },
     {
-      "ticker": "SLP",
+      "ticker": "SHIP",
       "is_buy": "True",
-      "score": 74.7,
+      "score": 109.5,
       "phase": 2,
-      "minervini_template_score": 87,
-      "minervini_criteria_passed": 7,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 17.89,
-      "risk_reward_ratio": 10.0,
+      "stop_loss": 17.66,
+      "risk_reward_ratio": 6.07,
       "entry_quality": "Good",
       "reasons": [
-        "Weak Stage 2: 0.5% above 50 SMA",
-        "SMAs rising moderately",
-        "\ud83d\udd34 Revenue: Recent decline -9.9% QoQ (3Q avg: 9.2%, PENALTY)",
-        "\ud83d\udfe2 EPS: +105% YoY (strong earnings)",
-        "\u26a0 Volume heavier on down days (ratio 0.65 - distribution)",
-        "Positive RS: 0.061",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($5.53 upside, $0.55 risk)",
-        "\ud83d\udfe2 Near 52W high: 12.2% from high",
+        "Good Stage 2: 9.5% above 50 SMA",
+        "SMAs rising strongly (50:0.474, 200:0.350)",
+        "\ud83d\udfe2 Revenue: 3Q avg 7.3% QoQ (5.2% \u2192 -13.3% \u2192 29.9%)",
+        "\ud83d\udfe2 EPS: +764% YoY (strong earnings)",
+        "\u2713 Volume heavier on up days (0.5M vs 0.3M, ratio 1.47)",
+        "\u2713 Strong RS: 0.381 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 6.1:1 ($5.57 upside, $0.92 risk)",
+        "\ud83d\udfe2 At 52W high: 3.3% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 26.25,
+        "fundamental_score": 35.8,
+        "avg_vol_up": 488550.0,
+        "avg_vol_down": 331952.0,
+        "volume_score": 4.86,
+        "rs_slope": 0.381,
+        "rs_score": 10,
+        "stop_loss": 17.66125,
+        "risk_reward_ratio": 6.07,
+        "risk_amount": 0.92,
+        "reward_amount": 5.57,
+        "reward_target": 24.15,
+        "rr_score": 10.0,
+        "entry_score": 22.62,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 153.5,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 3.3,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - SHIP\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +48.6%, QoQ: +29.9%)\n  QoQ Trend (last 4Q): +25.4% \u2192 +5.2% \u2192 -13.3% \u2192 +29.9%\n\u2713 EPS: STRONG growth (YoY: +764.3%, QoQ: +168.9%)\n  QoQ Trend (last 4Q): +335.7% \u2192 -3.3% \u2192 -23.7% \u2192 +168.9%\n\u2713 Margins: EXPANDING (59.3%, +14.3pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 112.97,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/SHIP/"
+        },
+        {
+          "label": "News",
+          "title": "Seanergy Maritime Holdings Corp (SHIP) is Attracting Investor Attention: Here is What You Should Know",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/seanergy-maritime-holdings-corp-ship-130003870.html"
+        },
+        {
+          "label": "News",
+          "title": "6 Dividend Stocks With Huge Yields and Even Bigger Warning Signs",
+          "url": "https://247wallst.com/investing/2026/09/16/6-dividend-stocks-with-huge-yields-and-even-bigger-warning-signs/"
+        }
+      ]
+    },
+    {
+      "ticker": "BP",
+      "is_buy": "True",
+      "score": 109.3,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 42.73,
+      "risk_reward_ratio": 6.02,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 4.3% above 50 SMA",
+        "SMAs rising strongly (50:0.305, 200:0.120)",
+        "\ud83d\udfe2 Revenue: 3Q avg 13.5% QoQ (-2.1% \u2192 10.3% \u2192 32.2%)",
+        "\ud83d\udfe2 EPS: +139% YoY (strong earnings)",
+        "\u2713 Inventory drawing (-15.3% QoQ - strong demand)",
+        "Volume slightly heavier on up days (ratio 1.21)",
+        "\u2713 Strong RS: 0.461 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 6.0:1 ($13.49 upside, $2.24 risk)",
+        "\ud83d\udfe2 At 52W high: 4.6% from high (pivot zone)",
         "\ud83d\udfe1 Partial pattern: Only 1 contraction(s) detected (need 2+)"
       ],
       "details": {
-        "trend_score": 11.59,
-        "fundamental_score": 25.14,
-        "avg_vol_up": 107708.0,
-        "avg_vol_down": 166467.0,
-        "volume_score": 0.74,
-        "rs_slope": 0.061,
-        "rs_score": 6.02,
-        "stop_loss": 17.886800518035887,
-        "risk_reward_ratio": 10.0,
-        "risk_amount": 0.55,
-        "reward_amount": 5.53,
-        "reward_target": 23.97,
+        "trend_score": 18.12,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 10030000.0,
+        "avg_vol_down": 8318432.0,
+        "volume_score": 3.53,
+        "rs_slope": 0.461,
+        "rs_score": 10,
+        "stop_loss": 42.72529863357544,
+        "risk_reward_ratio": 6.02,
+        "risk_amount": 2.24,
+        "reward_amount": 13.49,
+        "reward_target": 58.45,
         "rr_score": 10.0,
-        "entry_score": 21.26,
+        "entry_score": 23.92,
         "vcp_data": {
-          "quality": 20.2,
+          "quality": 26.3,
           "contractions": 1,
           "pattern": "Only 1 contraction(s) detected (need 2+)"
         },
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
-          "criteria_passed": 7,
+          "criteria_passed": 8,
           "criteria_total": 8,
-          "template_score": 87,
+          "template_score": 100,
           "criteria_details": {
             "price_above_150_200": "True",
-            "sma_150_above_200": "False",
+            "sma_150_above_200": "True",
             "sma_200_rising": "True",
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 66.3,
+            "distance_from_52w_low_pct": 44.5,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 12.2,
+            "distance_from_52w_high_pct": 4.6,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - SLP\n============================================================\n\u2022 Revenue: Modest growth (YoY: +7.5%, QoQ: -9.9%)\n  QoQ Trend (last 4Q): -14.3% \u2192 +5.5% \u2192 +31.9% \u2192 -9.9%\n\u2713 EPS: STRONG growth (YoY: +105.4%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): N/A \u2192 N/A \u2192 +633.3% \u2192 -18.2%\n\u2713 Margins: EXPANDING (69.1%, +2.7pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 0,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - BP\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +48.2%, QoQ: +32.2%)\n  QoQ Trend (last 4Q): +3.8% \u2192 -2.1% \u2192 +10.3% \u2192 +32.2%\n\u2713 EPS: STRONG growth (YoY: +138.9%, QoQ: +0.0%)\n  QoQ Trend (last 4Q): -28.1% \u2192 -400.9% \u2192 +210.4% \u2192 +0.0%\n\u2717 Margins: CONTRACTING (20.6%, -3.6pp QoQ)\n\u2713 Inventory: DRAWING (-15.3% QoQ, ratio: 0.45)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
+      "reddit_mentions_24h": 1,
       "insider_buy_value_90d": 0,
-      "combined_score": 74.7,
+      "combined_score": 112.77,
       "why_links": [
         {
-          "label": "News",
-          "title": "Certara (CERT) Stock Sees Fair Value Edges Lower As Analysts Trim Targets",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/certara-cert-stock-sees-fair-010951420.html"
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/BP/"
         },
         {
           "label": "News",
-          "title": "Lyft upgraded, Leidos downgraded: Wall Street's top analyst calls",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lyft-upgraded-leidos-downgraded-wall-134756673.html"
+          "title": "Sector Update: Energy Stocks Fall Pre-Bell Friday",
+          "url": "https://finance.yahoo.com/energy/articles/sector-energy-stocks-fall-pre-132853353.html"
+        },
+        {
+          "label": "News",
+          "title": "Correction: Market Chatter: Saudi Aramco May Cut Crude Oil Supply to European Refiners After Pipeline Attacks",
+          "url": "https://finance.yahoo.com/energy/articles/correction-market-chatter-saudi-aramco-132727566.html"
         }
       ]
     },
     {
-      "ticker": "CVLT",
+      "ticker": "NVDA",
       "is_buy": "True",
-      "score": 70.6,
+      "score": 93.1,
       "phase": 2,
-      "minervini_template_score": 87,
-      "minervini_criteria_passed": 7,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
       "breakout_price": null,
-      "stop_loss": 136.64,
-      "risk_reward_ratio": 3.62,
-      "entry_quality": "Extended",
+      "stop_loss": 211.87,
+      "risk_reward_ratio": 8.63,
+      "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 7.9% above 50 SMA",
-        "SMAs rising weakly",
-        "\ud83d\udfe1 Revenue: 3Q avg 4.6% QoQ (13.6% \u2192 -0.7% \u2192 0.8%)",
-        "\ud83d\udd34 EPS: -4% YoY",
-        "\u26a0 Volume heavier on down days (ratio 0.89 - distribution)",
-        "\u2713 Strong RS: 0.424 (outperforming SPY)",
-        "\ud83d\udfe2 Good R/R: 3.6:1 ($44.69 upside)",
-        "\ud83d\udfe1 Within 25% of 52W high: 24.8% from high"
+        "Weak Stage 2: 2.6% above 50 SMA",
+        "SMAs rising strongly (50:0.189, 200:0.087)",
+        "\ud83d\udfe2 Revenue: 3Q avg 20.4% QoQ (22.0% \u2192 19.5% \u2192 19.8%)",
+        "\ud83d\udfe2 EPS: +214% YoY (strong earnings)",
+        "\u26a0 Inventory building rapidly (20.5% QoQ - demand concern)",
+        "\u26a0 Volume heavier on down days (ratio 0.63 - distribution)",
+        "\u2713 Strong RS: 0.125 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 8.6:1 ($65.85 upside, $7.63 risk)",
+        "\ud83d\udfe2 Near 52W high: 7.0% from high"
       ],
       "details": {
-        "trend_score": 15.33,
-        "fundamental_score": 21.78,
-        "avg_vol_up": 586794.0,
-        "avg_vol_down": 661300.0,
-        "volume_score": 1.94,
-        "rs_slope": 0.424,
-        "rs_score": 10,
-        "stop_loss": 136.6398,
-        "risk_reward_ratio": 3.62,
-        "risk_amount": 12.34,
-        "reward_amount": 44.69,
-        "reward_target": 193.67,
-        "rr_score": 8.49,
-        "entry_score": 13.1,
+        "trend_score": 16.99,
+        "fundamental_score": 35.0,
+        "avg_vol_up": 82746634.0,
+        "avg_vol_down": 132267200.0,
+        "volume_score": 0.63,
+        "rs_slope": 0.125,
+        "rs_score": 7.08,
+        "stop_loss": 211.8699,
+        "risk_reward_ratio": 8.63,
+        "risk_amount": 7.63,
+        "reward_amount": 65.85,
+        "reward_target": 285.35,
+        "rr_score": 10.0,
+        "entry_score": 23.36,
         "vcp_bonus": 0,
         "minervini_template": {
           "passes_template": true,
-          "criteria_passed": 7,
+          "criteria_passed": 8,
           "criteria_total": 8,
-          "template_score": 87,
+          "template_score": 100,
           "criteria_details": {
             "price_above_150_200": "True",
-            "sma_150_above_200": "False",
+            "sma_150_above_200": "True",
             "sma_200_rising": "True",
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 107.6,
+            "distance_from_52w_low_pct": 33.9,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 24.8,
+            "distance_from_52w_high_pct": 7.0,
             "confirmed_stage_2": true
           }
         }
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - CVLT\n============================================================\n\u2713 Revenue: Growing well (YoY: +11.4%, QoQ: +0.8%)\n  QoQ Trend (last 4Q): -2.1% \u2192 +13.6% \u2192 -0.7% \u2192 +0.8%\n\u2717 EPS: DECLINING (YoY: -3.8%, QoQ: +47.1%)\n  QoQ Trend (last 4Q): -36.5% \u2192 +21.2% \u2192 -15.0% \u2192 +47.1%\n\u2022 Margins: Stable/slightly up (81.7%, +0.3pp QoQ)\n\nOverall Assessment:\n\u26a0 Some concerns: EPS declining\n\u2717 Fundamentals CONTRADICT technical breakout\n",
-      "reddit_mentions_24h": 0,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - NVDA\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +85.2%, QoQ: +19.8%)\n  QoQ Trend (last 4Q): +6.1% \u2192 +22.0% \u2192 +19.5% \u2192 +19.8%\n\u2713 EPS: STRONG growth (YoY: +214.5%, QoQ: +35.8%)\n  QoQ Trend (last 4Q): +42.1% \u2192 +20.4% \u2192 +35.4% \u2192 +35.8%\n\u2022 Margins: Flat (74.9%, -0.1pp QoQ)\n\u26a0 Inventory: BUILDING (+20.5% QoQ, ratio: 0.32)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: inventory building rapidly\n",
+      "reddit_mentions_24h": 50,
       "insider_buy_value_90d": 0,
-      "combined_score": 70.6,
+      "combined_score": 112.76,
       "why_links": [
         {
-          "label": "News",
-          "title": "Is It Worth Investing in Commvault (CVLT) Based on Wall Street's Bullish Views?",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/worth-investing-commvault-cvlt-based-133002939.html"
+          "label": "Reddit (50 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/NVDA/"
         },
         {
           "label": "News",
-          "title": "Commvault Systems (CVLT) Rises As Market Takes a Dip: Key Facts",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/commvault-systems-cvlt-rises-market-215003887.html"
+          "title": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
+          "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html"
+        },
+        {
+          "label": "News",
+          "title": "Why Salesforce CEO Marc Benioff thinks AI chip king Nvidia is 'exquisite'",
+          "url": "https://finance.yahoo.com/markets/stocks/article/why-salesforce-ceo-marc-benioff-thinks-ai-chip-king-nvidia-is-exquisite-094642002.html"
+        }
+      ]
+    },
+    {
+      "ticker": "CNQ",
+      "is_buy": "True",
+      "score": 109.2,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 48.48,
+      "risk_reward_ratio": 10.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 5.3% above 50 SMA",
+        "SMAs rising strongly (50:0.442, 200:0.218)",
+        "\ud83d\udfe2 Revenue: 3Q avg 17.1% QoQ (-3.3% \u2192 15.8% \u2192 38.8%)",
+        "\ud83d\udfe2 EPS: +84% YoY (strong earnings)",
+        "Inventory neutral (-4.5% QoQ)",
+        "\u2713 Volume heavier on up days (6.2M vs 4.6M, ratio 1.35)",
+        "\u2713 Strong RS: 0.148 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($14.99 upside, $1.50 risk)",
+        "\ud83d\udfe2 At 52W high: 3.6% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 20.07,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 6214667.0,
+        "avg_vol_down": 4612792.0,
+        "volume_score": 4.24,
+        "rs_slope": 0.148,
+        "rs_score": 7.46,
+        "stop_loss": 48.480599555969235,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 1.5,
+        "reward_amount": 14.99,
+        "reward_target": 64.97,
+        "rr_score": 10.0,
+        "entry_score": 23.68,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 73.3,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 3.6,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - CNQ\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +77.9%, QoQ: +38.8%)\n  QoQ Trend (last 4Q): +14.4% \u2192 -3.3% \u2192 +15.8% \u2192 +38.8%\n\u2713 EPS: STRONG growth (YoY: +83.8%, QoQ: +235.9%)\n  QoQ Trend (last 4Q): -75.2% \u2192 +775.9% \u2192 -74.8% \u2192 +235.9%\n\u2713 Margins: EXPANDING (37.2%, +8.5pp QoQ)\n\u2022 Inventory: Slight draw (-4.5% QoQ, ratio: 0.16)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 112.67,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/CNQ/"
+        },
+        {
+          "label": "News",
+          "title": "These Are The 5 Best Stocks To Buy Or Watch Now",
+          "url": "https://www.investors.com/research/best-stocks-to-buy-now/?src=A00220&yptr=yahoo"
+        },
+        {
+          "label": "News",
+          "title": "Canadian Natural Resources (TSX:CNQ) Stock May Be A Bargain On Cash Flow",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/canadian-natural-resources-tsx-cnq-051412111.html"
+        }
+      ]
+    },
+    {
+      "ticker": "SUN",
+      "is_buy": "True",
+      "score": 112.5,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 74.12,
+      "risk_reward_ratio": 5.57,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 4.6% above 50 SMA",
+        "SMAs rising strongly (50:0.327, 200:0.204)",
+        "\ud83d\udfe2 Revenue: 3Q avg 33.4% QoQ (42.6% \u2192 24.3% \u2192 33.4%)",
+        "\ud83d\udfe2 EPS: +185% YoY (strong earnings)",
+        "Inventory neutral (1.8% QoQ)",
+        "\u2713 Volume heavier on up days (0.8M vs 0.3M, ratio 2.31)",
+        "\u2713 Strong RS: 0.355 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 5.6:1 ($23.50 upside, $4.22 risk)",
+        "\ud83d\udfe2 At 52W high: 2.3% from high (pivot zone)",
+        "\ud83d\udfe1 Partial pattern: Only 1 contraction(s) detected (need 2+)"
+      ],
+      "details": {
+        "trend_score": 20.66,
+        "fundamental_score": 42.95,
+        "avg_vol_up": 772400.0,
+        "avg_vol_down": 334545.0,
+        "volume_score": 5.0,
+        "rs_slope": 0.355,
+        "rs_score": 10,
+        "stop_loss": 74.1213,
+        "risk_reward_ratio": 5.57,
+        "risk_amount": 4.22,
+        "reward_amount": 23.5,
+        "reward_target": 101.84,
+        "rr_score": 10.0,
+        "entry_score": 23.84,
+        "vcp_data": {
+          "quality": 28.1,
+          "contractions": 1,
+          "pattern": "Only 1 contraction(s) detected (need 2+)"
+        },
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 73.7,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 2.3,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - SUN\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +164.5%, QoQ: +33.4%)\n  QoQ Trend (last 4Q): +11.9% \u2192 +42.6% \u2192 +24.3% \u2192 +33.4%\n\u2713 EPS: STRONG growth (YoY: +184.8%, QoQ: -67.0%)\n  QoQ Trend (last 4Q): +93.9% \u2192 -85.9% \u2192 +3066.7% \u2192 -67.0%\n\u2717 Margins: CONTRACTING (8.3%, -4.8pp QoQ)\n\u2022 Inventory: Slight increase (+1.8% QoQ, ratio: 0.17)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
+      "reddit_mentions_24h": 0,
+      "insider_buy_value_90d": 0,
+      "combined_score": 112.5,
+      "why_links": [
+        {
+          "label": "News",
+          "title": "Boomers Are Piling Into These 5 High-Yield Dividend Stocks, and None Are Yield Traps",
+          "url": "https://247wallst.com/investing/2026/09/17/boomers-are-piling-into-these-5-high-yield-dividend-stocks-and-none-are-yield-traps/"
+        },
+        {
+          "label": "News",
+          "title": "September Syndrome in Full Swing: 3 Picks to Safeguard Your Portfolio",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/september-syndrome-full-swing-3-115900248.html"
+        }
+      ]
+    },
+    {
+      "ticker": "VLO",
+      "is_buy": "True",
+      "score": 103.4,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 369.58,
+      "risk_reward_ratio": 3.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 21.8% above 50 SMA",
+        "SMAs rising strongly (50:0.765, 200:0.421)",
+        "Moderately extended above 50 SMA",
+        "\ud83d\udfe2 Revenue: 3Q avg 12.8% QoQ (-5.6% \u2192 6.6% \u2192 37.4%)",
+        "\ud83d\udfe2 EPS: +454% YoY (strong earnings)",
+        "Inventory neutral (0.9% QoQ)",
+        "Volume pattern neutral (ratio 1.04)",
+        "\u2713 Strong RS: 1.071 (outperforming SPY)",
+        "\ud83d\udfe1 Acceptable R/R: 3.0:1",
+        "\ud83d\udfe2 At 52W high: 1.4% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 21.88,
+        "fundamental_score": 43.35,
+        "avg_vol_up": 3467600.0,
+        "avg_vol_down": 3322159.0,
+        "volume_score": 2.72,
+        "rs_slope": 1.071,
+        "rs_score": 10,
+        "stop_loss": 369.5849945068359,
+        "risk_reward_ratio": 3.0,
+        "risk_amount": 41.06,
+        "reward_amount": 123.19,
+        "reward_target": 533.84,
+        "rr_score": 6.0,
+        "entry_score": 19.41,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 170.0,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 1.4,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - VLO\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +48.8%, QoQ: +37.4%)\n  QoQ Trend (last 4Q): +7.6% \u2192 -5.6% \u2192 +6.6% \u2192 +37.4%\n\u2713 EPS: STRONG growth (YoY: +453.5%, QoQ: +199.1%)\n  QoQ Trend (last 4Q): +54.8% \u2192 +5.7% \u2192 +13.1% \u2192 +199.1%\n\u2713 Margins: EXPANDING (12.3%, +6.0pp QoQ)\n\u2022 Inventory: Slight increase (+0.9% QoQ, ratio: 0.17)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 5,
+      "insider_buy_value_90d": 0,
+      "combined_score": 112.36,
+      "why_links": [
+        {
+          "label": "Reddit (5 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/VLO/"
+        },
+        {
+          "label": "News",
+          "title": "Eni to Study Oil and Gas Potential of Five Senegal Offshore Blocks",
+          "url": "https://finance.yahoo.com/energy/articles/eni-study-oil-gas-potential-165500566.html"
+        },
+        {
+          "label": "News",
+          "title": "The Zacks Analyst Blog Highlights Applied Materials, Philip Morris, Valero Energy, Crimson Wine and Global Self Storage",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-applied-100800550.html"
+        }
+      ]
+    },
+    {
+      "ticker": "ASC",
+      "is_buy": "True",
+      "score": 108.1,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 17.55,
+      "risk_reward_ratio": 3.69,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 13.7% above 50 SMA",
+        "SMAs rising strongly (50:0.345, 200:0.215)",
+        "\ud83d\udfe2 Revenue: 3Q avg 13.4% QoQ (2.0% \u2192 6.0% \u2192 32.2%)",
+        "\ud83d\udfe2 EPS: +573% YoY (strong earnings)",
+        "\u26a0 Inventory building (7.1% QoQ)",
+        "\u26a0 Volume heavier on down days (ratio 0.68 - distribution)",
+        "\u2713 Strong RS: 0.729 (outperforming SPY)",
+        "\ud83d\udfe2 Good R/R: 3.7:1 ($5.73 upside)",
+        "\ud83d\udfe2 At 52W high: 1.4% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 26.25,
+        "fundamental_score": 40.64,
+        "avg_vol_up": 415509.0,
+        "avg_vol_down": 614600.0,
+        "volume_score": 0.88,
+        "rs_slope": 0.729,
+        "rs_score": 10,
+        "stop_loss": 17.551799392700197,
+        "risk_reward_ratio": 3.69,
+        "risk_amount": 1.55,
+        "reward_amount": 5.73,
+        "reward_target": 24.84,
+        "rr_score": 8.76,
+        "entry_score": 21.57,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 99.8,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 1.4,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - ASC\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +61.3%, QoQ: +32.2%)\n  QoQ Trend (last 4Q): +12.8% \u2192 +2.0% \u2192 +6.0% \u2192 +32.2%\n\u2713 EPS: STRONG growth (YoY: +572.7%, QoQ: +155.2%)\n  QoQ Trend (last 4Q): +36.4% \u2192 -23.3% \u2192 +152.2% \u2192 +155.2%\n\u2713 Margins: EXPANDING (49.7%, +10.7pp QoQ)\n\u2022 Inventory: Moderate build (+7.1% QoQ, ratio: 0.12)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 111.57,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/ASC/"
+        },
+        {
+          "label": "News",
+          "title": "Ardmore Shipping (ASC) Q2 2026 Earnings Call Transcript",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/08/07/ardmore-shipping-asc-q2-2026-earnings-call-transcript/"
+        },
+        {
+          "label": "News",
+          "title": "Ardmore Shipping Corporation Q2 2026 Earnings Call Summary",
+          "url": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-ardmore-shipping-corporation-q2-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss"
+        }
+      ]
+    },
+    {
+      "ticker": "DELL",
+      "is_buy": "True",
+      "score": 95.9,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 524.37,
+      "risk_reward_ratio": 3.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 25.9% above 50 SMA",
+        "SMAs rising strongly (50:0.416, 200:0.744)",
+        "Moderately extended above 50 SMA",
+        "\ud83d\udfe2 Revenue: 3Q avg 15.2% QoQ (-9.3% \u2192 23.6% \u2192 31.3%)",
+        "\ud83d\udfe2 EPS: +282% YoY (strong earnings)",
+        "\u26a0 Inventory building rapidly (44.2% QoQ - demand concern)",
+        "\u2713 Volume heavier on up days (10.8M vs 5.9M, ratio 1.83)",
+        "\u2713 Strong RS: 1.667 (outperforming SPY)",
+        "\ud83d\udfe2 Good R/R: 3.0:1 ($174.79 upside)",
+        "\ud83d\udfe2 At 52W high: 2.2% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 21.88,
+        "fundamental_score": 35.0,
+        "avg_vol_up": 10752167.0,
+        "avg_vol_down": 5888869.0,
+        "volume_score": 5.0,
+        "rs_slope": 1.667,
+        "rs_score": 10,
+        "stop_loss": 524.3715087890625,
+        "risk_reward_ratio": 3.0,
+        "risk_amount": 58.26,
+        "reward_amount": 174.79,
+        "reward_target": 757.43,
+        "rr_score": 6.0,
+        "entry_score": 18.05,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 431.1,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 2.2,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - DELL\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +87.5%, QoQ: +31.3%)\n  QoQ Trend (last 4Q): +27.4% \u2192 -9.3% \u2192 +23.6% \u2192 +31.3%\n\u2713 EPS: STRONG growth (YoY: +282.5%, QoQ: +55.5%)\n  QoQ Trend (last 4Q): +24.1% \u2192 +34.1% \u2192 +47.8% \u2192 +55.5%\n\u2717 Margins: CONTRACTING (17.8%, -2.4pp QoQ)\n\u26a0 Inventory: BUILDING (+44.2% QoQ, ratio: 0.34)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting, inventory building rapidly\n",
+      "reddit_mentions_24h": 21,
+      "insider_buy_value_90d": 0,
+      "combined_score": 111.36,
+      "why_links": [
+        {
+          "label": "Reddit (21 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/DELL/"
+        },
+        {
+          "label": "News",
+          "title": "Can Hewlett Packard Enterprise Stock Keep Running On Orders It Cannot Ship?",
+          "url": "https://www.trefis.com/articles/615862/can-hewlett-packard-enterprise-stock-keep-running-on-orders-it-cannot-ship/2026-09-18"
+        },
+        {
+          "label": "News",
+          "title": "Mistras Group Shares Jump Following Agreement With H.I.G. Capital to Go Private in $866 Million Deal",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/mistras-group-shares-jump-following-151628366.html"
+        }
+      ]
+    },
+    {
+      "ticker": "PSX",
+      "is_buy": "True",
+      "score": 107.8,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 247.49,
+      "risk_reward_ratio": 3.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 20.0% above 50 SMA",
+        "SMAs rising strongly (50:0.781, 200:0.356)",
+        "\ud83d\udfe2 Revenue: 3Q avg 17.0% QoQ (-1.2% \u2192 -4.6% \u2192 56.7%)",
+        "\ud83d\udfe2 EPS: +344% YoY (strong earnings)",
+        "\u2713 Inventory drawing (-11.9% QoQ - strong demand)",
+        "\u26a0 Volume heavier on down days (ratio 0.86 - distribution)",
+        "\u2713 Strong RS: 0.754 (outperforming SPY)",
+        "\ud83d\udfe1 Acceptable R/R: 3.0:1",
+        "\ud83d\udfe2 At 52W high: 0.8% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 26.25,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 2670845.0,
+        "avg_vol_down": 3100550.0,
+        "volume_score": 1.81,
+        "rs_slope": 0.754,
+        "rs_score": 10,
+        "stop_loss": 247.4909912109375,
+        "risk_reward_ratio": 3.0,
+        "risk_amount": 27.5,
+        "reward_amount": 82.5,
+        "reward_target": 357.49,
+        "rr_score": 6.0,
+        "entry_score": 20.0,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 123.4,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 0.8,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - PSX\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +53.1%, QoQ: +56.7%)\n  QoQ Trend (last 4Q): +3.6% \u2192 -1.2% \u2192 -4.6% \u2192 +56.7%\n\u2713 EPS: STRONG growth (YoY: +344.2%, QoQ: +1772.5%)\n  QoQ Trend (last 4Q): -85.1% \u2192 +2140.6% \u2192 -92.9% \u2192 +1772.5%\n\u2713 Margins: EXPANDING (13.2%, +4.7pp QoQ)\n\u2713 Inventory: DRAWING (-11.9% QoQ, ratio: 0.12)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 111.27,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/PSX/"
+        },
+        {
+          "label": "News",
+          "title": "Phillips 66: Resilient Refining Meets Midstream Stability",
+          "url": "https://finance.yahoo.com/energy/articles/phillips-66-resilient-refining-meets-162100419.html"
+        },
+        {
+          "label": "News",
+          "title": "5 Relative Price Strength Stocks to Buy Amid Rising Rates",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/5-relative-price-strength-stocks-124100557.html"
+        }
+      ]
+    },
+    {
+      "ticker": "COP",
+      "is_buy": "True",
+      "score": 107.5,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 128.46,
+      "risk_reward_ratio": 10.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 5.8% above 50 SMA",
+        "SMAs rising strongly (50:0.468, 200:0.219)",
+        "\ud83d\udfe2 Revenue: 3Q avg 9.5% QoQ (-10.9% \u2192 17.7% \u2192 21.6%)",
+        "\ud83d\udfe2 EPS: +107% YoY (strong earnings)",
+        "Inventory neutral (-1.6% QoQ)",
+        "Volume slightly heavier on up days (ratio 1.10)",
+        "\u2713 Strong RS: 0.212 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($39.73 upside, $3.97 risk)",
+        "\ud83d\udfe2 Near 52W high: 6.5% from high"
+      ],
+      "details": {
+        "trend_score": 20.15,
+        "fundamental_score": 43.03,
+        "avg_vol_up": 6945100.0,
+        "avg_vol_down": 6312370.0,
+        "volume_score": 3.0,
+        "rs_slope": 0.212,
+        "rs_score": 8.53,
+        "stop_loss": 128.4570928955078,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 3.97,
+        "reward_amount": 39.73,
+        "reward_target": 172.16,
+        "rr_score": 10.0,
+        "entry_score": 22.8,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 59.7,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 6.5,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - COP\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +36.8%, QoQ: +21.6%)\n  QoQ Trend (last 4Q): +7.3% \u2192 -10.9% \u2192 +17.7% \u2192 +21.6%\n\u2713 EPS: STRONG growth (YoY: +107.1%, QoQ: +81.5%)\n  QoQ Trend (last 4Q): -11.5% \u2192 -15.2% \u2192 +52.1% \u2192 +81.5%\n\u2713 Margins: EXPANDING (36.7%, +9.5pp QoQ)\n\u2022 Inventory: Slight draw (-1.6% QoQ, ratio: 0.10)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 110.97,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/COP/"
+        },
+        {
+          "label": "News",
+          "title": "ExxonMobil vs. ConocoPhillips: Which Oil Major's Stock Buybacks Will Actually Move the Needle?",
+          "url": "https://www.fool.com/investing/2026/09/18/exxonmobil-vs-conocophillips-which-oil-majors-buyb/"
+        },
+        {
+          "label": "News",
+          "title": "Can Strong Oil Prices Drive ExxonMobil's Business Growth?",
+          "url": "https://finance.yahoo.com/energy/articles/strong-oil-prices-drive-exxonmobils-162200348.html"
+        }
+      ]
+    },
+    {
+      "ticker": "ZETA",
+      "is_buy": "True",
+      "score": 107.1,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 29.05,
+      "risk_reward_ratio": 10.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 12.5% above 50 SMA",
+        "SMAs rising strongly (50:0.895, 200:0.309)",
+        "\ud83d\udfe2 Revenue: 3Q avg 9.7% QoQ (17.0% \u2192 0.4% \u2192 11.7%)",
+        "\ud83d\udfe2 EPS: +160% YoY (strong earnings)",
+        "\u26a0 Volume heavier on down days (ratio 0.87 - distribution)",
+        "\u2713 Strong RS: 0.377 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($8.98 upside, $0.90 risk)",
+        "\ud83d\udfe2 Near 52W high: 8.7% from high"
+      ],
+      "details": {
+        "trend_score": 26.25,
+        "fundamental_score": 39.02,
+        "avg_vol_up": 3806200.0,
+        "avg_vol_down": 4395120.0,
+        "volume_score": 1.83,
+        "rs_slope": 0.377,
+        "rs_score": 10,
+        "stop_loss": 29.04664970397949,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 0.9,
+        "reward_amount": 8.98,
+        "reward_target": 38.93,
+        "rr_score": 10.0,
+        "entry_score": 20.0,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 108.5,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 8.7,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - ZETA\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +43.5%, QoQ: +11.7%)\n  QoQ Trend (last 4Q): +9.3% \u2192 +17.0% \u2192 +0.4% \u2192 +11.7%\n\u2713 EPS: STRONG growth (YoY: +160.5%, QoQ: +161.3%)\n  QoQ Trend (last 4Q): +71.7% \u2192 +274.8% \u2192 -299.4% \u2192 +161.3%\n\u2022 Margins: Stable/slightly up (59.1%, +0.1pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 110.57,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/ZETA/"
+        },
+        {
+          "label": "News",
+          "title": "3 AI Software Stocks Retail Investors Are Watching For Margin Growth",
+          "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-software-stocks-retail-141253764.html"
+        },
+        {
+          "label": "News",
+          "title": "Zeta Global (ZETA): Buy, Sell, or Hold Post Q2 Earnings?",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zeta-global-zeta-buy-sell-140330169.html"
+        }
+      ]
+    },
+    {
+      "ticker": "CVE",
+      "is_buy": "True",
+      "score": 107.0,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 31.7,
+      "risk_reward_ratio": 9.7,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 7.4% above 50 SMA",
+        "SMAs rising strongly (50:0.509, 200:0.308)",
+        "\ud83d\udfe2 Revenue: 3Q avg 14.8% QoQ (5.6% \u2192 -4.3% \u2192 43.1%)",
+        "\u26a0 Inventory building (5.6% QoQ)",
+        "\u2713 Volume heavier on up days (9.8M vs 4.0M, ratio 2.42)",
+        "\u2713 Strong RS: 0.335 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 9.7:1 ($9.81 upside, $1.01 risk)",
+        "\ud83d\udfe2 At 52W high: 4.1% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 24.11,
+        "fundamental_score": 34.73,
+        "avg_vol_up": 9750467.0,
+        "avg_vol_down": 4022898.0,
+        "volume_score": 5.0,
+        "rs_slope": 0.335,
+        "rs_score": 10,
+        "stop_loss": 31.69869337252189,
+        "risk_reward_ratio": 9.7,
+        "risk_amount": 1.01,
+        "reward_amount": 9.81,
+        "reward_target": 42.52,
+        "rr_score": 10.0,
+        "entry_score": 23.16,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 112.8,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 4.1,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - CVE\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +54.9%, QoQ: +43.1%)\n  QoQ Trend (last 4Q): +7.1% \u2192 +5.6% \u2192 -4.3% \u2192 +43.1%\n\u2022 EPS: Data not available\n  QoQ Trend (last 4Q): N/A \u2192 -30.6% \u2192 +66.0% \u2192 +84.3%\n\u2022 Margins: Flat (30.9%, -1.0pp QoQ)\n\u2022 Inventory: Moderate build (+5.6% QoQ, ratio: 0.23)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 110.47,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/CVE/"
+        },
+        {
+          "label": "News",
+          "title": "Cenovus Energy (CVE) Gains As Market Dips: What You Should Know",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/cenovus-energy-cve-gains-market-221502291.html"
+        },
+        {
+          "label": "News",
+          "title": "Cenovus Energy Inc's Dividend Analysis",
+          "url": "https://finance.yahoo.com/energy/articles/cenovus-energy-incs-dividend-analysis-110244284.html"
+        }
+      ]
+    },
+    {
+      "ticker": "HALO",
+      "is_buy": "True",
+      "score": 110.2,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 104.97,
+      "risk_reward_ratio": 5.54,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 15.7% above 50 SMA",
+        "SMAs rising strongly (50:0.761, 200:0.255)",
+        "\ud83d\udfe2 Revenue: 3Q avg 12.9% QoQ (27.5% \u2192 -16.6% \u2192 27.7%)",
+        "\ud83d\udfe2 EPS: +43% YoY",
+        "\u2713 Inventory drawing (-11.8% QoQ - strong demand)",
+        "\u2713 Volume heavier on up days (2.6M vs 1.1M, ratio 2.45)",
+        "\u2713 Strong RS: 0.113 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 5.5:1 ($33.30 upside, $6.01 risk)",
+        "\ud83d\udfe2 At 52W high: 0.8% from high (pivot zone)"
+      ],
+      "details": {
+        "trend_score": 26.25,
+        "fundamental_score": 40.94,
+        "avg_vol_up": 2590062.0,
+        "avg_vol_down": 1055600.0,
+        "volume_score": 5.0,
+        "rs_slope": 0.113,
+        "rs_score": 6.89,
+        "stop_loss": 104.9725,
+        "risk_reward_ratio": 5.54,
+        "risk_amount": 6.01,
+        "reward_amount": 33.3,
+        "reward_target": 144.28,
+        "rr_score": 10.0,
+        "entry_score": 21.09,
+        "vcp_bonus": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 81.3,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 0.8,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - HALO\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +47.7%, QoQ: +27.7%)\n  QoQ Trend (last 4Q): +8.8% \u2192 +27.5% \u2192 -16.6% \u2192 +27.7%\n\u2713 EPS: STRONG growth (YoY: +42.9%, QoQ: +55.7%)\n  QoQ Trend (last 4Q): +7.5% \u2192 -183.9% \u2192 +201.7% \u2192 +55.7%\n\u2713 Margins: EXPANDING (83.5%, +4.6pp QoQ)\n\u2713 Inventory: DRAWING (-11.8% QoQ, ratio: 0.28)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 0,
+      "insider_buy_value_90d": 0,
+      "combined_score": 110.2,
+      "why_links": [
+        {
+          "label": "News",
+          "title": "Is Halozyme Therapeutics (HALO) Fully Priced Ahead Of Its September Conference Run?",
+          "url": "https://finance.yahoo.com/healthcare/articles/halozyme-therapeutics-halo-fully-priced-190955229.html"
+        },
+        {
+          "label": "News",
+          "title": "3 Reasons Why Growth Investors Shouldn't Overlook Halozyme Therapeutics (HALO)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-why-growth-investors-164502806.html"
+        }
+      ]
+    },
+    {
+      "ticker": "EOG",
+      "is_buy": "True",
+      "score": 106.0,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": null,
+      "stop_loss": 140.94,
+      "risk_reward_ratio": 10.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Weak Stage 2: 0.8% above 50 SMA",
+        "SMAs rising strongly (50:0.216, 200:0.164)",
+        "\ud83d\udfe2 Revenue: 3Q avg 14.6% QoQ (-1.4% \u2192 19.5% \u2192 25.7%)",
+        "\ud83d\udfe2 EPS: +109% YoY (strong earnings)",
+        "Inventory neutral (-2.6% QoQ)",
+        "Volume pattern neutral (ratio 1.09)",
+        "Positive RS: 0.032",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($43.59 upside, $4.36 risk)",
+        "\ud83d\udfe2 Near 52W high: 5.7% from high",
+        "\ud83d\udfe2 VCP pattern: 2 contractions: 10.2% \u2192 7.1% (quality: 62/100)"
+      ],
+      "details": {
+        "trend_score": 16.31,
+        "fundamental_score": 43.75,
+        "avg_vol_up": 3369733.0,
+        "avg_vol_down": 3079494.0,
+        "volume_score": 2.97,
+        "rs_slope": 0.032,
+        "rs_score": 5.53,
+        "stop_loss": 140.94100296020508,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 4.36,
+        "reward_amount": 43.59,
+        "reward_target": 188.89,
+        "rr_score": 10.0,
+        "entry_score": 24.43,
+        "vcp_data": {
+          "quality": 62.1,
+          "contractions": 2,
+          "pattern": "2 contractions: 10.2% \u2192 7.1%",
+          "base_length_weeks": 7.0,
+          "volume_ratio": 0.58,
+          "quality_factors": [
+            "2 contractions (7 pts)",
+            "100% tightening (30 pts)",
+            "0% volume drying (0 pts)",
+            "7w base (10 pts)",
+            "5.7% from 52W high (15 pts)"
+          ]
+        },
+        "vcp_bonus": 3,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 46.6,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 5.7,
+            "confirmed_stage_2": true
+          }
+        }
+      },
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - EOG\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +58.6%, QoQ: +25.7%)\n  QoQ Trend (last 4Q): +7.0% \u2192 -1.4% \u2192 +19.5% \u2192 +25.7%\n\u2713 EPS: STRONG growth (YoY: +109.3%, QoQ: +39.2%)\n  QoQ Trend (last 4Q): +9.8% \u2192 -51.9% \u2192 +184.6% \u2192 +39.2%\n\u2713 Margins: EXPANDING (71.7%, +5.9pp QoQ)\n\u2022 Inventory: Slight draw (-2.6% QoQ, ratio: 0.11)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 1,
+      "insider_buy_value_90d": 0,
+      "combined_score": 109.47,
+      "why_links": [
+        {
+          "label": "Reddit (1 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/EOG/"
+        },
+        {
+          "label": "News",
+          "title": "Oil Producers Slide as Crude Retreats: EOG Resources Drops 6%, ConocoPhillips and Occidental Petroleum Fall 5%",
+          "url": "https://247wallst.com/investing/2026/09/16/oil-producers-slide-as-crude-retreats-eog-resources-drops-6-conocophillips-and-occidental-petroleum-fall-5/"
+        },
+        {
+          "label": "News",
+          "title": "The Zacks Analyst Blog Highlights  JPMorgan Chase, EOG Resources and Bloom Energy",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-jpmorgan-075800004.html"
         }
       ]
     }
