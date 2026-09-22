@@ -1,50 +1,34 @@
 import { fetchJSON } from './api.js';
+import { openChartModal, refreshChartModal } from './chart-modal.js';
 import { startJob } from './jobs.js';
 
 const CHART_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></svg>';
-const _openCharts = new Set();
 
-export function chartToggleButtonHTML(chartId) {
-  return `<button class="chart-toggle-btn" data-chart-id="${chartId}" title="Price history">${CHART_ICON}</button>`;
+function attr(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
-export function wireChartToggles(container, getSeries, idPrefix) {
-  container.querySelectorAll('.chart-toggle-btn').forEach(btn => {
-    const chartId = btn.dataset.chartId;
-    const wrap = document.getElementById(`${chartId}-wrap`);
-    if (!wrap) return;
-    const ticker = chartId.slice(idPrefix.length);
+export function analysisButtonHTML(ticker, contextKey = ticker, disabled = false) {
+  const safeTicker = attr(ticker);
+  return `<button class="chart-analysis-btn" type="button" data-ticker="${safeTicker}" data-analysis-key="${attr(contextKey)}" title="Open ${safeTicker} price analysis" aria-label="Open ${safeTicker} price analysis"${disabled ? ' disabled' : ''}>${CHART_ICON}</button>`;
+}
 
-    if (_openCharts.has(chartId)) {
-      wrap.style.display = 'block';
-      btn.classList.add('active');
-      const series = getSeries(ticker);
-      if (series) renderPositionChart(chartId, series.history, series.entry, series.stop);
-    }
-
-    btn.addEventListener('click', () => {
-      const nowVisible = wrap.style.display !== 'block';
-      wrap.style.display = nowVisible ? 'block' : 'none';
-      btn.classList.toggle('active', nowVisible);
-      if (nowVisible) {
-        _openCharts.add(chartId);
-        const series = getSeries(ticker);
-        if (series) renderPositionChart(chartId, series.history, series.entry, series.stop);
-      } else {
-        _openCharts.delete(chartId);
-      }
+export function wireAnalysisButtons(container, getSeries) {
+  container.querySelectorAll('.chart-analysis-btn').forEach(button => {
+    if (button.dataset.analysisWired === 'true') return;
+    const series = getSeries(button.dataset.analysisKey);
+    button.disabled = !series;
+    if (!series) return;
+    button.dataset.analysisWired = 'true';
+    button.addEventListener('click', () => {
+      const latest = getSeries(button.dataset.analysisKey);
+      if (latest) openChartModal({ ...latest, ticker: button.dataset.ticker, triggerEl: button });
     });
   });
 }
 
-export function refreshOpenCharts(getSeries, idPrefix) {
-  _openCharts.forEach(chartId => {
-    if (!chartId.startsWith(idPrefix)) return;
-    if (!document.getElementById(`${chartId}-wrap`)) return;
-    const ticker = chartId.slice(idPrefix.length);
-    const series = getSeries(ticker);
-    if (series) renderPositionChart(chartId, series.history, series.entry, series.stop);
-  });
+export function refreshAnalysisModal(getSeries) {
+  refreshChartModal(getSeries);
 }
 
 const MOMENTUM_LABELS = { hot: 'HOT', stable: 'STABLE', basing: 'BASING', avoid: 'AVOID' };
@@ -132,6 +116,7 @@ export function renderTop20Table(top20) {
       <td><span class="ticker">${s.ticker}</span></td>
       <td><span class="score-num">${s.combined_score ?? s.score ?? '-'}</span></td>
       <td><span id="momentum-slot-${s.ticker}"></span></td>
+      <td><span id="consistency-slot-top20-${s.ticker}"></span></td>
       <td>${redditCell(s.reddit_mentions_24h)}</td>
       <td>${links || '<span style="color:var(--muted);font-size:11px">No linked source yet</span>'}</td>
       <td>${fidelityLink(s.ticker, 'Buy', 'buy')}</td>
@@ -140,8 +125,9 @@ export function renderTop20Table(top20) {
   return `
     <div class="card">
       <h2>Top 20 — Combined Pool</h2>
+      <div class="consistency-caption" id="consistency-caption-top20"></div>
       <div style="overflow-x:auto"><table class="signal-table">
-        <thead><tr><th scope="col">#</th><th scope="col">Ticker</th><th scope="col">Combined Score</th><th scope="col">Momentum</th><th scope="col">Reddit</th><th scope="col">Why it's moving</th><th scope="col">Trade</th></tr></thead>
+        <thead><tr><th scope="col">#</th><th scope="col">Ticker</th><th scope="col">Combined Score</th><th scope="col">Momentum</th><th scope="col">Consistency</th><th scope="col">Reddit</th><th scope="col">Why it's moving</th><th scope="col">Trade</th></tr></thead>
         <tbody>${rows}</tbody>
       </table></div>
     </div>`;

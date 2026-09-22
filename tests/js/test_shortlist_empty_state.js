@@ -52,15 +52,20 @@ async function renderScenario(scenario, responses) {
     .replace("import { _liveGuarded, _startLive } from '../core/refresh.js';", 'const _liveGuarded = async () => {}; const _startLive = () => {};')
     .replace("import { content, currentView, pageMeta } from '../core/state.js';", 'const content = global.__mockContent; const currentView = global.__mockCurrentView; const pageMeta = global.__mockPageMeta;')
     .replace(/import \{[\s\S]*?\} from '..\/core\/ui-helpers.js';/, `
-      const chartToggleButtonHTML = () => '';
+      const analysisButtonHTML = () => '';
       const escapeHtml = (s) => s;
       const fidelityLink = () => '';
       const loadMomentumStatus = () => {};
       const paintMomentumSlots = () => {};
-      const refreshOpenCharts = () => {};
+      const refreshAnalysisModal = () => {};
       const renderTop20Table = (top20) => '<table data-top20-count="' + top20.length + '"></table>';
-      const wireChartToggles = () => {};
-    `);
+      const wireAnalysisButtons = () => {};
+    `)
+    .replace("import { loadNewsGroup, newsSectionHTML } from '../components/news.js';", `
+      const loadNewsGroup = async () => {};
+      const newsSectionHTML = () => '';
+    `)
+    .replace("import { loadConsistency } from '../core/pick-history.js';", 'const loadConsistency = async () => null;');
 
   const tmpFile = path.join(os.tmpdir(), `shortlist_patched_${scenario}.mjs`);
   fs.writeFileSync(tmpFile, patched);

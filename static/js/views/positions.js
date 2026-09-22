@@ -5,11 +5,12 @@ import { startJob } from '../core/jobs.js';
 import { _liveGuarded, _startLive, liveBadgeHTML } from '../core/refresh.js';
 import { content, currentView, pageMeta } from '../core/state.js';
 import {
-  chartToggleButtonHTML,
+  analysisButtonHTML,
   loadMomentumStatus,
   paintMomentumSlots,
+  refreshAnalysisModal,
   showToast,
-  wireChartToggles,
+  wireAnalysisButtons,
 } from '../core/ui-helpers.js';
 
 const POSITION_ACTION_LABELS = {
@@ -19,6 +20,15 @@ const POSITION_ACTION_LABELS = {
   take_partial_and_trail: { label: 'consider trimming', cls: 'medium' },
   take_major_partial_and_trail_tight: { label: 'trim + trail tight', cls: 'poor' },
 };
+
+export function positionAnalysisSeries(analysis) {
+  return {
+    history: analysis.price_history,
+    entry: analysis.entry_price,
+    stop: analysis.recommended_stop,
+    meta: { entryLabel: 'Your entry', stopLabel: 'Recommended stop' },
+  };
+}
 
 function _positionsUploadCardHTML(data, expanded) {
   const hasResults = data.position_analyses && data.position_analyses.length;
@@ -150,14 +160,13 @@ function renderPositionsResults(data) {
       extra += `<div class="agent-badge-sub" style="color:var(--yellow)">${w}</div>`;
     });
 
-    const chartId = `pos-chart-${a.ticker}`;
     const hasHistory = a.price_history && a.price_history.length;
 
     return `
       <div class="pick-card">
         <div class="pick-header">
           <span class="ticker">${a.ticker}</span>
-          ${hasHistory ? chartToggleButtonHTML(chartId) : ''}
+          ${hasHistory ? analysisButtonHTML(a.ticker) : ''}
           <span class="badge ${meta.cls}" style="margin-left:${hasHistory ? '8px' : 'auto'}">${meta.label}</span>
         </div>
         <div class="pick-scores">
@@ -167,7 +176,6 @@ function renderPositionsResults(data) {
         </div>
         <div style="margin-bottom:10px"><span id="momentum-slot-${a.ticker}"></span></div>
         ${extra}
-        ${hasHistory ? `<div class="position-chart-wrap" id="${chartId}-wrap" style="display:none"><canvas id="${chartId}"></canvas></div>` : ''}
       </div>`;
   }).join('');
 
@@ -181,10 +189,14 @@ function renderPositionsResults(data) {
     </div>
     <div class="shortlist-grid">${cards}</div>`;
 
-  wireChartToggles(resultsEl, (ticker) => {
+  wireAnalysisButtons(resultsEl, (ticker) => {
     const a = analyses.find(x => x.ticker === ticker);
-    return a ? { history: a.price_history, entry: a.entry_price, stop: a.recommended_stop } : null;
-  }, 'pos-chart-');
+    return a ? positionAnalysisSeries(a) : null;
+  });
+  refreshAnalysisModal((ticker) => {
+    const a = analyses.find(x => x.ticker === ticker);
+    return a ? positionAnalysisSeries(a) : null;
+  });
 
   const posTickers = analyses.map(a => a.ticker);
   loadMomentumStatus(posTickers, 'positions', (statusMap) => paintMomentumSlots(posTickers, statusMap));

@@ -1,5 +1,6 @@
 import { content, pageTitle, pageMeta, setCurrentView } from './state.js';
 import { _stopLive } from './refresh.js';
+import { closeChartModal } from './chart-modal.js';
 
 // Populated by initRouter with the VIEWS map from dashboard.js. Kept as
 // module state rather than an import to avoid a circular dependency —
@@ -9,6 +10,7 @@ import { _stopLive } from './refresh.js';
 let _views = {};
 
 export function route() {
+  closeChartModal();
   _stopLive();
   const hash = (location.hash || '#/positions').replace('#/', '');
   const view = _views[hash] ? hash : 'positions';

@@ -3,23 +3,22 @@ import { startJob } from '../core/jobs.js';
 import { _liveGuarded, _startLive } from '../core/refresh.js';
 import { content, currentView, pageMeta } from '../core/state.js';
 import {
-  chartToggleButtonHTML,
+  analysisButtonHTML,
   escapeHtml,
   fidelityLink,
   loadMomentumStatus,
   paintMomentumSlots,
-  refreshOpenCharts,
+  refreshAnalysisModal,
   renderTop20Table,
-  wireChartToggles,
+  wireAnalysisButtons,
 } from '../core/ui-helpers.js';
+import { loadNewsGroup, newsSectionHTML } from '../components/news.js';
+import { loadConsistency } from '../core/pick-history.js';
 
 let _shortlistPrices = {};
-let _newsSectionHTML;
-let _loadNewsGroup;
 
-export function configureShortlistNews({ newsSectionHTML, loadNewsGroup }) {
-  _newsSectionHTML = newsSectionHTML;
-  _loadNewsGroup = loadNewsGroup;
+export function shortlistAnalysisSeries(history) {
+  return history && history.length ? { history, entry: null, stop: null, meta: { referenceLines: [] } } : null;
 }
 
 function catalystBadgeHTML(sentiment) {
@@ -86,6 +85,7 @@ export async function renderShortlistView() {
     `;
     const fallbackTickers = (top20.top20 || []).map(s => s.ticker);
     loadMomentumStatus(fallbackTickers, 'shortlist-fallback', (statusMap) => paintMomentumSlots(fallbackTickers, statusMap));
+    loadConsistency(fallbackTickers, 'top20');
     return;
   }
 
@@ -106,6 +106,7 @@ export async function renderShortlistView() {
         <div class="pick-rank">#${i + 1}</div>
         <div class="pick-header">
           <span class="ticker">${s.ticker}</span>
+          ${s.current_price != null ? `<span class="pick-price">$${s.current_price.toFixed(2)}</span>` : ''}
           <span id="${chartId}-slot"></span>
         </div>
         <div class="pick-scores">
@@ -113,23 +114,26 @@ export async function renderShortlistView() {
           <div class="score-block"><div class="label">Base Score</div><div class="value">${s.combined_score ?? s.score ?? '-'}</div></div>
         </div>
         <div style="margin-bottom:10px"><span id="momentum-slot-${s.ticker}"></span></div>
+        <div class="consistency-row"><span id="consistency-slot-shortlist-${s.ticker}"></span></div>
         ${backfillNote}
         <div class="pick-badges">${badges || '<span style="color:var(--muted);font-size:12px">No agent data</span>'}</div>
         ${fidelityLink(s.ticker, 'Buy on Fidelity', 'buy')}
-        <div class="position-chart-wrap" id="${chartId}-wrap" style="display:none"><canvas id="${chartId}"></canvas></div>
       </div>`;
   }).join('');
 
   content.innerHTML = `
     <div class="source-note email">
       <b>This is what your daily email sends.</b> Same 5 picks, same links — the email is just a snapshot of this page.
+      <button type="button" class="news-jump-btn" onclick="document.getElementById('shortlistNews').scrollIntoView({behavior:'smooth'})">Jump to news ↓</button>
     </div>
+    <div class="consistency-caption" id="consistency-caption-shortlist"></div>
     <div class="shortlist-grid">${cards}</div>
     <div id="shortlistNews" style="margin-top:24px"></div>`;
 
   loadShortlistCharts(tickers);
   loadShortlistNews(tickers);
   loadMomentumStatus(tickers, 'shortlist', (statusMap) => paintMomentumSlots(tickers, statusMap));
+  loadConsistency(tickers, 'shortlist');
   _startLive(() => {
     _liveGuarded('shortlist-charts', () => loadShortlistCharts(tickers, true));
     _liveGuarded('shortlist-news', () => loadShortlistNews(tickers, true));
@@ -138,8 +142,7 @@ export async function renderShortlistView() {
 }
 
 function _shortlistSeries(ticker) {
-  const h = _shortlistPrices[ticker];
-  return h && h.length ? { history: h, entry: null, stop: null } : null;
+  return shortlistAnalysisSeries(_shortlistPrices[ticker]);
 }
 
 async function loadShortlistCharts(tickers, silent) {
@@ -153,12 +156,12 @@ async function loadShortlistCharts(tickers, silent) {
       tickers.forEach(ticker => {
         const slot = document.getElementById(`short-chart-${ticker}-slot`);
         if (slot && _shortlistPrices[ticker] && _shortlistPrices[ticker].length) {
-          slot.innerHTML = chartToggleButtonHTML(`short-chart-${ticker}`);
+          slot.innerHTML = analysisButtonHTML(ticker);
         }
       });
-      wireChartToggles(content, _shortlistSeries, 'short-chart-');
+      wireAnalysisButtons(content, _shortlistSeries);
     } else {
-      refreshOpenCharts(_shortlistSeries, 'short-chart-');
+      refreshAnalysisModal(_shortlistSeries);
     }
   });
 }
@@ -167,7 +170,7 @@ async function loadShortlistNews(tickers, silent) {
   const el = document.getElementById('shortlistNews');
   if (!el) return;
   if (!silent) {
-    el.innerHTML = _newsSectionHTML('shortlist', 'News on your shortlist', 'loading');
+    el.innerHTML = newsSectionHTML('shortlist', 'News on your shortlist', 'loading');
   }
-  await _loadNewsGroup('shortlist', tickers, 'No shortlist yet.', silent);
+  await loadNewsGroup('shortlist', tickers, 'No shortlist yet.', silent);
 }

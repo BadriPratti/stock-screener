@@ -6,17 +6,19 @@ import { route, initRouter } from './core/router.js';
 import { currentView } from './core/state.js';
 import { showToast, toggleReasons } from './core/ui-helpers.js';
 import { renderBacktestsView } from './views/backtests.js';
-import { _loadNewsGroup, _newsSectionHTML, renderMarketView } from './views/market.js';
+import { renderConsistencyView } from './views/consistency.js';
+import { renderMarketView } from './views/market.js';
 import { renderPositionsView } from './views/positions.js';
 import { renderRunView } from './views/run.js';
 import { renderScanView } from './views/scan.js';
-import { configureShortlistNews, renderShortlistView } from './views/shortlist.js';
+import { renderShortlistView } from './views/shortlist.js';
 
 const VIEWS = {
   positions: { title: 'Positions', render: renderPositionsView },
   shortlist: { title: 'Shortlist', render: renderShortlistView },
   market: { title: 'Market', render: renderMarketView },
   backtests: { title: 'Backtests', render: renderBacktestsView },
+  consistency: { title: 'Consistency', render: renderConsistencyView },
   run: { title: 'Run Simulation', render: renderRunView },
   scan: { title: 'Full Scan', render: renderScanView },
 };
@@ -61,10 +63,11 @@ async function doSync(silent) {
   try {
     res = await fetchJSON('/api/sync', { method: 'POST' });
     if (res.success) {
+      window.dispatchEvent(new CustomEvent('stock-data-updated', { detail: { output: res.output || '' } }));
       if (!res.output.includes('Already up to date')) {
         const formInUse = silent && (currentView === 'run' || currentView === 'scan');
         showToast(formInUse ? 'Pulled latest data — will show on your next visit to this page.' : 'Pulled latest data — refreshing…');
-        if (!formInUse) route();
+        if (!formInUse && currentView !== 'market') route();
       } else if (!silent) {
         showToast('Already up to date.');
       }
@@ -100,5 +103,4 @@ const AUTO_SYNC_INTERVAL_MS = 5 * 60 * 1000;
 setInterval(() => doSync(true), AUTO_SYNC_INTERVAL_MS);
 doSync(true); // also try once right away, in case new data landed since last time the app was open
 
-configureShortlistNews({ newsSectionHTML: _newsSectionHTML, loadNewsGroup: _loadNewsGroup });
 initRouter(VIEWS);
