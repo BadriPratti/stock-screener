@@ -1,0 +1,121 @@
+{
+ "kind": "top20",
+ "commit": "229bed5d",
+ "commit_time": "2026-09-18T19:26:56Z",
+ "subject": "chore: midday quick scan cache update (3 stocks) - 2026-09-18 19:26",
+ "generated": "2026-09-18T19:26:54.789687",
+ "result": "success",
+ "n": 11,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "BP",
+   "score": 107.8,
+   "combined_score": 111.27,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 2,
+   "ticker": "CVBF",
+   "score": 88.2,
+   "combined_score": 107.75,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 3,
+   "ticker": "CGON",
+   "score": 71.5,
+   "combined_score": 101.86,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 4,
+   "ticker": "BFH",
+   "score": 93.3,
+   "combined_score": 96.3,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 5,
+   "ticker": "ZBRA",
+   "score": 94.9,
+   "combined_score": 94.9,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 6,
+   "ticker": "WEAV",
+   "score": 89.9,
+   "combined_score": 89.9,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 7,
+   "ticker": "E",
+   "score": 87.3,
+   "combined_score": 87.3,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 8,
+   "ticker": "PLUS",
+   "score": 84.9,
+   "combined_score": 84.9,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 9,
+   "ticker": "EHC",
+   "score": 84.6,
+   "combined_score": 84.6,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 10,
+   "ticker": "QRVO",
+   "score": 75.4,
+   "combined_score": 75.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 11,
+   "ticker": "CBZ",
+   "score": 71.5,
+   "combined_score": 71.5,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  }
+ ]
+}

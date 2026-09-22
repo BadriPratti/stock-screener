@@ -1,0 +1,1 @@
+TASK-001 | Claude (fork) | COMPLETE — shared news component built, wired into Shortlist, fully verified. Market view migration explicitly deferred (see SPRINT_PLAN_NEWS.md "Follow-up task") since market.js is owned by the concurrent Market View Redesign sprint.

@@ -1,0 +1,61 @@
+{
+ "kind": "shortlist",
+ "commit": "3b798ef7",
+ "commit_time": "2026-09-16T17:26:12Z",
+ "subject": "chore: update fundamental cache (12 stocks) - 2026-09-16",
+ "generated": "2026-09-16T17:26:10.610096",
+ "result": "success",
+ "n": 5,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "LILA",
+   "score": 100.7,
+   "combined_score": 129.5,
+   "composite_score": 129.5,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 2,
+   "ticker": "NVDA",
+   "score": 100.0,
+   "combined_score": 120.55,
+   "composite_score": 124.51,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 3,
+   "ticker": "LTC",
+   "score": 108.2,
+   "combined_score": 123.31,
+   "composite_score": 123.31,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 4,
+   "ticker": "DVN",
+   "score": 102.8,
+   "combined_score": 122.17,
+   "composite_score": 122.17,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 5,
+   "ticker": "ET",
+   "score": 112.1,
+   "combined_score": 121.06,
+   "composite_score": 121.06,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  }
+ ]
+}

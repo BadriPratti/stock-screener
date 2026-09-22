@@ -1,0 +1,61 @@
+{
+ "kind": "shortlist",
+ "commit": "9d9fe4ee",
+ "commit_time": "2026-09-17T17:35:07Z",
+ "subject": "chore: update fundamental cache (10 stocks) - 2026-09-17",
+ "generated": "2026-09-17T17:35:05.525757",
+ "result": "success",
+ "n": 5,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "LILA",
+   "score": 99.6,
+   "combined_score": 128.4,
+   "composite_score": 128.4,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 2,
+   "ticker": "LILAK",
+   "score": 99.2,
+   "combined_score": 128.0,
+   "composite_score": 128.0,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 3,
+   "ticker": "LTC",
+   "score": 106.2,
+   "combined_score": 121.31,
+   "composite_score": 121.31,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 4,
+   "ticker": "BP",
+   "score": 109.2,
+   "combined_score": 118.93,
+   "composite_score": 118.93,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 5,
+   "ticker": "DVN",
+   "score": 99.2,
+   "combined_score": 118.57,
+   "composite_score": 118.57,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  }
+ ]
+}

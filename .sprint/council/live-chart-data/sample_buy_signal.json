@@ -1,0 +1,23 @@
+{
+ "rank": 1,
+ "ticker": "SUN",
+ "score": 112.5,
+ "max_score": 125,
+ "reasons": [
+  "Good Stage 2: 4.6% above 50 SMA",
+  "SMAs rising strongly (50:0.327, 200:0.204)",
+  "\ud83d\udfe2 Revenue: 3Q avg 33.4% QoQ (42.6% \u2192 24.3% \u2192 33.4%)",
+  "\ud83d\udfe2 EPS: +185% YoY (strong earnings)",
+  "Inventory neutral (1.8% QoQ)",
+  "\u2713 Volume heavier on up days (0.8M vs 0.3M, ratio 2.31)",
+  "\u2713 Strong RS: 0.355 (outperforming SPY)"
+ ],
+ "phase": 2,
+ "entry_quality": "Good",
+ "stop_loss": 74.12,
+ "rr_ratio": 5.6,
+ "risk": 4.22,
+ "reward": 23.5,
+ "rs": 0.355,
+ "reddit_mentions": 0
+}

@@ -1,0 +1,61 @@
+{
+ "kind": "shortlist",
+ "commit": "c741acb0",
+ "commit_time": "2026-09-13T22:47:57-04:00",
+ "subject": "Local scan data snapshots + sprint planning artifacts from this session",
+ "generated": "2026-09-09T17:28:15.811583",
+ "result": null,
+ "n": 5,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "OXY",
+   "score": 101.7,
+   "combined_score": 125.21,
+   "composite_score": 127.21,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 2,
+   "ticker": "KRO",
+   "score": 109.6,
+   "combined_score": 109.6,
+   "composite_score": 111.6,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 3,
+   "ticker": "GKOS",
+   "score": 99.9,
+   "combined_score": 99.9,
+   "composite_score": 101.9,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 4,
+   "ticker": "CAKE",
+   "score": 89.9,
+   "combined_score": 99.65,
+   "composite_score": 101.65,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 5,
+   "ticker": "MUFG",
+   "score": 97.0,
+   "combined_score": 97.0,
+   "composite_score": 99.0,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+{
+ "kind": "top20",
+ "commit": "cf458768",
+ "commit_time": "2026-09-17T20:00:24Z",
+ "subject": "chore: midday quick scan cache update (3 stocks) - 2026-09-17 20:00",
+ "generated": "2026-09-17T20:00:21.975072",
+ "result": "success",
+ "n": 10,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "SUN",
+   "score": 112.7,
+   "combined_score": 112.7,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 2,
+   "ticker": "SHIP",
+   "score": 107.2,
+   "combined_score": 110.67,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 3,
+   "ticker": "EXPD",
+   "score": 98.1,
+   "combined_score": 98.1,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 4,
+   "ticker": "ETON",
+   "score": 97.4,
+   "combined_score": 97.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 5,
+   "ticker": "ARLP",
+   "score": 83.9,
+   "combined_score": 97.09,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 6,
+   "ticker": "OVV",
+   "score": 94.7,
+   "combined_score": 94.7,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 7,
+   "ticker": "INVX",
+   "score": 90.6,
+   "combined_score": 90.6,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 8,
+   "ticker": "JNJ",
+   "score": 84.5,
+   "combined_score": 87.97,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 9,
+   "ticker": "SLP",
+   "score": 74.7,
+   "combined_score": 74.7,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 10,
+   "ticker": "CVLT",
+   "score": 70.6,
+   "combined_score": 70.6,
+   "composite_score": null,
+   "entry_quality": "Extended",
+   "phase": 2,
+   "passed_filters": null
+  }
+ ]
+}

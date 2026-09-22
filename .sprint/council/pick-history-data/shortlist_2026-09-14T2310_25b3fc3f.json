@@ -1,0 +1,61 @@
+{
+ "kind": "shortlist",
+ "commit": "25b3fc3f",
+ "commit_time": "2026-09-14T23:10:22Z",
+ "subject": "chore: update fundamental cache (13 stocks) - 2026-09-14",
+ "generated": "2026-09-14T23:10:20.556302",
+ "result": "success",
+ "n": 5,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "NGL",
+   "score": 105.9,
+   "combined_score": 137.36,
+   "composite_score": 137.36,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 2,
+   "ticker": "ASND",
+   "score": 116.5,
+   "combined_score": 135.11,
+   "composite_score": 135.11,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 3,
+   "ticker": "LILA",
+   "score": 98.3,
+   "combined_score": 127.1,
+   "composite_score": 127.1,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 4,
+   "ticker": "LILAK",
+   "score": 98.0,
+   "combined_score": 126.8,
+   "composite_score": 126.8,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 5,
+   "ticker": "CRWD",
+   "score": 102.2,
+   "combined_score": 121.23,
+   "composite_score": 124.71,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  }
+ ]
+}

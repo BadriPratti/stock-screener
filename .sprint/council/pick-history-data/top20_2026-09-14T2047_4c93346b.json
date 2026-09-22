@@ -1,0 +1,151 @@
+{
+ "kind": "top20",
+ "commit": "4c93346b",
+ "commit_time": "2026-09-14T20:47:09Z",
+ "subject": "chore: midday quick scan cache update (3 stocks) - 2026-09-14 20:47",
+ "generated": "2026-09-14T20:47:07.484176",
+ "result": "success",
+ "n": 14,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "CVX",
+   "score": 110.4,
+   "combined_score": 113.87,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 2,
+   "ticker": "HRTG",
+   "score": 101.2,
+   "combined_score": 101.2,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 3,
+   "ticker": "PUBM",
+   "score": 97.2,
+   "combined_score": 97.2,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 4,
+   "ticker": "KRT",
+   "score": 96.0,
+   "combined_score": 96.0,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 5,
+   "ticker": "WHD",
+   "score": 95.3,
+   "combined_score": 95.3,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 6,
+   "ticker": "SAIC",
+   "score": 94.8,
+   "combined_score": 94.8,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 7,
+   "ticker": "BCAL",
+   "score": 93.8,
+   "combined_score": 93.8,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 8,
+   "ticker": "CLMT",
+   "score": 93.1,
+   "combined_score": 93.1,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 9,
+   "ticker": "SATA",
+   "score": 91.8,
+   "combined_score": 91.8,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 10,
+   "ticker": "BWIN",
+   "score": 75.2,
+   "combined_score": 75.2,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 11,
+   "ticker": "BCH",
+   "score": 72.6,
+   "combined_score": 72.6,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 12,
+   "ticker": "LNC",
+   "score": 72.5,
+   "combined_score": 72.5,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 13,
+   "ticker": "RIO",
+   "score": 70.7,
+   "combined_score": 70.7,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 14,
+   "ticker": "FDS",
+   "score": 69.4,
+   "combined_score": 69.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  }
+ ]
+}

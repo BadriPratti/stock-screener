@@ -1,5 +1,7 @@
-TASK-001 | Claude | COMPLETE
-TASK-002 | Codex  | COMPLETE
-TASK-003 | Claude | COMPLETE
-TASK-004 | Claude | COMPLETE
-TASK-005 | Claude | COMPLETE — verified live: manually-triggered run 34899506539 completed successfully in 1h36m (needed the new 120-min timeout headroom), committed 25b3fc3f, shortlist_latest.json updated by an automated run for the first time ever (generated 2026-09-14T23:10:20, result=success, 5 candidates), confirmed live via /api/shortlist.
+TASK-001 | Codex  | COMPLETE (23 tests pass; independent fuzz cross-check vs a brute-force reference: 800 comparisons, 0 mismatches; reviewer fix: tz lookup made lazy so read-only callers never touch tz data)
+TASK-002 | Codex  | COMPLETE (15 tests; real end-to-end scan proved midday-sample leaves canonical Top20/shortlist/latest byte-identical and writes no ledger; real main() run with the ledger branch forced on wrote a valid snapshot; Antigravity CI review pending)
+TASK-003 | Claude | COMPLETE (12 tests pass incl. real-git integration; 5 sessions written, re-run byte-identical; refuses non-bot commits, sample scans, timestamp skew, live-overwrite; two-phase so a bad entry writes nothing)
+TASK-004 | Codex  | COMPLETE (API + /api/scans metadata verified on the real ledger and real reports; warnings + strict JSON verified)
+TASK-005 | Claude | COMPLETE (Shortlist card badges, Top 20 Consistency column, Market default-scan fix + sample labels, captions, CSS; 4 new JS test files + 1 updated, all 11 JS tests pass; real API payload verified through the real formatter; NOT yet eyeballed in a browser)
+TASK-006 | Codex  | COMPLETE (Consistency leaderboard view + nav item; sortable/keyboard-accessible; stale-response guards; 12/12 JS tests pass; real payload renders LILA first at 5/5 streak 5; NOT yet eyeballed in a browser)
+TASK-007 | Claude | COMPLETE for local verification (74 Python tests, 12 JS files, fuzz 800/0 mismatches, real ES-module graph loads, workflow YAML parses, ledger path not gitignored, position/ still ignored). OPEN, needs user OK: (1) commit/push, (2) live workflow_dispatch check (midday first; daily is ~96 min + real email), (3) browser eyeball of the new UI

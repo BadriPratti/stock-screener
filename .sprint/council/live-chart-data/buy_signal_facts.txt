@@ -1,0 +1,10 @@
+optimized_scan_20260914_231020.txt: parsed_buy=50 header_buy=479 rs[min,med,max]=[-0.095,0.368,0.934] score%[min,med,max]=[82.6,85.5,93.2] fields=['entry_quality', 'max_score', 'phase', 'rank', 'reasons', 'reddit_mentions', 'reward', 'risk', 'rr_ratio', 'rs', 'score', 'stop_loss', 'ticker']
+optimized_scan_20260915_173119.txt: parsed_buy=50 header_buy=436 rs[min,med,max]=[-0.067,0.340,0.867] score%[min,med,max]=[82.3,85.1,90.9] fields=['entry_quality', 'max_score', 'phase', 'rank', 'reasons', 'reddit_mentions', 'reward', 'risk', 'rr_ratio', 'rs', 'score', 'stop_loss', 'ticker']
+optimized_scan_20260916_172610.txt: parsed_buy=50 header_buy=461 rs[min,med,max]=[-0.145,0.359,1.043] score%[min,med,max]=[82.6,84.4,90.2] fields=['entry_quality', 'max_score', 'phase', 'rank', 'reasons', 'reddit_mentions', 'reward', 'risk', 'rr_ratio', 'rs', 'score', 'stop_loss', 'ticker']
+optimized_scan_20260917_173505.txt: parsed_buy=50 header_buy=429 rs[min,med,max]=[-0.124,0.391,1.237] score%[min,med,max]=[81.2,84.8,90.2] fields=['entry_quality', 'max_score', 'phase', 'rank', 'reasons', 'reddit_mentions', 'reward', 'risk', 'rr_ratio', 'rs', 'score', 'stop_loss', 'ticker']
+optimized_scan_20260918_170746.txt: parsed_buy=50 header_buy=364 rs[min,med,max]=[0.032,0.400,1.344] score%[min,med,max]=[81.5,85.0,90.0] fields=['entry_quality', 'max_score', 'phase', 'rank', 'reasons', 'reddit_mentions', 'reward', 'risk', 'rr_ratio', 'rs', 'score', 'stop_loss', 'ticker']
+distinct tickers across 5 full scans: 84; in all 5: 25
+scan 1: carried over from previous 37/50, new 13
+scan 2: carried over from previous 37/50, new 13
+scan 3: carried over from previous 39/50, new 11
+scan 4: carried over from previous 38/50, new 12

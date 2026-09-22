@@ -1,0 +1,61 @@
+{
+ "kind": "shortlist",
+ "commit": "919bf881",
+ "commit_time": "2026-09-18T17:07:48Z",
+ "subject": "chore: update fundamental cache (12 stocks) - 2026-09-18",
+ "generated": "2026-09-18T17:07:46.930276",
+ "result": "success",
+ "n": 5,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "LILAK",
+   "score": 94.8,
+   "combined_score": 123.6,
+   "composite_score": 123.6,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 2,
+   "ticker": "LTC",
+   "score": 107.0,
+   "combined_score": 122.11,
+   "composite_score": 122.11,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 3,
+   "ticker": "LILA",
+   "score": 93.0,
+   "combined_score": 121.8,
+   "composite_score": 121.8,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 4,
+   "ticker": "NVDA",
+   "score": 93.1,
+   "combined_score": 112.76,
+   "composite_score": 116.72,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  },
+  {
+   "rank": 5,
+   "ticker": "OXY",
+   "score": 96.1,
+   "combined_score": 116.14,
+   "composite_score": 116.14,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": true
+  }
+ ]
+}

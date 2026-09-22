@@ -1,0 +1,35 @@
+data/backtest_history/walk_forward_20260804_222245.json
+  params: {"universe_size": 40, "lookback_months": 2, "step_days": 14, "top_n": 5, "max_hold_days": 30, "investment_per_trade": 1000.0, "seed": 7}
+  component_correlations: {"score": 0.28873301117959616, "trend_score": -0.14204180583187173, "fundamental_score": null, "entry_score": 0.3263476431200025, "rr_score": 0.3647253200326106, "rs_score": 0.1695708905936483, "volume_score": -0.06782818511611786}
+  trade_count: 25
+  summary: {"total_trades": 25, "total_periods": 5, "win_rate_pct": 16.0, "avg_return_pct": -2.8824533827246657, "median_return_pct": -4.343511556632304, "avg_win_pct": 15.580245495719042, "avg_loss_pct": -6.399157930999658, "std_return_pct": 12.203209823525327, "sharpe_like": -0.2362045252362929, "avg_days_held": 12.32, "exit_reasons": {"stop_loss": 19, "max_hold": 6}, "max_drawdown_pct": 5.1132239249271985, "max_drawdown_dollars": 1278.3059812317995}
+
+data/backtest_history/walk_forward_20260804_222257.json
+  params: {"universe_size": 40, "lookback_months": 2, "step_days": 14, "top_n": 5, "max_hold_days": 30, "investment_per_trade": 1000.0, "seed": 7}
+  component_correlations: {"score": 0.28873301117959616, "trend_score": -0.14204180583187173, "fundamental_score": null, "entry_score": 0.3263476431200025, "rr_score": 0.3647253200326106, "rs_score": 0.1695708905936483, "volume_score": -0.06782818511611786}
+  trade_count: 25
+  summary: {"total_trades": 25, "total_periods": 5, "win_rate_pct": 16.0, "avg_return_pct": -2.8824533827246657, "median_return_pct": -4.343511556632304, "avg_win_pct": 15.580245495719042, "avg_loss_pct": -6.399157930999658, "std_return_pct": 12.203209823525327, "sharpe_like": -0.2362045252362929, "avg_days_held": 12.32, "exit_reasons": {"stop_loss": 19, "max_hold": 6}, "max_drawdown_pct": 5.1132239249271985, "max_drawdown_dollars": 1278.3059812317995}
+
+data/backtest_history/walk_forward_20260804_222412.json
+  params: {"universe_size": 40, "lookback_months": 2, "step_days": 14, "top_n": 5, "max_hold_days": 30, "investment_per_trade": 1000.0, "seed": 99}
+  component_correlations: {"score": -0.22698607745520047, "trend_score": -0.47317217127858247, "fundamental_score": null, "entry_score": 0.36937000608965687, "rr_score": 0.41770307549407615, "rs_score": -0.3902747333340056, "volume_score": 0.03740448600417269}
+  trade_count: 25
+  summary: {"total_trades": 25, "total_periods": 5, "win_rate_pct": 64.0, "avg_return_pct": 2.790267454435797, "median_return_pct": 4.988666970395376, "avg_win_pct": 8.844844932647593, "avg_loss_pct": -7.9734258401629505, "std_return_pct": 9.453075366193003, "sharpe_like": 0.2951703383657153, "avg_days_held": 23.28, "exit_reasons": {"max_hold": 17, "stop_loss": 8}, "max_drawdown_pct": 1.4614326774576332, "max_drawdown_dollars": 365.3581693644083}
+
+data/backtest_history/walk_forward_20260804_225018.json
+  params: {"universe_size": 250, "lookback_months": 9, "step_days": 14, "top_n": 10, "max_hold_days": 60, "investment_per_trade": 1000.0, "seed": 42}
+  component_correlations: {"score": -0.023500790699237096, "trend_score": -0.014274366252885562, "fundamental_score": null, "entry_score": 0.10092412024668788, "rr_score": 0.002463207579689513, "rs_score": -0.13292526112742228, "volume_score": 0.018972875172680224}
+  trade_count: 200
+  summary: {"total_trades": 200, "total_periods": 20, "win_rate_pct": 35.0, "avg_return_pct": 3.6743741454641623, "median_return_pct": -3.080685314094376, "avg_win_pct": 21.167891394488304, "avg_loss_pct": -5.745212065548838, "std_return_pct": 16.24775255944105, "sharpe_like": 0.22614660901695607, "avg_days_held": 30.42, "exit_reasons": {"max_hold": 74, "stop_loss": 126}, "max_drawdown_pct": 1.19886931362294, "max_drawdown_dollars": 2397.73862724588}
+
+data/backtest_history/walk_forward_20260804_225131.json
+  params: {"universe_size": 250, "lookback_months": 9, "step_days": 14, "top_n": 10, "max_hold_days": 60, "investment_per_trade": 1000.0, "seed": 43}
+  component_correlations: {"score": 0.0991441671386129, "trend_score": 0.19308697590011023, "fundamental_score": null, "entry_score": -0.03795677471905851, "rr_score": -0.1268330255527607, "rs_score": -0.026675015333204946, "volume_score": -0.027776685495214865}
+  trade_count: 200
+  summary: {"total_trades": 200, "total_periods": 20, "win_rate_pct": 26.0, "avg_return_pct": 1.6787711497093174, "median_return_pct": -4.300397829990825, "avg_win_pct": 22.357220965427793, "avg_loss_pct": -5.586630136894471, "std_return_pct": 14.722746860516969, "sharpe_like": 0.11402567507367778, "avg_days_held": 27.185, "exit_reasons": {"stop_loss": 142, "max_hold": 58}, "max_drawdown_pct": 1.1315743100771556, "max_drawdown_dollars": 2263.148620154311}
+
+data/backtest_history/walk_forward_20260804_225921.json
+  params: {"universe_size": 5000, "lookback_months": 9, "step_days": 14, "top_n": 10, "max_hold_days": 60, "investment_per_trade": 1000.0, "seed": 42}
+  component_correlations: {"score": 0.06070608153182064, "trend_score": 0.19608448344063736, "fundamental_score": null, "entry_score": 0.024628235516411377, "rr_score": 0.02286523925661617, "rs_score": -0.21312566934124802, "volume_score": -0.17079191591277149}
+  trade_count: 200
+  summary: {"total_trades": 200, "total_periods": 20, "win_rate_pct": 28.999999999999996, "avg_return_pct": 5.996018956798758, "median_return_pct": -4.017027399013851, "avg_win_pct": 33.867372897510926, "avg_loss_pct": -5.3880551879991705, "std_return_pct": 26.649103465673925, "sharpe_like": 0.2249988996636261, "avg_days_held": 26.57, "exit_reasons": {"stop_loss": 139, "max_hold": 60, "sell_signal": 1}, "max_drawdown_pct": 1.0061445815872074, "max_drawdown_dollars": 2012.2891631744146}

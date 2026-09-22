@@ -1,0 +1,91 @@
+{
+ "kind": "top20",
+ "commit": "1299573c",
+ "commit_time": "2026-09-16T19:51:53Z",
+ "subject": "chore: midday quick scan cache update (3 stocks) - 2026-09-16 19:51",
+ "generated": "2026-09-16T19:51:51.379441",
+ "result": "success",
+ "n": 8,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "USPH",
+   "score": 93.0,
+   "combined_score": 93.0,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 2,
+   "ticker": "HCC",
+   "score": 93.0,
+   "combined_score": 93.0,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 3,
+   "ticker": "IOSP",
+   "score": 86.2,
+   "combined_score": 86.2,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 4,
+   "ticker": "BZH",
+   "score": 81.9,
+   "combined_score": 81.9,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 5,
+   "ticker": "KELYA",
+   "score": 80.7,
+   "combined_score": 80.7,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 6,
+   "ticker": "EWTX",
+   "score": 74.4,
+   "combined_score": 74.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 7,
+   "ticker": "NTNX",
+   "score": 73.9,
+   "combined_score": 73.9,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 8,
+   "ticker": "IFF",
+   "score": 63.5,
+   "combined_score": 63.5,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  }
+ ]
+}

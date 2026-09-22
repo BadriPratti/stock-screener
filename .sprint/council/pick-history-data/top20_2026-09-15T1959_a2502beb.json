@@ -1,0 +1,121 @@
+{
+ "kind": "top20",
+ "commit": "a2502beb",
+ "commit_time": "2026-09-15T19:59:56Z",
+ "subject": "chore: midday quick scan cache update (3 stocks) - 2026-09-15 19:59",
+ "generated": "2026-09-15T19:59:53.834570",
+ "result": "success",
+ "n": 11,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "LILAK",
+   "score": 97.6,
+   "combined_score": 126.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 2,
+   "ticker": "CCNE",
+   "score": 94.0,
+   "combined_score": 105.06,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 3,
+   "ticker": "CNO",
+   "score": 104.1,
+   "combined_score": 104.1,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 4,
+   "ticker": "TXO",
+   "score": 103.4,
+   "combined_score": 103.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 5,
+   "ticker": "AAPL",
+   "score": 90.3,
+   "combined_score": 103.12,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 6,
+   "ticker": "HRTG",
+   "score": 102.2,
+   "combined_score": 102.2,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 7,
+   "ticker": "BIO",
+   "score": 91.3,
+   "combined_score": 91.3,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 8,
+   "ticker": "AVPT",
+   "score": 88.4,
+   "combined_score": 88.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 9,
+   "ticker": "ICFI",
+   "score": 75.4,
+   "combined_score": 75.4,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 10,
+   "ticker": "RGEN",
+   "score": 74.1,
+   "combined_score": 74.1,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 11,
+   "ticker": "INTA",
+   "score": 65.6,
+   "combined_score": 65.6,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  }
+ ]
+}

@@ -1,0 +1,211 @@
+{
+ "kind": "top20",
+ "commit": "919bf881",
+ "commit_time": "2026-09-18T17:07:48Z",
+ "subject": "chore: update fundamental cache (12 stocks) - 2026-09-18",
+ "generated": "2026-09-18T17:07:46.332217",
+ "result": "success",
+ "n": 20,
+ "rows": [
+  {
+   "rank": 1,
+   "ticker": "LILAK",
+   "score": 94.8,
+   "combined_score": 123.6,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 2,
+   "ticker": "LTC",
+   "score": 107.0,
+   "combined_score": 122.11,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 3,
+   "ticker": "LILA",
+   "score": 93.0,
+   "combined_score": 121.8,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 4,
+   "ticker": "CVX",
+   "score": 111.0,
+   "combined_score": 116.49,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 5,
+   "ticker": "OXY",
+   "score": 96.1,
+   "combined_score": 116.14,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 6,
+   "ticker": "ET",
+   "score": 105.0,
+   "combined_score": 114.73,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 7,
+   "ticker": "SHIP",
+   "score": 109.5,
+   "combined_score": 112.97,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 8,
+   "ticker": "BP",
+   "score": 109.3,
+   "combined_score": 112.77,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 9,
+   "ticker": "NVDA",
+   "score": 93.1,
+   "combined_score": 112.76,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 10,
+   "ticker": "CNQ",
+   "score": 109.2,
+   "combined_score": 112.67,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 11,
+   "ticker": "SUN",
+   "score": 112.5,
+   "combined_score": 112.5,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 12,
+   "ticker": "VLO",
+   "score": 103.4,
+   "combined_score": 112.36,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 13,
+   "ticker": "ASC",
+   "score": 108.1,
+   "combined_score": 111.57,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 14,
+   "ticker": "DELL",
+   "score": 95.9,
+   "combined_score": 111.36,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 15,
+   "ticker": "PSX",
+   "score": 107.8,
+   "combined_score": 111.27,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 16,
+   "ticker": "COP",
+   "score": 107.5,
+   "combined_score": 110.97,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 17,
+   "ticker": "ZETA",
+   "score": 107.1,
+   "combined_score": 110.57,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 18,
+   "ticker": "CVE",
+   "score": 107.0,
+   "combined_score": 110.47,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 19,
+   "ticker": "HALO",
+   "score": 110.2,
+   "combined_score": 110.2,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  },
+  {
+   "rank": 20,
+   "ticker": "EOG",
+   "score": 106.0,
+   "combined_score": 109.47,
+   "composite_score": null,
+   "entry_quality": "Good",
+   "phase": 2,
+   "passed_filters": null
+  }
+ ]
+}
