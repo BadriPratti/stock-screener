@@ -1,0 +1,179 @@
+{
+  "generated_at": "2026-09-17T17:35:05.525757Z",
+  "lists": {
+    "shortlist": [
+      {
+        "composite_score": 128.4,
+        "passed_filters": true,
+        "rank": 1,
+        "score": 99.6,
+        "ticker": "LILA"
+      },
+      {
+        "composite_score": 128.0,
+        "passed_filters": true,
+        "rank": 2,
+        "score": 99.2,
+        "ticker": "LILAK"
+      },
+      {
+        "composite_score": 121.31,
+        "passed_filters": true,
+        "rank": 3,
+        "score": 106.2,
+        "ticker": "LTC"
+      },
+      {
+        "composite_score": 118.93,
+        "passed_filters": true,
+        "rank": 4,
+        "score": 109.2,
+        "ticker": "BP"
+      },
+      {
+        "composite_score": 118.57,
+        "passed_filters": true,
+        "rank": 5,
+        "score": 99.2,
+        "ticker": "DVN"
+      }
+    ],
+    "top20": [
+      {
+        "combined_score": 128.4,
+        "rank": 1,
+        "score": 99.6,
+        "ticker": "LILA"
+      },
+      {
+        "combined_score": 128.0,
+        "rank": 2,
+        "score": 99.2,
+        "ticker": "LILAK"
+      },
+      {
+        "combined_score": 121.31,
+        "rank": 3,
+        "score": 106.2,
+        "ticker": "LTC"
+      },
+      {
+        "combined_score": 118.93,
+        "rank": 4,
+        "score": 109.2,
+        "ticker": "BP"
+      },
+      {
+        "combined_score": 118.57,
+        "rank": 5,
+        "score": 99.2,
+        "ticker": "DVN"
+      },
+      {
+        "combined_score": 117.04,
+        "rank": 6,
+        "score": 87.6,
+        "ticker": "NGL"
+      },
+      {
+        "combined_score": 115.64,
+        "rank": 7,
+        "score": 95.6,
+        "ticker": "OXY"
+      },
+      {
+        "combined_score": 114.67,
+        "rank": 8,
+        "score": 111.2,
+        "ticker": "CVX"
+      },
+      {
+        "combined_score": 114.22,
+        "rank": 9,
+        "score": 101.4,
+        "ticker": "CRWD"
+      },
+      {
+        "combined_score": 113.32,
+        "rank": 10,
+        "score": 93.1,
+        "ticker": "NVDA"
+      },
+      {
+        "combined_score": 112.97,
+        "rank": 11,
+        "score": 109.5,
+        "ticker": "SM"
+      },
+      {
+        "combined_score": 112.87,
+        "rank": 12,
+        "score": 109.4,
+        "ticker": "NUE"
+      },
+      {
+        "combined_score": 112.8,
+        "rank": 13,
+        "score": 112.8,
+        "ticker": "SUN"
+      },
+      {
+        "combined_score": 112.27,
+        "rank": 14,
+        "score": 108.8,
+        "ticker": "PSX"
+      },
+      {
+        "combined_score": 111.9,
+        "rank": 15,
+        "score": 111.9,
+        "ticker": "SLDE"
+      },
+      {
+        "combined_score": 111.67,
+        "rank": 16,
+        "score": 108.2,
+        "ticker": "TALO"
+      },
+      {
+        "combined_score": 110.57,
+        "rank": 17,
+        "score": 107.1,
+        "ticker": "RS"
+      },
+      {
+        "combined_score": 110.4,
+        "rank": 18,
+        "score": 94.5,
+        "ticker": "SATA"
+      },
+      {
+        "combined_score": 110.27,
+        "rank": 19,
+        "score": 106.8,
+        "ticker": "CVE"
+      },
+      {
+        "combined_score": 110.23,
+        "rank": 20,
+        "score": 103.3,
+        "ticker": "MPC"
+      }
+    ]
+  },
+  "provenance": "backfill",
+  "result": "success",
+  "run_kind": "daily_full",
+  "schema_version": 1,
+  "scope": {
+    "analyzed": 1973,
+    "completed": true,
+    "total_universe": 3768
+  },
+  "scoring_version": "v1",
+  "session_date": "2026-09-17",
+  "source": {
+    "report_path": "data/daily_scans/optimized_scan_20260917_173505.txt",
+    "source_commit": "9d9fe4eea7d9058f071feab97e1562f379976856"
+  }
+}

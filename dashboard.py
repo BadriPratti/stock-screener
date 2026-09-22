@@ -24,6 +24,10 @@ from threading import Timer
 
 from flask import Flask, jsonify, render_template, request
 
+from src.screening import market_motion, pick_history
+from src.screening.market_motion_publisher import publish_frames
+from src.screening.market_motion_scheduler import MarketMotionScheduler
+
 # When bundled as a standalone .app (py2app sets sys.frozen), this file lives
 # inside the bundle's Resources folder, not the real project checkout — but
 # the dashboard always needs to read/write the real repo (git pull/push via
@@ -47,10 +51,13 @@ os.chdir(str(PROJECT_ROOT))
 app = Flask(__name__, template_folder=str(PROJECT_ROOT / "templates"), static_folder=str(PROJECT_ROOT / "static"))
 
 SCAN_DIR = PROJECT_ROOT / "data" / "daily_scans"
+PICK_HISTORY_ROOT = PROJECT_ROOT / "data" / "pick_history"
+MARKET_MOTION_ROOT = PROJECT_ROOT / "data" / "market_motion"
 BACKTEST_DIR = PROJECT_ROOT / "data" / "backtest_history"
 ADHOC_DIR = PROJECT_ROOT / "data" / "adhoc_simulations"
 POSITIONS_CSV = PROJECT_ROOT / "data" / "positions_latest.csv"
 VENV_PYTHON = PROJECT_ROOT / "venv" / "bin" / "python"
+SAMPLE_UNIVERSE_MAX = 150
 
 
 def _venv_python():
@@ -181,6 +188,10 @@ def parse_scan_file(filepath):
             "reasons": [],
         }
 
+        m = re.search(r"Current Price:\s*\$([\d.]+)", block)
+        if m:
+            signal["current_price"] = float(m.group(1))
+
         m = re.search(r"Phase:\s*(\d)", block)
         if m:
             signal["phase"] = int(m.group(1))
@@ -236,6 +247,10 @@ def parse_scan_file(filepath):
             "reasons": [],
         }
 
+        m = re.search(r"Current Price:\s*\$([\d.]+)", block)
+        if m:
+            signal["current_price"] = float(m.group(1))
+
         m = re.search(r"Phase:\s*(\d)\s*\|\s*.*Severity:\s*(\w+)", block)
         if m:
             signal["phase"] = int(m.group(1))
@@ -257,12 +272,43 @@ def parse_scan_file(filepath):
     return data
 
 
+def _scan_report_meta(path):
+    """Read the small report header and return its universe/run metadata."""
+    try:
+        with Path(path).open(encoding="utf-8", errors="replace") as handle:
+            header = handle.read(4096)
+    except (OSError, TypeError, ValueError):
+        return None, None
+
+    universe_match = re.search(r"Total Universe:\s*([\d,]+)", header)
+    if not universe_match:
+        return None, None
+    try:
+        total_universe = int(universe_match.group(1).replace(",", ""))
+    except ValueError:
+        return None, None
+    run_kind_match = re.search(r"Run Kind:\s*([\w-]+)", header)
+    run_kind = run_kind_match.group(1) if run_kind_match else None
+    return total_universe, run_kind
+
+
 def get_scan_files():
     """Get list of available scan files, newest first."""
     if not SCAN_DIR.exists():
         return []
     files = sorted(SCAN_DIR.glob("optimized_scan_*.txt"), reverse=True)
-    return [{"name": f.stem, "path": str(f), "date": f.stem.replace("optimized_scan_", "")} for f in files]
+    scans = []
+    for f in files:
+        total_universe, run_kind = _scan_report_meta(f)
+        scans.append({
+            "name": f.stem,
+            "path": str(f),
+            "date": f.stem.replace("optimized_scan_", ""),
+            "total_universe": total_universe,
+            "run_kind": run_kind,
+            "is_sample": total_universe is not None and total_universe <= SAMPLE_UNIVERSE_MAX,
+        })
+    return scans
 
 
 def get_backtest_files():
@@ -286,6 +332,55 @@ def get_backtest_files():
 
 JOBS = {}
 JOBS_LOCK = threading.Lock()
+
+
+def _market_motion_jobs_busy():
+    with JOBS_LOCK:
+        return any(job.get("status") in ("queued", "running") for job in JOBS.values())
+
+
+def _run_market_motion_command(command):
+    result = subprocess.run(
+        command, env=_clean_subprocess_env(),
+        capture_output=True, encoding="utf-8", errors="replace",
+        timeout=20 * 60, close_fds=False,
+    )
+    output = result.stdout or ""
+    if result.stderr:
+        output += ("\n" if output else "") + result.stderr
+    return output, result.returncode
+
+
+_MARKET_MOTION_SCHEDULER = None
+_MARKET_MOTION_SCHEDULER_LOCK = threading.Lock()
+
+
+def _get_market_motion_scheduler():
+    global _MARKET_MOTION_SCHEDULER
+    with _MARKET_MOTION_SCHEDULER_LOCK:
+        if _MARKET_MOTION_SCHEDULER is None:
+            def pull_after_publish():
+                result = _git_pull()
+                output = result.stderr or result.stdout or ""
+                return result.returncode == 0, output
+
+            _MARKET_MOTION_SCHEDULER = MarketMotionScheduler(
+                run_command=_run_market_motion_command,
+                publish_fn=lambda: publish_frames(
+                    PROJECT_ROOT, git_binary=_git_binary(), pull_fn=pull_after_publish,
+                ),
+                settings_path=PROJECT_ROOT / "data" / "market_motion_settings.json",
+                frames_root=MARKET_MOTION_ROOT,
+                jobs_busy_fn=_market_motion_jobs_busy,
+                command=[_venv_python(), str(PROJECT_ROOT / "run_intraday_rescore.py")],
+                repo_root=PROJECT_ROOT,
+            )
+        return _MARKET_MOTION_SCHEDULER
+
+
+def start_background_services():
+    """Start dashboard-owned daemons. Safe to call more than once."""
+    _get_market_motion_scheduler().start()
 
 
 def _clean_subprocess_env():
@@ -578,6 +673,61 @@ def _git_pull():
     )
 
 
+# git reports this case differently from a conflict on a file it already
+# tracks ("Your local changes to the following files would be overwritten"):
+# an UNTRACKED file merely sitting at the same path as one the incoming
+# commit wants to create. `git checkout -- data/` (the existing recovery
+# below) only restores tracked files, so it does nothing for this case and
+# the retry fails with the exact same error — which is what actually showed
+# up in the dashboard ("Sync failed: ... untracked working tree files would
+# be overwritten by merge: data/fundamentals_cache/RMBI_fundamentals.json").
+# This happens whenever a local run (Full Scan, or the market-motion
+# rescore/seed scans) fetches a fresh per-ticker cache file that the
+# automated workflow's own commit also happens to touch.
+_UNTRACKED_CONFLICT_HEADER = "untracked working tree files would be overwritten by merge"
+_UNTRACKED_CONFLICT_LINE = re.compile(r"^\t(.+)$", re.MULTILINE)
+
+
+def _safe_untracked_conflict_paths(git_output, project_root, git_binary):
+    """Parse the untracked-file paths git's error names, and return only the
+    ones it is safe to delete: inside data/ (this project's convention for
+    always-regenerable output), never under position/ (real account data,
+    never touched), resolving without escaping the project root, and
+    confirmed by `git status` to actually be untracked right now — so a
+    parsing mistake can never delete something real. Returns None if the
+    error isn't this case at all, or [] if it is but nothing in it is safe to
+    remove (the caller should then leave the conflict for the user to see).
+    """
+    if _UNTRACKED_CONFLICT_HEADER not in git_output:
+        return None
+    header_at = git_output.index(_UNTRACKED_CONFLICT_HEADER)
+    tail = git_output[header_at:]
+    listed = _UNTRACKED_CONFLICT_LINE.findall(tail)
+    data_root = (project_root / "data").resolve()
+    safe = []
+    for rel in listed:
+        rel = rel.strip()
+        if not rel:
+            continue
+        try:
+            resolved = (project_root / rel).resolve()
+        except (OSError, RuntimeError, ValueError):
+            continue
+        if data_root not in resolved.parents and resolved != data_root:
+            continue
+        if not resolved.is_relative_to(project_root):
+            continue
+        status = subprocess.run(
+            [git_binary, "status", "--porcelain=v1", "--", rel],
+            capture_output=True, encoding="utf-8", errors="replace", timeout=15,
+            cwd=project_root, close_fds=False,
+        )
+        if not status.stdout.startswith("??"):
+            continue  # not actually untracked (or git couldn't confirm it) — leave it alone
+        safe.append(resolved)
+    return safe
+
+
 @app.route("/api/sync", methods=["POST"])
 def api_sync():
     """git pull the repo so today's committed scan/shortlist/backtest data
@@ -603,6 +753,20 @@ def api_sync():
                 capture_output=True, encoding="utf-8", errors="replace", timeout=30, close_fds=False,
             )
             result = _git_pull()
+
+        # Still blocked, and specifically by an untracked file (checkout
+        # above can't touch those) — remove exactly the offending, verified-
+        # safe file(s) and retry once more.
+        if result.returncode != 0:
+            combined = result.stdout + result.stderr
+            safe_paths = _safe_untracked_conflict_paths(combined, PROJECT_ROOT, _git_binary())
+            if safe_paths:
+                for path in safe_paths:
+                    try:
+                        path.unlink()
+                    except FileNotFoundError:
+                        pass
+                result = _git_pull()
 
         return jsonify({
             "success": result.returncode == 0,
@@ -672,9 +836,237 @@ def index():
     return render_template("dashboard.html")
 
 
+@app.before_request
+def _start_services_for_app_window():
+    # The pywebview launcher imports this module, then opens the root page. A
+    # root-page hook starts services in that launch path while keeping a plain
+    # module import (including test collection) completely side-effect free.
+    if request.endpoint == "index" and not app.testing:
+        start_background_services()
+
+
 @app.route("/api/scans")
 def api_scans():
     return jsonify(get_scan_files())
+
+
+@app.route("/api/pick-history")
+def api_pick_history():
+    """Derived pick consistency, with an empty shape rather than API errors."""
+    fallback_warnings = []
+
+    list_name = request.args.get("list", "shortlist")
+    if list_name not in pick_history.LIST_NAMES:
+        fallback_warnings.append(
+            f"Unknown list {list_name!r}; using 'shortlist'."
+        )
+        list_name = "shortlist"
+
+    raw_window = request.args.get("window", "5")
+    try:
+        window = int(raw_window)
+    except (TypeError, ValueError):
+        fallback_warnings.append(
+            f"Invalid window {raw_window!r}; using default 5."
+        )
+        window = 5
+    else:
+        clamped_window = min(60, max(1, window))
+        if clamped_window != window:
+            fallback_warnings.append(
+                f"Window {window} was clamped to {clamped_window}."
+            )
+        window = clamped_window
+
+    load_warnings = []
+    try:
+        snapshots, load_warnings = pick_history.load_snapshots(PICK_HISTORY_ROOT)
+        result = pick_history.compute_history(
+            snapshots,
+            list_name=list_name,
+            window=window,
+            warnings=load_warnings + fallback_warnings,
+        )
+    except Exception as exc:
+        app.logger.exception("Failed to compute pick history")
+        result = {
+            "schema_version": pick_history.SCHEMA_VERSION,
+            "list": list_name,
+            "run_kind": pick_history.RUN_KIND_DAILY_FULL,
+            "window_requested": window,
+            "sessions_available": 0,
+            "sessions": [],
+            "denominator": 0,
+            "latest_session_date": None,
+            "coverage_gaps": [],
+            "warnings": load_warnings + fallback_warnings + [
+                f"Could not compute pick history: {exc}"
+            ],
+            "tickers": {},
+        }
+    return jsonify(result)
+
+
+# --- Market motion: persistent buy-opportunity frames + per-stock tracker -----
+
+_RUN_ID_PARAM = re.compile(r"\d{8}T\d{6}Z-[a-z_]+")
+
+
+def _clamped_int(name, default, low, high, warnings):
+    raw = request.args.get(name)
+    if raw is None:
+        return default
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        warnings.append(f"Invalid {name} {raw!r}; using default {default}.")
+        return default
+    clamped = min(high, max(low, value))
+    if clamped != value:
+        warnings.append(f"{name} {value} was clamped to {clamped}.")
+    return clamped
+
+
+def _empty_motion(warnings):
+    return {
+        "schema_version": market_motion.SCHEMA_VERSION,
+        "score_model": {"max_score": market_motion.MAX_SCORE, "buy_threshold": market_motion.BUY_THRESHOLD},
+        "frames": [],
+        "latest_run_id": None,
+        "total_frames": 0,
+        "has_more": False,
+        "warnings": warnings,
+    }
+
+
+@app.route("/api/market-motion")
+def api_market_motion():
+    """Recent completed frames (oldest first) for the replay. Additive; never an API error."""
+    fallback = []
+    limit = _clamped_int("limit", 20, 1, 60, fallback)
+    before = request.args.get("before")
+    if before is not None and not _RUN_ID_PARAM.fullmatch(before):
+        fallback.append(f"Invalid before {before!r}; ignored.")
+        before = None
+    try:
+        frames, load_warnings = market_motion.load_frames(MARKET_MOTION_ROOT)
+        warnings = load_warnings + fallback
+        total = len(frames)
+        pool = frames
+        if before is not None:
+            ids = [f["run_id"] for f in frames]
+            if before in ids:
+                pool = frames[:ids.index(before)]
+            else:
+                warnings.append(f"before {before!r} was not found; showing the newest frames.")
+        selected = pool[-limit:]
+        return jsonify({
+            "schema_version": market_motion.SCHEMA_VERSION,
+            "score_model": {"max_score": market_motion.MAX_SCORE, "buy_threshold": market_motion.BUY_THRESHOLD},
+            "frames": selected,
+            "latest_run_id": frames[-1]["run_id"] if frames else None,
+            "total_frames": total,
+            "has_more": len(pool) > len(selected),
+            "warnings": warnings,
+        })
+    except Exception as exc:
+        app.logger.exception("Failed to load market motion frames")
+        return jsonify(_empty_motion(fallback + [f"Could not load market motion: {exc}"]))
+
+
+@app.route("/api/market-motion/latest")
+def api_market_motion_latest():
+    """Small poll target for the Live loop: newest frame id, time and count."""
+    try:
+        frames, warnings = market_motion.load_frames(MARKET_MOTION_ROOT)
+    except Exception as exc:
+        app.logger.exception("Failed to load market motion frames")
+        return jsonify({"latest_run_id": None, "generated_at": None, "run_kind": None,
+                        "total_frames": 0, "warnings": [f"Could not load market motion: {exc}"]})
+    newest = frames[-1] if frames else None
+    return jsonify({
+        "latest_run_id": newest["run_id"] if newest else None,
+        "generated_at": newest["generated_at"] if newest else None,
+        "run_kind": newest["run_kind"] if newest else None,
+        "session_date": newest["session_date"] if newest else None,
+        "total_frames": len(frames),
+        "warnings": warnings,
+    })
+
+
+@app.route("/api/market-motion/tracker")
+def api_market_motion_tracker():
+    """Per-stock tracker (tier, streaks, denominators), derived on read."""
+    fallback = []
+    window = None
+    if request.args.get("window") is not None:
+        window = _clamped_int("window", 5, 1, 250, fallback)
+    min_streak = _clamped_int("min_streak", 0, 0, 250, fallback)
+    valid_tiers = (market_motion.TIER_ACTIVE, market_motion.TIER_WATCHING, market_motion.TIER_RETIRED)
+    raw_tiers = request.args.get("tiers") or request.args.get("tier") or "active,watching"
+    tiers = {t for t in (x.strip() for x in raw_tiers.split(",")) if t in valid_tiers}
+    if not tiers:
+        fallback.append(f"No valid tier in {raw_tiers!r}; using active,watching.")
+        tiers = {market_motion.TIER_ACTIVE, market_motion.TIER_WATCHING}
+    try:
+        frames, load_warnings = market_motion.load_frames(MARKET_MOTION_ROOT)
+        tracker = market_motion.compute_tracker(frames, window=window, warnings=load_warnings + fallback)
+        roster = market_motion.build_roster(tracker)
+        tracker["tickers"] = {
+            t: r for t, r in tracker["tickers"].items()
+            if r["tier"] in tiers and r["current_streak_days"] >= min_streak
+        }
+        tracker["roster"] = {k: roster[k] for k in ("cap", "active", "watching", "overflow")}
+        tracker["filters"] = {"tiers": sorted(tiers), "min_streak": min_streak}
+        return jsonify(tracker)
+    except Exception as exc:
+        app.logger.exception("Failed to compute market motion tracker")
+        empty = market_motion.compute_tracker([], warnings=fallback + [f"Could not compute tracker: {exc}"])
+        empty["roster"] = {"cap": market_motion.DEFAULT_ROSTER_CAP, "active": 0, "watching": 0, "overflow": 0}
+        empty["filters"] = {"tiers": sorted(tiers), "min_streak": min_streak}
+        return jsonify(empty)
+
+
+@app.route("/api/market-motion/scheduler", methods=["GET", "POST"])
+def api_market_motion_scheduler():
+    scheduler = _get_market_motion_scheduler()
+    if request.method == "GET":
+        return jsonify(scheduler.status())
+    if not request.is_json:
+        return jsonify({"error": "JSON body required"}), 400
+    body = request.get_json(silent=True)
+    allowed = {"enabled", "publish_to_github"}
+    if not isinstance(body, dict) or not body or set(body) - allowed:
+        return jsonify({"error": "body may contain only enabled and publish_to_github"}), 400
+    if any(not isinstance(value, bool) for value in body.values()):
+        return jsonify({"error": "scheduler settings must be boolean"}), 400
+    return jsonify(scheduler.update_settings(body))
+
+
+@app.route("/api/market-motion/run-now", methods=["POST"])
+def api_market_motion_run_now():
+    result = _get_market_motion_scheduler().run_now()
+    return jsonify(result), 202 if result["started"] else 409
+
+
+def _resolve_scan_path(raw_path):
+    """Resolve a client-supplied scan path to a report inside SCAN_DIR, or None.
+
+    The endpoint used to open ANY existing path; only real scan reports
+    (optimized_scan_*.txt / latest_optimized_scan.txt directly under SCAN_DIR)
+    are served now, whatever the query string says.
+    """
+    try:
+        candidate = Path(raw_path).resolve()
+        scan_dir = SCAN_DIR.resolve()
+    except (OSError, RuntimeError, ValueError):
+        return None
+    if candidate.parent != scan_dir or not candidate.is_file():
+        return None
+    name = candidate.name
+    if name == "latest_optimized_scan.txt" or (name.startswith("optimized_scan_") and name.endswith(".txt")):
+        return candidate
+    return None
 
 
 @app.route("/api/scan")
@@ -687,10 +1079,11 @@ def api_scan():
         else:
             return jsonify({"error": "No scan data"})
 
-    if not Path(path).exists():
+    resolved = _resolve_scan_path(path)
+    if resolved is None:
         return jsonify({"error": "File not found"})
 
-    return jsonify(parse_scan_file(path))
+    return jsonify(parse_scan_file(resolved))
 
 
 @app.route("/api/top20")
@@ -773,6 +1166,7 @@ if __name__ == "__main__":
     if not args.no_browser:
         Timer(1.5, open_browser, [args.port]).start()
 
+    start_background_services()
     print(f"\n  Dashboard running at http://localhost:{args.port}\n")
     # 127.0.0.1, not 0.0.0.0: this app has zero authentication — every route
     # (including git pull, running scans/backtests, and reading arbitrary

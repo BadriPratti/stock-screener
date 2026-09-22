@@ -29,6 +29,8 @@ concentration, fixed-N-day snapshot exits, fresh random samples each run):
 
 Usage:
     python scripts/walk_forward_backtest.py
+    python scripts/walk_forward_backtest.py --capture-manifest baseline-v1
+    python scripts/walk_forward_backtest.py --replay-manifest baseline-v1
     python scripts/walk_forward_backtest.py --universe-size 3800 --lookback-months 12 \
         --step-days 14 --top-n 15 --max-hold-days 60 --seed 42
 """
@@ -48,6 +50,7 @@ import yfinance as yf
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.data.universe_fetcher import USStockUniverseFetcher
+from src.backtesting.frozen_inputs import DEFAULT_STORE, ManifestError, capture_manifest, load_manifest
 from src.screening.phase_indicators import classify_phase, calculate_relative_strength
 from src.screening.signal_engine import score_buy_signal
 from src.utils.json_safe import sanitize_nan
@@ -165,40 +168,94 @@ def audit_fundamentals_for_trades(all_trades: list, sample_size: int, seed: int)
 
 def run_walk_forward(universe_size: int, lookback_months: int, step_days: int, top_n: int,
                       max_hold_days: int, investment_per_trade: float, seed: int,
-                      audit_fundamentals: bool = False, audit_sample_size: int = 40) -> dict:
-    if seed is not None:
-        random.seed(seed)
+                      audit_fundamentals: bool = False, audit_sample_size: int = 40,
+                      capture_manifest_ref: str | None = None, replay_manifest_ref: str | None = None,
+                      manifest_store: Path = DEFAULT_STORE) -> dict:
+    if capture_manifest_ref and replay_manifest_ref:
+        raise ManifestError("Capture and replay modes are mutually exclusive")
 
-    latest_entry = date.today() - timedelta(days=max_hold_days)
-    earliest_entry = latest_entry - timedelta(days=lookback_months * 30)
-    entry_dates = []
-    d = earliest_entry
-    while d <= latest_entry:
-        entry_dates.append(d)
-        d += timedelta(days=step_days)
+    requested_params = {
+        'universe_size': universe_size, 'lookback_months': lookback_months,
+        'step_days': step_days, 'top_n': top_n, 'max_hold_days': max_hold_days,
+        'investment_per_trade': investment_per_trade, 'seed': seed,
+        'audit_fundamentals': audit_fundamentals, 'audit_sample_size': audit_sample_size,
+    }
+    manifest = None
+    if replay_manifest_ref:
+        manifest, spy, histories, _ = load_manifest(
+            replay_manifest_ref, store_root=manifest_store,
+        )
+        frozen_params = manifest['parameters']
+        universe_size = frozen_params['universe_size']
+        lookback_months = frozen_params['lookback_months']
+        step_days = frozen_params['step_days']
+        top_n = frozen_params['top_n']
+        max_hold_days = frozen_params['max_hold_days']
+        investment_per_trade = frozen_params['investment_per_trade']
+        seed = frozen_params['seed']
+        audit_fundamentals = frozen_params['audit_fundamentals']
+        audit_sample_size = frozen_params['audit_sample_size']
+        if audit_fundamentals:
+            raise ManifestError("Replay cannot run --audit-fundamentals because those external inputs are not frozen")
+        entry_dates = [date.fromisoformat(value) for value in manifest['date_grid']]
+        if not entry_dates:
+            raise ManifestError("Replay manifest has an empty date grid")
+        earliest_entry, latest_entry = entry_dates[0], entry_dates[-1]
+        sample = manifest['universe']
+    else:
+        if seed is not None:
+            random.seed(seed)
+        latest_entry = date.today() - timedelta(days=max_hold_days)
+        earliest_entry = latest_entry - timedelta(days=lookback_months * 30)
+        entry_dates = []
+        d = earliest_entry
+        while d <= latest_entry:
+            entry_dates.append(d)
+            d += timedelta(days=step_days)
+
+        universe = USStockUniverseFetcher().fetch_universe()
+        sample = universe if universe_size >= len(universe) else random.sample(universe, universe_size)
+
+        history_kwargs = {'period': '2y'}
+        if capture_manifest_ref:
+            # Pin yfinance's corporate-action behavior in captured experiments;
+            # default live mode retains its historical provider-default call.
+            history_kwargs.update(auto_adjust=True, actions=True)
+        spy = yf.Ticker('SPY').history(**history_kwargs)
+        spy.index = spy.index.tz_localize(None)
+
+        print(f"Fetching price history for {len(sample)} tickers (one-time cost — this is the slow part)...")
+        histories = {}
+        fetched_histories = {}
+        fetch_errors = {}
+        for i, ticker in enumerate(sample):
+            try:
+                h = yf.Ticker(ticker).history(**history_kwargs)
+                h.index = h.index.tz_localize(None)
+                fetched_histories[ticker] = h
+                if h.empty or len(h) < 200:
+                    fetch_errors[ticker] = f"unusable history: {len(h)} rows"
+                    continue
+                histories[ticker] = h
+            except Exception as e:
+                fetch_errors[ticker] = f"{type(e).__name__}: {e}"
+                logger.debug(f"{ticker}: {e}")
+            if (i + 1) % 100 == 0:
+                print(f"  ...{i + 1}/{len(sample)} fetched, {len(histories)} usable")
+
+        if capture_manifest_ref:
+            if audit_fundamentals:
+                raise ManifestError("Capture cannot use --audit-fundamentals because those external inputs are not frozen")
+            manifest, _ = capture_manifest(
+                capture_manifest_ref,
+                universe=list(sample), spy=spy, histories=fetched_histories,
+                usable_tickers=set(histories), fetch_errors=fetch_errors,
+                parameters=requested_params, date_grid=[value.isoformat() for value in entry_dates],
+                repo_root=Path(__file__).parent.parent, store_root=manifest_store,
+            )
 
     print(f"Walk-forward backtest: {len(entry_dates)} entry dates from {earliest_entry} to {latest_entry}")
     print(f"Universe size: {universe_size} (seed={seed}), top {top_n} picks/date, max {max_hold_days}-day hold\n")
-
-    universe = USStockUniverseFetcher().fetch_universe()
-    sample = universe if universe_size >= len(universe) else random.sample(universe, universe_size)
-
-    spy = yf.Ticker('SPY').history(period='2y')
-    spy.index = spy.index.tz_localize(None)
-
-    print(f"Fetching price history for {len(sample)} tickers (one-time cost — this is the slow part)...")
-    histories = {}
-    for i, ticker in enumerate(sample):
-        try:
-            h = yf.Ticker(ticker).history(period='2y')
-            if h.empty or len(h) < 200:
-                continue
-            h.index = h.index.tz_localize(None)
-            histories[ticker] = h
-        except Exception as e:
-            logger.debug(f"{ticker}: {e}")
-        if (i + 1) % 100 == 0:
-            print(f"  ...{i + 1}/{len(sample)} fetched, {len(histories)} usable")
 
     print(f"\n{len(histories)} tickers usable. Walking forward through {len(entry_dates)} dates...\n")
 
@@ -297,8 +354,8 @@ def run_walk_forward(universe_size: int, lookback_months: int, step_days: int, t
     for t in all_trades:
         t['exit_date'] = str(t['exit_date'])
 
-    return {
-        'generated': datetime.now().isoformat(),
+    result = {
+        'generated': manifest['created_at'] if manifest else datetime.now().isoformat(),
         'params': {
             'universe_size': universe_size, 'lookback_months': lookback_months,
             'step_days': step_days, 'top_n': top_n, 'max_hold_days': max_hold_days,
@@ -308,6 +365,9 @@ def run_walk_forward(universe_size: int, lookback_months: int, step_days: int, t
         'component_correlations': component_correlations,
         'trades': all_trades,
     }
+    if manifest:
+        result['manifest_id'] = manifest['manifest_id']
+    return result
 
 
 def print_report(result: dict):
@@ -374,6 +434,15 @@ def main():
     parser.add_argument('--audit-sample-size', type=int, default=40,
                          help='Max trades to run through --audit-fundamentals (default 40, randomly sampled). '
                               'Set >= total trade count to audit all of them (slow/costly at full scale).')
+    manifest_group = parser.add_mutually_exclusive_group()
+    manifest_group.add_argument(
+        '--capture-manifest', nargs='?', const='auto', metavar='ID_OR_PATH',
+        help='Fetch live inputs, freeze them under data/backtest_manifests, then run. Omit the value for an auto id.',
+    )
+    manifest_group.add_argument(
+        '--replay-manifest', metavar='ID_OR_PATH',
+        help='Load and verify frozen inputs; makes no universe or price-history network calls.',
+    )
     args = parser.parse_args()
 
     result = run_walk_forward(
@@ -381,6 +450,7 @@ def main():
         step_days=args.step_days, top_n=args.top_n, max_hold_days=args.max_hold_days,
         investment_per_trade=args.investment_per_trade, seed=None if args.no_seed else args.seed,
         audit_fundamentals=args.audit_fundamentals, audit_sample_size=args.audit_sample_size,
+        capture_manifest_ref=args.capture_manifest, replay_manifest_ref=args.replay_manifest,
     )
 
     print_report(result)

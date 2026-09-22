@@ -25,6 +25,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+SCORE_VERSION = 'v2-sc003'
+
 
 def calculate_stop_loss(
     price_data: pd.DataFrame,
@@ -146,7 +148,7 @@ def score_buy_signal(
             'is_buy': False,
             'score': 0,
             'reason': f'Not in Phase 2 (currently Phase {phase}) - Minervini requires confirmed uptrend',
-            'details': {}
+            'details': {'score_version': SCORE_VERSION}
         }
 
     # Validate Minervini Trend Template (SEPA)
@@ -161,7 +163,10 @@ def score_buy_signal(
             'is_buy': False,
             'score': 0,
             'reason': f"Fails Minervini Trend Template ({minervini['criteria_passed']}/8 criteria passed)",
-            'details': {'minervini': minervini}
+            'details': {
+                'minervini': minervini,
+                'score_version': SCORE_VERSION
+            }
         }
 
     score = 0
@@ -187,6 +192,10 @@ def score_buy_signal(
 
         # How far above SMAs? (15 pts) - Linear from 0% to 15%+
         # Formula: min(15, (distance_50 * 0.6) + (distance_200 * 0.4))
+        distance_component_raw = (
+            (distance_50 / 15.0 * 10) +
+            (distance_200 / 20.0 * 5)
+        )
         distance_component = min(15, max(0,
             (distance_50 / 15.0 * 10) +  # 0-15% → 0-10 pts
             (distance_200 / 20.0 * 5)     # 0-20% → 0-5 pts
@@ -204,6 +213,10 @@ def score_buy_signal(
 
         # SMA slopes - are SMAs rising? (15 pts) - Linear from 0 to 0.08+
         # Formula: (slope_50/0.08 * 10) + (slope_200/0.05 * 5), capped at 15
+        slope_component_raw = (
+            (slope_50 / 0.08 * 10) +
+            (slope_200 / 0.05 * 5)
+        )
         slope_component = min(15, max(0,
             (slope_50 / 0.08 * 10) +   # 0-0.08 → 0-10 pts
             (slope_200 / 0.05 * 5)      # 0-0.05 → 0-5 pts
@@ -226,8 +239,10 @@ def score_buy_signal(
 
     # B) Breakout detection (10 points) - Enhanced with VCP
     breakout_info = detect_breakout(price_data, current_price, phase_info, vcp_data)
+    breakout_bonus = 0
     if breakout_info['is_breakout']:
         trend_score += 10
+        breakout_bonus = 10
         breakout_type = breakout_info['breakout_type']
         volume_confirmed = breakout_info.get('volume_confirmed', False)
 
@@ -238,11 +253,13 @@ def score_buy_signal(
         details['breakout'] = breakout_info
 
     # C) Over-extension check (10 points penalty)
-    if distance_50 > 30:
-        trend_score -= 10
+    # Ramp linearly from 0 at 20% to -10 at 30%, then cap the penalty. This
+    # preserves the original endpoints without score jumps near either boundary.
+    extension_penalty = -min(10, max(0, distance_50 - 20))
+    trend_score += extension_penalty
+    if distance_50 >= 30:
         reasons.append(f'⚠ Over-extended: {distance_50:.1f}% above 50 SMA')
     elif distance_50 > 20:
-        trend_score -= 5
         reasons.append(f'Moderately extended above 50 SMA')
 
     # Reweighted 40->35 pts: component_correlation_analysis.py backtest found trend_score
@@ -251,6 +268,17 @@ def score_buy_signal(
     trend_score_final = min(trend_score, 40) * (35 / 40)
     score += trend_score_final
     details['trend_score'] = round(trend_score_final, 2)
+    details['distance_component_raw'] = distance_component_raw
+    details['distance_component'] = distance_component
+    details['slope_component_raw'] = slope_component_raw
+    details['slope_component'] = slope_component
+    details['stage2_quality'] = stage2_quality
+    details['breakout_fired'] = breakout_info['is_breakout']
+    details['breakout_type'] = (
+        breakout_info.get('breakout_type') if breakout_info['is_breakout'] else None
+    )
+    details['breakout_bonus'] = breakout_bonus
+    details['extension_penalty'] = extension_penalty
 
     # ========================================================================
     # 2. FUNDAMENTALS (40 points) - EQUAL WEIGHT REVENUE & EPS
@@ -259,8 +287,13 @@ def score_buy_signal(
     # Inventory: 10 pts (demand indicator)
     # ========================================================================
     fundamental_score = 0
+    fundamental_revenue_score_raw = None
+    fundamental_eps_score_raw = None
+    fundamental_inventory_score_raw = None
+    fundamental_margin_placeholder_raw = None
 
     if fundamentals:
+        revenue_penalty = 0
         # A) Growth trends (30 points total) - EQUAL WEIGHT
         # Revenue and EPS are equally important (15 pts each)
 
@@ -301,6 +334,7 @@ def score_buy_signal(
                 # Add strong penalty if latest quarter is declining >2%
                 if q1_growth < -2:
                     fundamental_score -= 15  # Penalty for recent decline
+                    revenue_penalty = -15
                     reasons.append(f'🔴 Revenue: Recent decline {q1_growth:.1f}% QoQ (3Q avg: {avg_qoq_growth:.1f}%, PENALTY)')
                 # Color-code based on average and show progression
                 elif avg_qoq_growth >= 5:
@@ -375,6 +409,11 @@ def score_buy_signal(
         # TODO: Add when margin data available
         fundamental_score += 10  # Placeholder - assume neutral
 
+        fundamental_revenue_score_raw = revenue_trend_score + revenue_penalty
+        fundamental_eps_score_raw = eps_score
+        fundamental_inventory_score_raw = inventory_score
+        fundamental_margin_placeholder_raw = 10
+
     else:
         # No fundamentals available - neutral score
         fundamental_score = 20  # Half of 40
@@ -383,14 +422,21 @@ def score_buy_signal(
     # Reweighted 40->35 pts: this backtest couldn't validate fundamental_score at all
     # (requires real point-in-time quarterly data, harder to get without look-ahead than
     # truncating price history) — modest reduction reflects "untested," not "disproven."
-    fundamental_score_final = fundamental_score * (35 / 40)
+    fundamental_score_final = min(fundamental_score, 40) * (35 / 40)
     details['fundamental_score'] = round(fundamental_score_final, 2)
+    details['fundamentals_branch'] = 'real_data' if fundamentals else 'flat_neutral'
+    details['fundamentals_missing'] = fundamentals is None
+    details['fundamental_revenue_score_raw'] = fundamental_revenue_score_raw
+    details['fundamental_eps_score_raw'] = fundamental_eps_score_raw
+    details['fundamental_inventory_score_raw'] = fundamental_inventory_score_raw
+    details['fundamental_margin_placeholder_raw'] = fundamental_margin_placeholder_raw
     score += fundamental_score_final
 
     # ========================================================================
     # 3. VOLUME BEHAVIOR (10 points) - DIRECTIONAL CONTEXT MATTERS!
     # ========================================================================
     volume_score = 0
+    vol_ratio = None
 
     if 'Volume' in price_data.columns and len(price_data) >= 30:
         # Look at last 5 days to understand volume context
@@ -447,6 +493,8 @@ def score_buy_signal(
     # only 2 windows of evidence, but this is the weakest-performing component tested.
     volume_score_final = volume_score * 0.5
     details['volume_score'] = round(volume_score_final, 2)
+    details['volume_score_raw'] = volume_score
+    details['vol_ratio'] = vol_ratio
     score += volume_score_final
 
     # ========================================================================
@@ -489,6 +537,7 @@ def score_buy_signal(
 
     score += rs_score
     details['rs_score'] = round(rs_score, 2)
+    details['rs_score_raw'] = rs_score
 
     # ========================================================================
     # 5. STOP LOSS CALCULATION (not scored, but critical for risk mgmt)
@@ -559,6 +608,7 @@ def score_buy_signal(
     rr_score_final = rr_score * (10 / 15)
     score += rr_score_final
     details['rr_score'] = round(rr_score_final, 2)
+    details['rr_score_raw'] = rr_score
 
     # ========================================================================
     # 7. ENTRY QUALITY (5 points) - Minervini Pivot Point Methodology
@@ -642,6 +692,10 @@ def score_buy_signal(
     entry_score_final = entry_score * 5
     score += entry_score_final
     details['entry_score'] = round(entry_score_final, 2)
+    details['entry_high_proximity_score_raw'] = high_proximity_score
+    details['entry_high_proximity_score_scaled'] = high_proximity_score * 5
+    details['entry_sma_score_raw'] = sma_score
+    details['entry_sma_score_scaled'] = sma_score * 5
 
     # ========================================================================
     # 8. VCP PATTERN BONUS (5 points) - Minervini's VCP Methodology
@@ -686,6 +740,7 @@ def score_buy_signal(
 
     score += vcp_bonus
     details['vcp_bonus'] = round(vcp_bonus, 2)
+    details['vcp_bonus_raw'] = vcp_bonus
 
     # Final score (out of 125: 35 technical + 35 fundamental + 25 entry + 10 R/R + 10 RS + 5 volume + 5 VCP)
     final_score = max(0, min(score, 125))
@@ -695,6 +750,7 @@ def score_buy_signal(
 
     # Add Minervini template details
     details['minervini_template'] = minervini
+    details['score_version'] = SCORE_VERSION
 
     return {
         'ticker': ticker,

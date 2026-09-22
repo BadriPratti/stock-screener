@@ -30,6 +30,16 @@ OPTIONS = {
         'flask', 'jinja2', 'werkzeug', 'click', 'itsdangerous', 'markupsafe', 'blinker',
         'webview', 'objc', 'Cocoa', 'WebKit', 'Quartz', 'Security', 'UniformTypeIdentifiers',
     ],
+    # py2app's dependency walker only bundles what it can see used at build
+    # time. `zoneinfo` is stdlib but wasn't referenced anywhere when this app
+    # was first packaged; dashboard.py picked up `from src.screening import
+    # pick_history`/`market_motion` afterwards, both of which import it, and
+    # a build made before that addition fails at launch with
+    # "ModuleNotFoundError: No module named 'zoneinfo'" even though it's a
+    # standard-library module, because the frozen stdlib zip just doesn't
+    # have it. Listed explicitly so a rebuild always includes it regardless
+    # of what dashboard.py's dependency graph looks like at build time.
+    'includes': ['zoneinfo'],
 }
 
 setup(

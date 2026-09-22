@@ -53,3 +53,9 @@ data/*
 !data/catalyst_sentiment/**
 !data/congress_trades/
 !data/congress_trades/**
+!data/pick_history/
+!data/pick_history/**
+data/pick_history/**/.*.tmp
+!data/market_motion/
+!data/market_motion/**
+data/market_motion/**/.*.tmp

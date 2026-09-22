@@ -22,7 +22,7 @@ import logging
 import os
 import random
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from src.data.universe_fetcher import USStockUniverseFetcher
@@ -63,7 +63,141 @@ def _atomic_write_json(path, data):
     os.replace(tmp_path, path)
 
 
-def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, output_dir="./data/daily_scans"):
+def resolve_output_policy(run_kind, test_mode, record_market_motion=False):
+    """Return output gates for a scan invocation without causing side effects."""
+    if run_kind == 'midday-sample':
+        return {
+            'write_canonical_latest': False,
+            'record_history': False,
+            'record_market_motion': False,
+        }
+    if run_kind == 'daily-full':
+        return {
+            'write_canonical_latest': True,
+            'record_history': not test_mode,
+            'record_market_motion': not test_mode,
+        }
+    if run_kind == 'local':
+        return {
+            'write_canonical_latest': True,
+            'record_history': False,
+            'record_market_motion': bool(record_market_motion) and not test_mode,
+        }
+    raise ValueError(f"Unknown run kind: {run_kind}")
+
+
+def record_pick_history(*, shortlist, top20, scope, source):
+    """Record the canonical scan ledger without making it a publishing dependency."""
+    try:
+        from src.screening import pick_history
+
+        return pick_history.record_scan(
+            shortlist=shortlist,
+            top20=top20,
+            scope=scope,
+            source=source,
+        )
+    except Exception as exc:
+        logger.error("Pick history ledger write failed: %s", exc)
+        print(f"::warning title=pick-history::ledger write failed: {exc}")
+        return None
+
+
+def build_market_motion_points(buy_signals, analyses, scored_signals, tracked):
+    """Build one outcome per current buy or previously tracked ticker."""
+    from src.screening import market_motion
+
+    points = [
+        market_motion.normalize_buy_signal(signal, rank=rank)
+        for rank, signal in enumerate(buy_signals, 1)
+    ]
+    buy_tickers = {
+        market_motion.normalise_ticker(signal.get('ticker'))
+        for signal in buy_signals
+    }
+    analyses_by_ticker = {
+        market_motion.normalise_ticker(analysis.get('ticker')): analysis
+        for analysis in analyses
+        if market_motion.normalise_ticker(analysis.get('ticker'))
+    }
+    scored_by_ticker = {
+        market_motion.normalise_ticker(ticker): signal
+        for ticker, signal in scored_signals.items()
+        if market_motion.normalise_ticker(ticker)
+    }
+
+    for ticker in sorted(market_motion.normalise_ticker(value) for value in tracked):
+        if not ticker or ticker in buy_tickers:
+            continue
+        analysis = analyses_by_ticker.get(ticker)
+        phase = (analysis.get('phase_info') or {}).get('phase') if analysis else None
+        if ticker in scored_by_ticker:
+            points.append(market_motion.outcome_point(
+                ticker, signal=scored_by_ticker[ticker], phase=phase,
+            ))
+        elif analysis is not None:
+            points.append(market_motion.outcome_point(ticker, phase=phase))
+        else:
+            points.append(market_motion.outcome_point(ticker, error='not_analyzed'))
+    return market_motion.dedupe_points(points)
+
+
+def record_market_motion(*, buy_signals, analyses, scored_signals, tickers,
+                         total_analyzed, spy_data, should_generate_buys,
+                         source, provenance, root=None, generated_at=None):
+    """Record a complete market-motion frame without blocking scan delivery."""
+    if not isinstance(total_analyzed, (int, float)) or total_analyzed <= 0:
+        reason = "scan analyzed no stocks"
+        logger.warning("Market motion frame skipped: %s", reason)
+        print(f"::warning title=market-motion::frame skipped: {reason}")
+        return None
+    try:
+        if spy_data is None or getattr(spy_data, 'empty', False) or len(spy_data) == 0:
+            reason = "SPY data is missing or empty"
+            logger.warning("Market motion frame skipped: %s", reason)
+            print(f"::warning title=market-motion::frame skipped: {reason}")
+            return None
+
+        from src.screening import market_motion
+
+        frames, warnings = market_motion.load_frames(root=root)
+        for warning in warnings:
+            logger.warning("Market motion history: %s", warning)
+        points = build_market_motion_points(
+            buy_signals,
+            analyses,
+            scored_signals,
+            market_motion.tracked_tickers(frames),
+        )
+        timestamp = generated_at or datetime.now(timezone.utc)
+        frame = market_motion.build_frame(
+            run_kind=market_motion.RUN_KIND_DAILY_FULL,
+            generated_at=timestamp,
+            session_date=market_motion.session_date_from_bar(spy_data.index[-1]),
+            points=points,
+            scope={
+                'mode': 'full_universe',
+                'requested': len(tickers),
+                'analyzed': total_analyzed,
+                'completed': True,
+            },
+            coverage={'kind': market_motion.COVERAGE_COMPLETE},
+            regime={
+                'should_generate_buys': should_generate_buys,
+                'source_run_id': None,
+            },
+            provenance=provenance,
+            source=source,
+        )
+        return market_motion.write_frame(frame, root=root)
+    except Exception as exc:
+        logger.error("Market motion frame write failed: %s", exc)
+        print(f"::warning title=market-motion::frame write failed: {exc}")
+        return None
+
+
+def save_report(results, buy_signals, sell_signals, spy_analysis, breadth,
+                output_dir="./data/daily_scans", write_latest=True, run_kind='local'):
     """Save comprehensive report."""
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
@@ -75,6 +209,7 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
     output.append("OPTIMIZED FULL MARKET SCAN - ALL US STOCKS")
     output.append(f"Scan Date: {date_str}")
     output.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    output.append(f"Run Kind: {run_kind}")
     output.append("="*80)
     output.append("")
 
@@ -133,6 +268,8 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
             output.append(f"\n{'#'*80}")
             output.append(f"{score_emoji} BUY #{i}: {signal['ticker']} | Score: {signal['score']}/125")
             output.append(f"{'#'*80}")
+            if signal.get('current_price') is not None:
+                output.append(f"Current Price: ${signal['current_price']:.2f}")
             output.append(f"Phase: {signal['phase']}")
 
             # Entry quality with emoji
@@ -254,6 +391,8 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
             output.append(f"\n{'#'*80}")
             output.append(f"{score_emoji} SELL #{i}: {signal['ticker']} | Score: {signal['score']}/110")
             output.append(f"{'#'*80}")
+            if signal.get('current_price') is not None:
+                output.append(f"Current Price: ${signal['current_price']:.2f}")
             output.append(f"Phase: {signal['phase']} | {severity_emoji} Severity: {severity.upper()}")
             if signal.get('breakdown_level'):
                 output.append(f"Breakdown: ${signal['breakdown_level']:.2f}")
@@ -298,9 +437,10 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
     with open(filepath, 'w') as f:
         f.write(report_text)
 
-    latest_path = Path(output_dir) / "latest_optimized_scan.txt"
-    with open(latest_path, 'w') as f:
-        f.write(report_text)
+    if write_latest:
+        latest_path = Path(output_dir) / "latest_optimized_scan.txt"
+        with open(latest_path, 'w') as f:
+            f.write(report_text)
 
     logger.info(f"Report saved: {filepath}")
     print(report_text)
@@ -308,7 +448,7 @@ def save_report(results, buy_signals, sell_signals, spy_analysis, breadth, outpu
     return filepath
 
 
-def main():
+def build_arg_parser():
     parser = argparse.ArgumentParser(description='Optimized Full Market Scanner')
     parser.add_argument('--workers', type=int, default=3, help='Parallel workers (default: 3)')
     parser.add_argument('--delay', type=float, default=0.5, help='Delay per worker (default: 0.5s)')
@@ -321,11 +461,34 @@ def main():
     parser.add_argument('--min-volume', type=int, default=100000, help='Min volume')
     parser.add_argument('--use-fmp', action='store_true', help='Use FMP for enhanced fundamentals on buy signals')
     parser.add_argument('--git-storage', action='store_true', help='Use Git-based storage for fundamentals (recommended)')
+    parser.add_argument('--run-kind', choices=('daily-full', 'midday-sample', 'local'), default='local',
+                        help='Scan output scope (default: local)')
+    parser.add_argument('--record-market-motion', action='store_true',
+                        help='Record a full-universe market-motion frame')
     parser.add_argument('--enable-llm-agents', action='store_true',
                          help='Run the Fundamentals Auditor + Catalyst Sentiment agents (Claude API calls) '
                               'on the Top 20 shortlist. Needs ANTHROPIC_API_KEY set; no-ops with a warning otherwise.')
+    return parser
+
+
+def main():
+    parser = build_arg_parser()
 
     args = parser.parse_args()
+    output_policy = resolve_output_policy(
+        args.run_kind, args.test_mode, args.record_market_motion,
+    )
+    logger.info(
+        "Run kind %s: canonical latest outputs=%s, pick history ledger=%s",
+        args.run_kind,
+        'write' if output_policy['write_canonical_latest'] else 'skip',
+        'write' if output_policy['record_history'] else 'skip',
+    )
+    if args.run_kind == 'daily-full' and args.test_mode:
+        logger.warning(
+            "daily-full was requested with --test-mode; pick history will not be recorded "
+            "because a sample is not a canonical full-universe session."
+        )
 
     # Presets
     if args.conservative:
@@ -412,6 +575,7 @@ def main():
 
         # Buy signals
         buy_signals = []
+        scored_non_buys = {}
         if signal_rec['should_generate_buys']:
             for analysis in results['analyses']:
                 if analysis['phase_info']['phase'] in [1, 2]:
@@ -425,6 +589,7 @@ def main():
                         vcp_data=analysis.get('vcp_data')  # Added VCP data
                     )
                     if signal['is_buy']:
+                        signal['current_price'] = analysis['current_price']
                         # Use FMP for enhanced snapshot if requested and available
                         signal['fundamental_snapshot'] = fundamentals_fetcher.create_snapshot(
                             analysis['ticker'],
@@ -432,6 +597,8 @@ def main():
                             use_fmp=args.use_fmp
                         )
                         buy_signals.append(signal)
+                    else:
+                        scored_non_buys[analysis['ticker']] = signal
 
         buy_signals = sorted(buy_signals, key=lambda x: x['score'], reverse=True)
 
@@ -449,6 +616,7 @@ def main():
                         fundamentals=analysis.get('quarterly_data')  # Pass raw quarterly data, not analyzed
                     )
                     if signal['is_sell']:
+                        signal['current_price'] = analysis['current_price']
                         # Add fundamental snapshot
                         signal['fundamental_snapshot'] = fundamentals_fetcher.create_snapshot(
                             analysis['ticker'],
@@ -518,24 +686,25 @@ def main():
         # qualified buy pool, with "why is this moving" links
         top20 = []
         top20_path = Path("./data/daily_scans/top20_latest.json")
-        top20_path.parent.mkdir(parents=True, exist_ok=True)
         if buy_signals:
             logger.info("Building Top 20 shortlist...")
             top20 = build_top20(buy_signals, reddit_mentions, insider_signals)
-        # Always write top20_latest.json, even when empty — otherwise a scan
-        # that finds zero buy signals leaves a stale prior day's Top 20 in
-        # place with no indication it's stale (the dashboard's Market/
-        # Shortlist views read this file directly and would show yesterday's
-        # picks as if they were fresh).
+        # For runs allowed to publish canonical latest outputs, write
+        # top20_latest.json even when empty — otherwise a scan that finds zero
+        # buy signals leaves a stale prior day's Top 20 in place with no
+        # indication it's stale (the dashboard's Market/Shortlist views read
+        # this file directly and would show yesterday's picks as if fresh).
         # sanitize_nan: this feeds the dashboard's Market/Shortlist views
         # directly — a stray NaN in a technical score would otherwise
         # serialize as an invalid JSON token the browser can't parse.
-        _atomic_write_json(top20_path, {
-            'generated': datetime.now().isoformat(),
-            'result': 'success' if top20 else 'no_candidates',
-            'top20': top20,
-        })
-        logger.info(f"Top 20 saved: {top20_path} ({len(top20)} tickers)")
+        if output_policy['write_canonical_latest']:
+            top20_path.parent.mkdir(parents=True, exist_ok=True)
+            _atomic_write_json(top20_path, {
+                'generated': datetime.now().isoformat(),
+                'result': 'success' if top20 else 'no_candidates',
+                'top20': top20,
+            })
+            logger.info(f"Top 20 saved: {top20_path} ({len(top20)} tickers)")
 
         # LLM agents (Fundamentals Auditor, Catalyst Sentiment) + free Congress Trades
         # lookup — opt-in since the first two are real Claude API calls per ticker.
@@ -570,17 +739,18 @@ def main():
             # Persist alongside top20_latest.json so the local GUI dashboard can
             # show the actual filtered Top 5 (today this only reaches the user
             # via email otherwise).
-            shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
-            shortlist_path.parent.mkdir(parents=True, exist_ok=True)
-            _atomic_write_json(shortlist_path, {
-                'generated': datetime.now().isoformat(),
-                'result': 'success',
-                'shortlist': shortlist,
-                'fundamentals_audits': fundamentals_audits,
-                'catalyst_sentiments': catalyst_sentiments,
-                'congress_signals': congress_signals,
-            })
-            logger.info(f"Shortlist saved: {shortlist_path}")
+            if output_policy['write_canonical_latest']:
+                shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
+                shortlist_path.parent.mkdir(parents=True, exist_ok=True)
+                _atomic_write_json(shortlist_path, {
+                    'generated': datetime.now().isoformat(),
+                    'result': 'success',
+                    'shortlist': shortlist,
+                    'fundamentals_audits': fundamentals_audits,
+                    'catalyst_sentiments': catalyst_sentiments,
+                    'congress_signals': congress_signals,
+                })
+                logger.info(f"Shortlist saved: {shortlist_path}")
         elif args.enable_llm_agents:
             # Same staleness issue as top20_latest.json above: a daily run
             # that explicitly asked for a shortlist but found zero buy
@@ -589,20 +759,59 @@ def main():
             # without --enable-llm-agents (e.g. the midday scan) correctly
             # leaves the once-a-day shortlist file untouched.
             logger.info("LLM agents skipped: no Top 20 shortlist was built this run.")
-            shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
-            shortlist_path.parent.mkdir(parents=True, exist_ok=True)
-            _atomic_write_json(shortlist_path, {
-                'generated': datetime.now().isoformat(),
-                'result': 'no_candidates',
-                'shortlist': [],
-                'fundamentals_audits': {},
-                'catalyst_sentiments': {},
-                'congress_signals': {},
-            })
-            logger.info(f"Shortlist cleared (no candidates today): {shortlist_path}")
+            if output_policy['write_canonical_latest']:
+                shortlist_path = Path("./data/daily_scans/shortlist_latest.json")
+                shortlist_path.parent.mkdir(parents=True, exist_ok=True)
+                _atomic_write_json(shortlist_path, {
+                    'generated': datetime.now().isoformat(),
+                    'result': 'no_candidates',
+                    'shortlist': [],
+                    'fundamentals_audits': {},
+                    'catalyst_sentiments': {},
+                    'congress_signals': {},
+                })
+                logger.info(f"Shortlist cleared (no candidates today): {shortlist_path}")
 
         # Report
-        save_report(results, buy_signals, sell_signals, spy_analysis, breadth)
+        save_report(
+            results, buy_signals, sell_signals, spy_analysis, breadth,
+            write_latest=output_policy['write_canonical_latest'], run_kind=args.run_kind,
+        )
+
+        # Record only after all primary latest/report outputs have been published.
+        # A ledger failure is intentionally auxiliary and cannot block email delivery.
+        source = {
+            key: value for key, value in {
+                'git_sha': os.environ.get('GITHUB_SHA'),
+                'github_run_id': os.environ.get('GITHUB_RUN_ID'),
+                'workflow': os.environ.get('GITHUB_WORKFLOW'),
+            }.items() if value
+        }
+        if output_policy['record_history']:
+            total_universe = results.get('total_processed')
+            record_pick_history(
+                shortlist=shortlist if args.enable_llm_agents else None,
+                top20=top20,
+                scope={
+                    'total_universe': total_universe if isinstance(total_universe, int) else None,
+                    'analyzed': results.get('total_analyzed'),
+                    'completed': True,
+                },
+                source=source,
+            )
+
+        if output_policy['record_market_motion']:
+            record_market_motion(
+                buy_signals=buy_signals,
+                analyses=results['analyses'],
+                scored_signals=scored_non_buys,
+                tickers=tickers,
+                total_analyzed=results.get('total_analyzed'),
+                spy_data=processor.spy_data,
+                should_generate_buys=signal_rec['should_generate_buys'],
+                source=source,
+                provenance='live' if args.run_kind == 'daily-full' else 'local',
+            )
 
         # Email notification (no-ops with a logged warning if EMAIL_* env vars aren't set)
         from src.notifications.email_notifier import EmailNotifier

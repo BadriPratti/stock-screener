@@ -18,6 +18,13 @@ on:
         type: boolean
         default: false
 
+# Serializes this workflow with ITSELF only. A group shared with the midday
+# workflow would let a midday run cancel a pending daily run (GitHub keeps one
+# pending run per group), and losing the daily scan is the worst outcome here.
+concurrency:
+  group: screening-daily
+  cancel-in-progress: false
+
 jobs:
   screen-stocks:
     runs-on: ubuntu-latest
@@ -108,7 +115,7 @@ jobs:
           # pool, then filters/ranks that pool down to a Top 5 shortlist in the
           # email. Fundamentals Auditor/Catalyst Sentiment no-op with a logged
           # warning if ANTHROPIC_API_KEY isn't set as a repo secret.
-          python run_optimized_scan.py --conservative --git-storage --enable-llm-agents
+          python run_optimized_scan.py --conservative --git-storage --enable-llm-agents --run-kind daily-full
 
       - name: Show fundamental refresh stats
         if: always()
@@ -139,6 +146,20 @@ jobs:
           PYTHON_SCRIPT
           else
             echo "No metadata file found"
+          fi
+
+      - name: Stage pick history
+        continue-on-error: true
+        run: |
+          if [ -d data/pick_history ]; then
+            git add data/pick_history/ || echo "::warning title=pick-history::could not stage data/pick_history (is it gitignored?) - today's ledger snapshot will not be committed"
+          fi
+
+      - name: Stage market motion
+        continue-on-error: true
+        run: |
+          if [ -d data/market_motion ]; then
+            git add data/market_motion/ || echo "::warning title=market-motion::could not stage data/market_motion - today's frame will not be committed"
           fi
 
       - name: Commit updated fundamental cache
@@ -175,10 +196,7 @@ jobs:
 
       - name: Push changes
         if: steps.commit.outputs.has_changes == 'true'
-        uses: ad-m/github-push-action@v0.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+        run: bash scripts/ci_push_with_rebase.sh "${{ github.ref_name }}"
 
       - name: Upload screening results
         if: always()
@@ -187,6 +205,8 @@ jobs:
           name: screening-results-${{ steps.date.outputs.date }}
           path: |
             data/daily_scans/
+            data/pick_history/
+            data/market_motion/
             data/logs/
           if-no-files-found: warn  # Don't fail if no files found
           retention-days: 90  # Keep screening results for 90 days
