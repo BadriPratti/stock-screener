@@ -1,0 +1,180 @@
+{
+  "generated_at": "2026-09-22T23:29:34.864900Z",
+  "lists": {
+    "shortlist": [
+      {
+        "composite_score": 128.05,
+        "passed_filters": true,
+        "rank": 1,
+        "score": 93.1,
+        "ticker": "LILA"
+      },
+      {
+        "composite_score": 120.87,
+        "passed_filters": true,
+        "rank": 2,
+        "score": 88.1,
+        "ticker": "CRM"
+      },
+      {
+        "composite_score": 119.5,
+        "passed_filters": true,
+        "rank": 3,
+        "score": 113.5,
+        "ticker": "SMTI"
+      },
+      {
+        "composite_score": 118.85,
+        "passed_filters": true,
+        "rank": 4,
+        "score": 96.6,
+        "ticker": "AAPL"
+      },
+      {
+        "composite_score": 118.71,
+        "passed_filters": true,
+        "rank": 5,
+        "score": 106.3,
+        "ticker": "CRWD"
+      }
+    ],
+    "top20": [
+      {
+        "combined_score": 122.15,
+        "rank": 1,
+        "score": 93.2,
+        "ticker": "LILAK"
+      },
+      {
+        "combined_score": 122.05,
+        "rank": 2,
+        "score": 93.1,
+        "ticker": "LILA"
+      },
+      {
+        "combined_score": 120.01,
+        "rank": 3,
+        "score": 97.8,
+        "ticker": "NVDA"
+      },
+      {
+        "combined_score": 116.87,
+        "rank": 4,
+        "score": 88.1,
+        "ticker": "CRM"
+      },
+      {
+        "combined_score": 113.5,
+        "rank": 5,
+        "score": 113.5,
+        "ticker": "SMTI"
+      },
+      {
+        "combined_score": 113.23,
+        "rank": 6,
+        "score": 106.3,
+        "ticker": "CRWD"
+      },
+      {
+        "combined_score": 112.89,
+        "rank": 7,
+        "score": 96.6,
+        "ticker": "AAPL"
+      },
+      {
+        "combined_score": 111.7,
+        "rank": 8,
+        "score": 111.7,
+        "ticker": "HALO"
+      },
+      {
+        "combined_score": 111.7,
+        "rank": 9,
+        "score": 101.3,
+        "ticker": "DELL"
+      },
+      {
+        "combined_score": 111.61,
+        "rank": 10,
+        "score": 98.4,
+        "ticker": "CAKE"
+      },
+      {
+        "combined_score": 111.49,
+        "rank": 11,
+        "score": 106.0,
+        "ticker": "DE"
+      },
+      {
+        "combined_score": 110.16,
+        "rank": 12,
+        "score": 95.7,
+        "ticker": "GTLB"
+      },
+      {
+        "combined_score": 109.5,
+        "rank": 13,
+        "score": 109.5,
+        "ticker": "PGEN"
+      },
+      {
+        "combined_score": 108.27,
+        "rank": 14,
+        "score": 104.8,
+        "ticker": "AVT"
+      },
+      {
+        "combined_score": 108.1,
+        "rank": 15,
+        "score": 92.2,
+        "ticker": "SATA"
+      },
+      {
+        "combined_score": 107.91,
+        "rank": 16,
+        "score": 92.0,
+        "ticker": "DVN"
+      },
+      {
+        "combined_score": 107.8,
+        "rank": 17,
+        "score": 107.8,
+        "ticker": "MFG"
+      },
+      {
+        "combined_score": 107.77,
+        "rank": 18,
+        "score": 104.3,
+        "ticker": "MPC"
+      },
+      {
+        "combined_score": 107.17,
+        "rank": 19,
+        "score": 103.7,
+        "ticker": "ACA"
+      },
+      {
+        "combined_score": 106.98,
+        "rank": 20,
+        "score": 92.3,
+        "ticker": "SAIC"
+      }
+    ]
+  },
+  "provenance": "live",
+  "result": "success",
+  "run_kind": "daily_full",
+  "schema_version": 1,
+  "scope": {
+    "analyzed": 1992,
+    "completed": true,
+    "total_universe": 3770
+  },
+  "scoring_version": "v1",
+  "session_date": "2026-09-22",
+  "source": {
+    "git_sha": "a6792a1461e471cdc1b766e3973a5e1c109eeaf7",
+    "github_run_id": "35788128014",
+    "workflow": "Daily Stock Screening (Git-Based Storage)"
+  }
+}

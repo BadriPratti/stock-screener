@@ -1,128 +1,68 @@
 {
-  "generated": "2026-09-22T17:36:46.896419",
+  "generated": "2026-09-22T23:29:34.850976",
   "result": "success",
   "shortlist": [
     {
-      "ticker": "NVDA",
-      "is_buy": "True",
-      "score": 97.9,
-      "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
-      "breakout_price": null,
-      "stop_loss": 212.76,
-      "risk_reward_ratio": 4.25,
-      "entry_quality": "Good",
-      "reasons": [
-        "Good Stage 2: 6.5% above 50 SMA",
-        "SMAs rising strongly (50:0.199, 200:0.093)",
-        "\ud83d\udfe2 Revenue: 3Q avg 20.4% QoQ (22.0% \u2192 19.5% \u2192 19.8%)",
-        "\ud83d\udfe2 EPS: +214% YoY (strong earnings)",
-        "\u26a0 Inventory building rapidly (20.5% QoQ - demand concern)",
-        "Volume pattern neutral (ratio 1.00)",
-        "\u2713 Strong RS: 0.104 (outperforming SPY)",
-        "\ud83d\udfe2 Excellent R/R: 4.3:1 ($68.67 upside, $16.15 risk)",
-        "\ud83d\udfe2 At 52W high: 3.0% from high (pivot zone)"
-      ],
-      "details": {
-        "trend_score": 20.28,
-        "fundamental_score": 35.0,
-        "avg_vol_up": 106486709.0,
-        "avg_vol_down": 0,
-        "volume_score": 2.5,
-        "rs_slope": 0.104,
-        "rs_score": 6.73,
-        "stop_loss": 212.7609,
-        "risk_reward_ratio": 4.25,
-        "risk_amount": 16.15,
-        "reward_amount": 68.67,
-        "reward_target": 297.59,
-        "rr_score": 10.0,
-        "entry_score": 23.37,
-        "vcp_bonus": 0,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 8,
-          "criteria_total": 8,
-          "template_score": 100,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 39.7,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 3.0,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - NVDA\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +85.2%, QoQ: +19.8%)\n  QoQ Trend (last 4Q): +6.1% \u2192 +22.0% \u2192 +19.5% \u2192 +19.8%\n\u2713 EPS: STRONG growth (YoY: +214.5%, QoQ: +35.8%)\n  QoQ Trend (last 4Q): +42.1% \u2192 +20.4% \u2192 +35.4% \u2192 +35.8%\n\u2022 Margins: Flat (74.9%, -0.1pp QoQ)\n\u26a0 Inventory: BUILDING (+20.5% QoQ, ratio: 0.32)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: inventory building rapidly\n",
-      "reddit_mentions_24h": 101,
-      "insider_buy_value_90d": 0,
-      "combined_score": 121.02,
-      "why_links": [
-        {
-          "label": "Reddit (101 mentions/24h)",
-          "title": null,
-          "url": "https://apewisdom.io/stocks/NVDA/"
-        },
-        {
-          "label": "News",
-          "title": "Robotaxi competition revs up, weighing on Uber and Lyft stocks",
-          "url": "https://finance.yahoo.com/video/robotaxi-competition-revs-weighing-uber-141500621.html"
-        },
-        {
-          "label": "News",
-          "title": "Could Nvidia's prospects in China shift following the Trump and Xi's meeting?",
-          "url": "https://finance.yahoo.com/video/could-nvidias-prospects-china-shift-183517435.html"
-        }
-      ],
-      "drop_reasons": [],
-      "passed_filters": true,
-      "catalyst_score": 0,
-      "congress_score": 1.32,
-      "composite_score": 124.98
-    },
-    {
       "ticker": "LILA",
       "is_buy": "True",
-      "score": 92.6,
+      "score": 93.1,
       "phase": 2,
       "minervini_template_score": 100,
       "minervini_criteria_passed": 8,
       "breakout_price": null,
       "stop_loss": 8.25,
-      "risk_reward_ratio": 5.76,
+      "risk_reward_ratio": 4.87,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 4.6% above 50 SMA",
+        "Good Stage 2: 5.6% above 50 SMA",
         "SMAs rising strongly (50:0.438, 200:0.251)",
         "\ud83d\udd34 Revenue: 3Q avg -0.2% QoQ (4.2% \u2192 -6.6% \u2192 1.8%)",
         "\ud83d\udfe2 EPS: +94% YoY (strong earnings)",
-        "\u26a0 Volume heavier on down days (ratio 0.78 - distribution)",
-        "Positive RS: 0.100",
-        "\ud83d\udfe2 Outstanding R/R: 5.8:1 ($2.61 upside, $0.45 risk)",
-        "\ud83d\udfe2 At 52W high: 3.1% from high (pivot zone)"
+        "\u26a0 Volume heavier on down days (ratio 0.71 - distribution)",
+        "\u2713 Strong RS: 0.113 (outperforming SPY)",
+        "\ud83d\udfe2 Excellent R/R: 4.9:1 ($2.64 upside, $0.54 risk)",
+        "\ud83d\udfe2 At 52W high: 2.1% from high (pivot zone)"
       ],
       "details": {
-        "trend_score": 24.42,
+        "trend_score": 25.33,
+        "distance_component_raw": 13.949166666666667,
+        "distance_component": 13.949166666666667,
+        "slope_component_raw": 79.88,
+        "slope_component": 15,
+        "stage2_quality": 28.949166666666667,
+        "breakout_fired": false,
+        "breakout_type": null,
+        "breakout_bonus": 0,
+        "extension_penalty": 0,
         "fundamental_score": 26.25,
-        "avg_vol_up": 371200.0,
-        "avg_vol_down": 474334.0,
-        "volume_score": 1.41,
-        "rs_slope": 0.1,
-        "rs_score": 6.66,
+        "fundamentals_branch": "real_data",
+        "fundamentals_missing": false,
+        "fundamental_revenue_score_raw": 0,
+        "fundamental_eps_score_raw": 15,
+        "fundamental_inventory_score_raw": 5,
+        "fundamental_margin_placeholder_raw": 10,
+        "avg_vol_up": 407444.0,
+        "avg_vol_down": 574133.0,
+        "volume_score": 1.05,
+        "volume_score_raw": 2.096687761263353,
+        "vol_ratio": 0.7096687761263353,
+        "rs_slope": 0.113,
+        "rs_score": 6.88,
+        "rs_score_raw": 6.883567151501045,
         "stop_loss": 8.248549962043763,
-        "risk_reward_ratio": 5.76,
-        "risk_amount": 0.45,
-        "reward_amount": 2.61,
-        "reward_target": 11.31,
+        "risk_reward_ratio": 4.87,
+        "risk_amount": 0.54,
+        "reward_amount": 2.64,
+        "reward_target": 11.43,
         "rr_score": 10.0,
-        "entry_score": 23.86,
+        "rr_score_raw": 15,
+        "entry_score": 23.6,
+        "entry_high_proximity_score_raw": 3,
+        "entry_high_proximity_score_scaled": 15,
+        "entry_sma_score_raw": 1.7205,
+        "entry_sma_score_scaled": 8.6025,
         "vcp_bonus": 0,
+        "vcp_bonus_raw": 0,
         "minervini_template": {
           "passes_template": true,
           "criteria_passed": 8,
@@ -135,17 +75,19 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 90.0,
+            "distance_from_52w_low_pct": 91.9,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 3.1,
+            "distance_from_52w_high_pct": 2.1,
             "confirmed_stage_2": true
           }
-        }
+        },
+        "score_version": "v2-sc003"
       },
+      "current_price": 8.789999961853027,
       "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LILA\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.5%, QoQ: +1.8%)\n  QoQ Trend (last 4Q): +2.4% \u2192 +4.2% \u2192 -6.6% \u2192 +1.8%\n\u2713 EPS: STRONG growth (YoY: +93.9%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): +100.9% \u2192 N/A \u2192 N/A \u2192 -18.2%\n\u2022 Margins: Stable/slightly up (68.4%, +1.0pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
       "reddit_mentions_24h": 0,
       "insider_buy_value_90d": 15523799.599499999,
-      "combined_score": 121.55,
+      "combined_score": 122.05,
       "why_links": [
         {
           "label": "Insider Buy ($15,523,800/90d)",
@@ -165,214 +107,194 @@
       ],
       "drop_reasons": [],
       "passed_filters": true,
-      "catalyst_score": 0,
+      "catalyst_score": 3,
       "congress_score": 0.0,
-      "composite_score": 121.55
+      "composite_score": 128.05
     },
     {
-      "ticker": "LILAK",
+      "ticker": "CRM",
       "is_buy": "True",
-      "score": 92.6,
+      "score": 88.1,
       "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
+      "minervini_template_score": 87,
+      "minervini_criteria_passed": 7,
       "breakout_price": null,
-      "stop_loss": 8.19,
-      "risk_reward_ratio": 6.28,
-      "entry_quality": "Good",
-      "reasons": [
-        "Good Stage 2: 4.2% above 50 SMA",
-        "SMAs rising strongly (50:0.442, 200:0.241)",
-        "\ud83d\udd34 Revenue: 3Q avg -0.2% QoQ (4.2% \u2192 -6.6% \u2192 1.8%)",
-        "\ud83d\udfe2 EPS: +94% YoY (strong earnings)",
-        "\u26a0 Volume heavier on down days (ratio 0.73 - distribution)",
-        "\u2713 Strong RS: 0.151 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 6.3:1 ($2.58 upside, $0.41 risk)",
-        "\ud83d\udfe2 At 52W high: 3.5% from high (pivot zone)"
-      ],
-      "details": {
-        "trend_score": 23.72,
-        "fundamental_score": 26.25,
-        "avg_vol_up": 1210200.0,
-        "avg_vol_down": 1648484.0,
-        "volume_score": 1.17,
-        "rs_slope": 0.151,
-        "rs_score": 7.52,
-        "stop_loss": 8.188849544525146,
-        "risk_reward_ratio": 6.28,
-        "risk_amount": 0.41,
-        "reward_amount": 2.58,
-        "reward_target": 11.18,
-        "rr_score": 10.0,
-        "entry_score": 23.95,
-        "vcp_bonus": 0,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 8,
-          "criteria_total": 8,
-          "template_score": 100,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 86.6,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 3.5,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LILAK\n============================================================\n\u2022 Revenue: Modest growth (YoY: +1.5%, QoQ: +1.8%)\n  QoQ Trend (last 4Q): +2.4% \u2192 +4.2% \u2192 -6.6% \u2192 +1.8%\n\u2713 EPS: STRONG growth (YoY: +93.9%, QoQ: -18.2%)\n  QoQ Trend (last 4Q): +100.9% \u2192 N/A \u2192 N/A \u2192 -18.2%\n\u2022 Margins: Stable/slightly up (68.4%, +1.0pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 15523799.599499999,
-      "combined_score": 121.55,
-      "why_links": [
-        {
-          "label": "Insider Buy ($15,523,800/90d)",
-          "title": "DE ANGOITIA ALFONSO (Insider) bought 313104 shares @ $20.95",
-          "url": "https://www.sec.gov/Archives/edgar/data/1712184/000172451926000010/0001724519-26-000010-index.htm"
-        },
-        {
-          "label": "News",
-          "title": "Media Tycoon John Malone Buys 37,082 More Liberty Latin America Preference Shares. What Does This Tell Investors?",
-          "url": "https://www.fool.com/coverage/filings/2026/09/19/media-tycoon-john-malone-buys-37-082-more-liberty-latin-america-preference-shares-what-does-this-tell-investors/"
-        },
-        {
-          "label": "News",
-          "title": "Liberty Latin America Director De Angoitia Buys $10 Million Shares. What Does This Large Purchase Mean for Investors?",
-          "url": "https://www.fool.com/coverage/filings/2026/09/08/liberty-latin-america-director-de-angoitia-buys-usd10-million-shares-what-does-this-large-purchase-mean-for-investors/"
-        }
-      ],
-      "drop_reasons": [],
-      "passed_filters": true,
-      "catalyst_score": 0,
-      "congress_score": 0.0,
-      "composite_score": 121.55
-    },
-    {
-      "ticker": "VLO",
-      "is_buy": "True",
-      "score": 114.8,
-      "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
-      "breakout_price": null,
-      "stop_loss": 373.15,
-      "risk_reward_ratio": 6.66,
-      "entry_quality": "Good",
-      "reasons": [
-        "Strong Stage 2: 14.4% above 50 SMA",
-        "SMAs rising strongly (50:0.771, 200:0.432)",
-        "\ud83d\udfe2 Revenue: 3Q avg 12.8% QoQ (-5.6% \u2192 6.6% \u2192 37.4%)",
-        "\ud83d\udfe2 EPS: +454% YoY (strong earnings)",
-        "Inventory neutral (0.9% QoQ)",
-        "\u2713 Volume heavier on up days (5.4M vs 3.7M, ratio 1.44)",
-        "\u2713 Strong RS: 0.928 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 6.7:1 ($117.23 upside, $17.61 risk)",
-        "\ud83d\udfe2 Near 52W high: 6.7% from high"
-      ],
-      "details": {
-        "trend_score": 26.25,
-        "fundamental_score": 43.35,
-        "avg_vol_up": 5357767.0,
-        "avg_vol_down": 3712116.0,
-        "volume_score": 4.72,
-        "rs_slope": 0.928,
-        "rs_score": 10,
-        "stop_loss": 373.15484878540036,
-        "risk_reward_ratio": 6.66,
-        "risk_amount": 17.61,
-        "reward_amount": 117.23,
-        "reward_target": 507.99,
-        "rr_score": 10.0,
-        "entry_score": 20.52,
-        "vcp_bonus": 0,
-        "minervini_template": {
-          "passes_template": true,
-          "criteria_passed": 8,
-          "criteria_total": 8,
-          "template_score": 100,
-          "criteria_details": {
-            "price_above_150_200": "True",
-            "sma_150_above_200": "True",
-            "sma_200_rising": "True",
-            "sma_50_above_150": "True",
-            "price_above_50": "True",
-            "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 157.0,
-            "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 6.7,
-            "confirmed_stage_2": true
-          }
-        }
-      },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - VLO\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +48.8%, QoQ: +37.4%)\n  QoQ Trend (last 4Q): +7.6% \u2192 -5.6% \u2192 +6.6% \u2192 +37.4%\n\u2713 EPS: STRONG growth (YoY: +453.5%, QoQ: +199.1%)\n  QoQ Trend (last 4Q): +54.8% \u2192 +5.7% \u2192 +13.1% \u2192 +199.1%\n\u2713 Margins: EXPANDING (12.3%, +6.0pp QoQ)\n\u2022 Inventory: Slight increase (+0.9% QoQ, ratio: 0.17)\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
-      "reddit_mentions_24h": 1,
-      "insider_buy_value_90d": 0,
-      "combined_score": 118.27,
-      "why_links": [
-        {
-          "label": "Reddit (1 mentions/24h)",
-          "title": null,
-          "url": "https://apewisdom.io/stocks/VLO/"
-        },
-        {
-          "label": "News",
-          "title": "Netflix downgraded, SanDisk initiated: Wall Street's top analyst calls",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/netflix-downgraded-sandisk-initiated-wall-134453114.html"
-        },
-        {
-          "label": "News",
-          "title": "The Zacks Analyst Blog Highlights Valero, Phillips 66 and Eni",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-valero-130100771.html"
-        }
-      ],
-      "drop_reasons": [],
-      "passed_filters": true,
-      "catalyst_score": 0,
-      "congress_score": 0.0,
-      "composite_score": 118.27
-    },
-    {
-      "ticker": "LTC",
-      "is_buy": "True",
-      "score": 102.9,
-      "phase": 2,
-      "minervini_template_score": 100,
-      "minervini_criteria_passed": 8,
-      "breakout_price": null,
-      "stop_loss": 41.0,
+      "stop_loss": 226.28,
       "risk_reward_ratio": 10.0,
       "entry_quality": "Good",
       "reasons": [
-        "Good Stage 2: 3.3% above 50 SMA",
-        "SMAs rising strongly (50:0.212, 200:0.104)",
-        "\ud83d\udfe2 Revenue: 3Q avg 12.8% QoQ (21.7% \u2192 13.2% \u2192 3.6%)",
-        "\ud83d\udfe2 EPS: +75% YoY (strong earnings)",
-        "\u26a0 Volume heavier on down days (ratio 0.82 - distribution)",
-        "\u2713 Strong RS: 0.372 (outperforming SPY)",
-        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($12.68 upside, $1.27 risk)",
-        "\ud83d\udfe2 At 52W high: 3.1% from high (pivot zone)"
+        "Strong Stage 2: 11.5% above 50 SMA",
+        "SMAs rising strongly (50:0.951, 200:0.045)",
+        "\ud83d\udfe1 Revenue: 3Q avg 2.9% QoQ (0.2% \u2192 9.2% \u2192 -0.6%)",
+        "\ud83d\udfe2 EPS: +52% YoY (strong earnings)",
+        "\u26a0 Volume heavier on down days (ratio 0.00 - distribution)",
+        "\u2713 Strong RS: 0.163 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($69.98 upside, $7.00 risk)",
+        "\ud83d\udfe2 Near 52W high: 12.9% from high"
       ],
       "details": {
-        "trend_score": 17.78,
-        "fundamental_score": 39.38,
-        "avg_vol_up": 584050.0,
-        "avg_vol_down": 714749.0,
-        "volume_score": 1.59,
-        "rs_slope": 0.372,
-        "rs_score": 10,
-        "stop_loss": 41.00190044403076,
+        "trend_score": 23.37,
+        "distance_component_raw": 11.71,
+        "distance_component": 11.71,
+        "slope_component_raw": 123.39,
+        "slope_component": 15,
+        "stage2_quality": 26.71,
+        "breakout_fired": false,
+        "breakout_type": null,
+        "breakout_bonus": 0,
+        "extension_penalty": 0,
+        "fundamental_score": 28.82,
+        "fundamentals_branch": "real_data",
+        "fundamentals_missing": false,
+        "fundamental_revenue_score_raw": 4.399894996847887,
+        "fundamental_eps_score_raw": 13.537735849056602,
+        "fundamental_inventory_score_raw": 5,
+        "fundamental_margin_placeholder_raw": 10,
+        "avg_vol_up": 0,
+        "avg_vol_down": 14093487.0,
+        "volume_score": 0.0,
+        "volume_score_raw": 0,
+        "vol_ratio": 0.0,
+        "rs_slope": 0.163,
+        "rs_score": 7.72,
+        "rs_score_raw": 7.724004206384423,
+        "stop_loss": 226.28159881591796,
         "risk_reward_ratio": 10.0,
-        "risk_amount": 1.27,
-        "reward_amount": 12.68,
-        "reward_target": 54.95,
+        "risk_amount": 7.0,
+        "reward_amount": 69.98,
+        "reward_target": 303.26,
         "rr_score": 10.0,
-        "entry_score": 24.17,
+        "rr_score_raw": 15,
+        "entry_score": 18.19,
+        "entry_high_proximity_score_raw": 2.210978296463662,
+        "entry_high_proximity_score_scaled": 11.05489148231831,
+        "entry_sma_score_raw": 1.427,
+        "entry_sma_score_scaled": 7.135,
         "vcp_bonus": 0,
+        "vcp_bonus_raw": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 7,
+          "criteria_total": 8,
+          "template_score": 87,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "False",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 59.7,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 12.9,
+            "confirmed_stage_2": true
+          }
+        },
+        "score_version": "v2-sc003"
+      },
+      "current_price": 233.27999877929688,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - CRM\n============================================================\n\u2713 Revenue: Growing well (YoY: +13.3%, QoQ: -0.6%)\n  QoQ Trend (last 4Q): +4.1% \u2192 +0.2% \u2192 +9.2% \u2192 -0.6%\n\u2713 EPS: STRONG growth (YoY: +52.2%, QoQ: +16.9%)\n  QoQ Trend (last 4Q): +23.3% \u2192 +11.7% \u2192 -5.5% \u2192 +16.9%\n\u2022 Margins: Flat (76.9%, -0.7pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 4,
+      "insider_buy_value_90d": 999450.8496,
+      "combined_score": 116.87,
+      "why_links": [
+        {
+          "label": "Insider Buy ($999,451/90d)",
+          "title": "Kirk David Blair (Insider) bought 4176 shares @ $239.33",
+          "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000212/0001108524-26-000212-index.htm"
+        },
+        {
+          "label": "Reddit (4 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/CRM/"
+        },
+        {
+          "label": "News",
+          "title": "$223 Billion Back To Shareholders: Inside The MSFT Machine",
+          "url": "https://www.trefis.com/articles/616107/223-billion-back-to-shareholders-inside-the-msft-machine/2026-09-22"
+        },
+        {
+          "label": "News",
+          "title": "How Far Could CRM Stock Swing In A Year?",
+          "url": "https://www.trefis.com/articles/616138/how-far-could-crm-stock-swing-in-a-year/2026-09-22"
+        }
+      ],
+      "drop_reasons": [],
+      "passed_filters": true,
+      "catalyst_score": 2,
+      "congress_score": 0.0,
+      "composite_score": 120.87
+    },
+    {
+      "ticker": "SMTI",
+      "is_buy": "True",
+      "score": 113.5,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": 35.17,
+      "stop_loss": 34.22,
+      "risk_reward_ratio": 10.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 8.8% above 50 SMA",
+        "SMAs rising strongly (50:0.751, 200:0.292)",
+        "\ud83d\udfe1 Base Breakout (low volume)",
+        "\ud83d\udfe1 Revenue: 3Q avg 2.5% QoQ (1.9% \u2192 4.6% \u2192 0.9%)",
+        "\ud83d\udfe2 EPS: +112% YoY (strong earnings)",
+        "\u2713 Inventory drawing (-21.0% QoQ - strong demand)",
+        "\u2713 Volume heavier on up days (0.2M vs 0.1M, ratio 1.72)",
+        "\u2713 Strong RS: 0.106 (outperforming SPY)",
+        "\ud83d\udfe2 Outstanding R/R: 10.0:1 ($10.58 upside, $1.06 risk)",
+        "\ud83d\udfe2 At 52W high: 0.1% from high (pivot zone)"
+      ],
+      "details": {
+        "breakout": {
+          "is_breakout": true,
+          "breakout_level": 35.17,
+          "breakout_type": "Base Breakout",
+          "volume_confirmed": "False",
+          "volume_ratio": 0.5
+        },
+        "trend_score": 35.0,
+        "distance_component_raw": 17.539166666666667,
+        "distance_component": 15,
+        "slope_component_raw": 123.055,
+        "slope_component": 15,
+        "stage2_quality": 30,
+        "breakout_fired": true,
+        "breakout_type": "Base Breakout",
+        "breakout_bonus": 10,
+        "extension_penalty": 0,
+        "fundamental_score": 33.89,
+        "fundamentals_branch": "real_data",
+        "fundamentals_missing": false,
+        "fundamental_revenue_score_raw": 3.7335541921174897,
+        "fundamental_eps_score_raw": 15,
+        "fundamental_inventory_score_raw": 10,
+        "fundamental_margin_placeholder_raw": 10,
+        "avg_vol_up": 156601.0,
+        "avg_vol_down": 91150.0,
+        "volume_score": 5.0,
+        "volume_score_raw": 10,
+        "vol_ratio": 1.7180544889376486,
+        "rs_slope": 0.106,
+        "rs_score": 6.76,
+        "rs_score_raw": 6.760173355717311,
+        "stop_loss": 34.221598815917964,
+        "risk_reward_ratio": 10.0,
+        "risk_amount": 1.06,
+        "reward_amount": 10.58,
+        "reward_target": 45.86,
+        "rr_score": 10.0,
+        "rr_score_raw": 15,
+        "entry_score": 22.8,
+        "entry_high_proximity_score_raw": 3,
+        "entry_high_proximity_score_scaled": 15,
+        "entry_sma_score_raw": 1.56,
+        "entry_sma_score_scaled": 7.800000000000001,
+        "vcp_bonus": 0,
+        "vcp_bonus_raw": 0,
         "minervini_template": {
           "passes_template": true,
           "criteria_passed": 8,
@@ -385,46 +307,1747 @@
             "sma_50_above_150": "True",
             "price_above_50": "True",
             "price_30pct_above_52w_low": "True",
-            "distance_from_52w_low_pct": 32.3,
+            "distance_from_52w_low_pct": 119.8,
             "price_near_52w_high": "True",
-            "distance_from_52w_high_pct": 3.1,
+            "distance_from_52w_high_pct": 0.1,
             "confirmed_stage_2": true
           }
-        }
+        },
+        "score_version": "v2-sc003"
       },
-      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - LTC\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +64.1%, QoQ: +3.6%)\n  QoQ Trend (last 4Q): +15.0% \u2192 +21.7% \u2192 +13.2% \u2192 +3.6%\n\u2713 EPS: STRONG growth (YoY: +75.0%, QoQ: +16.7%)\n  QoQ Trend (last 4Q): -237.5% \u2192 +579.5% \u2192 -77.3% \u2192 +16.7%\n\u2717 Margins: CONTRACTING (55.2%, -3.6pp QoQ)\n\nOverall Assessment:\n\u26a0 Some concerns: margins contracting\n",
+      "current_price": 35.279998779296875,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - SMTI\n============================================================\n\u2713 Revenue: Growing well (YoY: +18.6%, QoQ: +0.9%)\n  QoQ Trend (last 4Q): +10.2% \u2192 +1.9% \u2192 +4.6% \u2192 +0.9%\n\u2713 EPS: STRONG growth (YoY: +112.2%, QoQ: +126.3%)\n  QoQ Trend (last 4Q): +43.9% \u2192 -1430.4% \u2192 +94.6% \u2192 +126.3%\n\u2022 Margins: Flat (93.1%, -0.1pp QoQ)\n\u2713 Inventory: DRAWING (-21.0% QoQ, ratio: 0.11)\n  \u2192 Strong demand signal\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
       "reddit_mentions_24h": 0,
-      "insider_buy_value_90d": 153200.0,
-      "combined_score": 118.01,
+      "insider_buy_value_90d": 0,
+      "combined_score": 113.5,
       "why_links": [
         {
-          "label": "Insider Buy ($153,200/90d)",
-          "title": "Gruber David L (Director) bought 3500 shares @ $38.30",
-          "url": "https://www.sec.gov/Archives/edgar/data/887905/000198705826000003/0001987058-26-000003-index.htm"
+          "label": "News",
+          "title": "Sanara MedTech Inc. (SMTI) Tops Q2 Earnings Estimates",
+          "url": "https://finance.yahoo.com/healthcare/articles/sanara-medtech-inc-smti-tops-231001580.html"
         },
         {
           "label": "News",
-          "title": "LTC Properties Inc's Dividend Analysis",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/ltc-properties-incs-dividend-analysis-110402799.html"
-        },
-        {
-          "label": "News",
-          "title": "5 Top Monthly-Pay REITs for Lifetime, Inflation-Resistant Income",
-          "url": "https://247wallst.com/investing/2026/09/14/5-top-monthly-pay-reits-for-lifetime-inflation-resistant-income/"
+          "title": "MiMedx (MDXG) Q2 2026 Earnings Call Transcript",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/08/07/mimedx-mdxg-q2-2026-earnings-call-transcript/"
         }
       ],
       "drop_reasons": [],
       "passed_filters": true,
-      "catalyst_score": 0,
+      "catalyst_score": 3,
       "congress_score": 0.0,
-      "composite_score": 118.01
+      "composite_score": 119.5
+    },
+    {
+      "ticker": "AAPL",
+      "is_buy": "True",
+      "score": 96.6,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": 338.98,
+      "stop_loss": 317.75,
+      "risk_reward_ratio": 4.63,
+      "entry_quality": "Good",
+      "reasons": [
+        "Good Stage 2: 5.8% above 50 SMA",
+        "SMAs rising strongly (50:0.185, 200:0.095)",
+        "\ud83d\udfe1 Pivot Breakout (low volume)",
+        "\ud83d\udfe2 Revenue: 3Q avg 5.3% QoQ (40.3% \u2192 -22.7% \u2192 -1.6%)",
+        "\ud83d\udfe2 EPS: +29% YoY",
+        "\u26a0 Inventory building rapidly (64.4% QoQ - demand concern)",
+        "\u26a0 Volume heavier on down days (ratio 0.43 - distribution)",
+        "\u2713 Strong RS: 0.448 (outperforming SPY)",
+        "\ud83d\udfe2 Excellent R/R: 4.6:1 ($101.93 upside, $22.00 risk)",
+        "\ud83d\udfe2 At 52W high: 1.6% from high (pivot zone)",
+        "\ud83d\udfe1 Partial pattern: 2 contractions: 4.7% \u2192 12.9%"
+      ],
+      "details": {
+        "breakout": {
+          "is_breakout": true,
+          "breakout_level": 338.98,
+          "breakout_type": "Pivot Breakout",
+          "volume_confirmed": "False",
+          "volume_ratio": 0.95
+        },
+        "trend_score": 29.35,
+        "distance_component_raw": 8.5475,
+        "distance_component": 8.5475,
+        "slope_component_raw": 32.665,
+        "slope_component": 15,
+        "stage2_quality": 23.5475,
+        "breakout_fired": true,
+        "breakout_type": "Pivot Breakout",
+        "breakout_bonus": 10,
+        "extension_penalty": 0,
+        "fundamental_score": 23.76,
+        "fundamentals_branch": "real_data",
+        "fundamentals_missing": false,
+        "fundamental_revenue_score_raw": 8.024599533620266,
+        "fundamental_eps_score_raw": 9.124203821656051,
+        "fundamental_inventory_score_raw": 0,
+        "fundamental_margin_placeholder_raw": 10,
+        "avg_vol_up": 37069944.0,
+        "avg_vol_down": 86588200.0,
+        "volume_score": 0.0,
+        "volume_score_raw": 0,
+        "vol_ratio": 0.42811773717434937,
+        "rs_slope": 0.448,
+        "rs_score": 10,
+        "rs_score_raw": 10,
+        "stop_loss": 317.75039999999996,
+        "risk_reward_ratio": 4.63,
+        "risk_amount": 22.0,
+        "reward_amount": 101.93,
+        "reward_target": 441.68,
+        "rr_score": 10.0,
+        "rr_score_raw": 15,
+        "entry_score": 23.54,
+        "entry_high_proximity_score_raw": 3,
+        "entry_high_proximity_score_scaled": 15,
+        "entry_sma_score_raw": 1.7075,
+        "entry_sma_score_scaled": 8.5375,
+        "vcp_data": {
+          "quality": 45.4,
+          "contractions": 2,
+          "pattern": "2 contractions: 4.7% \u2192 12.9%"
+        },
+        "vcp_bonus": 0,
+        "vcp_bonus_raw": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 40.0,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 1.6,
+            "confirmed_stage_2": true
+          }
+        },
+        "score_version": "v2-sc003"
+      },
+      "current_price": 339.75,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - AAPL\n============================================================\n\u2713 Revenue: Growing well (YoY: +16.4%, QoQ: -1.6%)\n  QoQ Trend (last 4Q): +9.0% \u2192 +40.3% \u2192 -22.7% \u2192 -1.6%\n\u2713 EPS: STRONG growth (YoY: +28.7%, QoQ: +0.5%)\n  QoQ Trend (last 4Q): +17.8% \u2192 +53.5% \u2192 -29.2% \u2192 +0.5%\n\u2022 Margins: Stable/slightly up (50.1%, +0.8pp QoQ)\n\u26a0 Inventory: BUILDING (+64.4% QoQ, ratio: 0.10)\n  \u2192 Potential demand weakness or production ramp\n  Note: Detailed breakdown (raw/WIP/finished) not available via API\n\nOverall Assessment:\n\u26a0 Some concerns: inventory building rapidly\n",
+      "reddit_mentions_24h": 25,
+      "insider_buy_value_90d": 0,
+      "combined_score": 112.89,
+      "why_links": [
+        {
+          "label": "Reddit (25 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/AAPL/"
+        },
+        {
+          "label": "News",
+          "title": "Meta\u2019s new AI agent just got me $250 in flight credits",
+          "url": "https://finance.yahoo.com/video/meta-ai-agent-just-got-214556275.html"
+        },
+        {
+          "label": "News",
+          "title": "Why Muse just added billions to Meta's market cap",
+          "url": "https://finance.yahoo.com/markets/stocks/article/why-muse-just-added-billions-to-metas-market-cap-094853229.html"
+        }
+      ],
+      "drop_reasons": [],
+      "passed_filters": true,
+      "catalyst_score": 1,
+      "congress_score": 1.32,
+      "composite_score": 118.85
+    },
+    {
+      "ticker": "CRWD",
+      "is_buy": "True",
+      "score": 106.3,
+      "phase": 2,
+      "minervini_template_score": 100,
+      "minervini_criteria_passed": 8,
+      "breakout_price": 249.35,
+      "stop_loss": 225.05,
+      "risk_reward_ratio": 3.0,
+      "entry_quality": "Good",
+      "reasons": [
+        "Strong Stage 2: 19.3% above 50 SMA",
+        "SMAs rising strongly (50:0.387, 200:0.319)",
+        "\ud83d\udfe1 Base Breakout (low volume)",
+        "\ud83d\udfe2 Revenue: 3Q avg 5.8% QoQ (5.6% \u2192 5.8% \u2192 6.1%)",
+        "\ud83d\udfe2 EPS: +125% YoY (strong earnings)",
+        "\u26a0 Volume heavier on down days (ratio 0.74 - distribution)",
+        "\u2713 Strong RS: 1.127 (outperforming SPY)",
+        "\ud83d\udfe2 Good R/R: 3.0:1 ($75.02 upside)",
+        "\ud83d\udfe2 At 52W high: 0.3% from high (pivot zone)"
+      ],
+      "details": {
+        "breakout": {
+          "is_breakout": true,
+          "breakout_level": 249.35,
+          "breakout_type": "Base Breakout",
+          "volume_confirmed": "False",
+          "volume_ratio": 0.69
+        },
+        "trend_score": 35.0,
+        "distance_component_raw": 30.072499999999998,
+        "distance_component": 15,
+        "slope_component_raw": 80.285,
+        "slope_component": 15,
+        "stage2_quality": 30,
+        "breakout_fired": true,
+        "breakout_type": "Base Breakout",
+        "breakout_bonus": 10,
+        "extension_penalty": 0,
+        "fundamental_score": 33.9,
+        "fundamentals_branch": "real_data",
+        "fundamentals_missing": false,
+        "fundamental_revenue_score_raw": 8.748302036089822,
+        "fundamental_eps_score_raw": 15,
+        "fundamental_inventory_score_raw": 5,
+        "fundamental_margin_placeholder_raw": 10,
+        "avg_vol_up": 11538038.0,
+        "avg_vol_down": 15613800.0,
+        "volume_score": 1.19,
+        "volume_score_raw": 2.389641428309146,
+        "vol_ratio": 0.7389641428309146,
+        "rs_slope": 1.127,
+        "rs_score": 10,
+        "rs_score_raw": 10,
+        "stop_loss": 225.0539978027344,
+        "risk_reward_ratio": 3.0,
+        "risk_amount": 25.01,
+        "reward_amount": 75.02,
+        "reward_target": 325.08,
+        "rr_score": 6.0,
+        "rr_score_raw": 9.000000000000014,
+        "entry_score": 20.17,
+        "entry_high_proximity_score_raw": 3,
+        "entry_high_proximity_score_scaled": 15,
+        "entry_sma_score_raw": 1.034,
+        "entry_sma_score_scaled": 5.17,
+        "vcp_bonus": 0,
+        "vcp_bonus_raw": 0,
+        "minervini_template": {
+          "passes_template": true,
+          "criteria_passed": 8,
+          "criteria_total": 8,
+          "template_score": 100,
+          "criteria_details": {
+            "price_above_150_200": "True",
+            "sma_150_above_200": "True",
+            "sma_200_rising": "True",
+            "sma_50_above_150": "True",
+            "price_above_50": "True",
+            "price_30pct_above_52w_low": "True",
+            "distance_from_52w_low_pct": 191.9,
+            "price_near_52w_high": "True",
+            "distance_from_52w_high_pct": 0.3,
+            "confirmed_stage_2": true
+          }
+        },
+        "score_version": "v2-sc003"
+      },
+      "current_price": 250.05999755859375,
+      "fundamental_snapshot": "\n============================================================\nFUNDAMENTAL SNAPSHOT - CRWD\n============================================================\n\u2713 Revenue: ACCELERATING strongly (YoY: +25.6%, QoQ: +6.1%)\n  QoQ Trend (last 4Q): +5.9% \u2192 +5.6% \u2192 +5.8% \u2192 +6.1%\n\u2713 EPS: STRONG growth (YoY: +125.0%, QoQ: -26.7%)\n  QoQ Trend (last 4Q): +29.5% \u2192 +54.8% \u2192 +207.1% \u2192 -26.7%\n\u2022 Margins: Flat (75.3%, -0.8pp QoQ)\n\nOverall Assessment:\n\u2713 Fundamentals SUPPORT technical breakout\n",
+      "reddit_mentions_24h": 3,
+      "insider_buy_value_90d": 0,
+      "combined_score": 113.23,
+      "why_links": [
+        {
+          "label": "Reddit (3 mentions/24h)",
+          "title": null,
+          "url": "https://apewisdom.io/stocks/CRWD/"
+        },
+        {
+          "label": "News",
+          "title": "These are the cybersecurity stocks built for the AI era",
+          "url": "https://finance.yahoo.com/video/cybersecurity-stocks-built-ai-era-120000421.html"
+        },
+        {
+          "label": "News",
+          "title": "CrowdStrike Slips as Palo Alto Automates Vulnerability Hunting",
+          "url": "https://finance.yahoo.com/technology/articles/crowdstrike-slips-palo-alto-automates-183040319.html"
+        }
+      ],
+      "drop_reasons": [],
+      "passed_filters": true,
+      "catalyst_score": 1,
+      "congress_score": 1.16,
+      "composite_score": 118.71
     }
   ],
-  "fundamentals_audits": {},
-  "catalyst_sentiments": {},
-  "congress_signals": {
+  "fundamentals_audits": {
+    "LILAK": {
+      "red_flags": [
+        {
+          "flag": "Consolidated revenue growth is entirely FX-driven; organic revenue declined",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "Revenue $1,102.6M vs $1,086.7M (+$15.9M) consists of +$21.4M FX and -$5.5M organic for Q2; six-month: +$15.2M total = +$31.6M FX and -$16.4M organic. Liberty Costa Rica's $17.2M Q2 revenue increase is +$16.8M FX vs only +$0.4M organic (six-month organic -$6.6M)."
+        },
+        {
+          "flag": "Margin compression in three of five reportable segments",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Adjusted OIBDA Margin (Q2 2026 vs 2025): Liberty Caribbean 45.5% vs 47.4%, C&W Panama 37.0% vs 38.7%, Liberty Networks 51.2% vs 53.1% (six-month 48.4% vs 52.8%)."
+        },
+        {
+          "flag": "Liberty Networks revenue growth driven by low-margin, project-based subsea cable construction contract",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Wholesale revenue +15% 'primarily due to ... higher project-related revenue, primarily associated with a contract to construct and deploy a subsea cable system,' while project-related and other direct costs rose organically $3.0M (Q) and $11.8M (6M) 'associated with achieving certain milestones related to a subsea cable project.' Segment margin fell 440bps for the six months."
+        },
+        {
+          "flag": "One-time revenue catch-up flatters Liberty Caribbean B2B revenue and masks hurricane drag",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "'a benefit of $2 million and $8 million for the three and six months ended June 30, 2026 ... of revenue recorded for services rendered to customers immediately following Hurricane Melissa that was believed to be uncertain of collection in 2025'; without it B2B revenue would have declined."
+        },
+        {
+          "flag": "Disclosed material weaknesses in internal control over financial reporting, including at acquired entities",
+          "category": "earnings_quality",
+          "severity": "major",
+          "evidence": "Forward-looking factors reference 'internal control over financial reporting and remediation of material weaknesses,' 'the effect of any of the identified material weaknesses in our internal control over financial reporting,' and 'problems we may discover post-closing with the ... internal controls and financial reporting process, of businesses we acquire, such as with respect to the AT&T Acquired Entities.'"
+        },
+        {
+          "flag": "Restructuring charges are recurring, not one-time, yet are excluded from Adjusted OIBDA",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Restructuring charges of $10.3M (Q2 2026) and $15.9M (6M 2026) after $17.5M and $26.7M in the prior-year periods, 'primarily include employee severance and termination costs related to reorganization activities at C&W Panama and Liberty Puerto Rico'; all excluded from Adjusted OIBDA along with SBC of $44.4M YTD."
+        },
+        {
+          "flag": "Headline operating income swing is driven by absence of prior-year impairment rather than operations",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Operating income of $181.2M vs a $(333.0)M loss; $501.3M of the $514.2M improvement comes from lower 'Impairment, restructuring and other operating items, net' \u2014 the prior year included a '$494 million [impairment] on spectrum license intangible assets in Liberty Puerto Rico.'"
+        },
+        {
+          "flag": "Liberty Puerto Rico continues to shrink with customers downgrading",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "LPR revenue -5% Q2 ($287.5M vs $301.3M); residential mobile -7%; fixed ARPU declines 'mainly due to customers moving to lower tier products'; mobile declines from 'lower average numbers of prepaid mobile subscribers and lower prepaid and postpaid mobile ARPU.' The segment's margin improvement is cost-cut driven, not revenue driven."
+        },
+        {
+          "flag": "Hurricane Melissa impacts continuing with no committed recovery timeline",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "'we expect to incur lower revenue, for our Liberty Caribbean segment, during the remainder of 2026 relative to 2025 pre-hurricane period ... there can be no guarantee as to the cadence of future reconnections or the pace and magnitude of future revenue recovery.' ~38,000 RGUs still offline; $8M/$20M revenue and $8M/$22M Adjusted OIBDA hit; $12M/$25M incremental capex."
+        },
+        {
+          "flag": "Rising interest expense on higher debt balances and rates",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "'Our interest expense increased $3 million and $8 million ... primarily attributable to increases in our average debt balances and weighted-average interest rates,' alongside risk factors on 'our ability to obtain additional financing and generate sufficient cash to meet our debt obligations' and 'compliance with debt, financial and other covenants.'"
+        },
+        {
+          "flag": "Cost relief partly from bad debt provision adjustments rather than operating efficiency",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "Liberty Caribbean: 'lower bad debt expense, including the impact of certain provision adjustments for B2B and government customers'; Liberty Puerto Rico: decreases 'primarily due to (i) lower bad debt expense.'"
+        },
+        {
+          "flag": "Government/enterprise contract exposure pressuring Panama B2B",
+          "category": "customer_concentration",
+          "severity": "minor",
+          "evidence": "C&W Panama B2B revenue -4% six-month, 'mainly due to a decline in rates during the first quarter of 2026 related to data services provided to government-related agencies'; Liberty Caribbean mobile other revenue declines 'resulting from the termination of a contract.'"
+        },
+        {
+          "flag": "Pending financing transaction litigation",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'the outcome of any pending or threatened litigation, such as the financing transaction litigation described in Part II, Item 1. Legal Proceedings.'"
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Liberty Puerto Rico margin expansion from cost discipline",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "LPR Adjusted OIBDA Margin 32.2% vs 28.9% (Q2) and 31.5% vs 28.1% (6M); segment Adjusted OIBDA rose to $92.7M from $87.0M despite lower revenue, with direct costs down $13.1M and other operating costs down $6.1M."
+        },
+        {
+          "flag": "Meaningful corporate overhead reduction",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Corporate other operating costs $27.9M vs $40.2M (Q2) and $77.5M vs $97.4M (6M); corporate Adjusted OIBDA drag narrowed from $(29.2)M to $(17.1)M in the quarter."
+        },
+        {
+          "flag": "Liberty Networks delivering double-digit top-line growth including enterprise services",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Liberty Networks revenue +14% to $130.4M with enterprise revenue +10% 'primarily attributable to growth in B2B managed services'; segment Adjusted OIBDA up to $66.7M from $60.8M."
+        },
+        {
+          "flag": "Sequential hurricane recovery progress",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'approximately 38,000 RGUs ... continue to be offline ... an improvement of approximately 48,000 RGUs as compared to the approximately 86,000 RGUs that were not receiving service as of December 31, 2025.'"
+        },
+        {
+          "flag": "Postpaid mobile growth and convergence traction across markets",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "Liberty Caribbean residential mobile service revenue +8%; Panama and Costa Rica both cite 'higher average numbers of postpaid mobile subscribers, mostly due to growth from fixed-mobile convergence efforts.'"
+        },
+        {
+          "flag": "Favorable swing in derivatives and FX transaction results",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "Realized/unrealized gains on derivatives of $12.7M vs $(24.7)M loss; foreign currency transaction gains of $9.1M (Q) and $55.0M (6M) vs losses of $(33.0)M and $(37.2)M."
+        }
+      ],
+      "overall_assessment": "red_flags_outweigh",
+      "summary": "Headline improvement is largely optical: the swing to $181M operating income comes from lapping a $494M Puerto Rico spectrum impairment, and the modest revenue increase is entirely FX \u2014 organic revenue fell in both the quarter and six months, with declines in Caribbean, Panama and Puerto Rico. Adjusted OIBDA growth is driven by cost cuts, FX and an $8M YTD collectibility catch-up, while margins compressed in three of five segments and Liberty Networks' growth leans on a low-margin subsea construction project. Add disclosed material weaknesses in internal controls, recurring 'restructuring' charges excluded from Adjusted OIBDA, ongoing Hurricane Melissa revenue/capex drag with explicitly hedged recovery language, and rising interest expense on higher debt, and the qualitative picture is weaker than the headline numbers suggest."
+    },
     "LILA": {
-      "ticker": "LILA",
+      "red_flags": [
+        {
+          "flag": "Organic revenue declining across the group; consolidated growth only from FX",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Total revenue $1,102.6M vs $1,086.7M (+$15.9M), but composed of +$21.4M FX and -$5.5M organic; six-month: +$15.2M total = +$31.6M FX and -$16.4M organic."
+        },
+        {
+          "flag": "Adjusted OIBDA growth largely FX-driven rather than operational",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Consolidated Adjusted OIBDA rose from $415.0M to $436.0M; non-organic FX contributed $7.8M (3M) and $10.8M (6M) of the $21.0M/$19.5M increases, with Liberty Costa Rica FX alone +$6.3M/+$8.8M."
+        },
+        {
+          "flag": "Adjusted OIBDA margin compression in four of five segments",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Liberty Caribbean 45.5% vs 47.4%; C&W Panama 37.0% vs 38.7%; Liberty Networks 51.2% vs 53.1% (6M: 48.4% vs 52.8%); only Liberty Puerto Rico and Costa Rica improved."
+        },
+        {
+          "flag": "Liberty Networks growth concentrated in a single subsea cable construction project with rising cost intensity",
+          "category": "customer_concentration",
+          "severity": "moderate",
+          "evidence": "Wholesale revenue increase 'primarily due to ... higher project-related revenue, primarily associated with a contract to construct and deploy a subsea cable system'; project-related direct costs at Liberty Networks rose to $21.8M from $9.2M for six months (organic +$11.8M), driving segment margin from 52.8% to 48.4%."
+        },
+        {
+          "flag": "Puerto Rico revenue still shrinking; margin gain driven by cost cuts and prior-year one-time items, not demand",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Liberty Puerto Rico revenue -$13.8M (-5%) in Q2 and -$16.0M (-3%) YTD, with lower ARPU 'mainly due to customers moving to lower tier products'; OIBDA margin improvement driven by $13.1M lower programming/direct costs and $6.1M lower other opex, including comparison against 'inventory adjustments during the second quarter of 2025'."
+        },
+        {
+          "flag": "Hurricane Melissa revenue and OIBDA drag expected to continue with no guidance on recovery pace",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "'we ... expect to incur lower revenue, for our Liberty Caribbean segment, during the remainder of 2026 relative to 2025 pre-hurricane period ... there can be no guarantee as to the cadence of future reconnections or the pace and magnitude of future revenue recovery.'"
+        },
+        {
+          "flag": "Prior-period revenue reversal recognized in current quarter flatters Caribbean B2B comparison",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "B2B 'variances ... mainly due to the net effect of (i) a benefit of $2 million and $8 million for the three and six months ended June 30, 2026 ... of revenue recorded for services rendered to customers immediately following Hurricane Melissa that was believed to be uncertain of collection in 2025'."
+        },
+        {
+          "flag": "Unremediated material weaknesses in internal control over financial reporting",
+          "category": "earnings_quality",
+          "severity": "major",
+          "evidence": "Risk factors reference 'internal control over financial reporting and remediation of material weaknesses' and 'the effect of any of the identified material weaknesses in our internal control over financial reporting'; also 'problems we may discover post-closing with the operations, including the internal controls and financial reporting process, of businesses we acquire, such as with respect to the AT&T Acquired Entities.'"
+        },
+        {
+          "flag": "Rising interest expense from higher debt balances and rates",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "'Our interest expense increased $3 million and $8 million during the three and six months ended June 30, 2026 ... primarily attributable to increases in our average debt balances and weighted-average interest rates.'"
+        },
+        {
+          "flag": "Non-operating gains inflate pretax results",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Derivative gains of $12.7M (Q2) and $5.3M (6M) vs losses prior year, plus FX transaction gains of $9.1M and $55.0M \u2014 largely 'non-cash in nature until such time as the amounts are settled.'"
+        },
+        {
+          "flag": "Restructuring charges recur across periods rather than being truly one-time",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "Restructuring charges of $10.3M/$15.9M in 2026 following $17.5M/$26.7M in 2025, 'primarily include employee severance and termination costs related to reorganization activities at C&W Panama and Liberty Puerto Rico'; all excluded from Adjusted OIBDA."
+        },
+        {
+          "flag": "Elevated hurricane-related capex pressuring free cash flow",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "'we incurred incremental property and equipment additions of approximately $12 million and $25 million as a result of Hurricane Melissa' and 'we expect to continue to incur additional property and equipment additions as we restore damaged networks.'"
+        },
+        {
+          "flag": "Subscriber base erosion and down-tiering in core fixed business",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Caribbean residential fixed subscription revenue -8% on lower average RGUs; Puerto Rico fixed ARPU decline 'mainly due to customers moving to lower tier products'; approximately 38,000 RGUs still offline."
+        },
+        {
+          "flag": "Costa Rica fixed revenue deterioration masked by currency translation",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "Costa Rica six-month revenue +$17.1M, of which FX +$23.7M and organic -$6.6M; residential fixed non-subscription revenue -39% due to 'lower CPE sales from our buy-to-own sales model.'"
+        },
+        {
+          "flag": "Pending financing transaction litigation",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'the outcome of any pending or threatened litigation, such as the financing transaction litigation described in Part II, Item 1. Legal Proceedings.'"
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Return to GAAP operating income after large prior-year spectrum impairment",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Operating income of $181.2M vs a loss of $(333.0)M; prior year included '$494 million on spectrum license intangible assets in Liberty Puerto Rico.'"
+        },
+        {
+          "flag": "Liberty Puerto Rico margin expansion driven by real cost reduction",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Adjusted OIBDA margin 32.2% vs 28.9% (6M: 31.5% vs 28.1%), with programming/direct costs down $13.1M and other operating costs down $6.1M, including 'declines in mobile network costs resulting from the termination of a mobile virtual operator contract' and lower bad debt."
+        },
+        {
+          "flag": "Corporate overhead materially reduced",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Corporate other operating costs $27.9M vs $40.2M (Q2) and $77.5M vs $97.4M (6M); Corporate Adjusted OIBDA drag narrowed from $(29.2)M to $(17.1)M."
+        },
+        {
+          "flag": "Liberty Networks delivering double-digit organic top-line growth",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Revenue $130.4M vs $114.6M (+14%), with organic +$12.0M; wholesale +15% and enterprise +10% on 'growth in B2B managed services.'"
+        },
+        {
+          "flag": "Hurricane service restoration progressing",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'approximately 38,000 RGUs ... continue to be offline ... an improvement of approximately 48,000 RGUs as compared to the approximately 86,000 RGUs that were not receiving service as of December 31, 2025.'"
+        },
+        {
+          "flag": "Successful prepaid-to-postpaid mobile mix shift and pricing power in Jamaica",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "Caribbean residential mobile service revenue +8% due to 'higher prepaid mobile ARPU, mainly resulting from price increases in Jamaica' and 'higher average numbers of postpaid mobile subscribers ... from fixed-mobile convergence efforts.'"
+        },
+        {
+          "flag": "Lower bad debt expense across multiple segments",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "Caribbean: 'lower bad debt expense, including the impact of certain provision adjustments for B2B and government customers'; Puerto Rico: 'lower bad debt expense and ... lower electricity costs.'"
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "Headline improvement is real only at the GAAP line \u2014 operating income swung positive almost entirely because last year's $494M Puerto Rico spectrum impairment did not repeat, while consolidated revenue and Adjusted OIBDA growth were driven by FX translation, not organic performance (organic revenue fell $5.5M in Q2 and $16.4M YTD). Four of five segments saw Adjusted OIBDA margin compression, the Caribbean business is still bleeding RGUs from Hurricane Melissa with management explicitly declining to guide on recovery pace, and Liberty Networks' growth leans on a single subsea cable construction contract whose costs are eroding its margin. Offsetting positives include genuine cost-driven margin expansion in Puerto Rico, a materially lighter corporate overhead, and restoration progress in Jamaica \u2014 but unremediated material weaknesses in internal controls, rising interest expense on a growing debt load, and reliance on non-cash derivative/FX gains keep the earnings-quality picture cautious."
+    },
+    "NVDA": {
+      "red_flags": [
+        {
+          "flag": "Vendor-financing and circular demand support: guarantees, credit support and capacity backstops for customers' AI buildouts",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "\"We have entered and may in the future enter into commitments, guarantees, and other commercial agreements, including long-term capacity purchase obligations, financial guarantees, and other forms of credit support and financing arrangements to support our customers' and partners' buildout of data center infrastructure.\" and \"Under the agreements, if AI clouds do not successfully sell committed capacity to third-party customers, we have agreed to purchase that capacity.\""
+        },
+        {
+          "flag": "Extended payment terms to large customers will distort operating cash flow timing",
+          "category": "cash_flow",
+          "severity": "major",
+          "evidence": "\"Financing arrangements with certain investment-grade customers, including extended payment terms under large, multi-quarter agreements, will continue to affect the timing of our operating cash flows.\" (repeated verbatim in both MD&A and risk factors)"
+        },
+        {
+          "flag": "Concentrated counterparty exposure to OpenAI via SB Energy / PORTS Technology Campus lease guarantees",
+          "category": "customer_concentration",
+          "severity": "major",
+          "evidence": "\"If OpenAI does not perform its obligations or becomes subject to an insolvency event, and a guarantee is triggered, we may assume the applicable lease... Although OpenAI has agreed to reimburse and indemnify us for certain losses, we may not recover amounts promptly or in full.\""
+        },
+        {
+          "flag": "Recurring 'one-time' China inventory/purchase-obligation charges \u2014 second occurrence in five quarters",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "\"we incurred a $4.5 billion charge in the first quarter of fiscal year 2026 associated with H20 for excess inventory and purchase obligations\" followed by \"During the first half of fiscal year 2027, we incurred a $0.4 billion charge associated with H200 for excess inventory and purchase obligations\""
+        },
+        {
+          "flag": "China data center market effectively lost; licensed H200 shipments immaterial and margin-dilutive",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "\"we were effectively foreclosed from competing in China's data center computing/compute market\"; \"Those shipments account for less than 1% of Data Center revenue in our most recent quarter\"; \"any H200s shipped under the new licensing program are subject to a 25% tariff... We have been unable to pass along any of the tariff to our customers\""
+        },
+        {
+          "flag": "Rising leverage funding an aggressive buyback program",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "\"As of July 26, 2026, we had $33.5 billion aggregate principal amount of senior notes outstanding\" plus a new June 2026 multi-tranche issuance (2028 through 2056 notes) and a \"$25.0 billion commercial paper program,\" alongside \"$39.8 billion\" of repurchases in the first half of fiscal 2027"
+        },
+        {
+          "flag": "Off-balance-sheet AI financing vehicles still at MOU stage",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "\"In August 2026, we entered into memoranda of understanding with large capital providers regarding independent financing platforms through which the providers would raise and deploy third-party capital for the buildout of AI infrastructure. These and other preliminary arrangements may not lead to definitive agreements.\""
+        },
+        {
+          "flag": "Growing hard-to-value private equity stakes tied to the same AI customer ecosystem",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "\"In the first half of fiscal year 2027, we made additional investments in publicly-held equity securities and non-marketable equity securities that are subject to these risks, which could have a material impact on the carrying value of our holdings.\" Valuations described as \"inherently complex due to the lack of readily available market data\""
+        },
+        {
+          "flag": "Escalating global antitrust exposure, including adverse preliminary Chinese finding on Mellanox conditions",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "\"On September 15, 2025, China's antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls... discriminated unfairly against customers in the China market and therefore violated the terms of China's approval of our Mellanox acquisition.\" Plus \"broad requests for information from competition regulators in the European Union, the United States, the United Kingdom, China, and South Korea\""
+        },
+        {
+          "flag": "Ongoing multi-year ERP replacement touching core financial systems",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"We are continuing a phased upgrade of our enterprise resource planning, or ERP, system to update our existing core financial systems.\""
+        },
+        {
+          "flag": "Long-dated, hard-to-cancel supply, cloud and data center lease commitments if demand disappoints",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "\"These arrangements require substantial payments over many years. If future demand, our needs or plans differ from our expectations, we may be unable to reduce these commitments.\" and \"We intend to assign certain data center leases to third parties. Delays in completing these assignments could cause us to bear the related lease costs longer than anticipated.\""
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Very large capital return signals management confidence in free cash flow",
+          "category": "cash_flow",
+          "severity": "major",
+          "evidence": "\"We repurchased 94 million and 203 million shares... for $19.7 billion and $39.8 billion during the second quarter and first half of fiscal year 2027\" and \"our Board of Directors approved an additional $80.0 billion in share repurchase authorization\""
+        },
+        {
+          "flag": "25x dividend increase",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "\"On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share.\""
+        },
+        {
+          "flag": "Clean controls and liquidity posture",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "Disclosure controls \"were effective\"; \"no changes in our internal control over financial reporting during the second quarter\"; \"$25.0 billion commercial paper program with no amounts outstanding as of July 26, 2026\""
+        },
+        {
+          "flag": "No accounting policy changes or new FX/market risk exposures",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"There has been no adoption of any new and recently issued accounting pronouncements.\" and \"there have been no material changes to the foreign exchange rate risks described as of January 25, 2026\""
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "The excerpt is dominated by risk-factor and liquidity language rather than results, and the most important disclosures point to demand-side circularity: NVIDIA is guaranteeing leases (SB Energy/OpenAI), backstopping unsold AI-cloud capacity, extending multi-quarter payment terms to large customers, and exploring off-balance-sheet financing platforms \u2014 all of which support reported revenue while pushing cash collection out and concentrating counterparty risk. China remains a structural negative, with a second 'excess inventory and purchase obligation' charge ($0.4B H200 after $4.5B H20), effective foreclosure from the China data center market, an unpassed-through 25% tariff, and an adverse preliminary Chinese antitrust finding. Offsetting this, the capital return is exceptional ($39.8B of H1 buybacks, a 25x dividend increase, $80B new authorization) and controls/accounting disclosures are clean, though rising senior note balances alongside those buybacks mean the returns are partly debt-funded."
+    },
+    "CRM": {
+      "red_flags": [
+        {
+          "flag": "Large step-up in leverage: ~$39.5B of debt principal outstanding versus $11.4B of cash and marketable securities",
+          "category": "balance_sheet",
+          "severity": "major",
+          "evidence": "Debt table totals roughly $39.5B of principal, including the $6.0B floating-rate 2026 Term Loan and the disclosure that 'In March 2026, we issued the March 2026 Notes with an aggregate principal of $25.0 billion and maturities ranging from 2028 to 2066,' against 'cash, cash equivalents and marketable securities totaling $11.4 billion' as of July 31, 2026."
+        },
+        {
+          "flag": "Earnings quality risk from a $11.3B strategic investment portfolio carrying $5.4B of cumulative unrealized gains, heavily concentrated in Anthropic",
+          "category": "earnings_quality",
+          "severity": "major",
+          "evidence": "'our strategic investment portfolio consisted of investments in over 450 companies with a combined carrying value of $11.3 billion, including the Company's investment in Anthropic PBC which represented approximately $5.1 billion'; capital invested was only $7.17 billion against $5,396 million cumulative unrealized gains, and 'We anticipate future volatility in our condensed consolidated statements of operations due to changes in market prices, observable price changes, and impairments... The resulting gains or losses could be material.' A 10% decline in the top five private holdings alone would cut carrying value by ~$641 million."
+        },
+        {
+          "flag": "Restructuring remains an ongoing, not one-time, cash cost",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "'As of July 31, 2026, we expect approximately $170 million to $190 million in future cash payments related to our restructuring initiatives, primarily related to workforce costs, such as severance payments.'"
+        },
+        {
+          "flag": "Growth increasingly dependent on serial, debt-funded M&A with explicit integration and revenue-conversion risk",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Pending Contentful (~$1.5B cash) and Intercom/'Fin' (~$3.6B cash) deals both expected to close in Q3 FY2027, on top of Informatica, for which 'the Company borrowed the full $6.0 billion available under the Informatica Credit Agreements.' Risk factors cite 'challenges converting the acquired company's revenue recognition policies and forecasting the related revenues' and 'potential failure to achieve the expected benefits on a timely basis or at all.'"
+        },
+        {
+          "flag": "Forecasting visibility degrading as mix shifts to consumption-based and AI pricing; new offerings' monetization described as unproven",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "'our transition toward more complex pricing structures, including AI-driven consumption models, may make it more difficult to optimize our pricing, predict attrition rates, and accurately forecast revenue' and 'the markets and monetization strategies for certain offerings, including Agentforce and Data 360, remain relatively new and uncertain... If customer usage for these offerings is below expected levels, we may not be able to... meet our revenue targets.'"
+        },
+        {
+          "flag": "Hedged/softened language on infrastructure investment pace",
+          "category": "guidance",
+          "severity": "minor",
+          "evidence": "'While we continue to make investments in our infrastructure service providers to provide capacity for the growth of our business, our strategy may continue to change related to these investments and we may slow the pace of our investments.'"
+        },
+        {
+          "flag": "Elevated market-risk disclosure tone versus prior periods",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'This exposure has increased due to recent financial market movements and changes to our expectations of near-term possible movements caused by the impact of the macroeconomic environment.'"
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Liquidity position improved sequentially",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "'As of July 31, 2026, we had cash, cash equivalents and marketable securities totaling $11.4 billion' versus 'At January 31, 2026, we had cash, cash equivalents and marketable securities totaling $9.6 billion.'"
+        },
+        {
+          "flag": "Revolver undrawn; conservative investment policy",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "'As of July 31, 2026, there was no outstanding borrowing amount under the Credit Facility,' and investments are 'primarily in money market funds, time deposits, corporate notes and bonds, government securities... with credit ratings of BBB or better... Our investments are made for capital preservation purposes.'"
+        },
+        {
+          "flag": "Reported growth not flattered by currency",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "'Total revenue during the three months ended July 31, 2026 were minimally impacted by fluctuations in foreign currencies... fluctuations in foreign currencies minimally impacted our current remaining performance obligation growth rate.'"
+        },
+        {
+          "flag": "Clean controls disclosure",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "Disclosure controls concluded 'effective' and 'there has not been any material change in our internal control over financial reporting during the quarter,' despite the fiscal 2026 ERP implementation."
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "The excerpt is risk-factor and market-risk heavy with little income-statement detail, but the balance sheet story is the headline: roughly $39.5B of debt principal (including a $25B March 2026 note issuance and a $6.0B floating-rate term loan) against $11.4B of cash, with another ~$5.1B of all-cash acquisitions (Contentful and Intercom) still to fund. Earnings quality warrants scrutiny given an $11.3B strategic investment portfolio sitting on $5.4B of cumulative unrealized gains and concentrated ~$5.1B in Anthropic, whose mark-to-market swings run through the P&L, plus $170-190M of still-to-be-paid 'restructuring' cash costs that look recurring rather than one-time. Offsetting positives are improved liquidity ($9.6B to $11.4B), an undrawn revolver, clean controls language, and growth that is not being flattered by FX."
+    },
+    "CRWD": {
+      "red_flags": [
+        {
+          "flag": "Earnings volatility from Falcon Funds private/marketable equity portfolio",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"valuations of non-marketable equity investments are inherently complex due to the lack of readily available market data... we may experience additional volatility to our statements of operations due to changes in market prices of our marketable equity investments, the valuation and timing of observable price changes or impairments... This volatility could be material to our results in any given quarter.\" The company invests \"through our Falcon Funds\" in early to late stage private companies, introducing non-operating, mark-to-model gains/losses into reported results.\""
+        },
+        {
+          "flag": "Broad cluster of newly adopted insider 10b5-1 selling plans across senior management and board",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "During the three months ended July 31, 2026, plans were adopted by the President (up to 241,944 shares), CFO Burt Podbere (up to 480,000 shares), Chief Accounting Officer (114,868), Chairman (120,000) and two directors (30,704 and 208,000) \u2014 six insiders adopting sale plans within a roughly three-week window (June 17 \u2013 July 6, 2026)."
+        },
+        {
+          "flag": "Heavy reliance on management estimates in revenue recognition and related accounts, with explicit restatement/standards-change language",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"Significant assumptions and estimates used in preparing our condensed consolidated financial statements include those related to revenue recognition; allowance for credit losses; ... and the provision for income taxes and related deferred taxes\" and \"we may be required to restate our published financial statements.\" This is boilerplate but is the only accounting-quality commentary in the excerpt."
+        }
+      ],
+      "green_flags": [],
+      "overall_assessment": "no_notable_flags",
+      "summary": "The excerpt provided is almost entirely boilerplate risk-factor language, Item 5 insider trading-plan disclosures, and the exhibit index \u2014 it contains essentially none of the substantive MD&A (no revenue, margin, ARR, guidance, cash flow or balance sheet discussion), so no fundamental conclusions can be drawn. The only items worth noting are the inherent earnings volatility from CrowdStrike's Falcon Funds private equity investments, which can inject non-operating mark-to-market swings into reported results, and a clustered set of six newly adopted insider 10b5-1 sale plans (including the CFO for up to 480,000 post-split shares) within a three-week window. Neither rises to a genuine fundamental red flag on this text alone; a fuller MD&A section would be required for a real audit."
+    },
+    "AAPL": {
+      "red_flags": [
+        {
+          "flag": "Record Products gross margin partly driven by non-recurring tariff refunds",
+          "category": "margin",
+          "severity": "major",
+          "evidence": "\"Products gross margin and gross margin percentage increased during the third quarter and first nine months of 2026 compared to the same periods in 2025 primarily due to a different mix of products and tariff refunds, partially offset by higher costs, including memory.\" Products GM% jumped 34.5%->40.1% YoY; refunds of tariffs previously paid (following the Feb 20, 2026 Supreme Court ruling) were \"recognized... as a reduction of products cost of sales,\" i.e., a one-time credit inflating the margin base that will not repeat."
+        },
+        {
+          "flag": "Management explicitly guides to future gross margin pressure",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "\"As a result, the Company believes, in general, gross margins will be subject to volatility and downward pressure.\" Paired with: \"The Company expects these trends to intensify, which may materially negatively impact the Company's revenue, costs, gross margin, results of operations and financial condition.\""
+        },
+        {
+          "flag": "Escalating component cost inflation (NAND/DRAM/advanced semis) with limited mitigation",
+          "category": "margin",
+          "severity": "major",
+          "evidence": "\"The Company is experiencing a period of supply constraints and increasing costs for components... including advanced semiconductors, storage (NAND) and memory (DRAM). The Company expects these trends to intensify... Actions, such as price increases... may not effectively mitigate these negative impacts, and may also reduce demand for the Company's products.\" Memory cost pressure is already cited as an offset within the current-quarter Products margin bridge."
+        },
+        {
+          "flag": "Operating expenses growing faster than revenue, led by 32% R&D increase for AI infrastructure",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "R&D $11,729M vs $8,866M (+32%), total opex +23% vs net sales +16%; R&D rose to 11% of sales from 9%. Driver: \"higher infrastructure-related costs, including investments in artificial intelligence, and headcount-related expenses.\" A new risk factor warns compute capacity may be unobtainable \"on commercially reasonable terms, or at all,\" implying a structurally higher, not one-time, cost base."
+        },
+        {
+          "flag": "Revenue growth heavily concentrated in iPhone Pro and flattered by FX",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "iPhone +22% to $54.3B drives the bulk of the 16% total growth, \"primarily due to higher net sales of Pro models.\" Europe, Greater China and Rest of Asia Pacific growth all cite \"the strength in foreign currencies relative to the U.S. dollar had a... favorable year-over-year impact.\" iPad fell 6% YoY in the quarter."
+        },
+        {
+          "flag": "Services revenue exposed to Google search licensing and App Store commission litigation",
+          "category": "customer_concentration",
+          "severity": "major",
+          "evidence": "\"the Company earns revenue from licensing arrangements with Google LLC... A reversal of the order on appeal could result in imposition of certain remedies initially proposed by the DOJ, such as those prohibiting Google from offering the Company commercial terms for search distribution. If implemented, these remedies could materially adversely affect the Company's ability to earn revenue from such licensing arrangements.\" Separately, the 2025 Injunction bars any commission on link-out purchases, and \"If the Company is ultimately unsuccessful in defending its commission structure... the Company's business, results of operations, and financial condition could be materially and adversely affected.\" Services carries a 75.6% gross margin, so any erosion is disproportionately earnings-dilutive."
+        },
+        {
+          "flag": "Open-ended EU DMA fine exposure up to 10% of worldwide net sales",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "\"If the Commission makes a final determination in the Article 6(4) Investigation that there has been a violation, it can issue a cease and desist order and may impose fines up to 10% of the Company's annual worldwide net sales,\" following an existing \u20ac500 million Article 5(4) fine under appeal."
+        },
+        {
+          "flag": "Rising effective tax rate is a growing EPS headwind",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "Effective tax rate 17.9% vs 16.4% in Q3 2025 and 17.6% vs 15.4% for nine months, \"primarily due to a higher effective tax rate on foreign earnings.\" Part of the benefit versus statutory also comes from lower-quality items: \"changes in unrecognized tax benefits\" and \"tax benefits from share-based compensation.\""
+        },
+        {
+          "flag": "Large near-term cash commitments and aggressive buyback pace",
+          "category": "cash_flow",
+          "severity": "minor",
+          "evidence": "\"manufacturing purchase obligations of $57.0 billion, with $56.2 billion payable within 12 months\" plus $9.2B of other purchase obligations due within 12 months; during the quarter the Company \"repurchased $25.8 billion of its common stock and paid dividends and dividend equivalents of $4.0 billion,\" including $10.0 billion of up-front ASR payments, and paid the remaining $8.8 billion deemed repatriation tax in the first nine months."
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Broad-based, double-digit growth across every geographic segment",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "Total net sales +16% to $109.4B, with Americas +11%, Europe +22%, Greater China +22%, Japan +13%, Rest of Asia Pacific +16%. Greater China, long a trouble spot, is +30% for the nine months."
+        },
+        {
+          "flag": "Substantial total gross margin expansion",
+          "category": "margin",
+          "severity": "major",
+          "evidence": "Total gross margin percentage 50.1% vs 46.5% in Q3 2025 (49.1% vs 46.8% nine months); total gross margin dollars $54,770M vs $43,718M."
+        },
+        {
+          "flag": "High-margin Services continues to compound with mix improvement",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Services net sales +12% to $30,739M \"primarily due to higher net sales from advertising and cloud services\"; Services gross margin percentage 76.3% for the nine months vs 75.5%, \"primarily due to a different mix of services.\""
+        },
+        {
+          "flag": "Clean controls, no accounting estimate changes, stated liquidity adequacy",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"There have been no material changes to the Company's critical accounting estimates since the 2025 Form 10-K,\" disclosure controls \"were effective as of June 27, 2026,\" no changes to internal control over financial reporting, and management believes cash \"will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond.\""
+        },
+        {
+          "flag": "Expanded capital return authorization",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "\"On April 30, 2026, the Company announced an additional program to repurchase up to $100 billion of the Company's common stock,\" with $38.0B still available under the prior program and a stated intent to \"increase its dividend on an annual basis.\""
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "Headline results look outstanding \u2014 16% revenue growth across all five geographies and a 360bp jump in total gross margin \u2014 but the margin story is lower quality than it appears: management attributes the Products gross margin surge partly to non-recurring tariff refunds credited to cost of sales, while simultaneously warning that NAND/DRAM and semiconductor cost inflation will 'intensify' and that gross margins face 'volatility and downward pressure.' Opex is also outrunning revenue (R&D +32% on AI infrastructure) and the tax rate is climbing, so the flow-through to EPS is weaker than the gross margin line implies. The biggest unquantified risks are regulatory: the Google search licensing arrangement and the App Store commission structure, both under active court challenge, underpin the high-margin Services segment, and the EU DMA Article 6(4) case carries fines of up to 10% of worldwide net sales."
+    },
+    "HALO": {
+      "red_flags": [
+        {
+          "flag": "Newly escalated IRA price-negotiation risk targeting ENHANZE combination products",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "The only updated risk factor in the quarter states that 'In May 2025, CMS issued draft guidance for 2028 price controls under the IRA that creates uncertainty as to whether combination therapies, such as our partners' ENHANZE products, will be protected from IRA price negotiations for thirteen years following approval' and that a June 2026 proposed rule would aggregate a fixed combination drug with the parent product where the added moiety 'creates a new formulation and enables an alternative route of administration for the co-administered active moieties' \u2014 which describes the ENHANZE subcutaneous model directly."
+        },
+        {
+          "flag": "Management explicitly disclaims ability to predict regulatory outcome affecting royalty base",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "'In this dynamic environment, we are unable to predict which or how many federal policy, legislative or regulatory changes that impact us may ultimately be enacted... such actions could have a material adverse effect on our business and results of operations.' Final rule for 2029+ is not due until Fall 2026, leaving the royalty stream's pricing exposure unresolved."
+        },
+        {
+          "flag": "Revenue concentration implied by single-currency royalty hedging program",
+          "category": "customer_concentration",
+          "severity": "moderate",
+          "evidence": "'We hedge a portion of foreign currency exchange risk associated with forecasted royalties revenue denominated in Swiss francs' \u2014 the need to hedge a single non-USD currency points to heavy reliance on one Swiss-domiciled partner's royalties within the revenue mix."
+        },
+        {
+          "flag": "Layered convertible note stack including two 2025 issuances adds refinancing/dilution overhang",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "Exhibit list shows indentures dated March 2021, August 2022, plus newly added November 12, 2025 indentures for '0% Convertible Senior Notes due 2031' and '0.875% Convertible Senior Notes due 2032' \u2014 four separate convertible tranches outstanding."
+        },
+        {
+          "flag": "Aggressive capital return funded alongside convertible issuance",
+          "category": "cash_flow",
+          "severity": "minor",
+          "evidence": "$750.0 million program 'completed during the second quarter of 2026' and a new $1.0 billion authorization approved in May 2026, with 4,801,364 shares repurchased in Q2 2026 at ~$68-70, shortly after the November 2025 convertible notes were issued."
+        },
+        {
+          "flag": "Broad payer/pricing pressure narrative expanded in risk factors",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "'Consolidation in the payer space has also resulted in a few large pharmacy benefit managers and insurers which place greater pressure on pricing and utilization negotiations for our and our partners' products in the U.S., increasing the need for higher discounts and rebates and limiting patient access and utilization.'"
+        },
+        {
+          "flag": "Director adopted a sizable 10b5-1 sell plan during the quarter",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'Matthew Posard, Director, Adoption 6/15/2026, Rule 10b5-1, Total Shares To Be Sold 49,102, Expiration Date 3/31/2027.'"
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Conservative, liquid investment portfolio with minimal market risk",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "'our cash equivalents and marketable securities consisted of investments in money market funds and U.S. Treasury securities... we do not believe that our results of operations would be materially impacted by an immediate change of 10% in interest rates' and 'we do not believe our cash, cash equivalents and marketable securities have significant risk of default or illiquidity.'"
+        },
+        {
+          "flag": "Clean controls and no material litigation",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "'our disclosure controls and procedures were effective'; 'There have been no significant changes in our internal control over financial reporting'; 'We currently are not a party to any legal proceedings, the adverse outcome of which... would have a material adverse effect.'"
+        },
+        {
+          "flag": "Completion of prior buyback and immediate $1.0B reauthorization signals confidence in cash generation",
+          "category": "cash_flow",
+          "severity": "minor",
+          "evidence": "'a capital return program to repurchase up to $750.0 million of our outstanding common stock which was completed during the second quarter of 2026. In May 2026, our Board of Directors authorized a new capital return program to repurchase up to $1.0 billion... by December 31, 2028.'"
+        },
+        {
+          "flag": "No material changes to critical accounting policies or estimates",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "'There were no material changes to our critical accounting policies or estimates during the six months ended June 30, 2026.'"
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "The provided excerpt is largely boilerplate (market risk, controls, exhibits) and contains almost no revenue or margin discussion, so the financial picture cannot be judged from it. The substantive signal is the single updated risk factor: CMS's June 2026 proposed rule could aggregate fixed-combination products with their parent drugs for Medicare price negotiation, which would directly threaten the durability of Halozyme's ENHANZE royalty stream \u2014 and management concedes it 'cannot predict' the outcome ahead of a Fall 2026 final rule. Offsetting positives are a clean control environment, no material litigation, a conservative Treasury/money-market portfolio, and completion of the $750M buyback with a fresh $1.0B authorization, though that capital return sits atop a four-tranche convertible note stack including two November 2025 issuances."
+    },
+    "GTLB": {
+      "red_flags": [
+        {
+          "flag": "June 2026 restructuring with exit from ~22 countries; charges may exceed estimates and savings may not materialize",
+          "category": "other",
+          "severity": "major",
+          "evidence": "\"we implemented a restructuring plan in June 2026, and, as a result, we expect to exit operations in approximately 22 countries. This restructuring, the actual charges for which may exceed estimates... The restructuring may take longer than anticipated, and we cannot assure that we will be able to complete the restructuring without adverse effects on our business, operating results, or financial condition, including that anticipated cost savings may not be realized.\""
+        },
+        {
+          "flag": "Restructuring-related revenue/service disruption risk in affected regions",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "\"risks associated with winding down or transferring local employment arrangements and PEO relationships, potential adverse tax, regulatory, or contractual consequences of exiting these jurisdictions, disruption to customer support and service continuity in affected regions\""
+        },
+        {
+          "flag": "Restructuring may cause attrition beyond planned headcount reductions, including scarce AI/ML engineering talent",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "\"it may be disruptive to our operations, may take longer to implement than anticipated, and may lead to attrition beyond planned staff reductions, or negatively impact our ability to attract and retain qualified management, technology software professionals\"; \"recruiting and hiring senior product engineering personnel with AI and machine learning backgrounds has been, and we expect it to continue to be, challenging\""
+        },
+        {
+          "flag": "Softened demand language: elongating/unpredictable sales cycles and 'greater deal scrutiny' by customers",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "\"It is difficult to predict exactly when, or even if, we will make a sale to a potential customer... greater deal scrutiny by our customers... large individual sales have, in some cases, occurred in quarters subsequent to those we anticipated, or have not occurred at all.\""
+        },
+        {
+          "flag": "Subscription model masks bookings deterioration \u2014 weakness in new/renewed sales is deferred into future periods",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "\"a decline in new or renewed subscriptions in any one fiscal quarter will not be fully or immediately reflected in revenue in that fiscal quarter and will negatively affect our revenue in future fiscal quarters... the effect of significant downturns in new or renewed sales of our subscriptions is not fully reflected in our results of operations until future periods.\""
+        },
+        {
+          "flag": "Consolidated China JV (JiHu) financials depend on third-party management; limited monetization ability",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "\"under U.S. GAAP, we currently consolidate the joint venture's financials within our own and rely on the joint venture's management for accurate and timely delivery of the joint venture's financials\"; \"Our ability to monetize our joint venture in China may also be limited.\""
+        },
+        {
+          "flag": "Government/public-sector revenue exposed to budget cycles and shutdowns",
+          "category": "customer_concentration",
+          "severity": "minor",
+          "evidence": "\"A portion of our revenue is generated by sales to government entities... Government demand and payment for our products may be affected by public sector budgetary cycles, funding authorizations, government shutdowns... Government entities may have statutory, contractual, or other legal rights to terminate contracts with us for convenience\""
+        },
+        {
+          "flag": "Unhedged FX exposure: revenue billed in USD while international costs are in local currencies",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"Revenue generated is primarily billed in U.S. dollars while expenses incurred by our international subsidiaries and activities are often denominated in the currencies of the local countries... To date, we have not engaged in currency hedging activities\""
+        },
+        {
+          "flag": "Prior export-control violations acknowledged; compliance procedures still being upgraded",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"Prior to implementing certain control procedures, we inadvertently exported our software to entities located in embargoed countries... resulted in a BIS Warning Letter and an OFAC Cautionary Letter... We are currently working to enhance these procedures.\""
+        },
+        {
+          "flag": "Open-source contributor community \u2014 a stated competitive moat \u2014 flagged as at risk from AI adoption",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"If there is a decline in the number of contributors, customer or contributor growth rate or engagement, including as a result of the loss of influential contributors... or due to the increased adoption of AI, paying customers of our online services may be deterred from using our products or services or reduce their spending with us\""
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Restructuring framed as strategic realignment intended to drive cost efficiency and focus",
+          "category": "margin",
+          "severity": "minor",
+          "evidence": "\"the restructuring plan we implemented in June 2026 is intended to help position us for long-term success by realigning our operating structure to optimize execution against our strategic priorities\""
+        },
+        {
+          "flag": "No material weakness in internal controls disclosed; large accelerated filer with auditor ICFR attestation",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"As a public company that is a large accelerated filer, our independent registered public accounting firm is required to provide an annual attestation report on the effectiveness of our ICFR\" \u2014 discussed prospectively as a risk, with no identified material weakness disclosed"
+        }
+      ],
+      "overall_assessment": "red_flags_outweigh",
+      "summary": "The excerpt provided is almost entirely risk factors rather than MD&A numbers, but the standout disclosure is a June 2026 restructuring under which GitLab expects to exit operations in roughly 22 countries, with management explicitly warning that charges may exceed estimates, timing may slip, attrition may run beyond planned reductions, and anticipated cost savings may not be realized \u2014 this is a corporate reset, not a routine trim, and any resulting 'one-time' charges should be treated skeptically. Demand language is also hedged (greater customer deal scrutiny, large deals slipping quarters or not closing at all), and the ratable subscription model means any bookings weakness would be masked in reported revenue for several quarters. Secondary concerns include reliance on the consolidated China JiHu joint venture's own management for financial reporting, unhedged FX, and government-budget exposure; there are no clear, quantified green flags such as margin expansion or a guidance raise in the text supplied."
+    },
+    "PGEN": {
+      "red_flags": [
+        {
+          "flag": "Cash and investments fell 61% in six months, leaving thin liquidity",
+          "category": "balance_sheet",
+          "severity": "major",
+          "evidence": "\"We had cash, cash equivalents and short-term and long-term investments of $38.7 million and $100.4 million as of June 30, 2026 and December 31, 2025, respectively.\" \u2014 a $61.7 million decline over two quarters."
+        },
+        {
+          "flag": "Debt exceeds total cash and investments by a wide margin",
+          "category": "balance_sheet",
+          "severity": "major",
+          "evidence": "\"as of June 30, 2026, our long-term debt totaled $93.9 million\" versus only $38.7 million of cash, cash equivalents and short-term/long-term investments \u2014 net debt of roughly $55 million."
+        },
+        {
+          "flag": "Expensive floating-rate debt with a high SOFR floor",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "\"Our long-term debt bears interest at a floating rate based upon the secured overnight financing rate ('SOFR'), plus a margin of 6.5% per annum. The SOFR is subject to a 3.75% floor\" \u2014 an effective cost of at least ~10.25%, with \"a hypothetical 100 basis point increase in the SOFR would result in an approximate $1.0 million increase in annual interest expense.\""
+        },
+        {
+          "flag": "Mezzanine equity in the capital structure implies preferred/redeemable instruments senior to common",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "Exhibit index references \"the Condensed Consolidated Statements of Mezzanine Equity and Shareholders' Equity (Deficit)\" \u2014 indicating redeemable instruments outside permanent equity and a shareholders' deficit position."
+        },
+        {
+          "flag": "CEO repeatedly modifying 10b5-1 plan pricing terms while shares are being sold down",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "CEO Helen Sabzevari's plan was \"originally entered into on December 31, 2025 and subsequently modified (a) on March 31, 2026 to increase the aggregate securities subject to sales ... to 477,260, and (b) on June 30, 2026 to revise certain pricing terms\"; \"the remaining number of securities subject to sale was 130,424\" \u2014 implying ~347k shares already sold in roughly two quarters."
+        },
+        {
+          "flag": "MD&A excerpt provides no operating discussion, revenue detail, or forward outlook",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "The MD&A section merely cross-references the Annual Report (\"Management's Discussion and Analysis of Financial Condition and Results of Operations\" included in our Annual Report\") and recent accounting pronouncements, with no discussion of revenue drivers, margins, or guidance in the provided text."
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Disclosure controls deemed effective with no internal control changes",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"our CEO and CFO concluded that our disclosure controls and procedures are effective at the reasonable assurance level\" and \"There has been no change in our internal control over financial reporting during the three months ended June 30, 2026, that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\""
+        },
+        {
+          "flag": "No material legal exposure and no new risk factors",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"we do not believe that any such matters, individually or in the aggregate, will have a material adverse effect\" and \"There are no additional material updates or changes to our risk factors since the filing of our Annual Report.\""
+        },
+        {
+          "flag": "Conservative, liquid investment portfolio with limited rate sensitivity",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "Investments \"consist of cash, money market funds, U.S. government debt securities, certificates of deposit, and corporate bonds\" with objectives to \"preserve principal, maintain liquidity\"; a 100bp rate move \"would not materially affect the fair value.\""
+        }
+      ],
+      "overall_assessment": "red_flags_outweigh",
+      "summary": "The provided excerpt is thin on operating discussion, but the balance sheet data it does contain is alarming: cash and investments dropped from $100.4 million to $38.7 million in six months while long-term debt stands at $93.9 million bearing at least ~10.25% interest (SOFR + 6.5% with a 3.75% floor). Net debt of roughly $55 million against a burn rate of over $30 million per quarter points to a near-term financing need, and the reference to a mezzanine equity/shareholders' deficit statement suggests senior redeemable instruments ahead of common holders. Clean controls, no new risk factors, and no material litigation are positives, but they do not offset the liquidity and leverage picture; ongoing CEO 10b5-1 sales with repeatedly revised pricing terms is a further mild negative."
+    },
+    "AVT": {
+      "red_flags": [
+        {
+          "flag": "Operating cash flow swung to a $281M outflow from a $725M inflow \u2014 a $1.0B year-over-year deterioration",
+          "category": "cash_flow",
+          "severity": "major",
+          "evidence": "\"Net cash used for operating activities was $280.9 million in fiscal 2026, compared with net cash provided by operating activities of $724.5 million in fiscal 2025... Cash used for working capital and other was $802.4 million during fiscal 2026, compared with cash generated from working capital of $402.2 million in fiscal 2025\""
+        },
+        {
+          "flag": "Receivables grew 59% versus 24.5% sales growth \u2014 collection/timing divergence far outpacing revenue",
+          "category": "earnings_quality",
+          "severity": "major",
+          "evidence": "Receivables rose from $4,327,450K (6/28/25) to $6,882,965K (6/27/26), +59%, while sales rose 24.5%; MD&A cites \"higher accounts receivable due to increased sales and cash collection timing\""
+        },
+        {
+          "flag": "Accounts payable ballooned 74% ($3.49B to $6.05B), suggesting supplier payment stretching is masking an even worse working capital drain",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "Accounts payable $6,054,326K vs $3,487,419K prior year; MD&A attributes cash usage partly to \"the timing of payments for inventory purchases\""
+        },
+        {
+          "flag": "'Restructuring, integration and other' expenses are recurring, not one-time \u2014 three consecutive years and rising",
+          "category": "earnings_quality",
+          "severity": "major",
+          "evidence": "Restructuring, integration and other expenses of $52,550K (FY24), $108,316K (FY25), $134,706K (FY26); the German distribution center closure \"is expected to be completed in the third quarter of fiscal 2027,\" implying further charges"
+        },
+        {
+          "flag": "Non-GAAP adjusted operating income is inflated almost entirely by these recurring restructuring add-backs, a $1.15/share after-tax gap on $4.01 diluted EPS",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "\"Adjusted operating income $860,945\" vs GAAP operating income of $724,782; \"The after-tax impact of restructuring, integration, and other expenses were $96.1 million and $1.15 per share on a diluted basis.\""
+        },
+        {
+          "flag": "Gross margin compressed 31bps overall and 44bps in the core EC segment on adverse geographic and customer mix",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "\"Gross profit margin decreased to 10.4% in fiscal 2026 or 31 basis points... EC gross profit margin decreased 44 basis points to 9.24%... primarily due to a higher mix of sales from the lower-margin Asia region and changes in product and customer mix in the Western regions\""
+        },
+        {
+          "flag": "Revenue growth partly driven by cyclical memory component price inflation rather than pure unit demand",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "\"The increase in EC sales was mainly attributable to increased sales volumes and the mix of higher-priced components and to a lesser extent from increase in prices for certain memory-related products\"; Farnell gross margin gain also attributed partly to \"an increase in component pricing for certain memory-related products\""
+        },
+        {
+          "flag": "Debt rose sharply to fund working capital, buybacks and dividends while operations consumed cash; short-term debt up 8x and cash balance fell",
+          "category": "balance_sheet",
+          "severity": "major",
+          "evidence": "Short-term debt $733,952K vs $87,284K; total fixed+floating debt $3,233.4M vs ~$2,670.8M; \"Net cash provided by debt financing activities was $568.9 million... $633.8 million of net proceeds from the issuance of Convertible Notes, $270.2 million of proceeds from term loans, $157.9 million of net borrowings under the Credit Facility\"; cash and equivalents fell to $155.4M from $192.4M"
+        },
+        {
+          "flag": "$733.9M of debt matures within one year against only $155.4M of cash, most of it held offshore",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "Contractual obligations: long-term debt obligations \"Less than 1 year $733.9\"; \"cash and cash equivalents of $155.4 million as of June 27, 2026, of which $146.4 million was held outside the United States\""
+        },
+        {
+          "flag": "Shareholder returns ($138M buybacks + $114M dividends) funded entirely by borrowings given negative operating cash flow",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "\"The Company repurchased $138.3 million of common stock... paid cash dividends of $1.40 per share, or $114.4 million\" in a year with \"$280.9 million of cash used in operating activities\""
+        },
+        {
+          "flag": "Reported EPS benefit from an abnormally low prior-year tax rate reverses; FY25 comparison is flattered by non-recurring tax attributes",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "\"Income tax expenses were $133.0 million in fiscal 2026, reflecting an effective tax rate of 28.5% as compared to... 4.1% [in fiscal 2025]... primarily related to the tax attribute carryforwards that were generated in fiscal 2025, but not in fiscal 2026\""
+        },
+        {
+          "flag": "Non-recourse receivable factoring and a $500M securitization program are used to present financing-like proceeds inside operating cash flow",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "\"the Company sells certain of its trade accounts receivable on a non-recourse basis to financial institutions pursuant to factoring agreements. The Company accounts for these transactions as sales of receivables and presents cash proceeds as cash provided by operating activities\"; $500.0M outstanding under the Securitization Program"
+        },
+        {
+          "flag": "Material unresolved tariff/trade exposure with unquantifiable impact and unrecorded potential refunds",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "\"In February 2026, the U.S. Supreme Court issued a ruling striking down tariffs imposed under the International Emergency Economic Powers Act (IEEPA)... No potential refunds have been recorded in the Consolidated Financial Statements as the Company cannot reasonably estimate the financial impact.\""
+        },
+        {
+          "flag": "Auditor change after 23 years \u2014 KPMG replaced by PwC effective fiscal 2025",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"We have served as the Company's auditor since 2025\" (PwC) versus KPMG's \"We had served as the Company's auditor from 2002 to 2025.\""
+        },
+        {
+          "flag": "Tax contingency exposure of $123.9M off-balance-sheet-table with indeterminate settlement timing; Mexico consumption tax audit already consumed $61.4M of cash",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "\"At June 27, 2026, the Company had an estimated liability for income tax contingencies of $123.9 million, which is not included in the above table\"; \"The Company used $61.4 million of cash from operations to settle the consumption tax audit in Mexico during fiscal 2026.\""
+        },
+        {
+          "flag": "Shareholders' equity essentially flat despite $334M of net income, as FX and buybacks eroded book value",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "Total shareholders' equity $5,022,503K vs $5,011,495K; accumulated other comprehensive loss widened to $(375,394)K from $(257,693)K on $(149,316)K of translation losses"
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Broad-based, genuine revenue growth across every region and both operating groups, including in constant currency",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "\"Avnet's sales for fiscal 2026 were $27.63 billion, an increase of $5.43 billion, or 24.5%... Sales in constant currency increased 22.4% year over year, driven by strong performance in both EC and Farnell operating groups across all end markets served.\""
+        },
+        {
+          "flag": "Real operating leverage: SG&A grew far slower than sales, improving both cost ratios",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "\"In fiscal 2026, SG&A expenses were 7.3% of sales 70.2% of gross profit, compared with 7.9% and 73.9%, respectively, in fiscal 2025\"; SG&A +14.8% vs sales +24.5%"
+        },
+        {
+          "flag": "Operating and adjusted operating margins expanded ~30bps despite gross margin mix headwind",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "\"Operating income margin increased 30 basis points to 2.6%... Adjusted operating income margin increased 31 basis points to 3.1%... primarily driven by operating leverage from higher sales\""
+        },
+        {
+          "flag": "Farnell turnaround: substantial gross and operating margin expansion",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "\"Farnell gross profit margin was 27.73% in fiscal 2026, up 168 basis points year over year\"; \"Farnell operating income increased 221.7% to $105.7 million... operating income margin increased 366 basis points to 5.9%\""
+        },
+        {
+          "flag": "Constructive near-term outlook with explicit sequential growth guidance across all segments",
+          "category": "guidance",
+          "severity": "moderate",
+          "evidence": "\"The Company expects sales in the first quarter of fiscal 2027 will grow approximately 10% compared to fourth quarter of fiscal 2026 sales with expected sales growth across all Electronic Components regions and Farnell.\""
+        },
+        {
+          "flag": "Liquidity proactively shored up: securitization upsized/extended and a new $375M term loan secured post year-end; $1.19B of facility availability",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "\"The amendment increased the maximum purchase limit under the Receivables Purchase Agreement from $500.0 million to $700.0 million, extended the facility termination date to July 1, 2028\"; \"combined availability under the Credit Facility and the Securitization Program was $1.19 billion\""
+        },
+        {
+          "flag": "Lower average cost of debt and reduced average revolver utilization",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "Fixed rate average interest rate 3.9% vs 5.0%, floating 4.6% vs 5.3%; \"average daily balance outstanding under the Credit Facility of approximately $744.8 million\" in FY26 vs \"approximately $1.00 billion\" in FY25"
+        },
+        {
+          "flag": "Clean audit opinion on both financial statements and internal control over financial reporting, with covenant compliance",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "\"the Company maintained, in all material respects, effective internal control over financial reporting as of June 27, 2026\"; \"The Company was in compliance with all such covenants as of June 27, 2026.\""
+        },
+        {
+          "flag": "Improved inventory efficiency despite the cyclical upturn",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "\"demand for electronic components strengthened resulting in year-over-year sales growth across all regions and improved days of inventory on hand\"; inventories +16% vs sales +24.5%"
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "Avnet delivered a genuine cyclical upturn \u2014 24.5% sales growth (22.4% constant currency) across all regions, real SG&A leverage, and ~30bps of operating margin expansion \u2014 but the quality of that growth is questionable. Operating cash flow swung by over $1 billion to a $281M outflow as receivables jumped 59% (far outpacing 24.5% sales growth) and payables ballooned 74%, forcing the company to fund working capital, buybacks and dividends with a $569M net increase in debt, leaving $734M of short-term maturities against only $155M of cash. Add perennial 'one-time' restructuring charges that have risen three years running ($53M to $108M to $135M) with more German closure costs due in FY27, core EC gross margin down 44bps on Asia mix, and growth partly attributable to memory price inflation, and the headline earnings growth looks meaningfully better than the underlying cash and margin picture."
+    },
+    "SATA": {
+      "red_flags": [
+        {
+          "flag": "Executive cash bonuses tied to 'Bitcoin Yield,' a non-GAAP metric that can be increased through share issuance rather than operating performance",
+          "category": "earnings_quality",
+          "severity": "major",
+          "evidence": "\"...adopted the Strive, Inc. Short-Term Incentive Plan... a cash incentive plan... pursuant to which the Compensation Committee... may designate and classify employees of the Company, including the Company's named executive officers, as eligible to receive short-term cash incentive awards based on Bitcoin Yield, as publicly discussed by the Company in September 2025\"; payouts \"may range from 0% to 200% of the participant's target bonus opportunity.\""
+        },
+        {
+          "flag": "Ongoing at-the-market equity issuance program across eight sales agents implies continuous shareholder dilution as the primary funding mechanism",
+          "category": "balance_sheet",
+          "severity": "major",
+          "evidence": "Exhibits 10.1 and 10.2: two \"Amended and Restated Controlled Equity Offering\u2120 Sales Agreement[s], dated June 5, 2026, by and between Strive, Inc. and Cantor Fitzgerald & Co., Barclays Capital Inc., Clear Street LLC, The Benchmark Company, LLC, StoneX Financial Inc., B. Riley Securities, Inc., Maxim Group LLC and H.C. Wainwright & Co., LLC.\""
+        },
+        {
+          "flag": "Repeated amendments to the Variable Rate Series A Perpetual Preferred Stock terms within a single quarter suggest unstable/renegotiated capital structure and a variable-rate perpetual dividend obligation senior to common",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "Three separate certificate filings in the exhibit index: \"Amended and Restated Certificate of Designation relating to the Variable Rate Series A Perpetual Preferred Stock... filed... on May 13, 2026 (effective June 15, 2026)\"; \"Certificate of Amendment... filed... on June 5, 2026\"; and \"Certificate of Amendment to Amended and Restated Certificate of Designation... filed... on June 5, 2026 (effective June 15, 2026).\""
+        },
+        {
+          "flag": "Bonus performance period stretched to 15 months with target opportunity grossed up 1.25x, a structure that obscures year-over-year comparability of incentive payouts",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"The current performance period under the Short-Term Plan commenced on October 1, 2025 and ends on December 31, 2026. As a result of the extended performance period, the target bonus opportunities for such period are 1.25 times the annual target bonus opportunity set forth in the employment agreements with each of the Company's named executive officers.\""
+        },
+        {
+          "flag": "Large PSU grants with 200% upside and relative-to-bitcoin performance modifier add material potential dilution and tie pay to crypto price beta rather than operating results",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "\"Mr. Cole receiving a target award of 280,112 PSUs, each of Mr. Pham and Mr. Beirne receiving a target award of 87,535 PSUs... The number of PSUs that vest... ranges from 0% to 200%\"; earned \"based on the achievement of specified levels of the Company's total shareholder return ('TSR') relative to the Russell 3000, as modified by the Company's TSR performance relative to bitcoin total return.\""
+        },
+        {
+          "flag": "Severance-friendly vesting terms allow PSUs to remain outstanding and vest after termination, weakening the retention/alignment value of the awards",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"In the event of any such termination of employment, the PSUs will remain outstanding and will vest, if at all, based on the level of achievement of the applicable performance goals\"; short-term plan awards are \"subject to accelerated payment upon certain qualifying terminations of employment.\""
+        },
+        {
+          "flag": "No capital returned to common shareholders while equity is being issued, consistent with a net-dilutive capital cycle",
+          "category": "cash_flow",
+          "severity": "minor",
+          "evidence": "\"No repurchases of Class A common stock by the Company occurred during the three months ended June 30, 2026.\""
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "No new or worsened risk factors disclosed for the quarter",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"There were no material changes to our risk factors during the three months ended June 30, 2026.\""
+        },
+        {
+          "flag": "No defaults on senior securities, including the outstanding perpetual preferred",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "\"Item 3. Defaults Upon Senior Securities \u2014 None.\""
+        },
+        {
+          "flag": "No insider 10b5-1 trading plans adopted or terminated during the quarter, removing a common pre-announcement selling signal",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "\"None of our directors or officers... adopted or terminated a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement... during the quarterly period covered by this report.\""
+        }
+      ],
+      "overall_assessment": "red_flags_outweigh",
+      "summary": "The excerpt provided is almost entirely Part II boilerplate with no operating MD&A, so revenue, margin and cash flow trends cannot be verified \u2014 but what is disclosed paints the picture of a bitcoin-treasury vehicle rather than an operating business: management cash bonuses are keyed to 'Bitcoin Yield' and PSUs to TSR versus bitcoin, while two amended-and-restated ATM sales agreements with eight banks stand ready to issue equity continuously. Repeated amendments to the Variable Rate Series A Perpetual Preferred Stock within weeks point to an unsettled capital structure with a senior, floating-rate claim ahead of common. Genuine positives are limited to negative-confirmation items (no risk-factor changes, no defaults, no insider trading plans), which do not offset the dilution and incentive-design concerns."
+    },
+    "MPC": {
+      "red_flags": [
+        {
+          "flag": "Earnings surge is cyclical and geopolitically driven, not structural",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "Q2 2026 R&M segment EBITDA rose to $6,655M from $1,890M on 'higher realized refining margins supported by stable demand and higher product prices driven by global crude oil supply disruptions as a result of increasing regional conflicts, particularly in the Middle East.' Blended 3-2-1 crack spread was $33.54/bbl vs $15.63/bbl; management estimates ~$4 billion of the margin improvement came purely from market indicators. Risk factors explicitly cite 'increased pricing volatility or supply disruptions due to the U.S.-Iran conflict.'"
+        },
+        {
+          "flag": "Volume/throughput declined while price did all the work",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "'Net refinery throughput decreased 116 mbpd due to increased planned turnaround activity'; crude oil capacity utilization fell to 94% from 97% in Q2 and to 91% from 93% for 1H. Total refined product yields fell to 2,988 mbpd from 3,097 mbpd. Revenue growth of $18.2 billion was 'mainly due to an increase in Refining & Marketing segment average refined product sales prices of $1.12 per gallon.'"
+        },
+        {
+          "flag": "Unit cost inflation across operating, distribution and turnaround lines",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Refining operating costs per barrel $5.72 vs $5.34; distribution costs per barrel $5.88 vs $5.52; turnaround costs per barrel $1.03 vs $0.90. Fees paid to MPLX embedded in distribution costs rose to $3.90/bbl from $3.59/bbl on 'rate increases.' For 1H, operating costs +$172M and distribution costs +$141M."
+        },
+        {
+          "flag": "RIN compliance expense more than doubled",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "'Our expenses associated with purchased RINs and included in Refining & Marketing margin were $683 million and $314 million in the second quarter of 2026 and 2025, respectively... mainly due to higher RIN costs and blending requirements.' 1H RIN expense $1.28 billion vs $668 million."
+        },
+        {
+          "flag": "Midstream \u2014 the supposedly stable, fee-based segment \u2014 is effectively flat year over year",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Midstream segment adjusted EBITDA of $3,376M for 1H 2026 vs $3,361M for 1H 2025, an increase of only $15 million despite the Northwind Delaware and BANGL acquisitions. Offsets cited include 'the divestiture of non-core gathering and processing assets and a $37 million non-recurring benefit associated with a customer agreement in the first quarter of 2025' plus 'increased derivative losses of $53 million.' Net income attributable to noncontrolling interests fell $74 million 'mainly due to a decrease in MPLX's net income.'"
+        },
+        {
+          "flag": "SPR exchange creates a 5 million barrel net repayment obligation and off-balance-sheet letter of credit exposure",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "'The SPR agreed to deliver approximately 22 million barrels to MPC throughout 2026 and MPC agreed to return approximately 27 million barrels beginning in April of 2027 through July of 2029.' Separately, 'letters of credit in the total amount of $1.626 billion were issued and outstanding under the facility to secure contracts awarded by the U.S. Department of Energy to purchase crude oil from the SPR.' MPC takes barrels now and must return ~23% more later, flattering current-period inventory/cash and creating a future physical obligation at unknown prices."
+        },
+        {
+          "flag": "A large share of record operating cash flow is reversible working capital from commodity price swings",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "Operating cash flow of $11,448M for 1H 2026 vs $2,575M included 'a favorable change in working capital of $4.23 billion' and 'changes in working capital, excluding changes in short-term debt, were a net $3.19 billion source of cash mainly due to the effects of changes in energy commodity prices and volumes, including derivatives.'"
+        },
+        {
+          "flag": "Renewable Diesel profitability rests on regulatory credit values and tax credits, including a prior-year catch-up",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Renewable Diesel adjusted EBITDA swung to $258M from $(19)M 'driven by improved regulatory credit values.' 1H other income rose $94M 'primarily due to approximately $75 million of clean fuel production tax credits, of which $32 million related to 2025 activity' \u2014 a $32M out-of-period benefit recognized because of 'proposed regulatory guidance issued in February of 2026' that is not yet final."
+        },
+        {
+          "flag": "Corporate cost creep including recurring-looking environmental remediation and comp remeasurement",
+          "category": "margin",
+          "severity": "minor",
+          "evidence": "'Corporate expenses increased $77 million in the first six months of 2026 primarily due to the fair-value remeasurement of outstanding performance-based stock compensation of $25 million... environmental remediation expense related to historical operations at the Martinez refinery of $23 million and increased employee related costs of $18 million.' Consolidated SG&A rose $111M for 1H."
+        },
+        {
+          "flag": "Rising interest burden on higher MPLX borrowings alongside a sharp step-up in capex",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "'Net interest and other financial costs increased $87 million largely due to increased interest expense, primarily due to higher MPLX borrowings.' 'Additions to property, plant and equipment increased $741 million'; total capital expenditures and investments $2,638M vs $1,841M."
+        },
+        {
+          "flag": "Structural intercompany distribution cost commitments become a fixed drag if volumes fall",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'Certain other agreements include commitments to pay for 100 percent of available capacity for certain marine transportation and refining logistics assets... [distribution costs] will negatively impact segment adjusted EBITDA in periods when throughput or sales are lower or refineries are idled.'"
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Genuine over-capture versus market indicators",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Beyond the ~$4 billion market-driven benefit, company-specific 'factors had an estimated net positive effect of approximately $800 million on Refining & Marketing segment adjusted EBITDA in the second quarter of 2026,' from crude mix, market structure and yields. Sour throughput mix increased to 48% from 45%, capturing a wider sour differential of $(3.00) vs $(2.24)."
+        },
+        {
+          "flag": "Substantial liquidity build and extended credit facility maturity",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "'Consolidated cash and cash equivalents balance was approximately $7.77 billion at June 30, 2026 compared to $3.67 billion at December 31, 2025'; liquidity ex-MPLX of $11.7 billion with no revolver or commercial paper borrowings outstanding. 'On April 7, 2026, MPC entered into a new revolving credit facility... five-year term which will expire April 2031,' replacing a facility expiring July 2027."
+        },
+        {
+          "flag": "Aggressive and well-funded capital return",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "'On May 5, 2026, we announced that our board of directors approved an additional $5.0 billion share repurchase authorization... As of June 30, 2026, we had $6.13 billion remaining.' Repurchases of $3.28 billion in 1H 2026 vs $1.84 billion in 1H 2025, plus increased per-share dividends."
+        },
+        {
+          "flag": "Renewable Diesel segment turned decisively profitable",
+          "category": "margin",
+          "severity": "minor",
+          "evidence": "Renewable Diesel adjusted EBITDA of $258M in Q2 2026 vs $(19)M in Q2 2025 and $296M for 1H vs $(61)M; Renewable Diesel margin rose to $321M from $49M in the quarter, with sales volumes up 91 thousand gallons per day."
+        },
+        {
+          "flag": "Rising cash distributions received from MPLX",
+          "category": "cash_flow",
+          "severity": "minor",
+          "evidence": "'We received limited partner distributions from MPLX of $1.39 billion in the six months ended June 30, 2026 and $1.24 billion in the six months ended June 30, 2025.' MPLX declared a quarterly distribution of $1.0765/unit, MPC's share ~$697 million."
+        },
+        {
+          "flag": "Refinancing executed without net debt growth",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "'During the first six months of 2026, MPLX issued $1.5 billion aggregate principal amount of senior notes and repaid $1.5 billion aggregate principal amount of senior notes that were due in March 2026'; commercial paper borrowed and fully repaid ($3.86 billion), with no borrowings outstanding at quarter end."
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "MPC posted a spectacular quarter ($17.73 diluted EPS vs $3.96) but the overwhelming majority of the improvement is cyclical crack-spread expansion tied to Middle East supply disruption \u2014 management itself attributes ~$4 billion of the quarterly margin gain to market indicators alone, and throughput actually fell 116 mbpd with utilization down to 94%. Underlying quality is softer than the headline: unit operating, distribution and turnaround costs all rose, RIN expense more than doubled, the fee-based Midstream segment was essentially flat for the half despite acquisitions, a large slice of record operating cash flow was reversible working capital, and the SPR exchange obligates MPC to return ~27 million barrels against ~22 million received. Offsetting this are real positives: ~$800M of company-specific margin over-capture, a cash balance that more than doubled to $7.77 billion, an extended 2031 revolver, a profitable Renewable Diesel business, and an incremental $5 billion buyback authorization."
+    },
+    "ACA": {
+      "red_flags": [
+        {
+          "flag": "Engineered Structures' 46% operating profit jump is materially inflated by a one-time land sale gain",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Other operating (income) of $(12.5) million in Q2 2026 vs $0 in Q2 2025, which the filing states was 'driven primarily by the gain recognized on the sale of a parcel of undeveloped industrial land located in Mexico.' That gain is ~20% of the segment's $62.0 million operating profit; excluding it, segment profit growth would be roughly 17% rather than 46.2%."
+        },
+        {
+          "flag": "Construction Products margin compression \u2014 operating profit down 6% (Q) and 9% (YTD) on flat-to-slightly-up revenue",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Construction Products operating profit fell to $55.1M from $58.6M (Q) and $70.0M from $76.9M (6M); cost of revenues rose to 77.4% of revenue from 76.2% (Q) and 80.0% from 78.9% (6M), 'primarily due to lower volumes and reduced cost absorption in specialty materials and asphalt and higher depreciation, depletion, and amortization expense.'"
+        },
+        {
+          "flag": "Headline revenue growth is thin and leans on acquisitions and price, not organic volume",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Consolidated revenue +1.7% (Q) / +3.0% (6M). 'For construction materials, revenues decreased 1.3% primarily due to lower organic aggregates and asphalt volumes... partially offset by higher pricing and the contribution from recent acquisitions.' Growth is concentrated in trench shoring (+17.6%) and utility structures, while aggregates revenue actually declined 1.3% in the quarter."
+        },
+        {
+          "flag": "'Weather' explanation for volume weakness is recurring and used across both quarter and half",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "Q2: volumes 'impacted by wet weather during the period'; 6M: asphalt volumes 'impacted by adverse weather.' Market Outlook also hedges: demand is healthy 'when seasonal weather conditions have been normal,' and single-family residential 'continues to be impacted by higher interest rates and home affordability, which has negatively impacted volumes.'"
+        },
+        {
+          "flag": "Operating cash flow far below capex \u2014 negative free cash flow and heavy working capital drain",
+          "category": "cash_flow",
+          "severity": "major",
+          "evidence": "Six-month operating cash flow from continuing operations was only $33.4 million versus capital expenditures of $102.3 million. 'The changes in current assets and liabilities resulted in a net use of cash of $166.3 million... primarily driven by increases in receivables, inventories, and a decrease in accrued liabilities.' Net decrease in cash from continuing operations was $238.3 million vs $39.4 million a year ago."
+        },
+        {
+          "flag": "GAAP net income is dominated by a non-operating divestiture gain",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "The barge sale 'resulted in a pre-tax gain of $359.7 million, which is presented within income from discontinued operations' \u2014 dwarfing $74.2 million of six-month net income from continuing operations. Headline EPS/net income will look dramatically better than underlying earnings power."
+        },
+        {
+          "flag": "SG&A/corporate cost inflation labeled deal-related but partly compensation-driven and recurring for a serial acquirer",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Consolidated SG&A +27.3% (Q) / +17.0% (6M); SG&A was 13.5% of revenue vs 10.8% prior year. Corporate SG&A +88.9% on 'acquisition and divestiture-related expenses of $14.5 million, compared to $0.5 million... and higher compensation-related expenses.' Corporate costs rose to 5.0% of revenue from 2.9%. Segment SG&A also rose 8-9% on compensation, which is not one-time."
+        },
+        {
+          "flag": "Wind tower business in structural decline with legislated tax credit termination",
+          "category": "guidance",
+          "severity": "major",
+          "evidence": "Wind tower revenue -19.0% (Q) / -20.2% (6M); backlog fell to $537.4M from $627.8M at 12/31/25 and $598.6M a year ago. 'The OBBBA... terminates the AMP tax credit for wind towers sold after 2027' and wind farms beginning construction after July 4, 2026 not in service by end-2027 lose the PTC. Management response is hedged: 'Notwithstanding these developments, we remain confident...'"
+        },
+        {
+          "flag": "Effective tax rate rising as AMP credits fade \u2014 a structural EPS headwind",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Effective tax rate rose to 18.3% (Q) and 14.6% (6M) from 11.4% and 13.0%, 'primarily due to a reduction in AMP tax credits due to lower wind tower volumes and an increase in foreign taxes.' The sub-21% rate depends on credits that terminate after 2027."
+        },
+        {
+          "flag": "Pending CRH merger creates operating restrictions, distraction risk, and a large break fee",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "Merger at $150.00 cash/share expected to close Q1 2027; 'we are subject to certain restrictions on the conduct of our business, including the ability in certain cases to enter into contracts, acquire or dispose of assets, incur indebtedness, or incur capital expenditures.' A termination fee of $260.4 million is payable in specified circumstances, and closing requires HSR plus Australia, Mexico and possibly Investment Canada Act approvals."
+        },
+        {
+          "flag": "Prior-period bad debt benefit flatters the year-over-year SG&A comparison",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "SG&A increase driven partly by 'an increase in bad debt expense driven by a favorable adjustment recognized in the prior period related to increased collections on previously reserved receivables' \u2014 i.e., the base period contained a non-recurring credit."
+        },
+        {
+          "flag": "Depreciation, depletion and amortization growing faster than revenue, including purchase-accounting step-ups",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "'Depreciation, depletion, and amortization expense increased 8.1%, outpacing revenue growth, primarily due to capital investments and recent acquisitions, including the fair market value write-up of long-lived assets.' Consolidated DD&A up 7.0% (Q) vs 1.7% revenue growth."
+        },
+        {
+          "flag": "Capital return effectively paused during the quarter",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'During the three months ended June 30, 2026, the Company did not repurchase any shares'; the only Q2 share activity was 9,265 shares surrendered for tax withholding. Quarterly dividend remains a nominal $0.05 per share."
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Utility structures backlog up 49% year-to-date with multi-year visibility",
+          "category": "revenue_quality",
+          "severity": "major",
+          "evidence": "'our backlog for utility and related structures as of June 30, 2026 was $648.1 million, up 49% year to date, and provides strong production visibility for the remainder of 2026,' versus $434.9M at 12/31/25 and $450.0M a year ago; 'order and inquiry activity continues to be very healthy... grid hardening and reliability initiatives, along with increasing demand for electricity stemming from AI-driven projects.'"
+        },
+        {
+          "flag": "Genuine gross margin expansion in Engineered Structures on mix shift to utility",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "Segment cost of revenues fell to 75.2% of revenue from 77.5% (Q) and 74.9% from 77.8% (6M); gross profit +13.7% (Q) and +17.0% (6M) on only ~3% revenue growth. This is above the line and excludes the land-sale gain."
+        },
+        {
+          "flag": "Balance sheet deleveraging and lower interest burden",
+          "category": "balance_sheet",
+          "severity": "moderate",
+          "evidence": "'In April 2026, the Company used $83.0 million of the cash proceeds to prepay a portion of the outstanding 2025 Refinancing Term Loan'; 'As of June 30, 2026, we had no outstanding loans borrowed under our revolving credit facility'; interest expense down $5.4M (Q) and $9.7M (6M); 'we were in compliance with all such financial covenants.'"
+        },
+        {
+          "flag": "Successful portfolio reshaping toward less cyclical infrastructure end-markets at an attractive price",
+          "category": "other",
+          "severity": "moderate",
+          "evidence": "Sale of the barge business for $450 million with ~$429.9 million net cash at closing and a $359.7 million pre-tax gain; Transportation Products 'is no longer presented as a reportable segment.'"
+        },
+        {
+          "flag": "Proactive capacity reallocation from declining wind to growing utility structures",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'Due to increased demand, we have converted an idled wind tower facility to utility structures, which began delivering utility poles in the second quarter. Additionally, we plan to convert one of our existing wind tower facilities to utility structures in 2027.'"
+        },
+        {
+          "flag": "Effective disclosure controls with no internal control changes",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "'the Chief Executive and Chief Financial Officers believe that these disclosure controls and procedures were effective' and 'there have been no changes in the Company's internal control over financial reporting that have materially affected or are reasonably likely to materially affect' them."
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "Arcosa's headline numbers look stable, but the quality underneath is uneven: consolidated revenue grew only 1.7% in the quarter with organic aggregates and asphalt volumes declining, Construction Products operating profit fell 6-9%, and the eye-catching 46% jump in Engineered Structures profit was roughly one-fifth attributable to a one-time Mexican land sale gain. Cash generation is the biggest concern \u2014 $33.4 million of six-month operating cash flow against $102.3 million of capex and a $166.3 million working capital drain \u2014 while GAAP net income is optically flattered by the $359.7 million barge divestiture gain and rising tax rates signal the AMP credit tailwind is fading alongside a structurally shrinking wind tower business. Offsetting this are a legitimately strong 49% year-to-date increase in utility structures backlog tied to grid and AI-driven power demand, real gross margin expansion in Engineered Structures, and deleveraging; however, the pending $150/share CRH merger now dominates the equity story and imposes operating restrictions plus a $260.4 million break fee."
+    },
+    "SAIC": {
+      "red_flags": [
+        {
+          "flag": "Backlog decline and weak book-to-bill",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Total backlog fell to $22,136M at July 31, 2026 from $22,622M at January 30, 2026 (negotiated unfunded backlog $18,318M vs $19,050M; Civilian $4,003M vs $4,242M). Net bookings of $1.2B in Q2 against $1,880M of revenue implies a ~0.64 book-to-bill (~0.87 for the six months)."
+        },
+        {
+          "flag": "Q2 adjusted margins actually compressed despite GAAP margin expansion",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "'Adjusted operating income as a percentage of revenues 10.2%' vs 10.3% prior year and 'Adjusted EBITDA as a percentage of revenues 10.3%' vs 10.5%, while GAAP operating margin rose 7.9%\u21928.1% largely because prior-year results carried $7M of federal tax audit settlement costs."
+        },
+        {
+          "flag": "$12 million investment-sale gain left inside 'adjusted' operating income and EBITDA",
+          "category": "earnings_quality",
+          "severity": "moderate",
+          "evidence": "Six-month margin improvement attributed in part to 'a $12 million gain from the sale of an investment in the current year,' yet the non-GAAP reconciliation only removes a $1M 'Gain on divestitures, net of transaction costs' \u2014 the investment gain is not excluded from adjusted operating income/EBITDA. Other operating income of $(13)M in the six-month P&L also flatters GAAP operating income."
+        },
+        {
+          "flag": "Revenue mix shifting toward lower-margin materials/subcontract content",
+          "category": "revenue_quality",
+          "severity": "moderate",
+          "evidence": "Labor-related cost of revenues fell to 56% of cost mix from 59% in Q2 while 'other materials-related cost of revenues' jumped to 16% from 11%, even though management states 'Contracts performed with a higher proportion of SAIC labor are generally more profitable.'"
+        },
+        {
+          "flag": "Acquisition contribution supports headline growth; organic growth modest",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "'Revenues increased $111 million... and from the acquisition of SilverEdge Government Solutions of $20 million... Adjusting for the impact of acquisitions, revenues grew by approximately 5.3%'; six-month organic growth only 'approximately 2.9%' versus 4% reported."
+        },
+        {
+          "flag": "Extreme customer concentration with active funding/shutdown risk",
+          "category": "customer_concentration",
+          "severity": "moderate",
+          "evidence": "'we generated 97% of our revenues from contracts with the U.S. government'; DHS 'was shut down from February 2026 through April 2026,' ICE and CBP remain without full-year funding, and all funding runs only 'through September 30, 2026.'"
+        },
+        {
+          "flag": "Operating cash flow improvement driven by timing items rather than underlying collections",
+          "category": "cash_flow",
+          "severity": "moderate",
+          "evidence": "Operating cash flow 'increased $51 million... primarily due to timing of vendor payments, lower cash incentive-based compensation payments, and other changes in working capital, partially offset by lower cash inflows from the usage of the MARPA Facility, timing of customer collections, and higher interest paid on our debt.'"
+        },
+        {
+          "flag": "Increased reliance on receivables monetization facility",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "'Subsequent to quarter end, on August 14, 2026, we amended the MARPA to increase the aggregate facility limit from $300 million to $400 million,' and EBITDA is defined to exclude 'interest and loss on sale of receivables.'"
+        },
+        {
+          "flag": "Non-GAAP definition is unusually generous and rests on a stale rationale",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "'Adjusted operating income is calculated by taking operating income and excluding amortization of intangible assets, depreciation of property, plant, and equipment, acquisition, integration, restructuring, and impairment costs, and any other material non-recurring costs'; amortization is excluded because 'we do not have a history of significant acquisition activity' despite the SilverEdge deal and $32M of quarterly intangible amortization."
+        },
+        {
+          "flag": "Recurring 'restructuring' add-backs alongside another reorganization",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "Restructuring costs are added back in every period presented ($2M/$1M quarterly, $4M/$4M six-month) and relate to 'internal reorganizations and initiatives (e.g., Project Orbit),' while the company 'completed a business reorganization that consolidated our five previous business groups into three' effective January 31, 2026."
+        },
+        {
+          "flag": "SG&A growth well ahead of revenue growth in the quarter",
+          "category": "margin",
+          "severity": "minor",
+          "evidence": "'Selling, general and administrative expenses 87, 16% change' versus 6% revenue growth; Corporate swung to a $(3)M adjusted operating loss from $4M income."
+        },
+        {
+          "flag": "Net income decline and low, partly non-recurring tax rate",
+          "category": "earnings_quality",
+          "severity": "minor",
+          "evidence": "'Net income $102 (20%) $127' for the quarter; current effective rates of 14.2%/17.9% are 'lower than the combined federal and state statutory tax rates, primarily due to research and development tax credits and the tax deduction for foreign-derived deduction eligible income,' with OBBBA impacts 'subject to change as we complete our analysis.'"
+        },
+        {
+          "flag": "Civilian segment margin erosion in the quarter",
+          "category": "margin",
+          "severity": "minor",
+          "evidence": "Civilian adjusted operating margin fell to 13.0% from 13.7% 'primarily due to timing and volume mix in our contract portfolio,' and Civilian backlog declined sequentially."
+        }
+      ],
+      "green_flags": [
+        {
+          "flag": "Genuine profitability improvement in Defense & Intelligence",
+          "category": "margin",
+          "severity": "moderate",
+          "evidence": "D&I adjusted operating income rose 11% in Q2 and 19% for six months, with margin up to 9.5% from 9.0% (Q2) and 9.7% from 8.5% (6M) 'primarily due to improved profitability across our contract portfolio.'"
+        },
+        {
+          "flag": "Funded backlog up despite total backlog decline",
+          "category": "revenue_quality",
+          "severity": "minor",
+          "evidence": "Funded backlog increased to $3,818M at July 31, 2026 from $3,572M at January 30, 2026, led by Defense and Intelligence ($2,883M vs $2,511M)."
+        },
+        {
+          "flag": "Higher operating cash flow and expanded liquidity",
+          "category": "cash_flow",
+          "severity": "minor",
+          "evidence": "'Net cash provided by operating activities $273' vs $222 prior year, with a $1.0 billion Revolving Credit Facility and a MARPA facility increased to $400 million."
+        },
+        {
+          "flag": "Ongoing capital return with clean controls disclosure",
+          "category": "balance_sheet",
+          "severity": "minor",
+          "evidence": "881,913 shares repurchased in the quarter at an average $102.60; management 'concluded that as of July 31, 2026 these controls and procedures were operating and effective' with no material changes in internal control."
+        },
+        {
+          "flag": "No material financial impact yet from federal program reviews",
+          "category": "other",
+          "severity": "minor",
+          "evidence": "'We have not experienced a material financial statement impact from recent executive orders or program cancellations across the government.'"
+        }
+      ],
+      "overall_assessment": "mixed",
+      "summary": "SAIC posted respectable headline growth (6% in Q2, ~5.3% organic) and strong GAAP margin expansion, but the GAAP improvement is flattered by easy prior-year comparisons ($7M tax-audit settlement costs) and a $12M investment gain that management left inside its 'adjusted' operating income and EBITDA \u2014 on an adjusted basis Q2 margins actually slipped (10.3%\u219210.2% operating, 10.5%\u219210.3% EBITDA). The bigger concern is demand: total backlog fell sequentially to $22.1B from $22.6B with an implied Q2 book-to-bill near 0.64, cost mix is shifting toward lower-margin materials content, and 97% government exposure leaves the company hostage to the September 30, 2026 funding cliff and unresolved ICE/CBP appropriations. Cash flow improved but was driven by vendor-payment timing and lower incentive comp rather than better collections."
+    }
+  },
+  "catalyst_sentiments": {
+    "LILAK": {
+      "catalyst_type": "insider_buying",
+      "catalyst_score": 4,
+      "confidence": "high",
+      "summary": "Heavy, repeated open-market insider buying \u2014 15 purchases totaling ~$15.5M in 90 days, including chairman John Malone and director De Angoitia's ~$10M buy \u2014 is driving the move amid a depressed valuation story. Cluster buying of this size by top insiders is a strong bullish signal."
+    },
+    "LILA": {
+      "catalyst_type": "insider_buying",
+      "catalyst_score": 3,
+      "confidence": "medium",
+      "summary": "Repeated large open-market purchases by Chairman John Malone and director De Angoitia (~$10M) have drawn attention to LILA as a deeply discounted value play after a 39% five-year decline. The insider accumulation, rather than any operational news, appears to be driving the move, though the Form 4 feed doesn't confirm purchases in the last 90 days."
+    },
+    "NVDA": {
+      "catalyst_type": "product_news",
+      "catalyst_score": -2,
+      "confidence": "medium",
+      "summary": "Alibaba unveiled a new domestic AI chip touted as ~3x faster than its predecessor, reviving concerns about Nvidia losing China share to local competitors. Commentary about cooling Nvidia valuations adds to the mildly negative tone, with no insider buying or company-specific news to offset it."
+    },
+    "CRM": {
+      "catalyst_type": "insider_buying",
+      "catalyst_score": 2,
+      "confidence": "low",
+      "summary": "No substantive company news \u2014 headlines are generic comparison/opinion pieces with no hard catalyst. The only concrete signal is a single ~$1M open-market insider purchase in the past 90 days, a mildly bullish vote of confidence."
+    },
+    "SMTI": {
+      "catalyst_type": "earnings_beat",
+      "catalyst_score": 3,
+      "confidence": "medium",
+      "summary": "Sanara MedTech topped Q2 earnings estimates, and analysts have been raising fair-value estimates on continued wound-care growth. No insider buying, so the move appears driven mainly by the earnings beat."
+    },
+    "CRWD": {
+      "catalyst_type": "sector_momentum",
+      "catalyst_score": 1,
+      "confidence": "medium",
+      "summary": "No company-specific news; CrowdStrike is moving with a broad software/cybersecurity group rally (Strategy, MongoDB, ServiceNow, Okta also soaring) amid AI-security demand commentary, partially offset by competitive headlines from Palo Alto and Fortinet."
+    },
+    "AAPL": {
+      "catalyst_type": "sector_momentum",
+      "catalyst_score": 1,
+      "confidence": "medium",
+      "summary": "No Apple-specific catalyst; headlines center on Meta's AI news and a broad Nasdaq record close led by chipmakers, with AAPL simply named among stocks in focus. The move looks like mega-cap tech/sector momentum rather than company news."
+    },
+    "HALO": {
+      "catalyst_type": "other",
+      "catalyst_score": 1,
+      "confidence": "medium",
+      "summary": "Halozyme priced a ~$1.05B convertible notes offering and paired it with a large (~$1.3B) share repurchase, a capital-structure move that signals management confidence but also adds dilution/refinancing risk. No earnings, guidance, or clinical catalyst is driving the move."
+    },
+    "DELL": {
+      "catalyst_type": "product_news",
+      "catalyst_score": -2,
+      "confidence": "medium",
+      "summary": "Dell is under pressure from Google's new $1,199 premium 'Googlebook' ChromeOS laptop, which threatens PC market share and margins, compounded by UBS flagging rising memory costs weighing on consumer PC demand. No company-specific fundamental news or insider buying \u2014 the move is a competitive/cost-input concern."
+    },
+    "CAKE": {
+      "catalyst_type": "sector_momentum",
+      "catalyst_score": 1,
+      "confidence": "low",
+      "summary": "No company-specific catalyst; headlines are generic commentary plus a broader casual-dining sector trend story, with mixed signals (sector-wide selloff on GLP-1/gas price worries offset by bullish 'good year' framing). The lone $25K insider purchase is too small to be meaningful."
+    },
+    "DE": {
+      "catalyst_type": "pure_momentum_no_catalyst",
+      "catalyst_score": 0,
+      "confidence": "medium",
+      "summary": "No substantive company-specific news \u2014 headlines are generic screener/valuation pieces and macro commentary (Fed, tariffs, Trump-Xi summit). Absent insider buying or fresh guidance, the move looks like price/momentum and broad market drift rather than a real catalyst."
+    },
+    "GTLB": {
+      "catalyst_type": "product_news",
+      "catalyst_score": 2,
+      "confidence": "medium",
+      "summary": "GitLab is rallying to 52-week highs on its 19.4 release adding agentic AI automation, cost transparency and expanded agent controls, reinforced by UBS saying the Flex pricing headwind is smaller than feared with a healthy H2 pipeline. A broad software-group rally and post-Q2 momentum are amplifying the move, though the CFO trimming ~$1.6M of stock into the high is a mild offset."
+    },
+    "PGEN": {
+      "catalyst_type": "pure_momentum_no_catalyst",
+      "catalyst_score": 0,
+      "confidence": "medium",
+      "summary": "No company-specific catalyst for Precigen \u2014 nearly all headlines concern unrelated biotech peers, and the only PGEN mention is a generic Simply Wall St piece suggesting the stock may be fully valued. Move appears driven by price/volume momentum or broad biotech sector flows rather than news."
+    },
+    "AVT": {
+      "catalyst_type": "earnings_beat",
+      "catalyst_score": 2,
+      "confidence": "medium",
+      "summary": "Avnet shares are riding post-earnings strength after solid quarterly results and margin expansion, with follow-on commentary highlighting it as a value/PEG pick. No new catalyst or insider buying \u2014 mostly continuation of the earnings-driven move."
+    },
+    "SATA": {
+      "catalyst_type": "sector_momentum",
+      "catalyst_score": 2,
+      "confidence": "medium",
+      "summary": "The move looks driven by a broad crypto-equity rally \\u2014 bitcoin pushing back toward $85K, renewed bitcoin-treasury buying, and hopes for regulatory catalysts (Trump-Xi meeting, SEC tokenization rule) \\u2014 rather than company-specific news. A modest ~$199K open-market insider purchase adds a mild supportive signal."
+    },
+    "DVN": {
+      "catalyst_type": "sector_momentum",
+      "catalyst_score": 2,
+      "confidence": "low",
+      "summary": "No company-specific news for Devon; the main driver appears to be broad energy-sector strength as oil prices rise on the Hormuz closure, though DVN has actually lagged the market in recent sessions. The reported ~$200K insider transaction appears to be a CEO sale rather than a buy, muting any insider signal."
+    },
+    "MFG": {
+      "catalyst_type": "analyst_upgrade",
+      "catalyst_score": 1,
+      "confidence": "low",
+      "summary": "The only fresh items are Zacks quant pieces flagging Mizuho as a new Buy-rated momentum name, following a solid Q1 FY27 report with record ROE. That's a weak, low-substance catalyst \\u2014 the move looks largely momentum/rating-screen driven rather than news driven."
+    },
+    "MPC": {
+      "catalyst_type": "regulatory",
+      "catalyst_score": -3,
+      "confidence": "medium",
+      "summary": "Refining stocks including MPC sold off after reports that Trump backs a diesel export ban, which would pressure the unusually rich diesel crack margins currently driving refiner profits. No insider buying or company-specific news to offset the policy risk."
+    },
+    "ACA": {
+      "catalyst_type": "merger_acquisition",
+      "catalyst_score": 3,
+      "confidence": "medium",
+      "summary": "Arcosa is being acquired by CRH in an $8.5B deal that shareholders just approved, so the stock is trading on merger-arb dynamics toward a targeted Q1 2027 close rather than fundamentals (Q2 results actually missed estimates)."
+    },
+    "SAIC": {
+      "catalyst_type": "guidance_raise",
+      "catalyst_score": 2,
+      "confidence": "medium",
+      "summary": "SAIC's Q2 report drove the move: revenue grew ~6% and management raised full-year guidance, making it a standout among government/technical consulting peers, though a weak 0.6 book-to-bill and ORBIT cost pressures temper the bull case. A small ($133K) open-market insider purchase adds a mildly positive signal."
+    }
+  },
+  "congress_signals": {
+    "LILAK": {
+      "ticker": "LILAK",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -433,8 +2056,8 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "LILAK": {
-      "ticker": "LILAK",
+    "LILA": {
+      "ticker": "LILA",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -456,98 +2079,53 @@
       "score": 1.32,
       "summary": "2 House disclosure(s) in last 45d (net buying): Gilbert Cisneros, John J Mr McGuire"
     },
-    "VLO": {
-      "ticker": "VLO",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "LTC": {
-      "ticker": "LTC",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "DKL": {
-      "ticker": "DKL",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "MPC": {
-      "ticker": "MPC",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "ET": {
-      "ticker": "ET",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "AVT": {
-      "ticker": "AVT",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "ASC": {
-      "ticker": "ASC",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "BP": {
-      "ticker": "BP",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
-    "DHT": {
-      "ticker": "DHT",
-      "has_data": false,
-      "num_purchases": 0,
-      "num_sales": 0,
-      "net_amount_mid": 0,
-      "politicians": [],
-      "score": 0.0,
-      "summary": "No House trade disclosures in the last 45 days."
-    },
     "CRM": {
       "ticker": "CRM",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "SMTI": {
+      "ticker": "SMTI",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "CRWD": {
+      "ticker": "CRWD",
+      "has_data": true,
+      "num_purchases": 1,
+      "num_sales": 0,
+      "net_amount_mid": 8000,
+      "politicians": [
+        "Gilbert Cisneros"
+      ],
+      "score": 1.16,
+      "summary": "1 House disclosure(s) in last 45d (net buying): Gilbert Cisneros"
+    },
+    "AAPL": {
+      "ticker": "AAPL",
+      "has_data": true,
+      "num_purchases": 2,
+      "num_sales": 0,
+      "net_amount_mid": 16000,
+      "politicians": [
+        "Cleo Fields",
+        "Ed Case"
+      ],
+      "score": 1.32,
+      "summary": "2 House disclosure(s) in last 45d (net buying): Cleo Fields, Ed Case"
+    },
+    "HALO": {
+      "ticker": "HALO",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -566,8 +2144,8 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "PSX": {
-      "ticker": "PSX",
+    "CAKE": {
+      "ticker": "CAKE",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -576,8 +2154,48 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "DK": {
-      "ticker": "DK",
+    "DE": {
+      "ticker": "DE",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "GTLB": {
+      "ticker": "GTLB",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "PGEN": {
+      "ticker": "PGEN",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "AVT": {
+      "ticker": "AVT",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "SATA": {
+      "ticker": "SATA",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -596,8 +2214,8 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "ZETA": {
-      "ticker": "ZETA",
+    "MFG": {
+      "ticker": "MFG",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -606,8 +2224,8 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "HALO": {
-      "ticker": "HALO",
+    "MPC": {
+      "ticker": "MPC",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
@@ -616,8 +2234,18 @@
       "score": 0.0,
       "summary": "No House trade disclosures in the last 45 days."
     },
-    "SHIP": {
-      "ticker": "SHIP",
+    "ACA": {
+      "ticker": "ACA",
+      "has_data": false,
+      "num_purchases": 0,
+      "num_sales": 0,
+      "net_amount_mid": 0,
+      "politicians": [],
+      "score": 0.0,
+      "summary": "No House trade disclosures in the last 45 days."
+    },
+    "SAIC": {
+      "ticker": "SAIC",
       "has_data": false,
       "num_purchases": 0,
       "num_sales": 0,
