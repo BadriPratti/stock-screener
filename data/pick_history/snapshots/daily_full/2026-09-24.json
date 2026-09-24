@@ -1,0 +1,180 @@
+{
+  "generated_at": "2026-09-24T17:58:14.349610Z",
+  "lists": {
+    "shortlist": [
+      {
+        "composite_score": 127.55,
+        "passed_filters": true,
+        "rank": 1,
+        "score": 90.6,
+        "ticker": "LILAK"
+      },
+      {
+        "composite_score": 126.85,
+        "passed_filters": true,
+        "rank": 2,
+        "score": 104.7,
+        "ticker": "SAIC"
+      },
+      {
+        "composite_score": 126.85,
+        "passed_filters": true,
+        "rank": 3,
+        "score": 89.9,
+        "ticker": "LILA"
+      },
+      {
+        "composite_score": 121.21,
+        "passed_filters": true,
+        "rank": 4,
+        "score": 97.4,
+        "ticker": "NVDA"
+      },
+      {
+        "composite_score": 119.21,
+        "passed_filters": true,
+        "rank": 5,
+        "score": 95.3,
+        "ticker": "DVN"
+      }
+    ],
+    "top20": [
+      {
+        "combined_score": 122.85,
+        "rank": 1,
+        "score": 104.7,
+        "ticker": "SAIC"
+      },
+      {
+        "combined_score": 119.55,
+        "rank": 2,
+        "score": 90.6,
+        "ticker": "LILAK"
+      },
+      {
+        "combined_score": 118.85,
+        "rank": 3,
+        "score": 89.9,
+        "ticker": "LILA"
+      },
+      {
+        "combined_score": 117.25,
+        "rank": 4,
+        "score": 97.4,
+        "ticker": "NVDA"
+      },
+      {
+        "combined_score": 113.0,
+        "rank": 5,
+        "score": 113.0,
+        "ticker": "HALO"
+      },
+      {
+        "combined_score": 111.8,
+        "rank": 6,
+        "score": 91.0,
+        "ticker": "AME"
+      },
+      {
+        "combined_score": 111.58,
+        "rank": 7,
+        "score": 99.8,
+        "ticker": "ALNT"
+      },
+      {
+        "combined_score": 111.21,
+        "rank": 8,
+        "score": 95.3,
+        "ticker": "DVN"
+      },
+      {
+        "combined_score": 110.3,
+        "rank": 9,
+        "score": 110.3,
+        "ticker": "FET"
+      },
+      {
+        "combined_score": 110.3,
+        "rank": 10,
+        "score": 110.3,
+        "ticker": "PUBM"
+      },
+      {
+        "combined_score": 109.8,
+        "rank": 11,
+        "score": 109.8,
+        "ticker": "TMP"
+      },
+      {
+        "combined_score": 109.53,
+        "rank": 12,
+        "score": 102.6,
+        "ticker": "DELL"
+      },
+      {
+        "combined_score": 108.3,
+        "rank": 13,
+        "score": 108.3,
+        "ticker": "HNGE"
+      },
+      {
+        "combined_score": 108.27,
+        "rank": 14,
+        "score": 104.8,
+        "ticker": "S"
+      },
+      {
+        "combined_score": 108.0,
+        "rank": 15,
+        "score": 108.0,
+        "ticker": "NTAP"
+      },
+      {
+        "combined_score": 107.77,
+        "rank": 16,
+        "score": 104.3,
+        "ticker": "MPC"
+      },
+      {
+        "combined_score": 107.64,
+        "rank": 17,
+        "score": 94.1,
+        "ticker": "CRWD"
+      },
+      {
+        "combined_score": 107.17,
+        "rank": 18,
+        "score": 103.7,
+        "ticker": "VLO"
+      },
+      {
+        "combined_score": 106.6,
+        "rank": 19,
+        "score": 106.6,
+        "ticker": "A"
+      },
+      {
+        "combined_score": 106.6,
+        "rank": 20,
+        "score": 106.6,
+        "ticker": "BLFS"
+      }
+    ]
+  },
+  "provenance": "live",
+  "result": "success",
+  "run_kind": "daily_full",
+  "schema_version": 1,
+  "scope": {
+    "analyzed": 1976,
+    "completed": true,
+    "total_universe": 3771
+  },
+  "scoring_version": "v1",
+  "session_date": "2026-09-24",
+  "source": {
+    "git_sha": "bc909e95d8a09467d17d78b44b97cf839e68d1a7",
+    "github_run_id": "36025453749",
+    "workflow": "Daily Stock Screening (Git-Based Storage)"
+  }
+}
