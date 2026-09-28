@@ -8022,5 +8022,25 @@
   "HNST": {
     "last_updated": "2026-09-24T16:37:40.281152",
     "in_earnings_season": false
+  },
+  "CDNL": {
+    "last_updated": "2026-09-28T19:10:50.926449",
+    "in_earnings_season": false
+  },
+  "NTRB": {
+    "last_updated": "2026-09-28T19:39:26.196583",
+    "in_earnings_season": false
+  },
+  "SAMG": {
+    "last_updated": "2026-09-28T19:48:55.335649",
+    "in_earnings_season": false
+  },
+  "WSBF": {
+    "last_updated": "2026-09-28T20:00:53.496091",
+    "in_earnings_season": false
+  },
+  "XRN": {
+    "last_updated": "2026-09-28T20:01:39.476936",
+    "in_earnings_season": false
   }
 }
