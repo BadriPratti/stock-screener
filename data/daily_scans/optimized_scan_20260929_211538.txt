@@ -1,0 +1,299 @@
+================================================================================
+OPTIMIZED FULL MARKET SCAN - ALL US STOCKS
+Scan Date: 2026-09-29
+Generated: 2026-09-29 21:15:38
+Run Kind: midday-sample
+================================================================================
+
+SCANNING STATISTICS
+--------------------------------------------------------------------------------
+Total Universe: 100 stocks
+Analyzed: 54 stocks
+Processing Time: 0.8 minutes
+Actual TPS: 2.01
+🟢 Error Rate: 0.00%
+Buy Signals: 0
+🔴 Sell Signals: 14
+
+
+============================================================
+BENCHMARK SUMMARY
+============================================================
+
+🟢 SPY Trend Classification:
+  Phase: 2 - Uptrend/Breakout
+  Trend: Bullish
+  Current Price: $764.20
+  🟢 50 SMA: $760.87 (slope: 0.0493)
+  🟢 200 SMA: $715.71 (slope: 0.0676)
+  🟢 Confidence: 85%
+
+Market Breadth (n=54):
+  🟡 Phase 1 (Base Building): 36 stocks (66.7%)
+  🟢 Phase 2 (Uptrend): 3 stocks (5.6%)
+  🟡 Phase 3 (Distribution): 0 stocks (0.0%)
+  🔴 Phase 4 (Downtrend): 15 stocks (27.8%)
+  🔴 Breadth Quality: Weak
+
+🟢 Market Regime: RISK-ON (Weak) / Mixed
+
+Interpretation:
+  🟢 Favorable environment for breakout trades
+  → Focus on Phase 2 breakouts with strong RS
+============================================================
+
+
+================================================================================
+🟢 TOP BUY SIGNALS (Score >= 70) - 0 Total
+================================================================================
+
+✗ NO BUY SIGNALS TODAY
+
+
+================================================================================
+🔴 TOP SELL SIGNALS (Score >= 60) - 14 Total
+================================================================================
+
+
+################################################################################
+🚨 SELL #1: CENX | Score: 100/110
+################################################################################
+Current Price: $36.20
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $44.40
+🔴 RS: -1.620
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 18.5%
+  • 50 SMA declining (slope: -0.1513)
+  • High volume breakdown: 1.6x
+  • RS declining: -1.62
+FUNDAMENTAL SNAPSHOT - CENX
+No data available
+
+################################################################################
+🚨 SELL #2: VEL | Score: 100/110
+################################################################################
+Current Price: $15.12
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $17.49
+🔴 RS: -1.503
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 13.6%
+  • 50 SMA declining (slope: -0.1152)
+  • High volume breakdown: 1.7x
+  • RS declining: -1.50
+FUNDAMENTAL SNAPSHOT - VEL
+No data available
+
+################################################################################
+🔴 SELL #3: CELC | Score: 75/110
+################################################################################
+Current Price: $77.38
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $88.13
+🔴 RS: -0.839
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 12.2%
+  • 50 SMA declining (slope: -0.4335)
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.84
+FUNDAMENTAL SNAPSHOT - CELC
+No data available
+
+################################################################################
+🔴 SELL #4: TRUP | Score: 75/110
+################################################################################
+Current Price: $23.61
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $26.90
+🔴 RS: -0.953
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 12.2%
+  • 50 SMA declining (slope: -0.0667)
+  • Low volume breakdown: 1.1x
+  • Weak RS rollover: -0.95
+FUNDAMENTAL SNAPSHOT - TRUP
+No data available
+
+################################################################################
+🔴 SELL #5: ASIX | Score: 75/110
+################################################################################
+Current Price: $16.01
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $17.58
+🔴 RS: -0.547
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 8.9%
+  • 50 SMA declining (slope: -0.3886)
+  • Low volume breakdown: 1.1x
+  • Weak RS rollover: -0.55
+FUNDAMENTAL SNAPSHOT - ASIX
+No data available
+
+################################################################################
+🔴 SELL #6: OGS | Score: 75/110
+################################################################################
+Current Price: $72.20
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $78.14
+🔴 RS: -0.864
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.6%
+  • 50 SMA declining (slope: -0.0386)
+  • Low volume breakdown: 1.1x
+  • Weak RS rollover: -0.86
+FUNDAMENTAL SNAPSHOT - OGS
+No data available
+
+################################################################################
+🟡 SELL #7: AAP | Score: 65/110
+################################################################################
+Current Price: $39.73
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $48.73
+🔴 RS: -0.816
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 18.5%
+  • 50 SMA declining (slope: -0.5737)
+  • Low volume breakdown: 1.1x
+  • Weak RS rollover: -0.82
+FUNDAMENTAL SNAPSHOT - AAP
+No data available
+
+################################################################################
+🟡 SELL #8: EYE | Score: 65/110
+################################################################################
+Current Price: $16.38
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $18.78
+🔴 RS: -0.505
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 12.8%
+  • 50 SMA declining (slope: -0.2808)
+  • Low volume breakdown: 0.7x
+  • Weak RS rollover: -0.50
+FUNDAMENTAL SNAPSHOT - EYE
+No data available
+
+################################################################################
+🟡 SELL #9: STN | Score: 65/110
+################################################################################
+Current Price: $67.24
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $71.73
+🟡 RS: -0.326
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.3%
+  • Low volume breakdown: 0.8x
+  • Weak RS rollover: -0.33
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - STN
+No data available
+
+################################################################################
+🟡 SELL #10: ULS | Score: 65/110
+################################################################################
+Current Price: $64.92
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $75.70
+🔴 RS: -0.791
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 14.2%
+  • 50 SMA declining (slope: -0.5915)
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.79
+FUNDAMENTAL SNAPSHOT - ULS
+No data available
+
+################################################################################
+🟡 SELL #11: DECK | Score: 65/110
+################################################################################
+Current Price: $77.68
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $89.09
+🟡 RS: -0.299
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 12.8%
+  • 50 SMA declining (slope: -0.5214)
+  • Low volume breakdown: 1.0x
+  • Weak RS rollover: -0.30
+FUNDAMENTAL SNAPSHOT - DECK
+No data available
+
+################################################################################
+🟡 SELL #12: TOL | Score: 60/110
+################################################################################
+Current Price: $135.88
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $143.90
+🟢 RS: 0.048
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 5.6%
+  • 50 SMA declining (slope: -0.2598)
+  • Low volume breakdown: 1.0x
+  • RS still positive: 0.05
+FUNDAMENTAL SNAPSHOT - TOL
+No data available
+
+################################################################################
+🟡 SELL #13: OPCH | Score: 60/110
+################################################################################
+Current Price: $22.81
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $23.45
+🟡 RS: -0.400
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 2.7%
+  • Low volume breakdown: 0.8x
+  • Weak RS rollover: -0.40
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - OPCH
+No data available
+
+################################################################################
+🟡 SELL #14: HWKN | Score: 60/110
+################################################################################
+Current Price: $126.15
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $127.67
+🟢 RS: 0.168
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Just below 50 SMA (1.2%)
+  • 50 SMA declining (slope: -0.2547)
+  • Low volume breakdown: 0.8x
+  • RS still positive: 0.17
+FUNDAMENTAL SNAPSHOT - HWKN
+No data available
+
+
+================================================================================
+END OF SCAN
+================================================================================
