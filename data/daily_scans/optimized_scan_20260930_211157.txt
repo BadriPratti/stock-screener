@@ -1,0 +1,313 @@
+================================================================================
+OPTIMIZED FULL MARKET SCAN - ALL US STOCKS
+Scan Date: 2026-09-30
+Generated: 2026-09-30 21:11:57
+Run Kind: midday-sample
+================================================================================
+
+SCANNING STATISTICS
+--------------------------------------------------------------------------------
+Total Universe: 100 stocks
+Analyzed: 53 stocks
+Processing Time: 0.8 minutes
+Actual TPS: 2.01
+🟢 Error Rate: 0.00%
+Buy Signals: 0
+🔴 Sell Signals: 14
+
+
+============================================================
+BENCHMARK SUMMARY
+============================================================
+
+🟢 SPY Trend Classification:
+  Phase: 2 - Uptrend/Breakout
+  Trend: Bullish
+  Current Price: $762.63
+  🟢 50 SMA: $761.19 (slope: 0.0476)
+  🟢 200 SMA: $716.11 (slope: 0.0666)
+  🟢 Confidence: 100%
+
+Market Breadth (n=53):
+  🟡 Phase 1 (Base Building): 31 stocks (58.5%)
+  🟢 Phase 2 (Uptrend): 7 stocks (13.2%)
+  🟡 Phase 3 (Distribution): 0 stocks (0.0%)
+  🔴 Phase 4 (Downtrend): 15 stocks (28.3%)
+  🔴 Breadth Quality: Weak
+
+🟢 Market Regime: RISK-ON (Weak) / Mixed
+
+Interpretation:
+  🟢 Favorable environment for breakout trades
+  → Focus on Phase 2 breakouts with strong RS
+============================================================
+
+
+================================================================================
+🟢 TOP BUY SIGNALS (Score >= 70) - 0 Total
+================================================================================
+
+✗ NO BUY SIGNALS TODAY
+
+
+================================================================================
+🔴 TOP SELL SIGNALS (Score >= 60) - 14 Total
+================================================================================
+
+
+################################################################################
+🚨 SELL #1: CWST | Score: 92/110
+################################################################################
+Current Price: $80.35
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $90.00
+🔴 RS: -1.077
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 10.7%
+  • 50 SMA declining (slope: -0.1857)
+  • Elevated volume: 1.5x
+  • RS declining: -1.08
+FUNDAMENTAL SNAPSHOT - CWST
+No data available
+
+################################################################################
+🚨 SELL #2: CYD | Score: 90/110
+################################################################################
+Current Price: $31.03
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $40.47
+🔴 RS: -0.920
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 23.3%
+  • 50 SMA declining (slope: -0.4832)
+  • High volume breakdown: 2.2x
+  • Weak RS rollover: -0.92
+FUNDAMENTAL SNAPSHOT - CYD
+No data available
+
+################################################################################
+🚨 SELL #3: NVA | Score: 82/110
+################################################################################
+Current Price: $5.42
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $5.43
+🔴 RS: -1.149
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Just below 50 SMA (0.2%)
+  • High volume breakdown: 1.8x
+  • RS declining: -1.15
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - NVA
+No data available
+
+################################################################################
+🚨 SELL #4: SO | Score: 80/110
+################################################################################
+Current Price: $82.89
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $89.56
+🔴 RS: -0.564
+💬 Reddit Mentions (24h): 5
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.4%
+  • 50 SMA declining (slope: -0.2072)
+  • Elevated volume: 1.3x
+  • Weak RS rollover: -0.56
+FUNDAMENTAL SNAPSHOT - SO
+No data available
+
+################################################################################
+🚨 SELL #5: SOLS | Score: 80/110
+################################################################################
+Current Price: $56.32
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $59.59
+🔴 RS: -0.622
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 5.5%
+  • 50 SMA declining (slope: -0.3224)
+  • Moderate volume: 1.1x
+  • Weak RS rollover: -0.62
+FUNDAMENTAL SNAPSHOT - SOLS
+No data available
+
+################################################################################
+🔴 SELL #6: DKNG | Score: 77/110
+################################################################################
+Current Price: $19.00
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $23.70
+🔴 RS: -1.782
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 19.8%
+  • 50 SMA declining (slope: -0.2436)
+  • Low volume breakdown: 1.1x
+  • RS declining: -1.78
+FUNDAMENTAL SNAPSHOT - DKNG
+No data available
+
+################################################################################
+🔴 SELL #7: CASH | Score: 75/110
+################################################################################
+Current Price: $71.14
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $82.21
+🔴 RS: -0.950
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 13.5%
+  • 50 SMA declining (slope: -0.2951)
+  • Low volume breakdown: 0.6x
+  • Weak RS rollover: -0.95
+FUNDAMENTAL SNAPSHOT - CASH
+No data available
+
+################################################################################
+🔴 SELL #8: KD | Score: 72/110
+################################################################################
+Current Price: $11.26
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $12.87
+🔴 RS: -1.399
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 12.5%
+  • Moderate volume: 1.2x
+  • RS declining: -1.40
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - KD
+No data available
+
+################################################################################
+🔴 SELL #9: VERA | Score: 70/110
+################################################################################
+Current Price: $32.29
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $33.30
+🟡 RS: -0.456
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 3.0%
+  • 50 SMA declining (slope: -0.4480)
+  • Low volume breakdown: 0.7x
+  • Weak RS rollover: -0.46
+FUNDAMENTAL SNAPSHOT - VERA
+No data available
+
+################################################################################
+🔴 SELL #10: GSIT | Score: 70/110
+################################################################################
+Current Price: $5.45
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $5.82
+🟢 RS: 0.672
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 6.4%
+  • 50 SMA declining (slope: -0.4011)
+  • Low volume breakdown: 0.5x
+  • RS still positive: 0.67
+FUNDAMENTAL SNAPSHOT - GSIT
+No data available
+
+################################################################################
+🔴 SELL #11: WLFC | Score: 70/110
+################################################################################
+Current Price: $49.91
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $58.38
+🔴 RS: -0.718
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 14.5%
+  • 50 SMA declining (slope: -0.5933)
+  • Moderate volume: 1.1x
+  • Weak RS rollover: -0.72
+FUNDAMENTAL SNAPSHOT - WLFC
+No data available
+
+################################################################################
+🟡 SELL #12: HSAI | Score: 65/110
+################################################################################
+Current Price: $15.95
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $17.26
+🔴 RS: -0.768
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 7.6%
+  • Low volume breakdown: 0.6x
+  • Weak RS rollover: -0.77
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - HSAI
+No data available
+
+################################################################################
+🟡 SELL #13: CSV | Score: 65/110
+################################################################################
+Current Price: $31.17
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $34.73
+🟡 RS: -0.355
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 10.3%
+  • 50 SMA declining (slope: -0.3577)
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.36
+FUNDAMENTAL SNAPSHOT - CSV
+No data available
+
+################################################################################
+🟡 SELL #14: CNL | Score: 65/110
+################################################################################
+Current Price: $12.26
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $14.08
+🔴 RS: -0.858
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 12.9%
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.86
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - CNL
+No data available
+
+
+================================================================================
+END OF SCAN
+================================================================================
