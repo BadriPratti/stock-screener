@@ -1,0 +1,180 @@
+{
+  "generated_at": "2026-10-06T18:57:55.295352Z",
+  "lists": {
+    "shortlist": [
+      {
+        "composite_score": 138.36,
+        "passed_filters": true,
+        "rank": 1,
+        "score": 110.0,
+        "ticker": "NVDA"
+      },
+      {
+        "composite_score": 133.39,
+        "passed_filters": true,
+        "rank": 2,
+        "score": 89.1,
+        "ticker": "INTC"
+      },
+      {
+        "composite_score": 127.64,
+        "passed_filters": true,
+        "rank": 3,
+        "score": 102.1,
+        "ticker": "TSM"
+      },
+      {
+        "composite_score": 126.76,
+        "passed_filters": true,
+        "rank": 4,
+        "score": 103.4,
+        "ticker": "AMD"
+      },
+      {
+        "composite_score": 124.59,
+        "passed_filters": true,
+        "rank": 5,
+        "score": 101.2,
+        "ticker": "MSFT"
+      }
+    ],
+    "top20": [
+      {
+        "combined_score": 134.88,
+        "rank": 1,
+        "score": 110.0,
+        "ticker": "NVDA"
+      },
+      {
+        "combined_score": 133.39,
+        "rank": 2,
+        "score": 89.1,
+        "ticker": "INTC"
+      },
+      {
+        "combined_score": 128.2,
+        "rank": 3,
+        "score": 99.8,
+        "ticker": "LILA"
+      },
+      {
+        "combined_score": 126.76,
+        "rank": 4,
+        "score": 103.4,
+        "ticker": "AMD"
+      },
+      {
+        "combined_score": 124.16,
+        "rank": 5,
+        "score": 102.1,
+        "ticker": "TSM"
+      },
+      {
+        "combined_score": 122.8,
+        "rank": 6,
+        "score": 94.4,
+        "ticker": "LILAK"
+      },
+      {
+        "combined_score": 120.07,
+        "rank": 7,
+        "score": 102.1,
+        "ticker": "GTLB"
+      },
+      {
+        "combined_score": 119.64,
+        "rank": 8,
+        "score": 101.2,
+        "ticker": "MSFT"
+      },
+      {
+        "combined_score": 119.15,
+        "rank": 9,
+        "score": 103.9,
+        "ticker": "ALNT"
+      },
+      {
+        "combined_score": 118.1,
+        "rank": 10,
+        "score": 97.3,
+        "ticker": "AME"
+      },
+      {
+        "combined_score": 115.9,
+        "rank": 11,
+        "score": 115.9,
+        "ticker": "ANET"
+      },
+      {
+        "combined_score": 115.77,
+        "rank": 12,
+        "score": 112.3,
+        "ticker": "AMG"
+      },
+      {
+        "combined_score": 114.9,
+        "rank": 13,
+        "score": 114.9,
+        "ticker": "ZBRA"
+      },
+      {
+        "combined_score": 114.87,
+        "rank": 14,
+        "score": 111.4,
+        "ticker": "GIC"
+      },
+      {
+        "combined_score": 113.52,
+        "rank": 15,
+        "score": 91.7,
+        "ticker": "HOG"
+      },
+      {
+        "combined_score": 112.15,
+        "rank": 16,
+        "score": 91.6,
+        "ticker": "SNDK"
+      },
+      {
+        "combined_score": 111.23,
+        "rank": 17,
+        "score": 101.5,
+        "ticker": "CRWD"
+      },
+      {
+        "combined_score": 111.1,
+        "rank": 18,
+        "score": 111.1,
+        "ticker": "KEYS"
+      },
+      {
+        "combined_score": 110.99,
+        "rank": 19,
+        "score": 94.9,
+        "ticker": "AAPL"
+      },
+      {
+        "combined_score": 110.47,
+        "rank": 20,
+        "score": 107.0,
+        "ticker": "CORT"
+      }
+    ]
+  },
+  "provenance": "live",
+  "result": "success",
+  "run_kind": "daily_full",
+  "schema_version": 1,
+  "scope": {
+    "analyzed": 1988,
+    "completed": true,
+    "total_universe": 3759
+  },
+  "scoring_version": "v1",
+  "session_date": "2026-10-06",
+  "source": {
+    "git_sha": "80ad5b983a88b21667005f06196e7f85f78bf984",
+    "github_run_id": "37504984863",
+    "workflow": "Daily Stock Screening (Git-Based Storage)"
+  }
+}
