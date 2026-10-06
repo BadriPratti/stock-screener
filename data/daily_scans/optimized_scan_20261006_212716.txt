@@ -1,0 +1,540 @@
+================================================================================
+OPTIMIZED FULL MARKET SCAN - ALL US STOCKS
+Scan Date: 2026-10-06
+Generated: 2026-10-06 21:27:16
+Run Kind: midday-sample
+================================================================================
+
+SCANNING STATISTICS
+--------------------------------------------------------------------------------
+Total Universe: 100 stocks
+Analyzed: 47 stocks
+Processing Time: 0.8 minutes
+Actual TPS: 2.01
+🟢 Error Rate: 0.00%
+🟢 Buy Signals: 7
+🔴 Sell Signals: 13
+
+
+============================================================
+BENCHMARK SUMMARY
+============================================================
+
+🟢 SPY Trend Classification:
+  Phase: 2 - Uptrend/Breakout
+  Trend: Bullish
+  Current Price: $779.09
+  🟢 50 SMA: $763.82 (slope: 0.0504)
+  🟢 200 SMA: $718.13 (slope: 0.0641)
+  🟢 Confidence: 85%
+
+Market Breadth (n=47):
+  🟡 Phase 1 (Base Building): 24 stocks (51.1%)
+  🟢 Phase 2 (Uptrend): 9 stocks (19.1%)
+  🟡 Phase 3 (Distribution): 1 stocks (2.1%)
+  🔴 Phase 4 (Downtrend): 13 stocks (27.7%)
+  🔴 Breadth Quality: Fair
+
+🟢 Market Regime: RISK-ON (Weak) / Mixed
+
+Interpretation:
+  🟢 Favorable environment for breakout trades
+  → Focus on Phase 2 breakouts with strong RS
+============================================================
+
+
+================================================================================
+🟢 TOP BUY SIGNALS (Score >= 70) - 7 Total
+================================================================================
+
+
+################################################################################
+⭐ BUY #1: LFUS | Score: 110.2/125
+################################################################################
+Current Price: $454.28
+Phase: 2
+🟢 Entry Quality: Good
+Stop Loss: $423.19
+🟢 Risk/Reward: 4.4:1 (Risk $31.09, Reward $136.28)
+Breakout: $426.57
+🟡 RS: 0.439
+🟢 VCP: 2 contractions: 16.5% → 6.2% (quality: 69/100)
+💬 Reddit Mentions (24h): 0
+
+Key Reasons:
+  • Good Stage 2: 6.3% above 50 SMA
+  • SMAs rising moderately
+  • 🟡 VCP Breakout (2 contractions) (low volume)
+  • 🟢 Revenue: 3Q avg 6.1% QoQ (-4.9% → 10.6% → 12.5%)
+  • 🟢 EPS: +52% YoY (strong earnings)
+  • Inventory neutral (3.5% QoQ)
+  • ⚠ Volume heavier on down days (ratio 0.81 - distribution)
+
+============================================================
+FUNDAMENTAL SNAPSHOT - LFUS
+============================================================
+✓ Revenue: ACCELERATING strongly (YoY: +20.4%, QoQ: +12.5%)
+  QoQ Trend (last 4Q): +1.8% → -4.9% → +10.6% → +12.5%
+✓ EPS: STRONG growth (YoY: +51.7%, QoQ: +17.9%)
+  QoQ Trend (last 4Q): +20.4% → -450.9% → +130.5% → +17.9%
+✓ Margins: EXPANDING (41.4%, +2.7pp QoQ)
+• Inventory: Slight increase (+3.5% QoQ, ratio: 0.59)
+  Note: Detailed breakdown (raw/WIP/finished) not available via API
+
+Overall Assessment:
+✓ Fundamentals SUPPORT technical breakout
+
+
+################################################################################
+⭐ BUY #2: CBNK | Score: 99.4/125
+################################################################################
+Current Price: $39.59
+Phase: 2
+🟢 Entry Quality: Good
+Stop Loss: $36.66
+🟢 Risk/Reward: 4.0:1 (Risk $2.93, Reward $11.88)
+Breakout: $38.16
+🟡 RS: 0.423
+🟡 VCP: 3 contractions: 6.7% → 4.2% → 5.6% (quality: 60/100)
+💬 Reddit Mentions (24h): 0
+
+Key Reasons:
+  • Good Stage 2: 6.9% above 50 SMA
+  • SMAs rising strongly (50:0.076, 200:0.131)
+  • 🟡 VCP Breakout (3 contractions) (low volume)
+  • 🟡 Revenue: 3Q avg 1.0% QoQ (-0.6% → -0.3% → 4.0%)
+  • 🟡 EPS: +12% YoY
+  • ✓ Volume heavier on up days (0.5M vs 0.2M, ratio 2.57)
+  • ✓ Strong RS: 0.423 (outperforming SPY)
+
+============================================================
+FUNDAMENTAL SNAPSHOT - CBNK
+============================================================
+• Revenue: Modest growth (YoY: +6.8%, QoQ: +4.0%)
+  QoQ Trend (last 4Q): +3.7% → -0.6% → -0.3% → +4.0%
+✓ EPS: Growing (YoY: +11.5%, QoQ: +19.2%)
+  QoQ Trend (last 4Q): +14.1% → +2.2% → -19.8% → +19.2%
+
+Overall Assessment:
+✓ Fundamentals SUPPORT technical breakout
+
+
+################################################################################
+⭐ BUY #3: HVT | Score: 92.3/125
+################################################################################
+Current Price: $27.92
+Phase: 2
+🟢 Entry Quality: Good
+Stop Loss: $27.08
+🟢 Risk/Reward: 10.0:1 (Risk $0.84, Reward $8.38)
+🔴 RS: -0.039
+💬 Reddit Mentions (24h): 0
+
+Key Reasons:
+  • Weak Stage 2: 1.5% above 50 SMA
+  • SMAs rising strongly (50:0.197, 200:0.095)
+  • 🔴 Revenue: 3Q avg nan% QoQ (3.8% → -6.4% → nan%)
+  • 🟢 EPS: +100% YoY (strong earnings)
+  • ⚠ Inventory building (11.1% QoQ)
+  • ⚠ Volume heavier on down days (ratio 0.72 - distribution)
+  • Weak RS: -0.039
+
+============================================================
+FUNDAMENTAL SNAPSHOT - HVT
+============================================================
+• Revenue: Data not available
+  QoQ Trend (last 4Q): +7.4% → +3.8% → -6.4% → N/A
+✓ EPS: STRONG growth (YoY: +100.0%, QoQ: +23.1%)
+  QoQ Trend (last 4Q): +75.0% → +82.1% → -49.0% → +23.1%
+✗ Margins: CONTRACTING (nan%, nanpp QoQ)
+⚠ Inventory: BUILDING (+11.1% QoQ, ratio: nan)
+  → Potential demand weakness or production ramp
+  Note: Detailed breakdown (raw/WIP/finished) not available via API
+
+Overall Assessment:
+✓ Fundamentals SUPPORT technical breakout
+
+
+################################################################################
+⭐ BUY #4: MRVL | Score: 91.9/125
+################################################################################
+Current Price: $287.01
+Phase: 2
+🟡 Entry Quality: Extended
+Stop Loss: $258.31
+🟢 Risk/Reward: 3.0:1 (Risk $28.70, Reward $86.10)
+Breakout: $272.29
+🟢 RS: 1.048
+💬 Reddit Mentions (24h): 46
+
+Key Reasons:
+  • Strong Stage 2: 24.7% above 50 SMA
+  • SMAs rising strongly (50:0.306, 200:0.506)
+  • 🟢 Base Breakout (volume confirmed)
+  • Moderately extended above 50 SMA
+  • 🟢 Revenue: 3Q avg 6.4% QoQ (3.4% → 7.0% → 9.0%)
+  • 🔴 EPS: -80% YoY
+  • Inventory neutral (0.9% QoQ)
+
+============================================================
+FUNDAMENTAL SNAPSHOT - MRVL
+============================================================
+✓ Revenue: ACCELERATING strongly (YoY: +27.6%, QoQ: +9.0%)
+  QoQ Trend (last 4Q): +5.8% → +3.4% → +7.0% → +9.0%
+✗ EPS: DECLINING (YoY: -80.0%, QoQ: -91.3%)
+  QoQ Trend (last 4Q): +10.0% → +900.0% → -79.1% → -91.3%
+• Margins: Stable/slightly up (52.1%, +0.4pp QoQ)
+• Inventory: Slight increase (+0.9% QoQ, ratio: 0.58)
+  Note: Detailed breakdown (raw/WIP/finished) not available via API
+
+Overall Assessment:
+⚠ Some concerns: EPS declining
+✗ Fundamentals CONTRADICT technical breakout
+
+
+################################################################################
+⭐ BUY #5: MTD | Score: 90.2/125
+################################################################################
+Current Price: $1533.07
+Phase: 2
+🟢 Entry Quality: Good
+Stop Loss: $1466.44
+🟢 Risk/Reward: 6.9:1 (Risk $66.63, Reward $459.92)
+🟢 RS: 0.926
+💬 Reddit Mentions (24h): 0
+
+Key Reasons:
+  • Good Stage 2: 8.2% above 50 SMA
+  • SMAs rising strongly (50:0.226, 200:0.010)
+  • 🟡 Revenue: 3Q avg 0.7% QoQ (9.7% → -16.2% → 8.5%)
+  • 🟡 EPS: +18% YoY
+  • Inventory neutral (1.7% QoQ)
+  • ⚠ Volume heavier on down days (ratio 0.86 - distribution)
+  • ✓ Strong RS: 0.926 (outperforming SPY)
+
+============================================================
+FUNDAMENTAL SNAPSHOT - MTD
+============================================================
+• Revenue: Modest growth (YoY: +4.5%, QoQ: +8.5%)
+  QoQ Trend (last 4Q): +4.7% → +9.7% → -16.2% → +8.5%
+✓ EPS: Growing (YoY: +18.3%, QoQ: +38.7%)
+  QoQ Trend (last 4Q): +8.3% → +32.3% → -40.4% → +38.7%
+✓ Margins: EXPANDING (63.3%, +4.6pp QoQ)
+• Inventory: Slight increase (+1.7% QoQ, ratio: 0.40)
+  Note: Detailed breakdown (raw/WIP/finished) not available via API
+
+Overall Assessment:
+✓ Fundamentals SUPPORT technical breakout
+
+
+################################################################################
+🟢 BUY #6: MET | Score: 84.5/125
+################################################################################
+Current Price: $97.16
+Phase: 2
+🟢 Entry Quality: Good
+Stop Loss: $94.25
+🟢 Risk/Reward: 10.0:1 (Risk $2.91, Reward $29.15)
+🔴 RS: -0.203
+🟡 VCP: 3 contractions: 3.7% → 7.5% → 5.3% (quality: 59/100)
+💬 Reddit Mentions (24h): 0
+
+Key Reasons:
+  • Weak Stage 2: 0.7% above 50 SMA
+  • SMAs rising strongly (50:0.104, 200:0.121)
+  • 🟢 Revenue: 3Q avg 6.4% QoQ (38.0% → -20.1% → 1.4%)
+  • 🟡 EPS: +7% YoY
+  • Volume slightly heavier on up days (ratio 1.28)
+  • ⚠ Declining RS: -0.203 (underperforming SPY)
+  • 🟢 Outstanding R/R: 10.0:1 ($29.15 upside, $2.91 risk)
+
+============================================================
+FUNDAMENTAL SNAPSHOT - MET
+============================================================
+• Revenue: Modest growth (YoY: +9.9%, QoQ: +1.4%)
+  QoQ Trend (last 4Q): -1.7% → +38.0% → -20.1% → +1.4%
+• EPS: Slight growth (YoY: +6.5%, QoQ: -36.9%)
+  QoQ Trend (last 4Q): +18.4% → -4.1% → +48.6% → -36.9%
+
+Overall Assessment:
+✓ Fundamentals SUPPORT technical breakout
+
+
+################################################################################
+🟢 BUY #7: DOCN | Score: 74.7/125
+################################################################################
+Current Price: $131.01
+Phase: 2
+🟡 Entry Quality: Extended
+Stop Loss: $127.08
+🟢 Risk/Reward: 10.0:1 (Risk $3.93, Reward $39.30)
+🟡 RS: 0.407
+💬 Reddit Mentions (24h): 0
+
+Key Reasons:
+  • Good Stage 2: 4.6% above 50 SMA
+  • SMAs rising strongly (50:0.097, 200:0.435)
+  • 🟢 Revenue: 3Q avg 7.0% QoQ (5.6% → 6.4% → 9.0%)
+  • 🔴 EPS: -26% YoY
+  • Volume pattern neutral (ratio 1.03)
+  • ✓ Strong RS: 0.407 (outperforming SPY)
+  • 🟢 Outstanding R/R: 10.0:1 ($39.30 upside, $3.93 risk)
+
+============================================================
+FUNDAMENTAL SNAPSHOT - DOCN
+============================================================
+✓ Revenue: ACCELERATING strongly (YoY: +28.6%, QoQ: +9.0%)
+  QoQ Trend (last 4Q): +5.0% → +5.6% → +6.4% → +9.0%
+✗ EPS: DECLINING (YoY: -25.6%, QoQ: +93.3%)
+  QoQ Trend (last 4Q): +287.2% → -84.1% → -37.5% → +93.3%
+✗ Margins: CONTRACTING (55.0%, -1.1pp QoQ)
+
+Overall Assessment:
+⚠ Some concerns: EPS declining
+✗ Fundamentals CONTRADICT technical breakout
+
+
+
+================================================================================
+🔴 TOP SELL SIGNALS (Score >= 60) - 13 Total
+================================================================================
+
+
+################################################################################
+🚨 SELL #1: NNE | Score: 90/110
+################################################################################
+Current Price: $16.49
+Phase: 4 | 🚨 Severity: CRITICAL
+Breakdown: $17.49
+🟡 RS: -0.468
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 5.7%
+  • 50 SMA declining (slope: -0.1816)
+  • Elevated volume: 1.5x
+  • Weak RS rollover: -0.47
+FUNDAMENTAL SNAPSHOT - NNE
+No data available
+
+################################################################################
+🔴 SELL #2: POST | Score: 75/110
+################################################################################
+Current Price: $73.32
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $80.83
+🔴 RS: -0.640
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 9.3%
+  • 50 SMA declining (slope: -0.2914)
+  • Low volume breakdown: 0.6x
+  • Weak RS rollover: -0.64
+FUNDAMENTAL SNAPSHOT - POST
+No data available
+
+################################################################################
+🔴 SELL #3: UPBD | Score: 72/110
+################################################################################
+Current Price: $15.36
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $18.34
+🔴 RS: -1.070
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 16.2%
+  • 50 SMA declining (slope: -0.4778)
+  • Moderate volume: 1.1x
+  • RS declining: -1.07
+FUNDAMENTAL SNAPSHOT - UPBD
+No data available
+
+################################################################################
+🔴 SELL #4: NYT | Score: 70/110
+################################################################################
+Current Price: $64.07
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $67.34
+🔴 RS: -0.999
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 4.9%
+  • 50 SMA declining (slope: -0.2293)
+  • Low volume breakdown: 0.4x
+  • Weak RS rollover: -1.00
+FUNDAMENTAL SNAPSHOT - NYT
+No data available
+
+################################################################################
+🔴 SELL #5: TRP | Score: 70/110
+################################################################################
+Current Price: $60.23
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $61.75
+🟡 RS: -0.312
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 2.5%
+  • 50 SMA declining (slope: -0.2643)
+  • Low volume breakdown: 0.5x
+  • Weak RS rollover: -0.31
+FUNDAMENTAL SNAPSHOT - TRP
+No data available
+
+################################################################################
+🔴 SELL #6: COGT | Score: 70/110
+################################################################################
+Current Price: $30.38
+Phase: 4 | 🔴 Severity: HIGH
+Breakdown: $35.65
+🟡 RS: -0.491
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 14.8%
+  • 50 SMA declining (slope: -0.3794)
+  • Moderate volume: 1.1x
+  • Weak RS rollover: -0.49
+FUNDAMENTAL SNAPSHOT - COGT
+No data available
+
+################################################################################
+🟡 SELL #7: TPB | Score: 67/110
+################################################################################
+Current Price: $58.27
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $75.08
+🔴 RS: -1.517
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 22.4%
+  • 50 SMA declining (slope: -0.5041)
+  • Low volume breakdown: 0.5x
+  • RS declining: -1.52
+FUNDAMENTAL SNAPSHOT - TPB
+No data available
+
+################################################################################
+🟡 SELL #8: EXP | Score: 65/110
+################################################################################
+Current Price: $171.54
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $193.98
+🔴 RS: -0.519
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 11.6%
+  • 50 SMA declining (slope: -0.3081)
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.52
+FUNDAMENTAL SNAPSHOT - EXP
+No data available
+
+################################################################################
+🟡 SELL #9: CE | Score: 65/110
+################################################################################
+Current Price: $44.85
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $45.21
+🟡 RS: -0.474
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Just below 50 SMA (0.8%)
+  • 50 SMA declining (slope: -0.0335)
+  • Low volume breakdown: 0.6x
+  • Weak RS rollover: -0.47
+FUNDAMENTAL SNAPSHOT - CE
+No data available
+
+################################################################################
+🟡 SELL #10: WMT | Score: 65/110
+################################################################################
+Current Price: $107.20
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $108.58
+🟡 RS: -0.317
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Just below 50 SMA (1.3%)
+  • 50 SMA declining (slope: -0.0860)
+  • Low volume breakdown: 1.0x
+  • Weak RS rollover: -0.32
+FUNDAMENTAL SNAPSHOT - WMT
+No data available
+
+################################################################################
+🟡 SELL #11: OTF | Score: 65/110
+################################################################################
+Current Price: $9.36
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $10.39
+🔴 RS: -0.767
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 9.9%
+  • Low volume breakdown: 0.9x
+  • Weak RS rollover: -0.77
+  • Failed breakout - closed back inside base
+FUNDAMENTAL SNAPSHOT - OTF
+No data available
+
+################################################################################
+🟡 SELL #12: MKC | Score: 65/110
+################################################################################
+Current Price: $45.40
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $51.49
+🔴 RS: -0.909
+💬 Reddit Mentions (24h): 1
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Broke below 50 SMA by 11.8%
+  • 50 SMA declining (slope: -0.1404)
+  • Low volume breakdown: 1.0x
+  • Weak RS rollover: -0.91
+FUNDAMENTAL SNAPSHOT - MKC
+No data available
+
+################################################################################
+🟡 SELL #13: CNM | Score: 60/110
+################################################################################
+Current Price: $42.10
+Phase: 4 | 🟡 Severity: MEDIUM
+Breakdown: $43.59
+🟡 RS: -0.368
+💬 Reddit Mentions (24h): 0
+
+Sell Reasons:
+  • In Phase 4 (Downtrend)
+  • Below 50 SMA by 3.4%
+  • 50 SMA declining (slope: -0.1273)
+  • Low volume breakdown: 1.0x
+  • Weak RS rollover: -0.37
+FUNDAMENTAL SNAPSHOT - CNM
+No data available
+
+
+================================================================================
+END OF SCAN
+================================================================================
